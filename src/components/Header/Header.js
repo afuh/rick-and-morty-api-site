@@ -47,7 +47,7 @@ const Header = ({ location }) => (
             <ListLink location={location} name={i.title} to={i.link} key={i.title}>{i.title}</ListLink>
           ))}
         </ul>
-        <a href={config.github} title="GitHub">
+        <a href={config.githubAPI} title="GitHub">
           <GithubIcon className={styles.menu}/>
         </a>
       </nav>

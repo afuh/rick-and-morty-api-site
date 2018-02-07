@@ -9,6 +9,7 @@ module.exports = {
   siteDescription: 'Hey, did you ever want to hold a Terry fold?',
   userTwitter: 'abelflaubert', // Twitter Username
   github: 'https://github.com/afuh/rick-and-morty-api-site',
+  githubAPI: 'https://github.com/afuh/rick-and-morty-api',
   // og: Meta Tags
   ogSiteName: 'Rick and Morty API', // Facebook Site Name
   // You can translate these three words into your language if you want.
