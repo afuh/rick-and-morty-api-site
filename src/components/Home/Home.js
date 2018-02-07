@@ -77,39 +77,41 @@ class Home extends Component {
       <div>
         <Intro title={title} description={description} />
 
-        <div className={styles.apiSection}>
+        <section className={styles.apiSection}>
           <MuiThemeProvider>
             <div className={styles.materialWrapper}>
               {
                 data.length == 8 ? data.map((char, i) => {
                 return (
-                  <Card
-                    key={i}
-                    style={{width: 300, marginBottom: '12px'}}>
-                    <CardMedia
-                      style={{height: 300}}
-                      overlay={
-                        <CardTitle
-                          title={char.name}
-                          subtitle={"id: " + char.id + " - created " + moment(char.created).fromNow()}
-                        />
-                      }
-                    >
-                      <img src={char.image} alt={char.name}/>
-                    </CardMedia>
-                    <CardText>
-                      <Text title='Status' data={char.status}/>
-                      <Text title='Species' data={!char.type ? char.species : char.species + ', ' + char.type} />
-                      <Text title='Gender' data={char.gender} />
-                      <Text title='Origin' data={char.origin.name} />
-                      <Text title='Last location' data={char.location.name} last/>
-                    </CardText>
-                  </Card>
+                  <article key={i}>
+                    <Card
+                      style={{width: 300, marginBottom: '12px'}}>
+                      <CardMedia
+                        style={{height: 300}}
+                        overlay={
+                          <CardTitle
+                            className="card-title"
+                            title={char.name}
+                            subtitle={"id: " + char.id + " - created " + moment(char.created).fromNow()}
+                          />
+                        }
+                      >
+                        <img src={char.image} alt={char.name}/>
+                      </CardMedia>
+                      <CardText className="card-info">
+                        <Text title='Status' data={char.status}/>
+                        <Text title='Species' data={!char.type ? char.species : char.species + ', ' + char.type} />
+                        <Text title='Gender' data={char.gender} />
+                        <Text title='Origin' data={char.origin.name} />
+                        <Text title='Last location' data={char.location.name} last/>
+                      </CardText>
+                    </Card>
+                </article>
                 )}) : <Spinner name="triangle-skew-spin" color="rgb(255, 152, 0)" />
               }
             </div>
           </MuiThemeProvider>
-        </div>
+        </section>
       </div>
     )
   }
