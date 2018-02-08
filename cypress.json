@@ -5,5 +5,6 @@
   "supportFile": false,
   "videoRecording": false,
   "viewportWidth": 1280,
-  "viewportHeight": 900
+  "viewportHeight": 900,
+  "screenshotOnHeadlessFailure": false
 }

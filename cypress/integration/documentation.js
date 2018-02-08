@@ -33,9 +33,7 @@ describe("Documentation page", () => {
 
             wrapper.items.map(anchor => {
               cy.get('aside li a')
-                .contains(anchor.title)
-                .and('have.attr', 'href', '/documentation' + anchor.link)
-                .click()
+                .contains(anchor.title).click()
               cy.url().should('include', anchor.link)
             })
 
