@@ -25,7 +25,7 @@ const menuColor = (location, name) => {
 
 
 const ListLink = ({ to, children, location, name }) => (
-  <li style={{ display: `inline-block`, margin: "0 1rem 0 0" }}>
+  <li>
     <Link className={styles.menu} to={to} style={menuColor(location.pathname, name)}>
       {children}
     </Link>
@@ -42,12 +42,12 @@ ListLink.propTypes = {
 const Header = ({ location }) => (
     <header className={styles.header}>
       <nav className={styles.wrapper}>
-        <ul style={{ padding: 0, margin: 0 }}>
+        <ul className={styles.links}>
           {index.map(i => (
             <ListLink location={location} name={i.title} to={i.link} key={i.title}>{i.title}</ListLink>
           ))}
         </ul>
-        <a href={config.githubAPI} title="GitHub">
+        <a className={styles.githubIcon} href={config.githubAPI} title="GitHub">
           <GithubIcon className={styles.menu}/>
         </a>
       </nav>
