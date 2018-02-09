@@ -3,7 +3,10 @@ import config from '../../config/SiteConfig';
 const YAML = require('yamljs')
 
 describe("Documentation page", () => {
-  before(() => cy.visit('/documentation'))
+  before(() => {
+    cy.visit('/documentation')
+    cy.scrollTo('top')
+  })
 
   describe("Sidebar", () => {
     it("Should hide according to the viewport size", () => {
@@ -29,7 +32,6 @@ describe("Documentation page", () => {
         .then(index => {
           YAML.parse(index).map(wrapper => {
             cy.get('aside h3').contains(wrapper.title)
-            console.log(wrapper);
 
             wrapper.items.map(anchor => {
               cy.get('aside li a')
@@ -43,9 +45,29 @@ describe("Documentation page", () => {
 
   })
 
-  describe('Page edit', () => {
+  describe('Github edit page button', () => {
     it("Should be a link to edit the page", () => {
       cy.get('a.edit-page').should('have.attr', 'href', config.github + '/blob/master/src/pages/documentation.md')
+    })
+  })
+
+  describe('Page', () => {
+    it("Should work in differents viewports", () => {
+      cy.scrollTo('top')
+      cy.viewport('ipad-2')
+      cy.wait(400)
+      cy.viewport('ipad-mini')
+      cy.wait(400)
+      cy.viewport('iphone-6+')
+      cy.wait(400)
+      cy.viewport('iphone-6')
+      cy.wait(400)
+      cy.viewport('iphone-5')
+      cy.wait(400)
+      cy.viewport('iphone-4')
+      cy.wait(400)
+      cy.viewport('iphone-3')
+      cy.wait(400)
     })
   })
 

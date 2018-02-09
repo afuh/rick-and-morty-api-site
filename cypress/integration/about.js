@@ -2,7 +2,10 @@
 import config from '../../config/SiteConfig';
 
 describe("About page", () => {
-  before(() => cy.visit('/about'))
+  before(() => {
+    cy.visit('/about')
+    cy.scrollTo('top')
+  })
 
   describe('Headers', () => {
     it("Should be h3 questions", () => {
@@ -33,9 +36,29 @@ describe("About page", () => {
     })
   })
 
-  describe('Page edit', () => {
+  describe('Github edit page button', () => {
     it("Should be a link to edit the page", () => {
       cy.get('a.edit-page').should('have.attr', 'href', config.github + '/blob/master/src/pages/about.md')
+    })
+  })
+
+  describe('Page', () => {
+    it("Should work in differents viewports", () => {
+      cy.scrollTo('top')
+      cy.viewport('ipad-2')
+      cy.wait(400)
+      cy.viewport('ipad-mini')
+      cy.wait(400)
+      cy.viewport('iphone-6+')
+      cy.wait(400)
+      cy.viewport('iphone-6')
+      cy.wait(400)
+      cy.viewport('iphone-5')
+      cy.wait(400)
+      cy.viewport('iphone-4')
+      cy.wait(400)
+      cy.viewport('iphone-3')
+      cy.wait(400)
     })
   })
 

@@ -85,9 +85,9 @@ class Home extends Component {
                 return (
                   <article key={i}>
                     <Card
-                      style={{width: 300, marginBottom: '12px'}}>
+                      style={{maxWidth: 300, marginBottom: '12px'}}>
                       <CardMedia
-                        style={{height: 300}}
+                        style={{maxHeight: 300}}
                         overlay={
                           <CardTitle
                             className="card-title"
