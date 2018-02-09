@@ -2,11 +2,12 @@
 
 .wrapper
   @extend .col, .centrate
+  flex-wrap: nowrap
   background: color(backblack)
   color: color(gray)
   padding: 10px 0
   width: 100%
-  height: $header-height
+  min-height: $header-height
   span
     +font(13px, 200)
   a
@@ -22,6 +23,8 @@
 .statistics
   @extend .row, .centrate
   +size(100%, auto)
+  +break(xs)
+    +position(space-around, center)
 
 .counts
   font-size: 14px !important

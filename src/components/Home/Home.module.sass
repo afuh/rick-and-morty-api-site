@@ -4,6 +4,9 @@
   @extend .col, .centrate
   height: 40vh
   text-align: center
+  +break(xs)
+    flex-wrap: wrap
+    height: auto
 
 .introWrapper
   h1, h2
@@ -15,11 +18,14 @@
     +break(sm)
       line-height: 1
       padding: 0 12px
+    +break(xs)
+      margin: 10px 0
+
 
   h1
     font-size: 60px
     +break(xs)
-      font-size: 50px
+      font-size: 40px
   h2
     font-size: 30px
     color: color(orange)
@@ -62,6 +68,8 @@
   padding: 30px
   background: color(backblack)
   min-height: calc(60vh - #{$header-height})
+  +break(xs)
+    padding: 30px 0
 
 .textWrapper
   @extend .row

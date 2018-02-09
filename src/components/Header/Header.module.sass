@@ -10,12 +10,42 @@
   max-width: 1200px
   min-height: 80px
   padding: 0 20px
+  +break(xs)
+
+.links
+  display: flex
+  padding: 0
+  margin: 0
+  li
+    margin: 0 1rem 0
+  +break(xs)
+    flex: 3
+    +position(space-between, center)
+    align-self: stretch
+    li
+      display: flex
+      +position(center, center)
+      align-self: stretch
+      margin: 0
+      a
+        align-self: stretch
+        width: 100%
+        display: flex
+        +position(center, center)
+
+.githubIcon
+  +hover
+    .menu
+      color: color(orange)
+  +break(xs)
+    align-self: stretch
+    display: flex
+    +position(center, center)
+    flex: 1
+  +break(340px)
+    display: none
 
 .menu
   color: color(black)
   transition: all .2s
   border: none
-
-.menu
-  +hover
-    color: color(orange)

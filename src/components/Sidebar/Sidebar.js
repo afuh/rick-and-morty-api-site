@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import Link from "gatsby-link"
 
 import index from '../../data/docs-index.yaml'
+import styles from './Sidebar.module.sass'
 
 const ListLink = ({ to, children }) => (
-  <li style={{ display: 'inline-block', width: '100%', margin: "0 1rem " }}>
+  <li style={{ margin: "0 1rem" }}>
     <Link to={to} style={{color: "#444"}}>
       {children}
     </Link>
@@ -80,7 +81,7 @@ class Sidebar extends Component {
       position: 'relative',
     }
     return (
-      <aside style={pos} >
+      <aside className={styles.aside} style={pos}>
         {index.map(section => (
           <Section {...section} key={section.title} />
         ))}

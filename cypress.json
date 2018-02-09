@@ -1,0 +1,10 @@
+{
+  "baseUrl": "http://127.0.0.1:9000",
+  "fixturesFolder": false,
+  "pluginsFile": false,
+  "supportFile": false,
+  "videoRecording": false,
+  "viewportWidth": 1280,
+  "viewportHeight": 900,
+  "screenshotOnHeadlessFailure": false
+}
