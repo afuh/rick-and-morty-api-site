@@ -3,7 +3,10 @@ import config from '../../config/SiteConfig';
 const YAML = require('yamljs')
 
 describe("Home page", () => {
-  before(() => cy.visit('/'))
+  before(() => {
+    cy.visit('/')
+    cy.scrollTo('top')
+  })
 
   describe('Header', () => {
     it("Should navigate thorough the site", () => {
@@ -17,6 +20,15 @@ describe("Home page", () => {
         cy.url().should('include', '/documentation')
         cy.get('a').contains('Home').click()
         cy.url().should('include', '/')
+      })
+    });
+
+    it("Should not be a github icon in mobile view", () => {
+      cy.get('header').within(() => {
+        cy.viewport('iphone-4')
+        cy.get('a[title="GitHub"]').should('not.be.visible')
+        cy.wait(500)
+
       })
     });
   })
@@ -55,19 +67,51 @@ describe("Home page", () => {
       })
     })
 
-    it('Each card should have an info section of 5 elements', () => {
+    it('Each card should have a STATUS section', () => {
       cy.get('main section article').within(() => {
-        cy.get("div.card-info").each(el => {
-          const { children } = el.context
-          expect(children).to.have.lengthOf(5)
+        cy.get("div.card-info").each(() => {
+          cy.get('div').contains('STATUS')
         })
-
       })
     })
+
+    it('Each card should have a SPECIES section', () => {
+      cy.get('main section article').within(() => {
+        cy.get("div.card-info").each(() => {
+          cy.get('div').contains('SPECIES')
+        })
+      })
+    })
+
+    it('Each card should have a GENDER section', () => {
+      cy.get('main section article').within(() => {
+        cy.get("div.card-info").each(() => {
+          cy.get('div').contains('GENDER')
+        })
+      })
+    })
+
+    it('Each card should have a ORIGIN section', () => {
+      cy.get('main section article').within(() => {
+        cy.get("div.card-info").each(() => {
+          cy.get('div').contains('ORIGIN')
+        })
+      })
+    })
+
+    it('Each card should have a LAST LOCATION section', () => {
+      cy.get('main section article').within(() => {
+        cy.get("div.card-info").each(() => {
+          cy.get('div').contains('LAST LOCATION')
+        })
+      })
+    })
+
   })
 
   describe('Footer', () => {
     it('Should contains statistic info and a link ', () => {
+      cy.scrollTo('bottom')
       cy.get('footer').within(() => {
 
         cy.readFile('/src/data/statistics.yaml')
@@ -84,6 +128,24 @@ describe("Home page", () => {
     })
   })
 
-
+  describe('Page', () => {
+    it("Should work in differents viewports", () => {
+      cy.scrollTo('top')
+      cy.viewport('ipad-2')
+      cy.wait(400)
+      cy.viewport('ipad-mini')
+      cy.wait(400)
+      cy.viewport('iphone-6+')
+      cy.wait(400)
+      cy.viewport('iphone-6')
+      cy.wait(400)
+      cy.viewport('iphone-5')
+      cy.wait(400)
+      cy.viewport('iphone-4')
+      cy.wait(400)
+      cy.viewport('iphone-3')
+      cy.wait(400)
+    })
+  })
 
 });
