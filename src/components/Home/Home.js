@@ -87,7 +87,7 @@ class Home extends Component {
                     <Card
                       style={{maxWidth: 300, marginBottom: '12px'}}>
                       <CardMedia
-                        style={{maxHeight: 300}}
+                        style={{height: 300}}
                         overlay={
                           <CardTitle
                             className="card-title"
