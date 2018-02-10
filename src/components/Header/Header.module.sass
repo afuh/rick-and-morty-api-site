@@ -2,6 +2,8 @@
 
 .header
   height: $header-height
+  +break(xs)
+    margin-bottom: 20px
 
 .wrapper
   @extend .row
@@ -11,6 +13,8 @@
   min-height: 80px
   padding: 0 20px
   +break(xs)
+    padding: 0
+    border-bottom: 1px solid color(lightgray)
 
 .links
   display: flex
@@ -20,7 +24,7 @@
     margin: 0 1rem 0
   +break(xs)
     flex: 3
-    +position(space-between, center)
+    +position(space-around, center)
     align-self: stretch
     li
       display: flex
@@ -41,6 +45,7 @@
     align-self: stretch
     display: flex
     +position(center, center)
+    border-left: 1px solid color(lightgray)
     flex: 1
   +break(340px)
     display: none
