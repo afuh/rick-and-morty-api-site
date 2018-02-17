@@ -7,7 +7,7 @@ import Error from '../components/Error/Error';
 const NotFoundPage = () => (
   <div>
     <Helmet title={`Oh Jeez! | ${config.siteTitle}`} />
-    <Error  message='Oh Jeez! there is nothing here'/>
+    <Error  message='Oh Jeez! there is nothing here.'/>
   </div>
 )
 
