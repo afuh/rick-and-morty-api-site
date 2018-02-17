@@ -5,6 +5,14 @@ const YAML = require('yamljs')
 describe("Documentation page", () => {
   before(() => {
     cy.visit('/documentation')
+
+    navigator.serviceWorker.getRegistrations()
+      .then((registrations) => {
+        for(let registration of registrations) {
+          registration.unregister()
+        }
+      })
+
     cy.scrollTo('top')
   })
 
