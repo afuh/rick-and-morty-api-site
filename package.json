@@ -35,7 +35,7 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "concurrently": "^3.5.1",
-    "cypress": "^1.4.2",
+    "cypress": "^2.0.1",
     "eslint": "^4.17.0",
     "eslint-plugin-react": "^7.6.1",
     "prettier": "^1.10.2",
@@ -52,7 +52,7 @@
     "dev": "gatsby develop",
     "serve": "gatsby serve",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"src/**/*.js\"",
-    "test": "concurrently \"npm run serve\" \"cypress run --browser chrome --reporter nyan \""
+    "test": "concurrently \"npm run serve\" \"cypress run --browser chrome \""
   },
   "repository": {
     "type": "git",
