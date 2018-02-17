@@ -4,6 +4,14 @@ import config from '../../config/SiteConfig';
 describe("About page", () => {
   before(() => {
     cy.visit('/about')
+
+    navigator.serviceWorker.getRegistrations()
+      .then((registrations) => {
+        for(let registration of registrations) {
+          registration.unregister()
+        }
+      })
+
     cy.scrollTo('top')
   })
 

@@ -2,9 +2,18 @@
 import config from '../../config/SiteConfig';
 const YAML = require('yamljs')
 
+
 describe("Home page", () => {
   before(() => {
     cy.visit('/')
+
+    navigator.serviceWorker.getRegistrations()
+      .then((registrations) => {
+        for(let registration of registrations) {
+          registration.unregister()
+        }
+      })
+
     cy.scrollTo('top')
   })
 

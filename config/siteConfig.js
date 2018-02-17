@@ -1,8 +1,8 @@
 module.exports = {
-  favicon: 'http://axelfuhrmann.com/favicon.png',
+  favicon: '/images/rm48.png',
   pathPrefix: '/', // Prefix for all links. If you deploy your site to example.com/portfolio your pathPrefix should be "portfolio"
   siteTitle: 'The Rick and Morty API', // Navigation and Site Title
-  siteTitleAlt: 'The Rick and Morty API', // Alternative Site title for SEO
+  siteTitleAlt: 'ShlaAPI', // Alternative Site title for SEO
   siteUrl: 'http://rickandmortyapi.com', // Domain of your site. No trailing slash!
   siteLanguage: 'en', // Language Tag on <html> element
   siteimage: '/images/site.jpeg', // Used for SEO and manifest
