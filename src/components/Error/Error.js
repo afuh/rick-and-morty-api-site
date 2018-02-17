@@ -36,12 +36,19 @@ class ErrorMessage extends Component {
     const { message } = this.props
     return (
       <main className={styles.wrapper}>
-        <p className={styles.message}>{message}</p>
-        <p className={styles.message}>But I could show you a cute picture of <strong>{name}</strong>.</p>
+        <div className={styles.headerWrapper}>
+          <h1>404</h1>
+          <p className={styles.message}>{message}</p>
+        </div>
+        <div>
+          <p className={styles.message}>But I could show you a cute picture of <strong>{name}</strong>.</p>
+        </div>
         <div className={styles.imgWrapper}>
           {image && <img src={image} className={styles.img} alt='🐈'/>}
         </div>
-        <Link to="/"><Back style={{fontSize: "40px", marginTop: "10px"}} /></Link>
+        <div className={styles.goBackButton}>
+          <Link to="/"><Back style={{fontSize: "40px", marginTop: "10px"}} /></Link>
+        </div>
       </main>
     )
   }
