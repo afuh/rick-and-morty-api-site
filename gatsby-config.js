@@ -23,12 +23,12 @@ module.exports = {
 				display: 'minimal-ui',
 				icons: [
 					{
-						src: '/favicons/rm192.png',
+						src: '/images/rm192.png',
 						sizes: '192x192',
 						type: 'image/png'
 					},
 					{
-						src: '/favicons/rm512.png',
+						src: '/images/rm512.png',
 						sizes: '512x512',
 						type: 'image/png'
 					}
