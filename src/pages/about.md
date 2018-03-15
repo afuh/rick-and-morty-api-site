@@ -27,6 +27,6 @@ I'm using [Node](https://nodejs.org) and [MongoDB](https://www.mongodb.com/) to 
 Of course, the API is an open source project and you can contribute on [GitHub](https://github.com/afuh/rick-and-morty-api).
 
 ### Copyright?
-Rick and Morty is created by Justin Roiland and Dan Harmonand for [Adult Swim](https://www.adultswim.com). The data and images are used without claim of ownership and belong to their respective owners.
+Rick and Morty is created by Justin Roiland and Dan Harmon for [Adult Swim](https://www.adultswim.com). The data and images are used without claim of ownership and belong to their respective owners.
 
 This API is open source and uses a BSD license. All the data has been collected from open sources such as [http://rickandmorty.wikia.com/](http://rickandmorty.wikia.com/).
