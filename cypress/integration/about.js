@@ -46,7 +46,7 @@ describe("About page", () => {
 
   describe('Github edit page button', () => {
     it("Should be a link to edit the page", () => {
-      cy.get('a.edit-page').should('have.attr', 'href', config.github + '/blob/master/src/pages/about.md')
+      cy.get('a.edit-page').should('have.attr', 'href', config.github + '/blob/develop/src/pages/about.md')
     })
   })
 
