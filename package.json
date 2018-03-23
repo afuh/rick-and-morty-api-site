@@ -6,7 +6,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "dotenv": "^5.0.1",
-    "gatsby": "^1.9.236",
+    "gatsby": "^1.9.239",
     "gatsby-link": "^1.6.39",
     "gatsby-plugin-catch-links": "^1.0.19",
     "gatsby-plugin-google-analytics": "^1.0.24",
@@ -15,10 +15,10 @@
     "gatsby-plugin-offline": "^1.0.15",
     "gatsby-plugin-postcss-sass": "^1.0.18",
     "gatsby-plugin-react-helmet": "^2.0.8",
-    "gatsby-plugin-sitemap": "^1.2.18",
+    "gatsby-plugin-sitemap": "^1.2.19",
     "gatsby-plugin-typography": "^1.7.18",
     "gatsby-remark-autolink-headers": "^1.4.13",
-    "gatsby-remark-prismjs": "^1.2.18",
+    "gatsby-remark-prismjs": "^1.2.20",
     "gatsby-source-filesystem": "^1.5.27",
     "gatsby-transformer-remark": "^1.7.37",
     "gatsby-transformer-yaml": "^1.5.16",
@@ -30,13 +30,13 @@
     "typography-theme-github": "^0.15.10"
   },
   "devDependencies": {
-    "autoprefixer": "^8.1.0",
+    "autoprefixer": "^8.2.0",
     "babel-eslint": "^8.2.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "concurrently": "^3.5.1",
     "cypress": "^2.1.0",
-    "eslint": "^4.19.0",
+    "eslint": "^4.19.1",
     "eslint-plugin-react": "^7.7.0",
     "prettier": "^1.11.1",
     "yamljs": "^0.3.0"
