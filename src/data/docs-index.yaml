@@ -7,7 +7,6 @@
     - title: Info and pagination
       link: '#info-and-pagination'
 - title: Character
-  link: '#character'
   items:
     - title: Character schema
       link: '#character-schema'
@@ -18,7 +17,6 @@
     - title: Filter characters
       link: '#filter-characters'
 - title: Location
-  link: '#location'
   items:
     - title: Location schema
       link: '#location-schema'
@@ -29,7 +27,6 @@
     - title: Filter locations
       link: '#filter-locations'
 - title: Episode
-  link: '#episode'
   items:
     - title: Episode schema
       link: '#episode-schema'
@@ -39,3 +36,9 @@
       link: '#get-a-single-episode'
     - title: Filter episodes
       link: '#filter-episodes'
+- title: Libraries
+  items:
+    - title: GraphQL
+      link: '#graphql'
+    - title: Ruby
+      link: '#ruby'

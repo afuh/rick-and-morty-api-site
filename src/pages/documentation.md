@@ -431,3 +431,12 @@ Available parameters:
 - `episode`: filter by the given episode code.
 
 If you want to know how to use queries, check [here](#filter-characters)
+
+## Libraries
+Here you will find a list of helper libraries to use the Rick and Morty API with your preferred language.   
+
+#### GraphQL
+- [The Rick and Morty GraphQL API](https://github.com/arthurdenner/rick-and-morty-graphql-api) by [Arthur Denner](https://github.com/arthurdenner)
+
+#### Ruby
+- [The Rick and Morty API Gem](https://github.com/spielhoelle/rick-and-morty-gem) by [Tommy Spielhoelle](https://github.com/spielhoelle)

@@ -133,6 +133,8 @@ describe("Home page", () => {
         cy.get('a')
           .contains('Axel Fuhrmann')
           .should('have.attr', 'href', "http://axelfuhrmann.com/")
+
+        cy.request("http://axelfuhrmann.com/").then(res => expect(res.status).not.to.eq(400))  
       })
     })
   })

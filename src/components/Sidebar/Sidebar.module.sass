@@ -2,4 +2,10 @@
 
 .aside
   overflow-y: scroll
-  height: 100%
+  &::-webkit-scrollbar
+    -webkit-appearance: none
+    width: 4px
+
+  &::-webkit-scrollbar-thumb
+    border-radius: 4px
+    background: color(orange)

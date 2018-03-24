@@ -1,11 +1,5 @@
 @import "/_palette";
 
-p > code,
-li > code {
-  background: color(whitesmoke);
-  padding: 0.2em 0.4em;
-}
-
 code[class*="language-"],
 pre[class*="language-"] {
 	color: color(whitesmoke);
@@ -43,8 +37,10 @@ pre[class*="language-"] {
 
 /* Inline code */
 :not(pre) > code[class*="language-"] {
-	padding: .1em;
-	border-radius: .3em;
+  background: color(whitesmoke);
+  color: color(black);
+  padding: 0.2em 0.4em;
+  border-radius: 0;
 	white-space: normal;
 }
 
