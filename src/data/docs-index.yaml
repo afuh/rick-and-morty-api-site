@@ -38,6 +38,8 @@
       link: '#filter-episodes'
 - title: Libraries
   items:
+    - title: Elixir
+      link: '#elixir'
     - title: GraphQL
       link: '#graphql'
     - title: Ruby

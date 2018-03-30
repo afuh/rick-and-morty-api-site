@@ -4,7 +4,8 @@ const YAML = require('yamljs')
 
 const libraries = [
   { id: 'GraphQL', link: 'https://github.com/arthurdenner/rick-and-morty-graphql-api', author: 'https://github.com/arthurdenner' },
-  { id: 'Ruby', link: 'https://github.com/spielhoelle/rick-and-morty-gem', author: 'https://github.com/spielhoelle' }
+  { id: 'Ruby', link: 'https://github.com/spielhoelle/rick-and-morty-gem', author: 'https://github.com/spielhoelle' },
+  { id: 'Elixir', link: 'https://github.com/l1h3r/ex_shla', author: 'https://github.com/l1h3r' }
 ]
 
 describe("Documentation page", () => {
