@@ -42,5 +42,7 @@
       link: '#elixir'
     - title: GraphQL
       link: '#graphql'
+    - title: JavaScript
+      link: '#javascript'
     - title: Ruby
       link: '#ruby'
