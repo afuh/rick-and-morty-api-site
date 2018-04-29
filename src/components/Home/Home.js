@@ -83,10 +83,7 @@ class Home extends Component {
     this.handleRequest()
   }
   handleRequest = () => {
-    const randomNums = this.randomNums()
-    const randomChars = randomNums.map(num => `/character/${num}`)
-    const list = Promise.all(randomChars.map(char => shlaAPI.get(char).then(res => res.data)))
-    list.then(data => this.setState({ data }))
+    shlaAPI.get(`/character/${this.randomNums()}`).then(({ data }) => this.setState({ data }))
   }
   render(){
     const { data } = this.state
