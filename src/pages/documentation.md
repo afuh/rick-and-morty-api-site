@@ -198,6 +198,62 @@ https://rickandmortyapi.com/api/character/2
   "created": "2017-11-04T18:50:21.651Z"
 }
 ```
+
+### Get multiple characters
+You can get multiple characters by adding an array of `ids` as parameter: `/character/[1,2,3]` or `/character/1,2,3`
+```
+https://rickandmortyapi.com/api/character/1,183
+```
+```json
+[
+  {
+    "id": 1,
+    "name": "Rick Sanchez",
+    "status": "Alive",
+    "species": "Human",
+    "type": "",
+    "gender": "Male",
+    "origin": {
+      "name": "Earth (C-137)",
+      "url": "https://rickandmortyapi.com/api/location/1"
+    },
+    "location": {
+      "name": "Earth (Replacement Dimension)",
+      "url": "https://rickandmortyapi.com/api/location/20"
+    },
+    "image": "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
+    "episode": [
+      "https://rickandmortyapi.com/api/episode/1",
+      "https://rickandmortyapi.com/api/episode/2",
+      // ...
+    ],
+    "url": "https://rickandmortyapi.com/api/character/1",
+    "created": "2017-11-04T18:48:46.250Z"
+  },
+  {
+    "id": 183,
+    "name": "Johnny Depp",
+    "status": "Alive",
+    "species": "Human",
+    "type": "",
+    "gender": "Male",
+    "origin": {
+      "name": "Earth (C-500A)",
+      "url": "https://rickandmortyapi.com/api/location/23"
+    },
+    "location": {
+      "name": "Earth (C-500A)",
+      "url": "https://rickandmortyapi.com/api/location/23"
+    },
+    "image": "https://rickandmortyapi.com/api/character/avatar/183.jpeg",
+    "episode": [
+      "https://rickandmortyapi.com/api/episode/8"
+    ],
+    "url": "https://rickandmortyapi.com/api/character/183",
+    "created": "2017-12-29T18:51:29.693Z"
+  }
+]
+```
 ### Filter characters
 You can also include filters in the URL by including additional query parameters. To start filtering add a `?` followed by the query `<query>=<value>`. If you want to chain several queries in the same call, use `&` followed by the query.
 
@@ -297,6 +353,43 @@ https://rickandmortyapi.com/api/location/
   ]
 }
 ```
+
+### Get multiple locations
+You can get multiple locations by adding an array of `ids` as parameter: `/location/[1,2,3]` or `/location/1,2,3`
+```
+https://rickandmortyapi.com/api/location/3,21
+```
+```json
+[
+  {
+    "id": 3,
+    "name": "Citadel of Ricks",
+    "type": "Space station",
+    "dimension": "unknown",
+    "residents": [
+      "https://rickandmortyapi.com/api/character/8",
+      "https://rickandmortyapi.com/api/character/14",
+      // ...
+    ],
+    "url": "https://rickandmortyapi.com/api/location/3",
+    "created": "2017-11-10T13:08:13.191Z"
+  },
+  {
+    "id": 21,
+    "name": "Testicle Monster Dimension",
+    "type": "Dimension",
+    "dimension": "Testicle Monster Dimension",
+    "residents": [
+      "https://rickandmortyapi.com/api/character/7",
+      "https://rickandmortyapi.com/api/character/436"
+    ],
+    "url": "https://rickandmortyapi.com/api/location/21",
+    "created": "2017-11-18T19:41:01.605Z"
+  }
+]
+
+```
+
 ### Get a single location
 You can get a single location by adding the `id` as a parameter: `/location/3`
 ```
@@ -423,6 +516,42 @@ https://rickandmortyapi.com/api/episode/28
   "url": "https://rickandmortyapi.com/api/episode/28",
   "created": "2017-11-10T12:56:36.618Z"
 }
+```
+
+### Get multiple episodes
+You can get multiple episodes by adding an array of `ids` as parameter: `/episode/[1,2,3]` or `/episode/1,2,3`
+```
+https://rickandmortyapi.com/api/episode/10,28
+```
+```json
+[
+  {
+    "id": 10,
+    "name": "Close Rick-counters of the Rick Kind",
+    "air_date": "April 7, 2014",
+    "episode": "S01E10",
+    "characters": [
+      "https://rickandmortyapi.com/api/character/1",
+      "https://rickandmortyapi.com/api/character/2",
+      // ...
+    ],
+    "url": "https://rickandmortyapi.com/api/episode/10",
+    "created": "2017-11-10T12:56:34.747Z"
+  },
+  {
+    "id": 28,
+    "name": "The Ricklantis Mixup",
+    "air_date": "September 10, 2017",
+    "episode": "S03E07",
+    "characters": [
+      "https://rickandmortyapi.com/api/character/1",
+      "https://rickandmortyapi.com/api/character/2",
+      // ...
+    ],
+    "url": "https://rickandmortyapi.com/api/episode/28",
+    "created": "2017-11-10T12:56:36.618Z"
+  }
+]
 ```
 
 ### Filter episodes

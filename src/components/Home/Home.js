@@ -1,36 +1,14 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 import Spinner from 'react-spinkit'
 import moment from 'moment'
-
-import Divider from 'material-ui/Divider';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { Card, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 
 import { shlaAPI } from '../../utils/api'
 import statistics from '../../data/statistics.yaml'
 
 import styles from './Home.module.sass'
 
-const Text = ({title, data, last}) => {
-  return (
-    <div>
-      <div className={styles.textWrapper} style={{padding: "8px 0"}}>
-        <span>{title.toUpperCase()}</span>
-        <p>{data}</p>
-      </div>
-      {!last && <Divider />}
-    </div>
-  )
-}
-
-Text.propTypes = {
-  title: PropTypes.string.isRequired,
-  data: PropTypes.string.isRequired,
-  last: PropTypes.bool
-}
-
-const Intro = ({title, description}) => (
+const Intro = ({ title, description }) => (
   <div className={styles.introWrapper} >
     <h1>{title}</h1>
     <div className={styles.subtitle}>
@@ -42,20 +20,61 @@ const Intro = ({title, description}) => (
 
 Intro.propTypes = {
   title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired
+}
+
+const Text = ({ title, data, last }) => (
+  <div>
+    <div className={styles.textWrapper} style={{ padding: "6px 0" }}>
+      <span>{title.toUpperCase()}</span>
+      <p>{data}</p>
+    </div>
+    {!last && <hr style={{ background: "#444" }}/>}
+  </div>
+)
+
+Text.propTypes = {
+  title: PropTypes.string.isRequired,
+  data: PropTypes.string.isRequired,
+  last: PropTypes.bool
+}
+
+const Card = ({ char }) => {
+  return (
+    <article className={styles.card__wrapper}>
+      <div style={{ position: "relative", maxWidth: 300, maxHeight: 300 }} data='card header'>
+        <img src={char.image} alt={char.name}/>
+        <div className={styles.card__title}>
+          <h2>{char.name}</h2>
+          <p>{"id: " + char.id + " - created " + moment(char.created).fromNow()}</p>
+        </div>
+      </div>
+      <div className={styles.card__description} data='card info'>
+        <Text title='Status' data={char.status}/>
+        <Text title='Species' data={!char.type ? char.species : char.species + ', ' + char.type} />
+        <Text title='Gender' data={char.gender} />
+        <Text title='Origin' data={char.origin.name} />
+        <Text title='Last location' data={char.location.name} last/>
+      </div>
+    </article>
+  )
+}
+
+Card.propTypes = {
+  char: PropTypes.object.isRequired
 }
 
 class Home extends Component {
   count = statistics[0].count
   chars = []
   state = {
-    data: [],
+    data: []
   }
   randomNums(){
     while(this.chars.length < 8) {
       const num = Math.floor(Math.random() * (this.count - 1 + 1) + 1)
 
-      if (this.chars.indexOf(num) > - 1) continue;
+      if (this.chars.indexOf(num) > - 1) continue
       this.chars[this.chars.length] = num
     }
     return this.chars
@@ -67,7 +86,7 @@ class Home extends Component {
     const randomNums = this.randomNums()
     const randomChars = randomNums.map(num => `/character/${num}`)
     const list = Promise.all(randomChars.map(char => shlaAPI.get(char).then(res => res.data)))
-    list.then(data => this.setState({data}))
+    list.then(data => this.setState({ data }))
   }
   render(){
     const { data } = this.state
@@ -76,41 +95,14 @@ class Home extends Component {
     return (
       <div>
         <Intro title={title} description={description} />
-
         <section className={styles.apiSection}>
-          <MuiThemeProvider>
-            <div className={styles.materialWrapper}>
-              {
-                data.length == 8 ? data.map((char, i) => {
-                return (
-                  <article key={i}>
-                    <Card
-                      style={{maxWidth: 300, marginBottom: '12px'}}>
-                      <CardMedia
-                        style={{height: 300}}
-                        overlay={
-                          <CardTitle
-                            className="card-title"
-                            title={char.name}
-                            subtitle={"id: " + char.id + " - created " + moment(char.created).fromNow()}
-                          />
-                        }
-                      >
-                        <img src={char.image} alt={char.name}/>
-                      </CardMedia>
-                      <CardText className="card-info">
-                        <Text title='Status' data={char.status}/>
-                        <Text title='Species' data={!char.type ? char.species : char.species + ', ' + char.type} />
-                        <Text title='Gender' data={char.gender} />
-                        <Text title='Origin' data={char.origin.name} />
-                        <Text title='Last location' data={char.location.name} last/>
-                      </CardText>
-                    </Card>
-                </article>
-                )}) : <Spinner name="triangle-skew-spin" color="rgb(255, 152, 0)" />
-              }
-            </div>
-          </MuiThemeProvider>
+          <div className={styles.randomCardsWrapper}>
+            {
+              data.length == 8 ?
+              data.map((char, i) => <Card char={char} key={i}/> ) :
+              <Spinner name="triangle-skew-spin" color="rgb(255, 152, 0)" />
+            }
+          </div>
         </section>
       </div>
     )
@@ -119,8 +111,8 @@ class Home extends Component {
 
 Home.propTypes = {
   title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired
 }
 
 
-export default Home;
+export default Home

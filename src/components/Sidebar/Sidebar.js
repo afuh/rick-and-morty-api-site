@@ -31,7 +31,7 @@ SectionLinks.propTypes = {
 }
 
 const Section = ({ title, items }) => (
-	<div style={{ marginBottom: "2rem" }}>
+	<div style={{ marginBottom: "1.5rem" }}>
 		<h3 style={{ margin: '0 0 0.2rem' }}>
 			{title}
 		</h3>

@@ -1,5 +1,5 @@
 /* global it describe cy before expect*/
-import config from '../../config/SiteConfig';
+import config from '../../config/SiteConfig'
 const YAML = require('yamljs')
 
 
@@ -30,7 +30,7 @@ describe("Home page", () => {
         cy.get('a').contains('Home').click()
         cy.url().should('include', '/')
       })
-    });
+    })
 
     it("Should not be a github icon in mobile view", () => {
       cy.get('header').within(() => {
@@ -39,7 +39,7 @@ describe("Home page", () => {
         cy.wait(500)
 
       })
-    });
+    })
   })
 
   describe('Main', () => {
@@ -57,7 +57,7 @@ describe("Home page", () => {
     })
 
     it('Each card should have an image and not be larger than 300x300', () => {
-      cy.get('main section article').within(() => {
+      cy.get('[data="card header"]').within(() => {
         cy.get('img').each(el => {
           const { src, height, width } = el.context
           expect(src).to.include('/api/character/avatar')
@@ -68,51 +68,39 @@ describe("Home page", () => {
     })
 
     it('Each card should a title and subtitle', () => {
-      cy.get('main section article').within(() => {
-        cy.get("div.card-title").each(el => {
-          const { children } = el.context
-          expect(children).to.have.lengthOf(2)
-        })
+      cy.get('[data="card header"]').each(el => {
+        const { children } = el.context
+        expect(children).to.have.lengthOf(2)
       })
     })
 
     it('Each card should have a STATUS section', () => {
-      cy.get('main section article').within(() => {
-        cy.get("div.card-info").each(() => {
-          cy.get('div').contains('STATUS')
-        })
+      cy.get('[data="card info"]').each(() => {
+        cy.get('span').contains('STATUS')
       })
     })
 
     it('Each card should have a SPECIES section', () => {
-      cy.get('main section article').within(() => {
-        cy.get("div.card-info").each(() => {
-          cy.get('div').contains('SPECIES')
-        })
+      cy.get('[data="card info"]').each(() => {
+        cy.get('span').contains('SPECIES')
       })
     })
 
     it('Each card should have a GENDER section', () => {
-      cy.get('main section article').within(() => {
-        cy.get("div.card-info").each(() => {
-          cy.get('div').contains('GENDER')
-        })
+      cy.get('[data="card info"]').each(() => {
+        cy.get('span').contains('GENDER')
       })
     })
 
     it('Each card should have a ORIGIN section', () => {
-      cy.get('main section article').within(() => {
-        cy.get("div.card-info").each(() => {
-          cy.get('div').contains('ORIGIN')
-        })
+      cy.get('[data="card info"]').each(() => {
+        cy.get('span').contains('ORIGIN')
       })
     })
 
     it('Each card should have a LAST LOCATION section', () => {
-      cy.get('main section article').within(() => {
-        cy.get("div.card-info").each(() => {
-          cy.get('div').contains('LAST LOCATION')
-        })
+      cy.get('[data="card info"]').each(() => {
+        cy.get('span').contains('LAST LOCATION')
       })
     })
 
@@ -134,7 +122,7 @@ describe("Home page", () => {
           .contains('Axel Fuhrmann')
           .should('have.attr', 'href', "http://axelfuhrmann.com/")
 
-        cy.request("http://axelfuhrmann.com/").then(res => expect(res.status).not.to.eq(400))  
+        cy.request("http://axelfuhrmann.com/").then(res => expect(res.status).not.to.eq(400))
       })
     })
   })
@@ -159,4 +147,4 @@ describe("Home page", () => {
     })
   })
 
-});
+})
