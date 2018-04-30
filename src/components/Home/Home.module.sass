@@ -52,17 +52,6 @@
   +break(sm)
     background: color(white)
 
-.materialWrapper
-  @extend .row
-  justify-content: space-around
-  max-width: 1400px
-  min-height: 40vh
-
-.locationWrapper
-  @extend .row
-  +position(space-between, center)
-  flex-wrap: nowrap
-
 .apiSection
   @extend .row
   justify-content: center
@@ -71,6 +60,44 @@
   min-height: calc(60vh - #{$header-height})
   +break(xs)
     padding: 30px 0
+
+.randomCardsWrapper
+  @extend .row
+  justify-content: space-around
+  max-width: 1260px
+  min-height: 40vh
+
+.card
+  &__wrapper
+    max-width: 300px
+    border-radius: 10px
+    overflow: hidden
+    margin-bottom: 10px
+    box-shadow: $shadow
+    img
+      margin: 0
+      overflow: hidden
+  &__title
+    +size(100%, auto)
+    background: rgba(color(backblack), 0.8)
+    position: absolute
+    bottom: 0
+    padding: 10px
+    p
+      color: #bbb
+      margin: 0
+      font-size: 14px
+    h2
+      color: color(whitesmoke)
+      margin: 0
+      +font(26px, 400)
+      font-stretch: expanded
+  &__description
+    color: color(orange)
+    background: color(black)
+    padding: 20px
+    height: 100%
+
 
 .textWrapper
   @extend .row

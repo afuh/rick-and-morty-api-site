@@ -14,6 +14,8 @@
       link: '#get-all-characters'
     - title: Get a single character
       link: '#get-a-single-character'
+    - title: Get multiple characters
+      link: '#get-multiple-characters'
     - title: Filter characters
       link: '#filter-characters'
 - title: Location
@@ -24,6 +26,8 @@
       link: '#get-all-locations'
     - title: Get a single location
       link: '#get-a-single-location'
+    - title: Get multiple locations
+      link: '#get-multiple-locations'
     - title: Filter locations
       link: '#filter-locations'
 - title: Episode
@@ -34,6 +38,8 @@
       link: '#get-all-episodes'
     - title: Get a single episode
       link: '#get-a-single-episode'
+    - title: Get multiple episodes
+      link: '#get-multiple-episodes'  
     - title: Filter episodes
       link: '#filter-episodes'
 - title: Libraries
