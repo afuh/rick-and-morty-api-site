@@ -107,7 +107,7 @@ https://rickandmortyapi.com/api/character/?page=19
 ```
 
 ## Character
-There is a total of 436 characters sorted by id.
+There is a total of 460 characters sorted by id.
 
 ### Character schema
 |Key|Type|Description|
@@ -309,7 +309,7 @@ https://rickandmortyapi.com/api/character/?name=rick&status=alive
 ```
 
 ## Location
-There is a total of 74 locations sorted by id.
+There is a total of 75 locations sorted by id.
 
 ### Location schema
 |Key|Type|Description|
@@ -571,7 +571,7 @@ Here you will find a list of helper libraries to use the Rick and Morty API with
 - [The Rick and Morty GraphQL API](https://github.com/arthurdenner/rick-and-morty-graphql-api) by [Arthur Denner](https://github.com/arthurdenner)
 
 #### JavaScript
-- [The Rick and Morty API Node client](https://github.com/afuh/rick-and-morty-api-node) by [Simple Rick](https://github.com/afuh)
+- [The Rick and Morty API JavaScript client](https://github.com/afuh/rick-and-morty-api-node) by [Simple Rick](https://github.com/afuh)
 
 #### Ruby
 - [The Rick and Morty API Gem](https://github.com/spielhoelle/rick-and-morty-gem) by [Tommy Spielhoelle](https://github.com/spielhoelle)
