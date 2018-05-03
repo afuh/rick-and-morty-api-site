@@ -4,7 +4,7 @@ cover: '/images/about.jpeg'
 ---
 
 ### What is this?
-The Rick and Morty API (or ShlaAPI) is a RESTful API based on the television show [Rick and Morty](https://www.adultswim.com/videos/rick-and-morty). You will have access to about hundreds of characters, images, locations and episodes. We are still gathering data, because as you probably know, there are trillions of characters and locations. The Rick and Morty API is filled with canonical information as seen on the TV show, we are planning to add more resources such as the [comic series](http://rickandmorty.wikia.com/wiki/Rick_and_Morty_(comic_series)) or [Pocket Mortys](https://pocketmortys.net/).
+The Rick and Morty API (or ShlaAPI) is a RESTful API based on the television show [Rick and Morty](https://www.adultswim.com/videos/rick-and-morty). You will have access to about hundreds of characters, images, locations and episodes. We are still gathering data, because as you probably know, there are trillions of characters and locations. The Rick and Morty API is filled with canonical information as seen on the TV show, we are planning to add more resources such as the [comic series](http://rickandmorty.wikia.com/wiki/Rick_and_Morty_(comic_series)).
 
 [Check out the documentation to get started](/documentation)
 
@@ -21,7 +21,7 @@ Because I was really interested in the idea of writing an API and also because R
 No, I am not. If you find typos, grammar errors or whatever please feel free to [PR](https://github.com/afuh/rick-and-morty-api-site) or send me an [email](mailto:axelfuh@gmail.com).
 
 ### Technical stuff?
-I'm using [Node](https://nodejs.org) and [MongoDB](https://www.mongodb.com/) to serve the API, all the data is formatted in [json](http://json.org/) and I'm hosting the entire project on [Digital Ocean](https://www.digitalocean.com/).
+I'm using [Node](https://nodejs.org) to serve the API, [MongoDB](https://www.mongodb.com/) and [Studio 3T](https://studio3t.com/) the manage the databases. All the data is formatted in [json](http://json.org/) and I'm hosting the entire project on [Digital Ocean](https://www.digitalocean.com/).
 
 ### Can I contribute to the project?
 Of course, the API is an open source project and you can contribute on [GitHub](https://github.com/afuh/rick-and-morty-api).
