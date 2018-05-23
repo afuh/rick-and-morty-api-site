@@ -51,13 +51,13 @@ module.exports = {
         ]
       }
     },
-    {
-			resolve: 'gatsby-plugin-google-analytics',
-			options: {
-				trackingId: process.env.GATSBY_GOOGLE || process.env.GOOGLE,
-        anonymize: true
-			}
-		},
+    // {
+		// 	resolve: 'gatsby-plugin-google-analytics',
+		// 	options: {
+		// 		trackingId: process.env.GATSBY_GOOGLE || process.env.GOOGLE,
+    //     anonymize: true
+		// 	}
+		// },
     {
 			resolve: 'gatsby-plugin-postcss-sass',
 			options: {
