@@ -1,10 +1,10 @@
-require('dotenv').config({path: '.env.production'});
+require('dotenv').config({ path: '.env.production' })
 const config = require('./config/siteConfig')
 const autoprefixer = require('autoprefixer')
 
 module.exports = {
   siteMetadata: {
-    siteUrl: config.siteUrl,
+    siteUrl: config.siteUrl
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -45,24 +45,24 @@ module.exports = {
           {
             resolve: `gatsby-remark-prismjs`,
             options: {
-              classPrefix: "language-",
-            },
-          },
-        ],
-      },
+              classPrefix: "language-"
+            }
+          }
+        ]
+      }
     },
-    {
-			resolve: 'gatsby-plugin-google-analytics',
-			options: {
-				trackingId: process.env.GATSBY_GOOGLE || process.env.GOOGLE,
-        anonymize: true,
-			}
-		},
+    // {
+		// 	resolve: 'gatsby-plugin-google-analytics',
+		// 	options: {
+		// 		trackingId: process.env.GATSBY_GOOGLE || process.env.GOOGLE,
+    //     anonymize: true
+		// 	}
+		// },
     {
 			resolve: 'gatsby-plugin-postcss-sass',
 			options: {
 				postCssPlugins: [
-					autoprefixer(),
+					autoprefixer()
 				],
 				precision: 8
 			}
@@ -70,15 +70,15 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-typography',
       options: {
-        pathToConfigModule: `src/utils/typography.js`,
-      },
+        pathToConfigModule: `src/utils/typography.js`
+      }
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `src`,
-        path: `${__dirname}/src/`,
-      },
+        path: `${__dirname}/src/`
+      }
     },
     {
 			resolve: 'gatsby-plugin-nprogress',
@@ -86,6 +86,6 @@ module.exports = {
 				color: config.themeColor,
         showSpinner: false
 			}
-		},
-  ],
-};
+		}
+  ]
+}
