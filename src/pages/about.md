@@ -21,7 +21,7 @@ Because I was really interested in the idea of writing an API and also because R
 No, I am not. If you find typos, grammar errors or whatever please feel free to [PR](https://github.com/afuh/rick-and-morty-api-site) or send me an [email](mailto:axelfuh@gmail.com).
 
 ### Technical stuff?
-I'm using [Node](https://nodejs.org) to serve the API, [MongoDB](https://www.mongodb.com/) and [Studio 3T](https://studio3t.com/) to manage the databases. All the data is formatted in [json](http://json.org/) and I'm hosting the entire project on [Digital Ocean](https://www.digitalocean.com/).
+I'm using [Node](https://nodejs.org) to serve the API, [MongoDB](https://www.mongodb.com/) and [Studio 3T](https://studio3t.com/) to manage the databases. All the data is formatted in [json](http://json.org/) and I'm hosting the entire project on [Digital Ocean](https://m.do.co/c/2736d3ffe622).
 
 ### Can I contribute to the project?
 Of course, the API is an open source project and you can contribute on [GitHub](https://github.com/afuh/rick-and-morty-api).
