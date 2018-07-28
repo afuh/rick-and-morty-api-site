@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import Link from 'gatsby-link'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { Link } from 'gatsby'
 import Back from "react-icons/lib/go/arrow-left"
 
 import { shlaAPI } from '../../utils/api'
@@ -15,7 +15,7 @@ class ErrorMessage extends Component {
   componentDidMount(){
     shlaAPI.get('/character')
       .then(res => {
-        this.count = res.data.info.count;
+        this.count = res.data.info.count
         this.handleRequest()
       })
       .catch(err => console.log(err))
@@ -26,7 +26,7 @@ class ErrorMessage extends Component {
 
     shlaAPI.get(`/character/${num}`)
       .then(res => {
-        this.setState({image: res.data.image, name: res.data.name })
+        this.setState({ image: res.data.image, name: res.data.name })
       })
       .catch(err => console.log(err))
   }
@@ -47,7 +47,7 @@ class ErrorMessage extends Component {
           {image && <img src={image} className={styles.img} alt='🐈'/>}
         </div>
         <div className={styles.goBackButton}>
-          <Link to="/"><Back style={{fontSize: "40px", marginTop: "10px"}} /></Link>
+          <Link to="/"><Back style={{ fontSize: "40px", marginTop: "10px" }} /></Link>
         </div>
       </main>
     )
@@ -59,7 +59,7 @@ ErrorMessage.defaultProps = {
 }
 
 ErrorMessage.propTypes = {
-  message: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired
 }
 
-export default ErrorMessage;
+export default ErrorMessage
