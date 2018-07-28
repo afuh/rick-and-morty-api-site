@@ -52,7 +52,8 @@
     "serve": "gatsby serve",
     "cypress": "cypress run --browser chrome",
     "test": "run-p serve cypress",
-    "deploy": "npm run build && node deploy.js"
+    "deploy": "npm run build && node deploy.js",
+    "lint": "eslint src/. --fix"
   },
   "repository": {
     "type": "git",

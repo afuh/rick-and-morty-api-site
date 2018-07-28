@@ -39,26 +39,24 @@ Text.propTypes = {
   last: PropTypes.bool
 }
 
-const Card = ({ char }) => {
-  return (
-    <article className={styles.card__wrapper}>
-      <div style={{ position: "relative", maxWidth: 300, maxHeight: 300 }} data='card header'>
-        <img src={char.image} alt={char.name}/>
-        <div className={styles.card__title}>
-          <h2>{char.name}</h2>
-          <p>{"id: " + char.id + " - created " + moment(char.created).fromNow()}</p>
-        </div>
+const Card = ({ char }) => (
+  <article className={styles.card__wrapper}>
+    <div style={{ position: "relative", maxWidth: 300, maxHeight: 300 }} data='card header'>
+      <img src={char.image} alt={char.name}/>
+      <div className={styles.card__title}>
+        <h2>{char.name}</h2>
+        <p>{"id: " + char.id + " - created " + moment(char.created).fromNow()}</p>
       </div>
-      <div className={styles.card__description} data='card info'>
-        <Text title='Status' data={char.status}/>
-        <Text title='Species' data={!char.type ? char.species : char.species + ', ' + char.type} />
-        <Text title='Gender' data={char.gender} />
-        <Text title='Origin' data={char.origin.name} />
-        <Text title='Last location' data={char.location.name} last/>
-      </div>
-    </article>
-  )
-}
+    </div>
+    <div className={styles.card__description} data='card info'>
+      <Text title='Status' data={char.status}/>
+      <Text title='Species' data={!char.type ? char.species : char.species + ', ' + char.type} />
+      <Text title='Gender' data={char.gender} />
+      <Text title='Origin' data={char.origin.name} />
+      <Text title='Last location' data={char.location.name} last/>
+    </div>
+  </article>
+)
 
 Card.propTypes = {
   char: PropTypes.object.isRequired
@@ -71,7 +69,7 @@ class Home extends Component {
     data: []
   }
   randomNums(){
-    while(this.chars.length < 8) {
+    while (this.chars.length < 8) {
       const num = Math.floor(Math.random() * (this.count - 1 + 1) + 1)
 
       if (this.chars.indexOf(num) > - 1) continue
@@ -96,8 +94,8 @@ class Home extends Component {
           <div className={styles.randomCardsWrapper}>
             {
               data.length === 8 ?
-              data.map((char, i) => <Card char={char} key={i}/> ) :
-              <Spinner name="triangle-skew-spin" color="rgb(255, 152, 0)" />
+                data.map((char, i) => <Card char={char} key={i}/> ) :
+                <Spinner name="triangle-skew-spin" color="rgb(255, 152, 0)" />
             }
           </div>
         </section>

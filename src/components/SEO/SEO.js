@@ -1,37 +1,37 @@
-import React from 'react';
-import Helmet from 'react-helmet';
-import PropTypes from 'prop-types';
+import React from 'react'
+import Helmet from 'react-helmet'
+import PropTypes from 'prop-types'
 
-import config from '../../../config/SiteConfig';
+import config from '../../../config/SiteConfig'
 
 const SEO = ({ postNode, postPath, postSEO }) => {
   let image
-  let title;
-  let description;
-  let postURL;
-  const realPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix;
+  let title
+  let description
+  let postURL
+  const realPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix
 
   if (postSEO) {
-    const postMeta = postNode.frontmatter;
-    title = postMeta.title;
-    description = postNode.excerpt;
-    postURL = config.siteUrl + realPrefix + postPath;
+    const postMeta = postNode.frontmatter
+    title = postMeta.title
+    description = postNode.excerpt
+    postURL = config.siteUrl + realPrefix + postPath
     image = config.siteUrl + realPrefix + postMeta.cover
   } else {
-    title = config.siteTitle;
-    description = config.siteDescription;
+    title = config.siteTitle
+    description = config.siteDescription
     image = config.siteUrl + realPrefix + config.siteimage
   }
-  const blogURL = config.siteUrl + config.pathPrefix;
+  const blogURL = config.siteUrl + config.pathPrefix
   const schemaOrgJSONLD = [
     {
       '@context': 'http://schema.org',
       '@type': 'WebSite',
       url: blogURL,
       name: title,
-      alternateName: config.siteTitleAlt ? config.siteTitleAlt : '',
-    },
-  ];
+      alternateName: config.siteTitleAlt ? config.siteTitleAlt : ''
+    }
+  ]
   if (postSEO) {
     schemaOrgJSONLD.push([
       {
@@ -43,10 +43,10 @@ const SEO = ({ postNode, postPath, postSEO }) => {
             position: 1,
             item: {
               '@id': postURL,
-              name: title,
-            },
-          },
-        ],
+              name: title
+            }
+          }
+        ]
       },
       {
         '@context': 'http://schema.org',
@@ -56,11 +56,11 @@ const SEO = ({ postNode, postPath, postSEO }) => {
         alternateName: config.siteTitleAlt ? config.siteTitleAlt : '',
         headline: title,
         image: {
-          '@type': 'ImageObject',
+          '@type': 'ImageObject'
         },
-        description,
-      },
-    ]);
+        description
+      }
+    ])
   }
   return (
     <Helmet>
@@ -91,13 +91,13 @@ const SEO = ({ postNode, postPath, postSEO }) => {
       <meta name="twitter:image" content={image} />
       <link rel="shortcut icon" href={config.siteUrl + realPrefix + config.favicon}/>
     </Helmet>
-  );
-};
+  )
+}
 
 SEO.propTypes = {
   postNode: PropTypes.object,
   postPath: PropTypes.string,
-  postSEO: PropTypes.bool,
+  postSEO: PropTypes.bool
 }
 
-export default SEO;
+export default SEO
