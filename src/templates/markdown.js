@@ -1,11 +1,13 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
+import { graphql } from "gatsby"
 
 import config from '../../config/SiteConfig';
 import SEO from '../components/SEO/SEO';
 import Sidebar from '../components/Sidebar/Sidebar';
 import MarkdownFooter from '../components/MarkdownFooter/MarkdownFooter';
+import Layout from '../components/Layout';
 
 import styles from './markdown.module.sass'
 
@@ -38,24 +40,26 @@ About.propTypes = {
   html: PropTypes.string.isRequired,
 }
 
-const Markdown = ({ data }) => {
+const Markdown = ({ data, location }) => {
   const { title } = data.markdownRemark.frontmatter
   const { slug } = data.markdownRemark.fields
   const { html } = data.markdownRemark;
 
   return (
-    <div>
-      <Helmet title={`${title} | ${config.siteTitle}`} />
-      <SEO postPath={slug} postNode={data.markdownRemark} postSEO />
-      <div className={styles.position}>
-        {
-          slug.includes('documentation') ?
-          <Docs html={html}/> :
-          <About html={html}/>
-        }
+    <Layout location={location}>
+      <div>
+        <Helmet title={`${title} | ${config.siteTitle}`} />
+        <SEO postPath={slug} postNode={data.markdownRemark} postSEO />
+        <div className={styles.position}>
+          {
+            slug.includes('documentation') ?
+            <Docs html={html}/> :
+            <About html={html}/>
+          }
+        </div>
+        <MarkdownFooter page={slug} position={styles.position}/>
       </div>
-      <MarkdownFooter page={slug} position={styles.position}/>
-    </div>
+    </Layout>
   )
 }
 

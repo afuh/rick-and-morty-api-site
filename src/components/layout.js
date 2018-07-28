@@ -16,14 +16,13 @@ const Template = ({ children, location }) => (
     <SEO />
     <Header location={location} />
     <main>
-      {children()}
+      {children}
     </main>
     <Footer />
   </div>
 )
 
 Template.propTypes = {
-  children: PropTypes.func.isRequired,
   location: PropTypes.object.isRequired,
 }
 
