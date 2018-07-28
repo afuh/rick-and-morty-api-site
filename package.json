@@ -34,8 +34,6 @@
   },
   "devDependencies": {
     "babel-eslint": "^8.2.6",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-preset-react": "^6.24.1",
     "cypress": "^3.0.2",
     "eslint": "^5.2.0",
     "eslint-plugin-react": "^7.10.0",
