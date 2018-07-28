@@ -1,6 +1,4 @@
-require('dotenv').config({ path: '.env.production' })
 const config = require('./config/siteConfig')
-const autoprefixer = require('autoprefixer')
 
 module.exports = {
   siteMetadata: {
@@ -11,6 +9,7 @@ module.exports = {
     'gatsby-plugin-sitemap',
     'gatsby-plugin-catch-links',
     `gatsby-transformer-yaml`,
+    `gatsby-plugin-sass`,
     {
 			resolve: 'gatsby-plugin-manifest',
 			options: {
@@ -50,22 +49,6 @@ module.exports = {
           }
         ]
       }
-    },
-    // {
-		// 	resolve: 'gatsby-plugin-google-analytics',
-		// 	options: {
-		// 		trackingId: process.env.GATSBY_GOOGLE || process.env.GOOGLE,
-    //     anonymize: true
-		// 	}
-		// },
-    {
-			resolve: 'gatsby-plugin-postcss-sass',
-			options: {
-				postCssPlugins: [
-					autoprefixer()
-				],
-				precision: 8
-			}
     },
     {
       resolve: 'gatsby-plugin-typography',
