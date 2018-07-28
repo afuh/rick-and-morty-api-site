@@ -13,7 +13,7 @@ class ErrorMessage extends Component {
     name: ''
   }
   componentDidMount(){
-    shlaAPI.get('/character')
+    shlaAPI()
       .then(res => {
         this.count = res.data.info.count
         this.handleRequest()
@@ -24,7 +24,7 @@ class ErrorMessage extends Component {
   handleRequest(){
     const num = Math.floor(Math.random() * (this.count - 1 + 1) + 1)
 
-    shlaAPI.get(`/character/${num}`)
+    shlaAPI(`/${num}`)
       .then(res => {
         this.setState({ image: res.data.image, name: res.data.name })
       })

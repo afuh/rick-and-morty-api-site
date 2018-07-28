@@ -82,6 +82,9 @@ class Home extends Component {
   }
   handleRequest = () => {
     shlaAPI.get(`/character/${this.randomNums()}`).then(({ data }) => this.setState({ data }))
+  handleRequest = async () => {
+    const { data } = await shlaAPI(`/${this.randomChars()}`)
+    this.setState({ data })
   }
   render(){
     const { data } = this.state
