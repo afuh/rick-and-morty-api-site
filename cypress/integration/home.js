@@ -19,17 +19,17 @@ describe("Home page", () => {
 
   describe('Header', () => {
     it("Should navigate thorough the site", () => {
-      cy.get('header').within(() => {
 
-        cy.get('a[title="GitHub"]').should('have.attr', 'href', config.githubAPI)
+      cy.get('nav a[title="GitHub"]').should('have.attr', 'href', config.githubAPI)
 
-        cy.get('a').contains('About').click()
-        cy.url().should('include', '/about')
-        cy.get('a').contains('Documentation').click()
-        cy.url().should('include', '/documentation')
-        cy.get('a').contains('Home').click()
-        cy.url().should('include', '/')
-      })
+      cy.get('nav').contains('About').click()
+      cy.url().should('include', '/about')
+
+      cy.get('nav').contains('Documentation').click()
+      cy.url().should('include', '/documentation')
+
+      cy.get('nav').contains('Home').click()
+      cy.url().should('include', '/')
     })
 
     it("Should not be a github icon in mobile view", () => {

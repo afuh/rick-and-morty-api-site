@@ -11,7 +11,7 @@ import '../css/prism.scss'
 import '../css/globals.sass'
 
 const Template = ({ children, location }) => (
-  <div>
+  <>
     <Helmet title={config.siteTitle} />
     <SEO />
     <Header location={location} />
@@ -19,7 +19,7 @@ const Template = ({ children, location }) => (
       {children}
     </main>
     <Footer />
-  </div>
+  </>
 )
 
 Template.propTypes = {

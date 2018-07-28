@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from "gatsby"
 
-import index from '../../data/docs-index.yaml'
-import styles from './Sidebar.module.sass'
+import index from '../data/docs-index.yaml'
+import styles from './markdown.module.sass'
 
 const ListLink = ({ to, children }) => (
   <li style={{ margin: "0 1rem" }}>
@@ -53,7 +53,7 @@ class Sidebar extends Component {
   componentDidMount(){
     this.header = document.querySelector("header")
     this.footer = document.querySelector("footer")
-    this.editPage = document.querySelector("[class*=MarkdownFooter]")
+    this.editPage = document.querySelector("[class*=footer__wrapper]")
 
     setTimeout(() => {
       window.addEventListener('scroll', this.handleScroll)
@@ -63,7 +63,6 @@ class Sidebar extends Component {
   }
   handleScroll = () => {
     const viewBottom = window.scrollY + window.innerHeight
-
     if (window.scrollY >= this.header.offsetHeight) {
       this.setState({ fixed: true })
     } else {
