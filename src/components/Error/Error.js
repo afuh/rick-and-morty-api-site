@@ -1,65 +1,74 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import Link from 'gatsby-link'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { Link } from 'gatsby'
 import Back from "react-icons/lib/go/arrow-left"
 
 import { shlaAPI } from '../../utils/api'
+import statistics from '../../data/statistics.yaml'
 
 import styles from './Error.module.sass'
 
+const Message = ({ name }) => (
+  <>
+    <div className={styles.headerWrapper}>
+      <h1>404</h1>
+      <p className={styles.message}>Oh Jeez! there is nothing here.</p>
+    </div>
+    <div>
+      <p className={styles.message}>But I could show you a cute picture of <strong>{name}</strong>.</p>
+    </div>
+  </>
+)
+
+Message.propTypes = {
+  name: PropTypes.string.isRequired
+}
+
+const Image = ({ image }) => (
+  <div className={styles.imgWrapper}>
+    {image && <img src={image} className={styles.img} alt='🐈'/>}
+  </div>
+)
+
+Image.propTypes = {
+  image: PropTypes.string.isRequired
+}
+
+
+const BackIcon = () => (
+  <div className={styles.goBackButton}>
+    <Link to="/"><Back style={{ fontSize: "40px", marginTop: "10px" }} /></Link>
+  </div>
+)
+
 class ErrorMessage extends Component {
+  count = statistics[0].count
   state = {
     image: '',
     name: ''
   }
   componentDidMount(){
-    shlaAPI.get('/character')
-      .then(res => {
-        this.count = res.data.info.count;
-        this.handleRequest()
-      })
-      .catch(err => console.log(err))
+    this.handleRequest()
   }
 
-  handleRequest(){
+  handleRequest = async () => {
     const num = Math.floor(Math.random() * (this.count - 1 + 1) + 1)
 
-    shlaAPI.get(`/character/${num}`)
-      .then(res => {
-        this.setState({image: res.data.image, name: res.data.name })
-      })
-      .catch(err => console.log(err))
+    const { data } = await shlaAPI(`/${num}`)
+    this.setState({ image: data.image, name: data.name })
   }
 
   render() {
     const { image, name } = this.state
-    const { message } = this.props
+
     return (
       <main className={styles.wrapper}>
-        <div className={styles.headerWrapper}>
-          <h1>404</h1>
-          <p className={styles.message}>{message}</p>
-        </div>
-        <div>
-          <p className={styles.message}>But I could show you a cute picture of <strong>{name}</strong>.</p>
-        </div>
-        <div className={styles.imgWrapper}>
-          {image && <img src={image} className={styles.img} alt='🐈'/>}
-        </div>
-        <div className={styles.goBackButton}>
-          <Link to="/"><Back style={{fontSize: "40px", marginTop: "10px"}} /></Link>
-        </div>
+        <Message name={name}/>
+        <Image image={image} />
+        <BackIcon />
       </main>
     )
   }
 }
 
-ErrorMessage.defaultProps = {
-  message: "Errorooo!"
-}
-
-ErrorMessage.propTypes = {
-  message: PropTypes.string.isRequired,
-}
-
-export default ErrorMessage;
+export default ErrorMessage

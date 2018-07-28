@@ -1,14 +1,15 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 
-import config from '../../config/SiteConfig';
-import Error from '../components/Error/Error';
+import config from '../../config/SiteConfig'
+import ErrorMessage from '../components/Error/Error'
+import Layout from '../components/Layout'
 
-const NotFoundPage = () => (
-  <div>
+const NotFoundPage = ({ location }) => (
+  <Layout location={location}>
     <Helmet title={`Oh Jeez! | ${config.siteTitle}`} />
-    <Error  message='Oh Jeez! there is nothing here.'/>
-  </div>
+    <ErrorMessage />
+  </Layout>
 )
 
 export default NotFoundPage
