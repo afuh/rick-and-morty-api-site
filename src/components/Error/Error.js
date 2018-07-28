@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import Back from "react-icons/lib/go/arrow-left"
 
 import { shlaAPI } from '../../utils/api'

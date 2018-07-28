@@ -95,7 +95,7 @@ class Home extends Component {
         <section className={styles.apiSection}>
           <div className={styles.randomCardsWrapper}>
             {
-              data.length == 8 ?
+              data.length === 8 ?
               data.map((char, i) => <Card char={char} key={i}/> ) :
               <Spinner name="triangle-skew-spin" color="rgb(255, 152, 0)" />
             }

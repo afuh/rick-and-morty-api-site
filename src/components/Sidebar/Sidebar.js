@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
-import Link from "gatsby-link"
+import { Link } from "gatsby"
 
 import index from '../../data/docs-index.yaml'
 import styles from './Sidebar.module.sass'
