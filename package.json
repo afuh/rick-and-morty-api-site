@@ -26,6 +26,7 @@
     "react-icons": "^2.2.7",
     "react-spinkit": "^3.0.0",
     "react-typography": "^0.16.13",
+    "rickmortyapi": "^0.2.1",
     "typography": "^0.16.17",
     "typography-theme-github": "^0.15.10"
   },

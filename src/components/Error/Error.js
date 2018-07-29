@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import Back from "react-icons/lib/go/arrow-left"
+import { getCharacter } from 'rickmortyapi'
 
-import { shlaAPI } from '../../utils/api'
 import statistics from '../../data/statistics.yaml'
 
 import styles from './Error.module.sass'
@@ -54,8 +54,8 @@ class ErrorMessage extends Component {
   handleRequest = async () => {
     const num = Math.floor(Math.random() * (this.count - 1 + 1) + 1)
 
-    const { data } = await shlaAPI(`/${num}`)
-    this.setState({ image: data.image, name: data.name })
+    const { image, name } = await getCharacter(num)
+    this.setState({ image, name })
   }
 
   render() {
