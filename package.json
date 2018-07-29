@@ -4,13 +4,10 @@
   "version": "1.0.0",
   "author": "Axel Fuhrmann",
   "dependencies": {
-    "axios": "^0.18.0",
     "gatsby": "next",
     "gatsby-plugin-catch-links": "next",
-    "gatsby-plugin-google-analytics": "next",
     "gatsby-plugin-manifest": "next",
     "gatsby-plugin-nprogress": "next",
-    "gatsby-plugin-offline": "next",
     "gatsby-plugin-react-helmet": "next",
     "gatsby-plugin-sass": "next",
     "gatsby-plugin-sitemap": "next",
@@ -29,6 +26,7 @@
     "react-icons": "^2.2.7",
     "react-spinkit": "^3.0.0",
     "react-typography": "^0.16.13",
+    "rickmortyapi": "^0.2.1",
     "typography": "^0.16.17",
     "typography-theme-github": "^0.15.10"
   },

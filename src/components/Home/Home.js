@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Spinner from 'react-spinkit'
 
-import { shlaAPI } from '../../utils/api'
+import { getCharacter } from 'rickmortyapi'
 import statistics from '../../data/statistics.yaml'
 
 import Card from './Card'
@@ -51,7 +51,8 @@ class Home extends Component {
     this.handleRequest()
   }
   handleRequest = async () => {
-    const { data } = await shlaAPI(`/${this.randomChars()}`)
+    const data = await getCharacter(this.randomChars())
+
     this.setState({ data })
   }
   render(){
