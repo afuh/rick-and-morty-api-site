@@ -34,8 +34,6 @@ module.exports = {
 				]
 			}
 		},
-    // TODO: Resolve issue with service worker, nginx and redirects
-    // `gatsby-plugin-offline`,
     {
       resolve: 'gatsby-transformer-remark',
       options: {
