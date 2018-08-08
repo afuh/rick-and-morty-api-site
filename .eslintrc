@@ -1,0 +1,81 @@
+# https://eslint.org/docs/rules/
+
+parserOptions:
+  sourceType: module
+  ecmaVersion: 2018
+  ecmaFeatures:
+    jsx: true
+    browser: true
+
+parser: babel-eslint
+plugins:
+  - react
+extends:
+  - eslint:recommended
+  - plugin:react/recommended
+
+rules:
+  # Stylistic
+  indent:
+    - error
+    - 2
+  comma-dangle:
+    - error
+    - never
+  no-lonely-if: error
+  no-unneeded-ternary: error
+  no-whitespace-before-property: error
+  block-spacing: error
+  comma-spacing:
+    - error
+    - before: false
+      after: true
+  semi:
+    - error
+    - never
+  keyword-spacing:
+    - error
+    - before: true
+  object-curly-spacing:
+    - error
+    - always
+  array-bracket-spacing:
+    - error
+    - never
+    - singleValue: true
+      objectsInArrays: true
+  arrow-spacing: error
+  arrow-parens:
+    - error
+    - as-needed
+  arrow-body-style:
+    - error
+    - as-needed
+
+  # Best practices
+  no-var: error
+  no-else-return: error
+  no-multi-spaces: error
+  no-eval: error
+  no-console: 'off'
+  object-shorthand: error
+  prefer-arrow-callback: warn
+  prefer-destructuring:
+    - warn
+    - object: true
+      array: true
+  strict: 0
+  react/no-deprecated: 'off'
+  react/prop-types:
+    - error
+    - ignore:
+      - match
+      - history
+      - children
+      - location
+
+env:
+  es6: true
+  node: true
+  browser: true
+  jest: true
