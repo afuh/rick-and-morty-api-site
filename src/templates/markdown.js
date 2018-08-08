@@ -3,14 +3,18 @@ import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
 import { graphql } from "gatsby"
 import EditIcon from "react-icons/lib/go/pencil"
+import styled from 'styled-components'
 
 import config from "siteConfig"
+import prismCSS from 'styles/prism'
 
 import SEO from '../components/SEO/SEO'
 import Layout from '../components/Layout'
 import Sidebar from './Sidebar'
 
 import styles from './markdown.module.sass'
+
+import { rem } from 'styles/utils'
 
 const EditThisPage = ({ page }) => (
   <div className={styles.footer__wrapper} >
@@ -29,13 +33,18 @@ const margin = {
   marginTop: 20
 }
 
+const StyledDocs = styled.article`
+  margin-top: ${rem(20)};
+  ${prismCSS}
+`
+
 const Docs = ({ html }) => (
   <div className={styles.wrapper}>
     <div className={styles.sidebar}>
       <Sidebar style={margin} />
     </div>
     <div className={styles.wrapperDocs} >
-      <article style={margin} dangerouslySetInnerHTML={{ __html: html }}></article>
+      <StyledDocs dangerouslySetInnerHTML={{ __html: html }} />
     </div>
   </div>
 )

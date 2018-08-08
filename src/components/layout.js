@@ -1,14 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
+import { injectGlobal } from "styled-components"
 
-import SEO from '../components/SEO/SEO'
-import Header from '../components/Header/Header'
-import Footer from '../components/Footer/Footer'
+import SEO from 'components/SEO/SEO'
+import Header from 'components/Header/Header'
+import Footer from 'components/Footer/Footer'
+
 import config from "siteConfig"
 
-import '../css/prism.scss'
-import '../css/globals.sass'
+import globalCSS from 'styles/global'
+
+injectGlobal`
+  ${globalCSS}
+`
 
 const Template = ({ children, location }) => (
   <>
