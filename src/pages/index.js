@@ -1,8 +1,8 @@
 import React from 'react'
 
-import config from '../../config/SiteConfig'
-import Home from '../components/Home/Home'
-import Layout from '../components/Layout'
+import config from "siteConfig"
+import Home from 'components/Home/Home'
+import Layout from 'components/Layout'
 
 const Index = ({ location }) => (
   <Layout location={location}>

@@ -5,7 +5,7 @@ import Helmet from 'react-helmet'
 import SEO from '../components/SEO/SEO'
 import Header from '../components/Header/Header'
 import Footer from '../components/Footer/Footer'
-import config from '../../config/SiteConfig'
+import config from "siteConfig"
 
 import '../css/prism.scss'
 import '../css/globals.sass'

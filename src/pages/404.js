@@ -1,7 +1,7 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 
-import config from '../../config/SiteConfig'
+import config from "siteConfig"
 import ErrorMessage from '../components/Error/Error'
 import Layout from '../components/Layout'
 

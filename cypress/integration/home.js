@@ -1,5 +1,5 @@
 /* global it describe cy before expect*/
-import config from '../../config/SiteConfig'
+import config from "siteConfig"
 const YAML = require('yamljs')
 
 
@@ -8,8 +8,8 @@ describe("Home page", () => {
     cy.visit('/')
 
     navigator.serviceWorker.getRegistrations()
-      .then((registrations) => {
-        for(let registration of registrations) {
+      .then(registrations => {
+        for (let registration of registrations) {
           registration.unregister()
         }
       })
@@ -113,7 +113,7 @@ describe("Home page", () => {
 
         cy.readFile('/src/data/statistics.yaml')
           .then(stats => {
-             YAML.parse(stats).map(stat => {
+            YAML.parse(stats).map(stat => {
               cy.get('span').contains(`${stat.title.toUpperCase()}: ${stat.count}`)
             })
           })

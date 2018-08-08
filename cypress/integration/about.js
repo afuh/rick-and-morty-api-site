@@ -1,13 +1,13 @@
 /* global it describe cy before*/
-import config from '../../config/SiteConfig';
+import config from "siteConfig"
 
 describe("About page", () => {
   before(() => {
     cy.visit('/about')
 
     navigator.serviceWorker.getRegistrations()
-      .then((registrations) => {
-        for(let registration of registrations) {
+      .then(registrations => {
+        for (let registration of registrations) {
           registration.unregister()
         }
       })

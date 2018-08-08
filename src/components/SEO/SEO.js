@@ -2,7 +2,7 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
 
-import config from '../../../config/SiteConfig'
+import config from "siteConfig"
 
 const SEO = ({ postNode, postPath, postSEO }) => {
   let image

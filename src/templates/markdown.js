@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { graphql } from "gatsby"
 import EditIcon from "react-icons/lib/go/pencil"
 
-import config from '../../config/SiteConfig'
+import config from "siteConfig"
 
 import SEO from '../components/SEO/SEO'
 import Layout from '../components/Layout'

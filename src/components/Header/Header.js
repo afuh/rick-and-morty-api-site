@@ -5,7 +5,7 @@ import GithubIcon from "react-icons/lib/go/mark-github"
 
 import styles from './Header.module.sass'
 
-import config from '../../../config/SiteConfig'
+import config from "siteConfig"
 import index from '../../data/navbar.yaml'
 
 const menuColor = (location, name) => {
