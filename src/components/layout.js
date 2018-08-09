@@ -4,7 +4,7 @@ import Helmet from 'react-helmet'
 import { injectGlobal } from "styled-components"
 
 import SEO from 'components/SEO'
-import Header from 'components/Header/Header'
+import Header from 'components/Header'
 import Footer from 'components/Footer/Footer'
 
 import config from "siteConfig"
