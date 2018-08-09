@@ -39,7 +39,7 @@
     - title: Get a single episode
       link: '#get-a-single-episode'
     - title: Get multiple episodes
-      link: '#get-multiple-episodes'  
+      link: '#get-multiple-episodes'
     - title: Filter episodes
       link: '#filter-episodes'
 - title: Libraries
@@ -50,5 +50,7 @@
       link: '#graphql'
     - title: JavaScript
       link: '#javascript'
+    - title: Python
+      link: '#python'
     - title: Ruby
       link: '#ruby'

@@ -49,7 +49,7 @@ describe("Error page", () => {
   describe("Go Back button", () => {
     it("Should navigate to the home page", () => {
       cy.get('main').within(() => {
-        cy.get('a').should('have.attr', 'href', '/').click()
+        cy.get('a').should('have.attr', 'href', '/').click({force: true})
         cy.url().should('include', '/')
       })
     })
