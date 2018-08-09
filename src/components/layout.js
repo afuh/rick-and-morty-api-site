@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { injectGlobal } from "styled-components"
 
-import SEO from 'components/SEO/SEO'
+import SEO from 'components/SEO'
 import Header from 'components/Header/Header'
 import Footer from 'components/Footer/Footer'
 

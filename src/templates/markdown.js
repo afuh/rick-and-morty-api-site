@@ -8,8 +8,8 @@ import styled from 'styled-components'
 import config from "siteConfig"
 import prismCSS from 'styles/prism'
 
-import SEO from '../components/SEO/SEO'
-import Layout from '../components/Layout'
+import SEO from 'components/SEO'
+import Layout from 'components/Layout'
 import Sidebar from './Sidebar'
 
 import styles from './markdown.module.sass'
