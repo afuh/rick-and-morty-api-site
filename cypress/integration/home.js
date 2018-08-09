@@ -1,5 +1,5 @@
 /* global it describe cy before expect*/
-import config from "siteConfig"
+import config from "../../config/siteConfig"
 const YAML = require('yamljs')
 
 
@@ -22,13 +22,13 @@ describe("Home page", () => {
 
       cy.get('nav a[title="GitHub"]').should('have.attr', 'href', config.githubAPI)
 
-      cy.get('nav').contains('About').click({force: true})
+      cy.get('nav').contains('About').click({ force: true })
       cy.url().should('include', '/about')
 
-      cy.get('nav').contains('Documentation').click({force: true})
+      cy.get('nav').contains('Documentation').click({ force: true })
       cy.url().should('include', '/documentation')
 
-      cy.get('nav').contains('Home').click({force: true})
+      cy.get('nav').contains('Home').click({ force: true })
       cy.url().should('include', '/')
     })
 
