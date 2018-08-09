@@ -53,10 +53,10 @@ export const centrate = css`
   align-items: center;
 `
 
-export const flex = inner => css`
+export const flex = opt => css`
   display: flex;
-  justify-content: ${inner.x || 'center'};
-  align-items: ${inner.y || 'center'};
+  justify-content: ${opt.x || 'center'};
+  align-items: ${opt.y || 'center'};
 `
 
 export const hover = inner => css`
@@ -70,6 +70,7 @@ export const theme = {
   orange: '#FF9800',
   black: '#333',
   backBlack: '#202329',
+  gray: '#9E9E9E',
   lightgray: '#d8d8d8',
   border: '1px solid #f4f5fA',
   shadow: '0 1px 6px 0 #e2e4ed'
