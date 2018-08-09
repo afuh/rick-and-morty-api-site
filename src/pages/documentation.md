@@ -575,3 +575,7 @@ Here you will find a list of helper libraries to use the Rick and Morty API with
 
 #### Ruby
 - [The Rick and Morty API Gem](https://github.com/spielhoelle/rick-and-morty-gem) by [Tommy Spielhoelle](https://github.com/spielhoelle)
+
+#### Python
+- [Python implementation for the Rick and Morty API] (https://github.com/curiousrohan/ramapi) by [Rohan Hazra]
+(https://github.com/curiousrohan)
