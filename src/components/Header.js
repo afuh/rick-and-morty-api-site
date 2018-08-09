@@ -126,7 +126,7 @@ const Github = () => (
     href={config.githubAPI}
     title="GitHub"
   >
-    <GithubIcon />
+    <GithubIcon style={{ fontSize: 18 }}/>
   </GHLink>
 )
 
