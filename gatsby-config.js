@@ -10,6 +10,7 @@ module.exports = {
     'gatsby-plugin-catch-links',
     `gatsby-transformer-yaml`,
     `gatsby-plugin-sass`,
+    `gatsby-plugin-styled-components`,
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
