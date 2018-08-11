@@ -44,7 +44,8 @@ export default css`
   }
 
   /* Inline code */
-  p > code[class*="language-"] {
+  p > code[class*="language-"],
+  li > code[class*="language-"] {
     background: ${schema.inline.back};
     color: ${schema.inline.color};
     padding: 0.2em 0.4em;
