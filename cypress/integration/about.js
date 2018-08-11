@@ -1,13 +1,13 @@
 /* global it describe cy before*/
-import config from '../../config/SiteConfig';
+import config from "../../config/siteConfig"
 
 describe("About page", () => {
   before(() => {
     cy.visit('/about')
 
     navigator.serviceWorker.getRegistrations()
-      .then((registrations) => {
-        for(let registration of registrations) {
+      .then(registrations => {
+        for (let registration of registrations) {
           registration.unregister()
         }
       })
@@ -32,9 +32,9 @@ describe("About page", () => {
 
   describe('Links', () => {
     it("Should navigate", () => {
-      cy.get('a').contains('Check out the documentation to get started').click({force: true})
+      cy.get('a').contains('Check out the documentation to get started').click({ force: true })
       cy.url().should('include', '/documentation')
-      cy.get('a').contains('About').click({force: true})
+      cy.get('a').contains('About').click({ force: true })
 
       cy.get('a').contains('Axel Fuhrmann').should('have.attr', 'href', 'http://axelfuhrmann.com')
       cy.get('a').contains('Talita').should('have.attr', 'href', 'https://talitatraveler.wordpress.com/')

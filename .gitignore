@@ -3,5 +3,4 @@ deploy.js
 .cache/
 node_modules
 .env.*
-.eslintrc
 public/

@@ -9,7 +9,7 @@ module.exports = {
     'gatsby-plugin-sitemap',
     'gatsby-plugin-catch-links',
     `gatsby-transformer-yaml`,
-    `gatsby-plugin-sass`,
+    `gatsby-plugin-styled-components`,
     {
       resolve: 'gatsby-plugin-manifest',
       options: {

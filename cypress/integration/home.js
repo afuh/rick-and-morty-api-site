@@ -1,5 +1,5 @@
 /* global it describe cy before expect*/
-import config from '../../config/SiteConfig'
+import config from "../../config/siteConfig"
 const YAML = require('yamljs')
 
 
@@ -8,8 +8,8 @@ describe("Home page", () => {
     cy.visit('/')
 
     navigator.serviceWorker.getRegistrations()
-      .then((registrations) => {
-        for(let registration of registrations) {
+      .then(registrations => {
+        for (let registration of registrations) {
           registration.unregister()
         }
       })
@@ -22,13 +22,13 @@ describe("Home page", () => {
 
       cy.get('nav a[title="GitHub"]').should('have.attr', 'href', config.githubAPI)
 
-      cy.get('nav').contains('About').click({force: true})
+      cy.get('nav').contains('About').click({ force: true })
       cy.url().should('include', '/about')
 
-      cy.get('nav').contains('Documentation').click({force: true})
+      cy.get('nav').contains('Documentation').click({ force: true })
       cy.url().should('include', '/documentation')
 
-      cy.get('nav').contains('Home').click({force: true})
+      cy.get('nav').contains('Home').click({ force: true })
       cy.url().should('include', '/')
     })
 
@@ -113,7 +113,7 @@ describe("Home page", () => {
 
         cy.readFile('/src/data/statistics.yaml')
           .then(stats => {
-             YAML.parse(stats).map(stat => {
+            YAML.parse(stats).map(stat => {
               cy.get('span').contains(`${stat.title.toUpperCase()}: ${stat.count}`)
             })
           })
