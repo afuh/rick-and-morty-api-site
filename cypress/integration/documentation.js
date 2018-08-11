@@ -1,5 +1,5 @@
 /* global it describe cy before expect*/
-import config from '../../config/SiteConfig';
+import config from "../../config/siteConfig"
 const YAML = require('yamljs')
 
 const libraries = [
@@ -15,8 +15,8 @@ describe("Documentation page", () => {
     cy.visit('/documentation')
 
     navigator.serviceWorker.getRegistrations()
-      .then((registrations) => {
-        for(let registration of registrations) {
+      .then(registrations => {
+        for (let registration of registrations) {
           registration.unregister()
         }
       })
@@ -59,13 +59,13 @@ describe("Documentation page", () => {
 
             wrapper.items.map(anchor => {
               cy.get('aside li a')
-                .contains(anchor.title).click({force: true})
+                .contains(anchor.title).click({ force: true })
               cy.url().should('include', anchor.link)
             })
 
           })
         })
-      })
+    })
 
   })
 

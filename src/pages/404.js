@@ -1,8 +1,8 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 
-import config from '../../config/SiteConfig'
-import ErrorMessage from '../components/Error/Error'
+import config from "siteConfig"
+import ErrorMessage from '../components/Error'
 import Layout from '../components/Layout'
 
 const NotFoundPage = ({ location }) => (
