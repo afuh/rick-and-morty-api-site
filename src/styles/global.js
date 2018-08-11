@@ -1,5 +1,5 @@
 import { css } from "styled-components"
-import { theme, hover } from 'styles/utils'
+import { theme, hover, size } from 'styles/utils'
 
 export default css`
   a {
@@ -24,5 +24,10 @@ export default css`
   *::selection {
     color: ${theme.orange};
     background: ${theme.backBlack};
+  }
+
+  img {
+    ${size("100%", "auto")}
+    display: block;
   }
 `
