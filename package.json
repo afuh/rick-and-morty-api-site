@@ -5,8 +5,10 @@
   "author": "Axel Fuhrmann",
   "dependencies": {
     "babel-plugin-styled-components": "^1.5.1",
+    "dotenv": "^6.0.0",
     "gatsby": "next",
     "gatsby-plugin-catch-links": "next",
+    "gatsby-plugin-google-analytics": "next",
     "gatsby-plugin-manifest": "next",
     "gatsby-plugin-nprogress": "next",
     "gatsby-plugin-react-helmet": "next",
