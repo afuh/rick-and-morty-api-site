@@ -21,7 +21,7 @@ export default css`
 
   code[class*="language-"],
   pre[class*="language-"] {
-  	color: whitesmoke;
+  	color: ${theme.whitesmoke};
   	background: none;
   	text-align: left;
   	white-space: pre;
@@ -93,7 +93,7 @@ export default css`
   .language-css .token.string,
   .style .token.string,
   .token.variable {
-  	color: whitesmoke;
+  	color: ${theme.whitesmoke};
   }
 
   .token.atrule,

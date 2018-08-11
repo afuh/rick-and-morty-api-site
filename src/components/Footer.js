@@ -41,7 +41,7 @@ const SignWrapper = styled.div`
     a {
       font-weight: 400;
       transition: color .2s;
-      color: whitesmoke;
+      color: ${theme.whitesmoke};
       border-bottom: 1px solid ${theme.orange};
 
       ${hover(css`
