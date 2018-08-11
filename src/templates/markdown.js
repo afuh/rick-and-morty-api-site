@@ -30,7 +30,8 @@ const Docs = styled.div`
   ${prismCSS}
 
   ${media.custom(890, css`
-    padding: 0 ${rem(20)}
+    padding: 0 ${rem(20)};
+    display: block;
   `)}
 `
 
