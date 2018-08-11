@@ -73,7 +73,7 @@ export const theme = {
   black: '#333',
   backBlack: '#202329',
   gray: '#9E9E9E',
+  whitesmoke: "#f5f5f5",
   lightgray: '#d8d8d8',
-  border: '1px solid #f4f5fA',
-  shadow: '0 1px 6px 0 #e2e4ed'
+  shadow: '0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08)'
 }

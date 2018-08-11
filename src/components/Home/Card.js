@@ -1,17 +1,93 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
+import styled, { css } from 'styled-components'
 
-import styles from './Home.module.sass'
+import { flex, rem, theme } from 'styles/utils'
 
-const Text = ({ title, data, last }) => (
-  <>
-    <div className={styles.textWrapper} style={{ padding: "6px 0" }}>
-      <span>{title.toUpperCase()}</span>
-      <p>{data}</p>
-    </div>
-    {!last && <hr style={{ background: "#444" }}/>}
-  </>
+const Wrapper = styled.section`
+  max-width: 300px;
+  border-radius: ${rem(10)};
+  overflow: hidden;
+  margin-bottom: ${rem(10)};
+  box-shadow: ${theme.shadow};
+
+  img {
+    margin: 0;
+    overflow: hidden;
+  }
+`
+
+const ImgWrapper = styled.div.attrs({
+  data: 'card header'
+})`
+  position: relative;
+  max-width: 300px;
+  max-height: 300px;
+`
+
+const InfoWrapper = styled.div.attrs({
+  data: 'card info'
+})`
+  padding: ${rem(20)};
+  height: 100%;
+  color: ${theme.orange};
+  background: ${theme.black};
+`
+
+const Title = styled.div`
+  width: 100%;
+  background: ${theme.backBlack};
+  opacity: 0.8;
+  position: absolute;
+  bottom: 0;
+  padding: ${rem(10)};
+`
+
+const Name = styled.h2`
+  color: ${theme.whitesmoke};
+  margin: 0;
+  font-size: ${rem(26)};
+  font-weight: 400;
+  font-stretch: expanded;
+`
+
+const Description = styled.p`
+  color: #bbb;
+  margin: 0;
+  font-size: ${rem(14)};
+`
+
+const TextWrapper = styled.div`
+  ${flex({ x: 'space-between' })}
+  flex-wrap: nowrap;
+  padding: ${rem(12)} 0 ${rem(6)};
+
+  span {
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: ${theme.gray}
+  }
+
+  p {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 200;
+    text-align: right;
+  }
+
+  ${({ divider }) => divider && css`
+    border-bottom: 1px solid #444;
+  `}
+`
+
+const Text = ({ title, data, last }) => console.log(last)||(
+  <TextWrapper divider={!last}>
+    <span>{title.toUpperCase()}</span>
+    <p>{data}</p>
+  </TextWrapper>
 )
 
 Text.propTypes = {
@@ -21,38 +97,40 @@ Text.propTypes = {
 }
 
 const CardImg = ({ char }) => (
-  <div className={styles.card__img} data='card header'>
+  <ImgWrapper>
     <img src={char.image} alt={char.name}/>
-    <div className={styles.card__title}>
-      <h2>{char.name}</h2>
-      <p>{"id: " + char.id + " - created " + moment(char.created).fromNow()}</p>
-    </div>
-  </div>
+    <Title>
+      <Name>{char.name}</Name>
+      <Description>
+        {"id: " + char.id + " - created " + moment(char.created).fromNow()}
+      </Description>
+    </Title>
+  </ImgWrapper>
 )
 
 CardImg.propTypes = {
   char: PropTypes.object.isRequired
 }
 
-const CardBody = ({ char }) => (
-  <div className={styles.card__description} data='card info'>
+const CardInfo = ({ char }) => (
+  <InfoWrapper>
     <Text title='Status' data={char.status}/>
     <Text title='Species' data={!char.type ? char.species : char.species + ', ' + char.type} />
     <Text title='Gender' data={char.gender} />
     <Text title='Origin' data={char.origin.name} />
     <Text title='Last location' data={char.location.name} last/>
-  </div>
+  </InfoWrapper>
 )
 
-CardBody.propTypes = {
+CardInfo.propTypes = {
   char: PropTypes.object.isRequired
 }
 
 const Card = ({ char }) => (
-  <article className={styles.card__wrapper}>
+  <Wrapper>
     <CardImg char={char} />
-    <CardBody char={char} />
-  </article>
+    <CardInfo char={char} />
+  </Wrapper>
 )
 
 Card.propTypes = {
