@@ -1,13 +1,67 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import styled, { css } from 'styled-components'
 import { Link } from "gatsby"
 
 import index from '../data/docs-index.yaml'
-import styles from './markdown.module.sass'
+
+import { media, rem } from 'styles/utils'
+
+const SidebarWrapper = styled.div`
+  position: relative;
+  min-width: ${rem(210)};
+
+  ${media.custom(890, css`
+    display: none;
+  `)}
+
+  border-right: 1px solid hsla(0,0%,0%,0.07);
+  margin-right: 25px;
+`
+
+const Aside = styled.aside`
+  overflow-y: scroll;
+  position: relative;
+  margin-top: ${({ margin }) => margin}px;
+
+  ${({ fixed, hide }) => fixed && css`
+    position: fixed;
+    top: 0;
+    max-height: ${hide !== 0 ? `calc(100vh - ${hide}px)` : "100vh"};
+  `}
+
+  ${'' /* &::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: ${rem(4)};
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: ${rem(4)};
+    background: ${theme.orange}
+  } */}
+`
+
+const SectionWrapper = styled.div`
+  margin-bottom: ${rem(24)};
+
+  h3 {
+     margin: 0 0 0.2rem;
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+     margin: 0 1rem;
+  }
+`
+
 
 const ListLink = ({ to, children }) => (
-  <li style={{ margin: "0 1rem" }}>
-    <Link to={to} style={{ color: "#444" }}>
+  <li >
+    <Link to={to}>
       {children}
     </Link>
   </li>
@@ -18,25 +72,23 @@ ListLink.propTypes = {
   children: PropTypes.string.isRequired
 }
 
-const SectionLinks = ({ items }) => (
-  <ul style={{ padding: 0, margin: 0 }}>
-    {items.map(item => (
-      <ListLink to={item.link} key={item.title}>{item.title}</ListLink>
-    ))}
-  </ul>
-)
-
-SectionLinks.propTypes = {
-  items: PropTypes.array.isRequired
-}
 
 const Section = ({ title, items }) => (
-  <div style={{ marginBottom: "1.5rem" }}>
-    <h3 style={{ margin: '0 0 0.2rem' }}>
+  <SectionWrapper>
+    <h3>
       {title}
     </h3>
-    <SectionLinks items={items} />
-  </div>
+    <ul>
+      {items.map(item => (
+        <ListLink
+          to={item.link}
+          key={item.title}
+        >
+          {item.title}
+        </ListLink>
+      ))}
+    </ul>
+  </SectionWrapper>
 )
 
 Section.propTypes = {
@@ -44,8 +96,8 @@ Section.propTypes = {
   items: PropTypes.array.isRequired
 }
 
-
 class Sidebar extends Component {
+  marginTop
   state = {
     fixed: false,
     sidebar: 0
@@ -70,12 +122,12 @@ class Sidebar extends Component {
     }
 
     if (viewBottom >= this.footer.offsetTop){
-      this.setState({ pete: true })
-      this.setState({ sidebar: viewBottom - (this.footer.offsetTop - this.editPage.offsetHeight - this.props.style.marginTop) })
+      this.setState({
+        sidebar: viewBottom - (this.footer.offsetTop - this.editPage.offsetHeight - this.props.marginTop)
+      })
     }
     else {
       this.setState({ sidebar: 0 })
-      this.setState({ pete: false })
     }
   }
   componentWillUnmount(){
@@ -83,25 +135,29 @@ class Sidebar extends Component {
   }
   render(){
     const { fixed, sidebar } = this.state
-    const position = fixed ? {
-      position: 'fixed',
-      top: 0,
-      maxHeight: sidebar !== 0 ? `calc(100vh - ${sidebar}px)` : "100vh"
-    } : {
-      position: 'relative'
-    }
+
     return (
-      <aside className={styles.aside} style={Object.assign({ marginTop: this.props.style.marginTop }, position)}>
-        {index.map(section => (
-          <Section {...section} key={section.title} />
-        ))}
-      </aside>
+      <SidebarWrapper>
+        <Aside
+          margin={this.props.marginTop}
+          fixed={fixed}
+          hide={sidebar}
+        >
+          {index.map(section => (
+            <Section {...section} key={section.title} />
+          ))}
+        </Aside>
+      </SidebarWrapper>
     )
   }
 }
 
 Sidebar.propTypes = {
-  style: PropTypes.object.isRequired
+  marginTop: PropTypes.number.isRequired
+}
+
+Sidebar.defaultPRops = {
+  marginTop: 20
 }
 
 export default Sidebar
