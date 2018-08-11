@@ -4,7 +4,7 @@ cover: '/images/about.jpeg'
 ---
 
 ### What is this?
-The Rick and Morty API (or ShlaAPI) is a RESTful API based on the television show [Rick and Morty](https://www.adultswim.com/videos/rick-and-morty). You will have access to about hundreds of characters, images, locations and episodes. We are still gathering data, because as you probably know, there are trillions of characters and locations. The Rick and Morty API is filled with canonical information as seen on the TV show, we are planning to add more resources such as the [comic series](http://rickandmorty.wikia.com/wiki/Rick_and_Morty_(comic_series)).
+The Rick and Morty API (or ShlaAPI) is a RESTful API based on the television show [Rick and Morty](https://www.adultswim.com/videos/rick-and-morty). You will have access to about hundreds of characters, images, locations and episodes. We are still gathering data, because as you probably know, there are trillions of characters and locations. The Rick and Morty API is filled with canonical information as seen on the TV show.
 
 [Check out the documentation to get started](/documentation)
 
