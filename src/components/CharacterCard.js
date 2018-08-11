@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components'
 
 import { flex, rem, theme } from 'styles/utils'
 
-const Wrapper = styled.section`
+const Wrapper = styled.article`
   max-width: 300px;
   border-radius: ${rem(10)};
   overflow: hidden;
