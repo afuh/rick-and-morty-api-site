@@ -2,81 +2,52 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
 import { graphql } from "gatsby"
-import EditIcon from "react-icons/lib/go/pencil"
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import config from "siteConfig"
 import prismCSS from 'styles/prism'
 
 import SEO from 'components/SEO'
 import Layout from 'components/Layout'
+import EditThisPage from './EditThisPage'
 import Sidebar from './Sidebar'
 
-import styles from './markdown.module.sass'
+import { media, rem } from 'styles/utils'
 
-import { rem } from 'styles/utils'
-
-const EditThisPage = ({ page }) => (
-  <div className={styles.footer__wrapper} >
-    <a className={`edit-page ${styles.footer__anchor}`} href={`${config.github}/blob/develop/src/pages${page.slice(0, -1)}.md`}>
-      <EditIcon style={{ fontSize: 20, position: `relative`, top: -2 }} />
-      <span style={{ marginLeft: "0.5em" }}>edit this page</span>
-    </a>
-  </div>
-)
-
-EditThisPage.propTypes = {
-  page: PropTypes.string.isRequired
-}
-
-const margin = {
-  marginTop: 20
-}
-
-const StyledDocs = styled.article`
-  margin-top: ${rem(20)};
-  ${prismCSS}
+const About = styled.div`
+  ${media.custom(890, css`
+    padding: 0 ${rem(20)}
+  `)}
 `
 
-const Docs = ({ html }) => (
-  <div className={styles.wrapper}>
-    <div className={styles.sidebar}>
-      <Sidebar style={margin} />
-    </div>
-    <div className={styles.wrapperDocs} >
-      <StyledDocs dangerouslySetInnerHTML={{ __html: html }} />
-    </div>
-  </div>
-)
+const Docs = styled.div`
+  display: flex;
+  flex-wrap: nowrap;
 
-Docs.propTypes = {
-  html: PropTypes.string.isRequired
-}
+  width: 100%;
+  z-index: 1;
 
-const About = ({ html }) => (
-  <div className={styles.wrapperAbout} >
-    <article dangerouslySetInnerHTML={{ __html: html }}></article>
-  </div>
-)
+  ${prismCSS}
 
-About.propTypes = {
-  html: PropTypes.string.isRequired
-}
+  ${media.custom(890, css`
+    padding: 0 ${rem(20)}
+  `)}
+`
 
-const Page = ({ docs, html }) => (
-  <div className={styles.position}>
-    {
-      docs ?
-        <Docs html={html}/> :
-        <About html={html}/>
-    }
-  </div>
-)
+const Content = styled.div`
+  margin: 0 auto;
+  max-width: 1170px;
+  padding-left: ${rem(20)};
 
-Page.propTypes = {
-  docs: PropTypes.bool.isRequired,
-  html: PropTypes.string.isRequired
-}
+  article li {
+    list-style-type: initial;
+  }
+
+  ${media.custom(890, css`
+    padding: 0;
+  `)}
+
+`
 
 const Markdown = ({ data: { markdownRemark }, location }) => {
   const { html, frontmatter: { title }, fields: { slug } } = markdownRemark
@@ -86,7 +57,17 @@ const Markdown = ({ data: { markdownRemark }, location }) => {
       <>
         <Helmet title={`${title} | ${config.siteTitle}`} />
         <SEO postPath={slug} postNode={markdownRemark} postSEO />
-        <Page docs={slug.includes('documentation')} html={html} />
+        <Content>
+          {slug.includes('documentation') ?
+            <Docs>
+              <Sidebar marginTop={20}/>
+              <article dangerouslySetInnerHTML={{ __html: html }} />
+            </Docs> :
+            <About>
+              <article dangerouslySetInnerHTML={{ __html: html }} />
+            </About>
+          }
+        </Content>
         <EditThisPage page={slug} />
       </>
     </Layout>

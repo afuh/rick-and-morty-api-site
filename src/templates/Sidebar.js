@@ -105,7 +105,7 @@ class Sidebar extends Component {
   componentDidMount(){
     this.header = document.querySelector("header")
     this.footer = document.querySelector("footer")
-    this.editPage = document.querySelector("[class*=footer__wrapper]")
+    this.editPage = document.querySelector("[id=edit-wrapper]")
 
     setTimeout(() => {
       window.addEventListener('scroll', this.handleScroll)
