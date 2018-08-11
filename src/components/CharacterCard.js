@@ -83,7 +83,8 @@ const TextWrapper = styled.div`
   `}
 `
 
-const Text = ({ title, data, last }) => console.log(last)||(
+
+const Text = ({ title, data, last }) => (
   <TextWrapper divider={!last}>
     <span>{title.toUpperCase()}</span>
     <p>{data}</p>
@@ -98,7 +99,9 @@ Text.propTypes = {
 
 const CardImg = ({ char }) => (
   <ImgWrapper>
-    <img src={char.image} alt={char.name}/>
+    <div style={{ width: 300, height: 300, background: theme.backBlack }}>
+      <img src={char.image} alt={char.name}/>
+    </div>
     <Title>
       <Name>{char.name}</Name>
       <Description>
