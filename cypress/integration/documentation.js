@@ -1,13 +1,12 @@
 /* global it describe cy before expect*/
 import config from "../../config/siteConfig"
-const YAML = require('yamljs')
 
 const libraries = [
-  { id: 'GraphQL', link: 'https://github.com/arthurdenner/rick-and-morty-graphql-api', author: 'https://github.com/arthurdenner' },
-  { id: 'Ruby', link: 'https://github.com/spielhoelle/rick-and-morty-gem', author: 'https://github.com/spielhoelle' },
-  { id: 'Elixir', link: 'https://github.com/l1h3r/ex_shla', author: 'https://github.com/l1h3r' },
-  { id: 'JavaScript', link: 'https://github.com/afuh/rick-and-morty-api-node', author: 'https://github.com/afuh' },
-  { id: 'Python', link: 'https://github.com/curiousrohan/ramapi', author: 'https://github.com/curiousrohan' }
+  { link: 'https://github.com/arthurdenner/rick-and-morty-graphql-api', author: 'https://github.com/arthurdenner' },
+  { link: 'https://github.com/spielhoelle/rick-and-morty-gem', author: 'https://github.com/spielhoelle' },
+  { link: 'https://github.com/l1h3r/ex_shla', author: 'https://github.com/l1h3r' },
+  { link: 'https://github.com/afuh/rick-and-morty-api-node', author: 'https://github.com/afuh' },
+  { link: 'https://github.com/curiousrohan/ramapi', author: 'https://github.com/curiousrohan' }
 ]
 
 describe("Documentation page", () => {
@@ -51,38 +50,23 @@ describe("Documentation page", () => {
       cy.get('aside').scrollTo('top')
     })
 
-    it("Should be an index with Headers and links", () => {
-      cy.readFile('/src/data/docs-index.yaml')
-        .then(index => {
-          YAML.parse(index).map(wrapper => {
-            cy.get('aside h3').contains(wrapper.title)
-
-            wrapper.items.map(anchor => {
-              cy.get('aside li a')
-                .contains(anchor.title).click({ force: true })
-              cy.url().should('include', anchor.link)
-            })
-
-          })
-        })
-    })
-
   })
 
   describe('Libraries section', () => {
     it("Should have a Title and two working links", () => {
-      for (const key in libraries) {
-        cy.get('article').within(() => {
-          cy.get('h4').contains(libraries[key].id)
+      cy.get('article').within(() => {
 
-          cy.get(`a[href='${libraries[key].link}']`)
-          cy.request(libraries[key].link).then(res => expect(res.status).not.to.eq(400))
+        libraries.forEach(library => {
+          cy.get(`a[href='${library.link}']`)
+            .request(library.link)
+            .then(res => expect(res.status).not.to.eq(400))
 
-          cy.get(`a[href='${libraries[key].author}']`)
-          cy.request(libraries[key].author).then(res => expect(res.status).not.to.eq(400))
+          cy.get(`a[href='${library.author}']`)
+            .request(library.author)
+            .then(res => expect(res.status).not.to.eq(400))
 
         })
-      }
+      })
     })
   })
 

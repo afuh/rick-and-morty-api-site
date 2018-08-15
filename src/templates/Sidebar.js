@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
-import { Link } from "gatsby"
-
-import index from '../data/docs-index.yaml'
+import { Link, StaticQuery, graphql } from "gatsby"
 
 import { media, rem } from 'styles/utils'
 
@@ -41,23 +39,32 @@ const Aside = styled.aside`
   } */}
 `
 
-const SectionWrapper = styled.div`
+const Index = styled.div`
   margin-bottom: ${rem(24)};
-
-  h3 {
-     margin: 0 0 0.2rem;
-  }
 
   ul {
     padding: 0;
     margin: 0;
+    li {
+      margin-bottom: 1rem;
+      ul {
+        margin-bottom: 20px;
+        li {
+          margin: 0 1rem;
+        }
+      }
+    }
   }
 
-  li {
-     margin: 0 1rem;
+  p {
+    margin: 0.2rem 0 0;
+    font-size: ${rem(20)};
+    font-weight: 700;
+    a {
+      border: none;
+    }
   }
 `
-
 
 const ListLink = ({ to, children }) => (
   <li >
@@ -72,26 +79,28 @@ ListLink.propTypes = {
   children: PropTypes.string.isRequired
 }
 
-
-const Section = ({ title, items }) => (
-  <SectionWrapper>
-    <h3>
-      {title}
-    </h3>
-    <ul>
-      {items.map(item => (
-        <ListLink
-          to={item.link}
-          key={item.title}
-        >
-          {item.title}
-        </ListLink>
-      ))}
-    </ul>
-  </SectionWrapper>
+const TableOfContents = () => (
+  <StaticQuery
+    query={graphql`
+      {
+        md: allMarkdownRemark(
+          filter: {fields: {slug: {regex:"/documentation/"}}}
+        ){
+          edges {
+            node {
+              tableOfContents
+            }
+          }
+        }
+      }
+    `}
+    render={({ md: { edges } }) => (
+      <Index dangerouslySetInnerHTML={{ __html: edges[0].node.tableOfContents }} />
+    )}
+  />
 )
 
-Section.propTypes = {
+TableOfContents.propTypes = {
   title: PropTypes.string.isRequired,
   items: PropTypes.array.isRequired
 }
@@ -143,9 +152,7 @@ class Sidebar extends Component {
           fixed={fixed}
           hide={sidebar}
         >
-          {index.map(section => (
-            <Section {...section} key={section.title} />
-          ))}
+          <TableOfContents />
         </Aside>
       </SidebarWrapper>
     )

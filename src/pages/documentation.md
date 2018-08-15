@@ -6,7 +6,7 @@ cover: '/images/docs.jpeg'
 ## Introduction
 This documentation will help you get familiar with the resources of the **Rick and Morty API** and show you how to make different queries, so that you can get the most out of it.
 
-### Rate limit
+### Rate limit asdasd
 The **Rick and Morty API** is an open API, no authentication is required for use. Nonetheless, to prevent malicious usage of the API there is a limit on the number of requests a given IP address can make. This limit is 10000 requests per day. If you happen to hit the limit you'll receive a `429` status (Too Many Requests) on all your requests during a period of 12 hours.
 
 ### Base URL
@@ -564,17 +564,17 @@ If you want to know how to use queries, check [here](#filter-characters)
 ## Libraries
 Here you will find a list of helper libraries to use the Rick and Morty API with your preferred language.   
 
-#### Elixir
+### Elixir
 - [ExShla - The Rick and Morty API Wrapper](https://github.com/l1h3r/ex_shla) by [l1h3r](https://github.com/l1h3r)
 
-#### GraphQL
+### GraphQL
 - [The Rick and Morty GraphQL API](https://github.com/arthurdenner/rick-and-morty-graphql-api) by [Arthur Denner](https://github.com/arthurdenner)
 
-#### JavaScript
+### JavaScript
 - [The Rick and Morty API JavaScript client](https://github.com/afuh/rick-and-morty-api-node) by [Simple Rick](https://github.com/afuh)
 
-#### Python
+### Python
 - [Python implementation for the Rick and Morty API](https://github.com/curiousrohan/ramapi) by [Rohan Hazra](https://github.com/curiousrohan)
 
-#### Ruby
+### Ruby
 - [The Rick and Morty API Gem](https://github.com/spielhoelle/rick-and-morty-gem) by [Tommy Spielhoelle](https://github.com/spielhoelle)
