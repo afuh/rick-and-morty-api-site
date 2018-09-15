@@ -6,7 +6,8 @@ const libraries = [
   { link: 'https://github.com/spielhoelle/rick-and-morty-gem', author: 'https://github.com/spielhoelle' },
   { link: 'https://github.com/l1h3r/ex_shla', author: 'https://github.com/l1h3r' },
   { link: 'https://github.com/afuh/rick-and-morty-api-node', author: 'https://github.com/afuh' },
-  { link: 'https://github.com/curiousrohan/ramapi', author: 'https://github.com/curiousrohan' }
+  { link: 'https://github.com/curiousrohan/ramapi', author: 'https://github.com/curiousrohan' },
+  { link: 'https://github.com/Carlj28/RickAndMorty.Net.Api', author: 'https://github.com/Carlj28' }
 ]
 
 describe("Documentation page", () => {
