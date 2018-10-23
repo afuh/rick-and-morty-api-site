@@ -4,7 +4,7 @@ module.exports = {
   description: 'Hey, did you ever want to hold a Terry fold?',
   siteUrl: 'https://rickandmortyapi.com',
   image: '/images/site.jpeg',
-  favicon: '/images/rm48.png',
+  favicon: '/images/icon48.png',
   userTwitter: 'rickandmortyapi',
   themeColor: '#FF9800',
   backgroundColor: '#fff',
