@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link as GatsbyLink } from 'gatsby'
-import GithubIcon from "react-icons/lib/go/mark-github"
+import { GoMarkGithub as GithubIcon } from "react-icons/go"
 import styled, { css } from 'styled-components'
 
 import { navHeight, flex, media, theme, hover } from 'styles/utils'

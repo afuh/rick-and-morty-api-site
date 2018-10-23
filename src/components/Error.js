@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
-import Back from "react-icons/lib/go/arrow-left"
+import { GoArrowLeft as Back } from "react-icons/go"
 import { getCharacter } from 'rickmortyapi'
 import styled, { css } from 'styled-components'
 

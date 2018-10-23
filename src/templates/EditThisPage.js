@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import EditIcon from "react-icons/lib/go/pencil"
+import { GoPencil as EditIcon } from "react-icons/go"
 import config from "siteConfig"
 
 import { flex, theme, rem } from 'styles/utils'

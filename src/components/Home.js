@@ -72,7 +72,7 @@ const SubTitle = styled.h2`
     font-size: ${rem(20)};
   `)}
 `
-const HiddenSubTitle = SubTitle.extend`
+const HiddenSubTitle = styled(SubTitle)`
   position: absolute;
   padding: 0 ${rem(4)};
   width: 100%;
