@@ -1,12 +1,11 @@
 import React from 'react'
-import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
 import { graphql } from "gatsby"
 import styled, { css } from 'styled-components'
 
 import prismCSS from 'styles/prism'
 
-import SEO from 'components/SEO'
+import SEO from 'utils/seo'
 import Layout from 'components/Layout'
 import EditThisPage from './EditThisPage'
 import Sidebar from './Sidebar'
@@ -50,14 +49,18 @@ const Content = styled.div`
 `
 
 const Markdown = ({ data: { md, site }, location }) => {
-  const { html, frontmatter: { title }, fields: { slug } } = md
+  const { html, excerpt, frontmatter: { title, cover }, fields: { slug } } = md
   const { meta } = site
 
   return (
     <Layout location={location}>
       <>
-        <Helmet title={`${title} | ${meta.title}`} />
-        <SEO postPath={slug} postNode={md} postSEO />
+        <SEO
+          title={`${title} | ${meta.title}`}
+          description={excerpt}
+          pathname={location.pathname}
+          image={cover}
+        />
         <Content>
           {slug.includes('documentation') ?
             <Docs>
@@ -87,8 +90,10 @@ export const pageQuery = graphql`
   query ($slug: String!) {
     md: markdownRemark(fields: { slug: { eq: $slug } }) {
       html
+      excerpt
       frontmatter {
         title
+        cover
       }
       fields {
         slug
