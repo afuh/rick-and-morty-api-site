@@ -4,7 +4,7 @@ import { Link as GatsbyLink } from 'gatsby'
 import { GoMarkGithub as GithubIcon } from "react-icons/go"
 import styled, { css } from 'styled-components'
 
-import { navHeight, flex, media, theme, hover } from 'styles/utils'
+import { navHeight, flex, media, hover } from 'styles/utils'
 
 import config from "siteConfig"
 import index from 'data/navbar.yaml'
@@ -17,12 +17,12 @@ const menuColor = (location, name) => {
 }
 
 const Link = styled(GatsbyLink)`
-  color: ${theme.black};
+  color: ${({ theme }) => theme.black};
   transition: all .2s;
   border: none;
 
   ${({ path, name }) => menuColor(path, name) && css`
-    color: ${theme.orange};
+    color: ${({ theme }) => theme.orange};
   `}
 `
 
@@ -62,20 +62,20 @@ const Nav = styled.nav`
 
   ${media.xs(css`
     padding: 0;
-    border-bottom: 1px solid ${theme.lightgray};
+    border-bottom: 1px solid ${({ theme }) => theme.lightgray};
   `)}
 `
 
 const GHLink = styled.a`
   ${hover(css`
-    color: ${theme.orange};
+    color: ${({ theme }) => theme.orange};
   `)}
 
   ${media.xs(css`
     flex: 1;
     align-self: stretch;
     ${flex};
-    border-left: 1px solid ${theme.lightgray};
+    border-left: 1px solid ${({ theme }) => theme.lightgray};
   `)}
 
   ${media.custom(340, css`

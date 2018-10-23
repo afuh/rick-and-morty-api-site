@@ -9,7 +9,7 @@ const [ { count } ] = statistics
 
 import Card from './CharacterCard'
 
-import { flex, rem, theme, media, navHeight } from 'styles/utils'
+import { flex, rem, media, navHeight } from 'styles/utils'
 
 const HeroWrapper = styled.section`
   ${flex}
@@ -26,7 +26,7 @@ const HeroWrapper = styled.section`
 
 const SubTitleWrapper = styled.div`
   padding: ${rem(5)} ${rem(4)} 0;
-  background: ${theme.backBlack};
+  background: ${({ theme }) => theme.backBlack};
   transform: skew(-2deg) translateY(-6px);
 
   ${media.sm(css`
@@ -38,7 +38,7 @@ const headers = css`
   margin: 0;
   text-transform: uppercase;
   line-height: 0.75em;
-  color: ${theme.backBlack};
+  color: ${({ theme }) => theme.backBlack};
   border: none;
 
   ${media.sm(css`
@@ -65,7 +65,7 @@ const SubTitle = styled.h2`
   ${headers}
 
   font-size: ${rem(30)};
-  color: ${theme.orange};
+  color: ${({ theme }) => theme.orange};
   transform: skew(2deg);
 
   ${media.xs(css`
@@ -81,8 +81,8 @@ const HiddenSubTitle = styled(SubTitle)`
   color: transparent;
 
   &::selection {
-    background: ${theme.orange};
-    color: ${theme.backBlack};
+    background: ${({ theme }) => theme.orange};
+    color: ${({ theme }) => theme.backBlack};
   }
 `
 
@@ -108,7 +108,7 @@ const ShowcaseWrapper = styled.section`
   ${flex}
 
   padding: ${rem(30)};
-  background: ${theme.backBlack};
+  background: ${({ theme }) => theme.backBlack};
   min-height: calc(60vh - ${navHeight});
 
   ${media.xs(css`

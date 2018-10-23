@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components'
 
 import data from 'data/statistics.yaml'
 
-import { navHeight, flex, media, theme, hover, rem } from 'styles/utils'
+import { navHeight, flex, media, hover, rem } from 'styles/utils'
 
 const StatisticsWrapper = styled.div`
   ${flex}
@@ -25,8 +25,8 @@ const FoooterWrapper = styled.footer`
   flex-direction: column;
   flex-wrap: nowrap;
 
-  background: ${theme.backBlack};
-  color: ${theme.gray};
+  background: ${({ theme }) => theme.backBlack};
+  color: ${({ theme }) => theme.gray};
 
   padding: 10px 0;
   width: 100%;
@@ -41,11 +41,11 @@ const SignWrapper = styled.div`
     a {
       font-weight: 400;
       transition: color .2s;
-      color: ${theme.whitesmoke};
-      border-bottom: 1px solid ${theme.orange};
+      color: ${({ theme }) => theme.whitesmoke};
+      border-bottom: 1px solid ${({ theme }) => theme.orange};
 
       ${hover(css`
-        color: ${theme.orange};
+        color: ${({ theme }) => theme.orange};
         border-bottom: none;
       `)}
     }
