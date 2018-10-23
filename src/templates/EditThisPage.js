@@ -18,7 +18,7 @@ const Wrapper = styled.div.attrs({
 
 const Anchor = styled.a.attrs({
   className: 'edit-page', // for test
-  href: ({ to }) => `${config.github}/blob/develop/src/pages${to.slice(0, -1)}.md`
+  href: ({ to }) => `${config.github.site}/blob/develop/src/pages${to.slice(0, -1)}.md`
 })`
 
   ${flex}

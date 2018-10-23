@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import { graphql } from "gatsby"
 import styled, { css } from 'styled-components'
 
-import config from "siteConfig"
 import prismCSS from 'styles/prism'
 
 import SEO from 'components/SEO'
@@ -50,14 +49,15 @@ const Content = styled.div`
 
 `
 
-const Markdown = ({ data: { markdownRemark }, location }) => {
-  const { html, frontmatter: { title }, fields: { slug } } = markdownRemark
+const Markdown = ({ data: { md, site }, location }) => {
+  const { html, frontmatter: { title }, fields: { slug } } = md
+  const { meta } = site
 
   return (
     <Layout location={location}>
       <>
-        <Helmet title={`${title} | ${config.siteTitle}`} />
-        <SEO postPath={slug} postNode={markdownRemark} postSEO />
+        <Helmet title={`${title} | ${meta.title}`} />
+        <SEO postPath={slug} postNode={md} postSEO />
         <Content>
           {slug.includes('documentation') ?
             <Docs>
@@ -77,21 +77,26 @@ const Markdown = ({ data: { markdownRemark }, location }) => {
 
 Markdown.propTypes = {
   data: PropTypes.shape({
-    markdownRemark: PropTypes.object
+    md: PropTypes.object
   }).isRequired
 }
 
 export default Markdown
 
 export const pageQuery = graphql`
-  query ProjectPostBySlug($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+  query ($slug: String!) {
+    md: markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {
         title
       }
       fields {
         slug
+      }
+    }
+    site {
+      meta: siteMetadata {
+        title
       }
     }
   }

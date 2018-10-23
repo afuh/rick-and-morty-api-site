@@ -81,29 +81,12 @@ ListLink.propTypes = {
 
 const TableOfContents = () => (
   <StaticQuery
-    query={graphql`
-      {
-        md: allMarkdownRemark(
-          filter: {fields: {slug: {regex:"/documentation/"}}}
-        ){
-          edges {
-            node {
-              tableOfContents
-            }
-          }
-        }
-      }
-    `}
-    render={({ md: { edges } }) => (
-      <Index dangerouslySetInnerHTML={{ __html: edges[0].node.tableOfContents }} />
+    query={query}
+    render={({ md }) => (
+      <Index dangerouslySetInnerHTML={{ __html: md.tableOfContents }} />
     )}
   />
 )
-
-TableOfContents.propTypes = {
-  title: PropTypes.string.isRequired,
-  items: PropTypes.array.isRequired
-}
 
 class Sidebar extends Component {
   marginTop
@@ -168,3 +151,11 @@ Sidebar.defaultPRops = {
 }
 
 export default Sidebar
+
+const query = graphql`
+  {
+    md: markdownRemark(fileAbsolutePath: {regex: "/documentation/"}) {
+      tableOfContents
+    }
+  }
+`

@@ -1,13 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link as GatsbyLink } from 'gatsby'
+import { Link as GatsbyLink, StaticQuery, graphql } from 'gatsby'
 import { GoMarkGithub as GithubIcon } from "react-icons/go"
 import styled, { css } from 'styled-components'
 
 import { navHeight, flex, media, hover } from 'styles/utils'
-
-import config from "siteConfig"
-import index from 'data/navbar.yaml'
 
 const menuColor = (location, name) => {
   if ((location === '/' && name === 'Home') || location.match(`/${name.toLowerCase()}`)) {
@@ -102,14 +99,14 @@ ListLink.propTypes = {
   name: PropTypes.string.isRequired
 }
 
-const Navigation = ({ location }) => (
+const Navigation = ({ nav, location }) => (
   <List>
-    {index.map(i => (
+    {nav.map(i => (
       <ListLink
         key={i.title}
         location={location}
         name={i.title}
-        to={i.link}
+        to={i.path}
       >
         {i.title}
       </ListLink>
@@ -118,25 +115,38 @@ const Navigation = ({ location }) => (
 )
 
 Navigation.propTypes = {
-  location: PropTypes.object.isRequired
+  location: PropTypes.object.isRequired,
+  nav: PropTypes.array.isRequired
 }
 
-const Github = () => (
+const Github = ({ url }) => (
   <GHLink
-    href={config.githubAPI}
+    href={url}
     title="GitHub"
   >
     <GithubIcon style={{ fontSize: 18 }}/>
   </GHLink>
 )
 
+Github.propTypes = {
+  url: PropTypes.string.isRequired
+}
+
 const Header = ({ location }) => (
-  <header style={{ height: navHeight }}>
-    <Nav>
-      <Navigation location={location}/>
-      <Github />
-    </Nav>
-  </header>
+  <StaticQuery
+    query={query}
+    render={({ site: { meta: { github, nav } } }) => (
+      <header style={{ height: navHeight }}>
+        <Nav>
+          <Navigation
+            location={location}
+            nav={nav}
+          />
+          <Github url={github.api}/>
+        </Nav>
+      </header>
+    )}
+  />
 )
 
 Header.propTypes = {
@@ -144,3 +154,19 @@ Header.propTypes = {
 }
 
 export default Header
+
+const query = graphql`
+  {
+    site {
+      meta: siteMetadata {
+        github {
+          api
+        }
+        nav {
+          title
+          path
+        }
+      }
+    }
+  }
+`
