@@ -6,10 +6,18 @@ import { graphql } from 'gatsby'
 import ErrorMessage from '../components/Error'
 import Layout from '../components/Layout'
 
-const NotFoundPage = ({ location, data: { site: { meta } } }) => (
+const NotFoundPage = ({
+  data: {
+    stats,
+    site: {
+      meta
+    }
+  },
+  location
+}) => (
   <Layout location={location}>
     <Helmet title={`Oh Jeez! | ${meta.title}`} />
-    <ErrorMessage />
+    <ErrorMessage stats={stats}/>
   </Layout>
 )
 
@@ -17,11 +25,13 @@ NotFoundPage.propTypes = {
   data: PropTypes.object.isRequired
 }
 
-
 export default NotFoundPage
 
 export const query = graphql`
   {
+    stats: apiStatistics {
+      character
+    }
     site {
       meta: siteMetadata {
         title

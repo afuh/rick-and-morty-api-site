@@ -4,9 +4,6 @@ import Spinner from 'react-spinkit'
 import { getCharacter } from 'rickmortyapi'
 import styled, { css } from 'styled-components'
 
-import statistics from 'data/statistics.yaml'
-const [ { count } ] = statistics
-
 import Card from './CharacterCard'
 
 import { flex, rem, media, navHeight } from 'styles/utils'
@@ -138,8 +135,9 @@ class Home extends Component {
     data: []
   }
   randomChars(){
+    const { stats } = this.props
     while (this.chars.length < 8) {
-      const num = Math.floor(Math.random() * (count - 1 + 1) + 1)
+      const num = Math.floor(Math.random() * (stats.character - 1 + 1) + 1)
 
       if (this.chars.indexOf(num) > - 1) continue
       this.chars[this.chars.length] = num
@@ -177,7 +175,8 @@ class Home extends Component {
 
 Home.propTypes = {
   title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired
+  description: PropTypes.string.isRequired,
+  stats: PropTypes.object.isRequired
 }
 
 

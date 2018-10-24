@@ -12,6 +12,10 @@ module.exports = {
     site: 'https://github.com/afuh/rick-and-morty-api-site',
     api: 'https://github.com/afuh/rick-and-morty-api'
   },
+  author: {
+    name: 'Axel Fuhrmann',
+    site: 'https://axelfuhrmann.com/'
+  },
   nav: [
     { title: "Home", path: "/" },
     { title: "About", path: "/about" },
