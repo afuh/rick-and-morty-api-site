@@ -12,7 +12,6 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-catch-links',
-    `gatsby-transformer-yaml`,
     `gatsby-plugin-styled-components`,
     {
       resolve: 'gatsby-plugin-manifest',
