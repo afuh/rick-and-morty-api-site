@@ -1,12 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
-import Back from "react-icons/lib/go/arrow-left"
+import { GoArrowLeft as Back } from "react-icons/go"
 import { getCharacter } from 'rickmortyapi'
 import styled, { css } from 'styled-components'
-
-import statistics from 'data/statistics.yaml'
-const [ { count } ] = statistics
 
 import { navHeight, flex, media, rem, size } from 'styles/utils'
 
@@ -118,7 +115,8 @@ class ErrorMessage extends Component {
   }
 
   handleRequest = async () => {
-    const num = Math.floor(Math.random() * (count - 1 + 1) + 1)
+    const { stats } = this.props
+    const num = Math.floor(Math.random() * (stats.character - 1 + 1) + 1)
 
     const { image, name } = await getCharacter(num)
     this.setState({ image, name })
@@ -135,6 +133,10 @@ class ErrorMessage extends Component {
       </Wrapper>
     )
   }
+}
+
+ErrorMessage.propTypes = {
+  stats: PropTypes.object.isRequired
 }
 
 export default ErrorMessage

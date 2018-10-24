@@ -2,11 +2,11 @@
 
 describe("Error page", () => {
   before(() => {
-    cy.visit('/404.html')
+    cy.visit('/asdf', { failOnStatusCode: false })
 
     navigator.serviceWorker.getRegistrations()
-      .then((registrations) => {
-        for(let registration of registrations) {
+      .then(registrations => {
+        for (let registration of registrations) {
           registration.unregister()
         }
       })
@@ -49,7 +49,7 @@ describe("Error page", () => {
   describe("Go Back button", () => {
     it("Should navigate to the home page", () => {
       cy.get('main').within(() => {
-        cy.get('a').should('have.attr', 'href', '/').click({force: true})
+        cy.get('a').should('have.attr', 'href', '/').click({ force: true })
         cy.url().should('include', '/')
       })
     })

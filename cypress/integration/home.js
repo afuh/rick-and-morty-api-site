@@ -1,7 +1,5 @@
 /* global it describe cy before expect*/
 import config from "../../config/siteConfig"
-const YAML = require('yamljs')
-
 
 describe("Home page", () => {
   before(() => {
@@ -20,7 +18,7 @@ describe("Home page", () => {
   describe('Header', () => {
     it("Should navigate thorough the site", () => {
 
-      cy.get('nav a[title="GitHub"]').should('have.attr', 'href', config.githubAPI)
+      cy.get('nav a[title="GitHub"]').should('have.attr', 'href', config.github.api)
 
       cy.get('nav').contains('About').click({ force: true })
       cy.url().should('include', '/about')
@@ -45,8 +43,8 @@ describe("Home page", () => {
   describe('Main', () => {
     it('Should contains a title and a subtitle', () => {
       cy.get('main').within(() => {
-        cy.get('h1').contains(config.siteTitle)
-        cy.get('h2').contains(config.siteDescription)
+        cy.get('h1').contains(config.title)
+        cy.get('h2').contains(config.description)
       })
     })
 
@@ -108,21 +106,20 @@ describe("Home page", () => {
 
   describe('Footer', () => {
     it('Should contains statistic info and a link ', () => {
+      const col = ['characters', 'locations', 'episodes']
+
       cy.scrollTo('bottom')
       cy.get('footer').within(() => {
 
-        cy.readFile('/src/data/statistics.yaml')
-          .then(stats => {
-            YAML.parse(stats).map(stat => {
-              cy.get('span').contains(`${stat.title.toUpperCase()}: ${stat.count}`)
-            })
-          })
+        col.map(c => {
+          cy.get('span').contains(c.toUpperCase())
+        })
 
         cy.get('a')
-          .contains('Axel Fuhrmann')
-          .should('have.attr', 'href', "http://axelfuhrmann.com/")
+          .contains(config.author.name)
+          .should('have.attr', 'href', config.author.site)
 
-        cy.request("http://axelfuhrmann.com/").then(res => expect(res.status).not.to.eq(400))
+        cy.request(config.author.site).then(res => expect(res.status).not.to.eq(400))
       })
     })
   })
