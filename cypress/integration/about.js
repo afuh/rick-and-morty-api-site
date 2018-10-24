@@ -36,17 +36,17 @@ describe("About page", () => {
       cy.url().should('include', '/documentation')
       cy.get('a').contains('About').click({ force: true })
 
-      cy.get('a').contains('Axel Fuhrmann').should('have.attr', 'href', 'http://axelfuhrmann.com')
+      cy.get('a').contains('Axel Fuhrmann').should('have.attr', 'href', config.author.site)
       cy.get('a').contains('Talita').should('have.attr', 'href', 'https://talitatraveler.wordpress.com/')
-      cy.get('a').contains('PR').should('have.attr', 'href', config.github)
-      cy.get('a').contains('GitHub').should('have.attr', 'href', config.githubAPI)
+      cy.get('a').contains('PR').should('have.attr', 'href', config.github.site)
+      cy.get('a').contains('GitHub').should('have.attr', 'href', config.github.api)
       cy.get('a').contains('email').should('have.attr', 'href', 'mailto:axelfuh@gmail.com')
     })
   })
 
   describe('Github edit page button', () => {
     it("Should be a link to edit the page", () => {
-      cy.get('a.edit-page').should('have.attr', 'href', config.github + '/blob/develop/src/pages/about.md')
+      cy.get('a.edit-page').should('have.attr', 'href', config.github.site + '/blob/develop/src/pages/about.md')
     })
   })
 
