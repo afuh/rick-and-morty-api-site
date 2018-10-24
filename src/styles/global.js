@@ -1,5 +1,15 @@
 import { css } from "styled-components"
-import { theme, hover, size } from 'styles/utils'
+import { hover, size } from 'styles/utils'
+
+export const theme = {
+  orange: '#FF9800',
+  black: '#333',
+  backBlack: '#202329',
+  gray: '#9E9E9E',
+  whitesmoke: "#f5f5f5",
+  lightgray: '#d8d8d8',
+  shadow: '0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08)'
+}
 
 export default css`
   a {

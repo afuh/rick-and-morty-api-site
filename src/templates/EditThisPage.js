@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import EditIcon from "react-icons/lib/go/pencil"
+import { GoPencil as EditIcon } from "react-icons/go"
 import config from "siteConfig"
 
-import { flex, theme, rem } from 'styles/utils'
+import { flex, rem } from 'styles/utils'
 
 const Wrapper = styled.div.attrs({
   id: "edit-wrapper" // to query it in the Sidebar
@@ -13,12 +13,12 @@ const Wrapper = styled.div.attrs({
 
   margin: 40px auto 0 ;
   max-width: 1220px;
-  border-top: 1px solid ${theme.lightgray};
+  border-top: 1px solid ${({ theme }) => theme.lightgray};
 `
 
 const Anchor = styled.a.attrs({
   className: 'edit-page', // for test
-  href: ({ to }) => `${config.github}/blob/develop/src/pages${to.slice(0, -1)}.md`
+  href: ({ to }) => `${config.github.site}/blob/develop/src/pages${to.slice(0, -1)}.md`
 })`
 
   ${flex}

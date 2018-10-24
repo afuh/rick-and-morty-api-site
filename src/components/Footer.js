@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { StaticQuery, graphql } from 'gatsby'
+
 import styled, { css } from 'styled-components'
 
-import data from 'data/statistics.yaml'
-
-import { navHeight, flex, media, theme, hover, rem } from 'styles/utils'
+import { navHeight, flex, media, hover, rem } from 'styles/utils'
 
 const StatisticsWrapper = styled.div`
   ${flex}
@@ -25,8 +25,8 @@ const FoooterWrapper = styled.footer`
   flex-direction: column;
   flex-wrap: nowrap;
 
-  background: ${theme.backBlack};
-  color: ${theme.gray};
+  background: ${({ theme }) => theme.backBlack};
+  color: ${({ theme }) => theme.gray};
 
   padding: 10px 0;
   width: 100%;
@@ -41,11 +41,11 @@ const SignWrapper = styled.div`
     a {
       font-weight: 400;
       transition: color .2s;
-      color: ${theme.whitesmoke};
-      border-bottom: 1px solid ${theme.orange};
+      color: ${({ theme }) => theme.whitesmoke};
+      border-bottom: 1px solid ${({ theme }) => theme.orange};
 
       ${hover(css`
-        color: ${theme.orange};
+        color: ${({ theme }) => theme.orange};
         border-bottom: none;
       `)}
     }
@@ -55,7 +55,7 @@ const SignWrapper = styled.div`
 const Statistics = ({ title, count }) => (
   <div style={{ margin: "4px 8px" }}>
     <span>
-      {title.toUpperCase()}: {count}
+      {`${title}s`.toUpperCase()}: {count}
     </span>
   </div>
 )
@@ -65,33 +65,68 @@ Statistics.propTypes = {
   count: PropTypes.number.isRequired
 }
 
-const Numbers = () => (
+const Numbers = ({ stats }) => (
   <StatisticsWrapper>
-    {data.map((res, i) => (
+    {Object.keys(stats).map((endpoint, i) => (
       <Statistics
         key={i}
-        title={res.title}
-        count={res.count}
+        title={endpoint}
+        count={stats[endpoint]}
       />
     ))}
   </StatisticsWrapper>
 )
 
-const Sign = () => (
+Numbers.propTypes = {
+  stats: PropTypes.object.isRequired
+}
+
+const Sign = ({ author }) => (
   <SignWrapper>
     <span >
-      ❮❯ by <a href="http://axelfuhrmann.com/">Axel Fuhrmann</a>
+      ❮❯ by <a href={author.site}>{author.name}</a>
     </span>
     <span>{` `}{new Date().getFullYear()}</span>
   </SignWrapper>
 )
 
+Sign.propTypes = {
+  author: PropTypes.object.isRequired
+}
+
 const Footer = () => (
-  <FoooterWrapper>
-    <Numbers />
-    <Sign />
-  </FoooterWrapper>
+  <StaticQuery
+    query={query}
+    render={({
+      stats,
+      site: { meta: { author } }
+    }) => (
+      <FoooterWrapper>
+        <Numbers stats={stats}/>
+        <Sign author={author}/>
+      </FoooterWrapper>
+    )}
+  />
 )
+
+const query = graphql`
+  {
+    stats: apiStatistics {
+      character
+      location
+      episode
+    }
+    site {
+      meta: siteMetadata {
+        author {
+          name
+          site
+        }
+      }
+    }
+  }
+`
+
 
 
 export default Footer

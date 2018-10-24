@@ -6,36 +6,24 @@ const config = require('./config/siteConfig')
 
 module.exports = {
   siteMetadata: {
-    siteUrl: config.siteUrl
+    ...config
   },
   plugins: [
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-catch-links',
-    `gatsby-transformer-yaml`,
     `gatsby-plugin-styled-components`,
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: config.siteTitle,
-        short_name: config.siteTitleAlt,
-        description: config.siteDescription,
-        start_url: config.pathPrefix,
+        name: config.title,
+        short_name: config.shortTitle,
+        description: config.description,
+        start_url: "/",
         background_color: config.backgroundColor,
         theme_color: config.themeColor,
-        display: 'minimal-ui',
-        icons: [
-          {
-            src: '/images/rm192.png',
-            sizes: '192x192',
-            type: 'image/png'
-          },
-          {
-            src: '/images/rm512.png',
-            sizes: '512x512',
-            type: 'image/png'
-          }
-        ]
+        display: 'standalone',
+        icon: 'src/assets/rm512.png'
       }
     },
     {
@@ -43,12 +31,7 @@ module.exports = {
       options: {
         plugins: [
           `gatsby-remark-autolink-headers`,
-          {
-            resolve: `gatsby-remark-prismjs`,
-            options: {
-              classPrefix: "language-"
-            }
-          }
+          `gatsby-remark-prismjs`
         ]
       }
     },

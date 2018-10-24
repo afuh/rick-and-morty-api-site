@@ -3,14 +3,14 @@ import PropTypes from 'prop-types'
 import moment from 'moment'
 import styled, { css } from 'styled-components'
 
-import { flex, rem, theme } from 'styles/utils'
+import { flex, rem } from 'styles/utils'
 
 const Wrapper = styled.article`
   max-width: 300px;
   border-radius: ${rem(10)};
   overflow: hidden;
   margin-bottom: ${rem(10)};
-  box-shadow: ${theme.shadow};
+  box-shadow: ${({ theme }) => theme.shadow};
 
   img {
     margin: 0;
@@ -24,6 +24,12 @@ const ImgWrapper = styled.div.attrs({
   position: relative;
   max-width: 300px;
   max-height: 300px;
+
+  .card-image {
+    width: 300px;
+    height: 300px;
+    background: ${({ theme }) => theme.backBlack}
+  }
 `
 
 const InfoWrapper = styled.div.attrs({
@@ -31,13 +37,13 @@ const InfoWrapper = styled.div.attrs({
 })`
   padding: ${rem(20)};
   height: 100%;
-  color: ${theme.orange};
-  background: ${theme.black};
+  color: ${({ theme }) => theme.orange};
+  background: ${({ theme }) => theme.black};
 `
 
 const Title = styled.div`
   width: 100%;
-  background: ${theme.backBlack};
+  background: ${({ theme }) => theme.backBlack};
   opacity: 0.8;
   position: absolute;
   bottom: 0;
@@ -45,7 +51,7 @@ const Title = styled.div`
 `
 
 const Name = styled.h2`
-  color: ${theme.whitesmoke};
+  color: ${({ theme }) => theme.whitesmoke};
   margin: 0;
   font-size: ${rem(26)};
   font-weight: 400;
@@ -66,7 +72,7 @@ const TextWrapper = styled.div`
   span {
     font-size: 0.7rem;
     font-weight: 400;
-    color: ${theme.gray}
+    color: ${({ theme }) => theme.gray}
   }
 
   p {
@@ -83,7 +89,6 @@ const TextWrapper = styled.div`
   `}
 `
 
-
 const Text = ({ title, data, last }) => (
   <TextWrapper divider={!last}>
     <span>{title.toUpperCase()}</span>
@@ -99,7 +104,7 @@ Text.propTypes = {
 
 const CardImg = ({ char }) => (
   <ImgWrapper>
-    <div style={{ width: 300, height: 300, background: theme.backBlack }}>
+    <div className='card-image'>
       <img src={char.image} alt={char.name}/>
     </div>
     <Title>

@@ -1,15 +1,41 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
+import { graphql } from 'gatsby'
 
-import config from "siteConfig"
 import ErrorMessage from '../components/Error'
 import Layout from '../components/Layout'
 
-const NotFoundPage = ({ location }) => (
+const NotFoundPage = ({
+  data: {
+    stats,
+    site: {
+      meta
+    }
+  },
+  location
+}) => (
   <Layout location={location}>
-    <Helmet title={`Oh Jeez! | ${config.siteTitle}`} />
-    <ErrorMessage />
+    <Helmet title={`Oh Jeez! | ${meta.title}`} />
+    <ErrorMessage stats={stats}/>
   </Layout>
 )
 
+NotFoundPage.propTypes = {
+  data: PropTypes.object.isRequired
+}
+
 export default NotFoundPage
+
+export const query = graphql`
+  {
+    stats: apiStatistics {
+      character
+    }
+    site {
+      meta: siteMetadata {
+        title
+      }
+    }
+  }
+`

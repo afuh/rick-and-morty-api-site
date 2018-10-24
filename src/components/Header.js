@@ -1,13 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link as GatsbyLink } from 'gatsby'
-import GithubIcon from "react-icons/lib/go/mark-github"
+import { Link as GatsbyLink, StaticQuery, graphql } from 'gatsby'
+import { GoMarkGithub as GithubIcon } from "react-icons/go"
 import styled, { css } from 'styled-components'
 
-import { navHeight, flex, media, theme, hover } from 'styles/utils'
-
-import config from "siteConfig"
-import index from 'data/navbar.yaml'
+import { navHeight, flex, media, hover } from 'styles/utils'
 
 const menuColor = (location, name) => {
   if ((location === '/' && name === 'Home') || location.match(`/${name.toLowerCase()}`)) {
@@ -17,12 +14,12 @@ const menuColor = (location, name) => {
 }
 
 const Link = styled(GatsbyLink)`
-  color: ${theme.black};
+  color: ${({ theme }) => theme.black};
   transition: all .2s;
   border: none;
 
   ${({ path, name }) => menuColor(path, name) && css`
-    color: ${theme.orange};
+    color: ${({ theme }) => theme.orange};
   `}
 `
 
@@ -62,20 +59,20 @@ const Nav = styled.nav`
 
   ${media.xs(css`
     padding: 0;
-    border-bottom: 1px solid ${theme.lightgray};
+    border-bottom: 1px solid ${({ theme }) => theme.lightgray};
   `)}
 `
 
 const GHLink = styled.a`
   ${hover(css`
-    color: ${theme.orange};
+    color: ${({ theme }) => theme.orange};
   `)}
 
   ${media.xs(css`
     flex: 1;
     align-self: stretch;
     ${flex};
-    border-left: 1px solid ${theme.lightgray};
+    border-left: 1px solid ${({ theme }) => theme.lightgray};
   `)}
 
   ${media.custom(340, css`
@@ -102,14 +99,14 @@ ListLink.propTypes = {
   name: PropTypes.string.isRequired
 }
 
-const Navigation = ({ location }) => (
+const Navigation = ({ nav, location }) => (
   <List>
-    {index.map(i => (
+    {nav.map(i => (
       <ListLink
         key={i.title}
         location={location}
         name={i.title}
-        to={i.link}
+        to={i.path}
       >
         {i.title}
       </ListLink>
@@ -118,25 +115,38 @@ const Navigation = ({ location }) => (
 )
 
 Navigation.propTypes = {
-  location: PropTypes.object.isRequired
+  location: PropTypes.object.isRequired,
+  nav: PropTypes.array.isRequired
 }
 
-const Github = () => (
+const Github = ({ url }) => (
   <GHLink
-    href={config.githubAPI}
+    href={url}
     title="GitHub"
   >
     <GithubIcon style={{ fontSize: 18 }}/>
   </GHLink>
 )
 
+Github.propTypes = {
+  url: PropTypes.string.isRequired
+}
+
 const Header = ({ location }) => (
-  <header style={{ height: navHeight }}>
-    <Nav>
-      <Navigation location={location}/>
-      <Github />
-    </Nav>
-  </header>
+  <StaticQuery
+    query={query}
+    render={({ site: { meta: { github, nav } } }) => (
+      <header style={{ height: navHeight }}>
+        <Nav>
+          <Navigation
+            location={location}
+            nav={nav}
+          />
+          <Github url={github.api}/>
+        </Nav>
+      </header>
+    )}
+  />
 )
 
 Header.propTypes = {
@@ -144,3 +154,19 @@ Header.propTypes = {
 }
 
 export default Header
+
+const query = graphql`
+  {
+    site {
+      meta: siteMetadata {
+        github {
+          api
+        }
+        nav {
+          title
+          path
+        }
+      }
+    }
+  }
+`

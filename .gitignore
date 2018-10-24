@@ -4,3 +4,4 @@ deploy.js
 node_modules
 .env.*
 public/
+cypress/screenshots
