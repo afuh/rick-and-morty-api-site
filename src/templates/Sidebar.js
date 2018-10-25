@@ -146,7 +146,7 @@ Sidebar.propTypes = {
   marginTop: PropTypes.number.isRequired
 }
 
-Sidebar.defaultPRops = {
+Sidebar.defaultProps = {
   marginTop: 20
 }
 
