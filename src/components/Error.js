@@ -115,8 +115,9 @@ class ErrorMessage extends Component {
   }
 
   handleRequest = async () => {
-    const { stats } = this.props
-    const num = Math.floor(Math.random() * (stats.character - 1 + 1) + 1)
+    const { stats: { characters } } = this.props
+
+    const num = Math.floor(Math.random() * (characters.info.count - 1 + 1) + 1)
 
     const { image, name } = await getCharacter(num)
     this.setState({ image, name })

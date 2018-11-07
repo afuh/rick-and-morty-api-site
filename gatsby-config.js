@@ -14,6 +14,14 @@ module.exports = {
     'gatsby-plugin-catch-links',
     `gatsby-plugin-styled-components`,
     {
+      resolve: "gatsby-source-graphql",
+      options: {
+        typeName: "rmAPI",
+        fieldName: "rickAndMortyAPI",
+        url: "https://rickandmortyapi.com/graphql"
+      }
+    },
+    {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: config.title,
