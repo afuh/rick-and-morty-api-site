@@ -23,7 +23,7 @@ query {
       name
     }
   }
-  episode(id: 1) {
+  character(id: 1) {
     id
   }
 }
