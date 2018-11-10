@@ -2,17 +2,17 @@ import { graphql } from "gatsby"
 
 export const APIStatistics = graphql`
   fragment statistics on rmAPI {
-    characters: allCharacters {
+    characters: characters {
       info {
         count
       }
     }
-    locations: allLocations {
+    locations: locations {
       info {
         count
       }
     }
-    episodes: allEpisodes {
+    episodes: episodes {
       info {
         count
       }
