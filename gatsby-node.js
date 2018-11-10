@@ -1,6 +1,5 @@
 const { createFilePath } = require(`gatsby-source-filesystem`)
 const path = require(`path`)
-const getStatistics = require('./config/getStatistics')
 
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
@@ -11,30 +10,6 @@ exports.onCreateWebpackConfig = ({ actions }) => {
       modules: [path.resolve(__dirname, "src"), "node_modules"]
     }
   })
-}
-
-exports.sourceNodes = async ({ actions, createNodeId, createContentDigest }) => {
-  const { createNode } = actions
-  const name = 'APIStatistics'
-
-  const data = await getStatistics()
-  
-  const nodeContent = JSON.stringify(data)
-
-  const nodeMeta = {
-    id: createNodeId(name),
-    parent: null,
-    children: [],
-    internal: {
-      type: name,
-      mediaType: `text/html`,
-      content: nodeContent,
-      contentDigest: createContentDigest(data)
-    }
-  }
-
-  const node = Object.assign({}, data, nodeMeta)
-  createNode(node)
 }
 
 exports.onCreateNode = ({ node, getNode, actions }) => {

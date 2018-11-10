@@ -29,8 +29,8 @@ export default NotFoundPage
 
 export const query = graphql`
   {
-    stats: apiStatistics {
-      character
+    stats: rickAndMortyAPI {
+      ...statistics
     }
     site {
       meta: siteMetadata {

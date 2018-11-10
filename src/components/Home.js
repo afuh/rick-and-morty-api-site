@@ -135,9 +135,9 @@ class Home extends Component {
     data: []
   }
   randomChars(){
-    const { stats } = this.props
+    const { stats: { characters } } = this.props
     while (this.chars.length < 8) {
-      const num = Math.floor(Math.random() * (stats.character - 1 + 1) + 1)
+      const num = Math.floor(Math.random() * (characters.info.count - 1 + 1) + 1)
 
       if (this.chars.indexOf(num) > - 1) continue
       this.chars[this.chars.length] = num

@@ -71,7 +71,7 @@ const Numbers = ({ stats }) => (
       <Statistics
         key={i}
         title={endpoint}
-        count={stats[endpoint]}
+        count={stats[endpoint].info.count}
       />
     ))}
   </StatisticsWrapper>
@@ -111,10 +111,8 @@ const Footer = () => (
 
 const query = graphql`
   {
-    stats: apiStatistics {
-      character
-      location
-      episode
+    stats: rickAndMortyAPI {
+      ...statistics
     }
     site {
       meta: siteMetadata {
