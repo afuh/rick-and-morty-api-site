@@ -55,7 +55,7 @@ const SignWrapper = styled.div`
 const Statistics = ({ title, count }) => (
   <div style={{ margin: "4px 8px" }}>
     <span>
-      {`${title}s`.toUpperCase()}: {count}
+      {title.toUpperCase()}: {count}
     </span>
   </div>
 )
