@@ -1,5 +1,11 @@
 # https://eslint.org/docs/rules/
 
+env:
+  es6: true
+  node: true
+  browser: true
+  jest: true
+
 parserOptions:
   sourceType: module
   ecmaVersion: 2018
@@ -8,14 +14,26 @@ parserOptions:
     browser: true
 
 parser: babel-eslint
+
 plugins:
   - react
+
 extends:
   - eslint:recommended
+  - plugin:import/errors
+  - plugin:import/warnings
   - plugin:react/recommended
 
 rules:
   # Stylistic
+
+  max-len:
+    - error
+    - 100
+    - 2
+    - ignoreUrls: true
+  linebreak-style:
+    - off
   indent:
     - error
     - 2
@@ -53,6 +71,7 @@ rules:
     - as-needed
 
   # Best practices
+  no-plusplus: error
   no-var: error
   no-else-return: error
   no-multi-spaces: error
@@ -65,17 +84,13 @@ rules:
     - object: true
       array: true
   strict: 0
+
+  # React
   react/no-deprecated: 'off'
+  react/display-name: 'off'
   react/prop-types:
     - error
     - ignore:
       - match
       - history
       - children
-      - location
-
-env:
-  es6: true
-  node: true
-  browser: true
-  jest: true

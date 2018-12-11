@@ -1,37 +1,29 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
-import { StaticQuery, graphql } from 'gatsby'
 import { createGlobalStyle, ThemeProvider } from "styled-components"
 
-import SEO from 'utils/seo'
-import Header from 'components/Header'
-import Footer from 'components/Footer'
+import SEO from '../utils/seo'
+import Header from './Header'
+import Footer from './Footer'
 
-import globalCSS, { theme } from 'styles/global'
+import globalCSS, { theme } from '../styles/global'
 
 const GlobalStyles = createGlobalStyle`
   ${globalCSS}
 `
 
 const Layout = ({ children, location }) => (
-  <StaticQuery
-    query={query}
-    render={({ site: { meta } }) => (
-      <ThemeProvider theme={theme}>
-        <>
-        <GlobalStyles />
-        <Helmet title={meta.titler} />
-        <SEO />
-        <Header location={location} />
-        <main>
-          {children}
-        </main>
-        <Footer />
-      </>
-      </ThemeProvider>
-    )}
-  />
+  <ThemeProvider theme={theme}>
+    <>
+      <GlobalStyles />
+      <SEO />
+      <Header location={location} />
+      <main>
+        {children}
+      </main>
+      <Footer />
+    </>
+  </ThemeProvider>
 )
 
 Layout.propTypes = {
@@ -39,13 +31,3 @@ Layout.propTypes = {
 }
 
 export default Layout
-
-const query = graphql`
-  {
-    site {
-      meta: siteMetadata {
-        title
-      }
-    }
-  }
-`
