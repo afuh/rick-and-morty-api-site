@@ -7,7 +7,8 @@ const libraries = [
   { link: 'https://github.com/l1h3r/ex_shla', author: 'https://github.com/l1h3r' },
   { link: 'https://github.com/afuh/rick-and-morty-api-node', author: 'https://github.com/afuh' },
   { link: 'https://github.com/curiousrohan/ramapi', author: 'https://github.com/curiousrohan' },
-  { link: 'https://github.com/Carlj28/RickAndMorty.Net.Api', author: 'https://github.com/Carlj28' }
+  { link: 'https://github.com/Carlj28/RickAndMorty.Net.Api', author: 'https://github.com/Carlj28' },
+  { link: 'https://github.com/pitakill/rickandmortyapigowrapper', author: 'https://github.com/pitakill' }
 ]
 
 describe("Documentation page", () => {
@@ -73,7 +74,12 @@ describe("Documentation page", () => {
 
   describe('Github edit page button', () => {
     it("Should be a link to edit the page", () => {
-      cy.get('a.edit-page').should('have.attr', 'href', config.github.site + '/blob/develop/src/pages/documentation.md')
+      cy.get('a.edit-page')
+        .should(
+          'have.attr',
+          'href',
+          config.github.site + '/blob/develop/src/pages/documentation.md'
+        )
     })
   })
 
