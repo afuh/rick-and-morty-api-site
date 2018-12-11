@@ -603,3 +603,6 @@ Here you will find a list of helper libraries to use the Rick and Morty API with
 
 ### Ruby
 - [The Rick and Morty API Gem](https://github.com/spielhoelle/rick-and-morty-gem) by [Tommy Spielhoelle](https://github.com/spielhoelle)
+
+### Go
+- [The Rick and Morty API Go client](https://github.com/pitakill/rickandmortyapigowrapper) by [Leopoldo Caballero](https://github.com/pitakill)
