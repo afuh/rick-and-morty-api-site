@@ -12,7 +12,6 @@ export const useSiteMeta = () => {
             subDescription
             siteUrl
             image
-            favicon
             userTwitter
             nav {
               title

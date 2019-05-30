@@ -10,7 +10,6 @@ const SEO = ({ title, description, image, pathname }) => {
     description: defaultDescription,
     image: defaultImage,
     siteUrl,
-    favicon,
     userTwitter
   } = useSiteMeta()
 
@@ -18,8 +17,7 @@ const SEO = ({ title, description, image, pathname }) => {
     title: title || defaultTitle,
     description: description || defaultDescription,
     image: `${siteUrl}${image ? image : defaultImage}`,
-    url: `${siteUrl}${pathname || '/'}`,
-    favicon: `${siteUrl}${favicon}`
+    url: `${siteUrl}${pathname || '/'}`
   }
 
   return (
@@ -27,9 +25,6 @@ const SEO = ({ title, description, image, pathname }) => {
       htmlAttributes={{ lang: "en" }}
       title={seo.title}
     >
-      <link rel="shortcut icon" href={seo.favicon}/>
-      <link rel="icon" href={seo.favicon}/>
-
       <meta name="description" content={seo.description} />
       <meta name="image" content={seo.image} />
 

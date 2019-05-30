@@ -5,7 +5,6 @@ module.exports = {
   subDescription: 'I got one right here, grab my terry flap',
   siteUrl: 'https://rickandmortyapi.com',
   image: '/images/site.jpeg',
-  favicon: '/images/icon48.png',
   userTwitter: 'rickandmortyapi',
   themeColor: '#FF9800',
   backgroundColor: '#fff',
