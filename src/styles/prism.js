@@ -1,7 +1,7 @@
 import { css } from "styled-components"
 import { lighten, darken } from 'polished'
 
-import { theme } from 'styles/global'
+import { theme } from '../styles/global'
 
 const schema = {
   red: "#F44336",

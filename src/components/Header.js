@@ -4,7 +4,7 @@ import { Link as GatsbyLink, StaticQuery, graphql } from 'gatsby'
 import { GoMarkGithub as GithubIcon } from "react-icons/go"
 import styled, { css } from 'styled-components'
 
-import { navHeight, flex, media, hover } from 'styles/utils'
+import { navHeight, flex, media, hover } from '../styles/utils'
 
 const menuColor = (location, name) => {
   if ((location === '/' && name === 'Home') || location.match(`/${name.toLowerCase()}`)) {

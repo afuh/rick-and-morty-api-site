@@ -5,7 +5,7 @@ import { GoArrowLeft as Back } from "react-icons/go"
 import { getCharacter } from 'rickmortyapi'
 import styled, { css } from 'styled-components'
 
-import { navHeight, flex, media, rem, size } from 'styles/utils'
+import { navHeight, flex, media, rem, size } from '../styles/utils'
 
 const Wrapper = styled.div`
   ${flex};

@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 
-import Home from 'components/Home'
-import Layout from 'components/Layout'
+import Home from '../components/Home'
+import Layout from '../components/layout'
 
 const Index = ({
   data: {
@@ -24,7 +24,8 @@ const Index = ({
 )
 
 Index.propTypes = {
-  data: PropTypes.object.isRequired
+  data: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired
 }
 
 export default Index

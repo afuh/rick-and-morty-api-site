@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 import { Link, StaticQuery, graphql } from "gatsby"
 
-import { media, rem } from 'styles/utils'
+import { media, rem } from '../styles/utils'
 
 const SidebarWrapper = styled.div`
   position: relative;
@@ -114,9 +114,13 @@ class Sidebar extends Component {
     }
 
     if (viewBottom >= this.footer.offsetTop){
-      this.setState({
-        sidebar: viewBottom - (this.footer.offsetTop - this.editPage.offsetHeight - this.props.marginTop)
-      })
+      const { offsetTop } = this.footer
+      const { offsetHeight } = this.editPage
+      const { marginTop } = this.props
+
+      const sidebar = viewBottom - (offsetTop - offsetHeight - marginTop)
+      console.log(sidebar)
+      this.setState({ sidebar })
     }
     else {
       this.setState({ sidebar: 0 })

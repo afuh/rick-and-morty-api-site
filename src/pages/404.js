@@ -4,7 +4,7 @@ import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
 
 import ErrorMessage from '../components/Error'
-import Layout from '../components/Layout'
+import Layout from '../components/layout'
 
 const NotFoundPage = ({
   data: {
@@ -22,7 +22,8 @@ const NotFoundPage = ({
 )
 
 NotFoundPage.propTypes = {
-  data: PropTypes.object.isRequired
+  data: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired
 }
 
 export default NotFoundPage

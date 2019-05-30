@@ -1,5 +1,6 @@
 import { css } from "styled-components"
-import { hover, size } from 'styles/utils'
+
+import { hover, size } from '../styles/utils'
 
 export const theme = {
   orange: '#FF9800',

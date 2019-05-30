@@ -6,7 +6,7 @@ import styled, { css } from 'styled-components'
 
 import Card from './CharacterCard'
 
-import { flex, rem, media, navHeight } from 'styles/utils'
+import { flex, rem, media, navHeight } from '../styles/utils'
 
 const HeroWrapper = styled.section`
   ${flex}

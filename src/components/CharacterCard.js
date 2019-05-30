@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import moment from 'moment'
 import styled, { css } from 'styled-components'
 
-import { flex, rem } from 'styles/utils'
+import { flex, rem } from '../styles/utils'
 
 const Wrapper = styled.article`
   max-width: 300px;

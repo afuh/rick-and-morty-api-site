@@ -4,7 +4,7 @@ import { StaticQuery, graphql } from 'gatsby'
 
 import styled, { css } from 'styled-components'
 
-import { navHeight, flex, media, hover, rem } from 'styles/utils'
+import { navHeight, flex, media, hover, rem } from '../styles/utils'
 
 const StatisticsWrapper = styled.div`
   ${flex}

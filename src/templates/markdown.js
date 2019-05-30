@@ -3,14 +3,13 @@ import PropTypes from 'prop-types'
 import { graphql } from "gatsby"
 import styled, { css } from 'styled-components'
 
-import prismCSS from 'styles/prism'
-
-import SEO from 'utils/seo'
-import Layout from 'components/Layout'
+import SEO from '../utils/seo'
+import Layout from '../components/layout'
 import EditThisPage from './EditThisPage'
 import Sidebar from './Sidebar'
 
-import { media, rem } from 'styles/utils'
+import prismCSS from '../styles/prism'
+import { media, rem } from '../styles/utils'
 
 const About = styled.div`
   ${media.custom(890, css`
@@ -79,6 +78,7 @@ const Markdown = ({ data: { md, site }, location }) => {
 }
 
 Markdown.propTypes = {
+  location: PropTypes.object.isRequired,
   data: PropTypes.shape({
     md: PropTypes.object
   }).isRequired
