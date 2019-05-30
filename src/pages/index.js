@@ -1,45 +1,23 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import { graphql } from 'gatsby'
 
 import Home from '../components/home'
 import Layout from '../components/layout'
+import { useSiteMeta, useRickAndMortyStats } from '../utils/hooks'
 
-const Index = ({
-  data: {
-    stats,
-    site: {
-      meta
-    }
-  },
-  location
-}) => (
-  <Layout location={location}>
-    <Home
-      stats={stats}
-      title={meta.title}
-      description={meta.description}
-    />
-  </Layout>
-)
+const Index = () => {
+  const { title, description } = useSiteMeta()
+  const stats = useRickAndMortyStats()
 
-Index.propTypes = {
-  data: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired
+  return (
+    <Layout>
+      <Home
+        stats={stats}
+        title={title}
+        description={description}
+      />
+    </Layout>
+  )
 }
 
-export default Index
 
-export const query = graphql`
-  {
-    stats: rickAndMortyAPI {
-      ...statistics
-    }
-    site {
-      meta: siteMetadata {
-        title
-        description
-      }
-    }
-  }
-`
+export default Index

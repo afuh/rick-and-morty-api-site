@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { createGlobalStyle, ThemeProvider } from "styled-components"
 
 import SEO from '../utils/seo'
@@ -11,12 +10,12 @@ const GlobalStyles = createGlobalStyle`
   ${globalCSS}
 `
 
-const Layout = ({ children, location }) => (
+const Layout = ({ children }) => (
   <ThemeProvider theme={theme}>
     <>
       <GlobalStyles />
       <SEO />
-      <Header location={location} />
+      <Header />
       <main>
         {children}
       </main>
@@ -24,9 +23,5 @@ const Layout = ({ children, location }) => (
     </>
   </ThemeProvider>
 )
-
-Layout.propTypes = {
-  location: PropTypes.object.isRequired
-}
 
 export default Layout

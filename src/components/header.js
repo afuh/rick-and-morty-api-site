@@ -1,26 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link as GatsbyLink, StaticQuery, graphql } from 'gatsby'
+import { Link as GatsbyLink } from 'gatsby'
 import { GoMarkGithub as GithubIcon } from "react-icons/go"
 import styled, { css } from 'styled-components'
 
 import { navHeight, flex, media, hover } from '../styles/utils'
-
-const menuColor = (location, name) => {
-  if ((location === '/' && name === 'Home') || location.match(`/${name.toLowerCase()}`)) {
-    return true
-  }
-  return false
-}
+import { useSiteMeta } from '../utils/hooks'
 
 const Link = styled(GatsbyLink)`
   color: ${({ theme }) => theme.black};
   transition: all .2s;
   border: none;
 
-  ${({ path, name }) => menuColor(path, name) && css`
+  &.active {
     color: ${({ theme }) => theme.orange};
-  `}
+  }
 `
 
 // On Mobile screens the link becomes bigger.
@@ -80,12 +74,13 @@ const GHLink = styled.a`
   `)}
 `
 
-const ListLink = ({ to, children, location, name }) => (
+const ListLink = ({ to, children, name }) => (
   <li style={{ margin: ' 0 1rem 0' }}>
     <Link
       to={to}
       name={name}
-      path={location.pathname}
+      activeClassName='active'
+      partiallyActive={to.length > 1}
     >
       {children}
     </Link>
@@ -95,28 +90,25 @@ const ListLink = ({ to, children, location, name }) => (
 ListLink.propTypes = {
   to: PropTypes.string.isRequired,
   children: PropTypes.string.isRequired,
-  location: PropTypes.object.isRequired,
   name: PropTypes.string.isRequired
 }
 
-const Navigation = ({ nav, location }) => (
-  <List>
-    {nav.map(i => (
-      <ListLink
-        key={i.title}
-        location={location}
-        name={i.title}
-        to={i.path}
-      >
-        {i.title}
-      </ListLink>
-    ))}
-  </List>
-)
+const Navigation = () => {
+  const { nav } = useSiteMeta()
 
-Navigation.propTypes = {
-  location: PropTypes.object.isRequired,
-  nav: PropTypes.array.isRequired
+  return (
+    <List>
+      {nav.map(i => (
+        <ListLink
+          key={i.title}
+          name={i.title}
+          to={i.path}
+        >
+          {i.title}
+        </ListLink>
+      ))}
+    </List>
+  )
 }
 
 const Github = ({ url }) => (
@@ -132,41 +124,17 @@ Github.propTypes = {
   url: PropTypes.string.isRequired
 }
 
-const Header = ({ location }) => (
-  <StaticQuery
-    query={query}
-    render={({ site: { meta: { github, nav } } }) => (
-      <header style={{ height: navHeight }}>
-        <Nav>
-          <Navigation
-            location={location}
-            nav={nav}
-          />
-          <Github url={github.api}/>
-        </Nav>
-      </header>
-    )}
-  />
-)
+const Header = () => {
+  const { github } = useSiteMeta()
 
-Header.propTypes = {
-  location: PropTypes.object.isRequired
+  return (
+    <header style={{ height: navHeight }}>
+      <Nav>
+        <Navigation />
+        <Github url={github.api}/>
+      </Nav>
+    </header>
+  )
 }
 
 export default Header
-
-const query = graphql`
-  {
-    site {
-      meta: siteMetadata {
-        github {
-          api
-        }
-        nav {
-          title
-          path
-        }
-      }
-    }
-  }
-`

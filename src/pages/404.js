@@ -1,42 +1,20 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
-import { graphql } from 'gatsby'
 
 import ErrorMessage from '../components/error'
 import Layout from '../components/layout'
+import { useSiteMeta, useRickAndMortyStats } from '../utils/hooks'
 
-const NotFoundPage = ({
-  data: {
-    stats,
-    site: {
-      meta
-    }
-  },
-  location
-}) => (
-  <Layout location={location}>
-    <Helmet title={`Oh Jeez! | ${meta.title}`} />
-    <ErrorMessage stats={stats}/>
-  </Layout>
-)
+const NotFoundPage = () => {
+  const { title } = useSiteMeta()
+  const stats = useRickAndMortyStats()
 
-NotFoundPage.propTypes = {
-  data: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired
+  return (
+    <Layout>
+      <Helmet title={`Oh Jeez! | ${title}`} />
+      <ErrorMessage stats={stats}/>
+    </Layout>
+  )
 }
 
 export default NotFoundPage
-
-export const query = graphql`
-  {
-    stats: rickAndMortyAPI {
-      ...statistics
-    }
-    site {
-      meta: siteMetadata {
-        title
-      }
-    }
-  }
-`

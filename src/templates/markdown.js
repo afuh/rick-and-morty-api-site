@@ -10,6 +10,7 @@ import Sidebar from './sidebar'
 
 import prismCSS from '../styles/prism'
 import { media, rem } from '../styles/utils'
+import { useSiteMeta } from '../utils/hooks'
 
 const About = styled.div`
   ${media.custom(890, css`
@@ -47,17 +48,17 @@ const Content = styled.div`
 
 `
 
-const Markdown = ({ data: { md, site }, location }) => {
+const Markdown = ({ data: { md } }) => {
   const { html, excerpt, frontmatter: { title, cover }, fields: { slug } } = md
-  const { meta } = site
+  const meta = useSiteMeta()
 
   return (
-    <Layout location={location}>
+    <Layout>
       <>
         <SEO
           title={`${title} | ${meta.title}`}
           description={excerpt}
-          pathname={location.pathname}
+          pathname={slug}
           image={cover}
         />
         <Content>
@@ -78,7 +79,6 @@ const Markdown = ({ data: { md, site }, location }) => {
 }
 
 Markdown.propTypes = {
-  location: PropTypes.object.isRequired,
   data: PropTypes.shape({
     md: PropTypes.object
   }).isRequired
@@ -97,11 +97,6 @@ export const pageQuery = graphql`
       }
       fields {
         slug
-      }
-    }
-    site {
-      meta: siteMetadata {
-        title
       }
     }
   }

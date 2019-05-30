@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { StaticQuery, graphql } from 'gatsby'
 
 import styled, { css } from 'styled-components'
 
 import { navHeight, flex, media, hover, rem } from '../styles/utils'
+import { useRickAndMortyStats, useSiteMeta } from '../utils/hooks'
 
 const StatisticsWrapper = styled.div`
   ${flex}
@@ -65,66 +65,40 @@ Statistics.propTypes = {
   count: PropTypes.number.isRequired
 }
 
-const Numbers = ({ stats }) => (
-  <StatisticsWrapper>
-    {Object.keys(stats).map((endpoint, i) => (
-      <Statistics
-        key={i}
-        title={endpoint}
-        count={stats[endpoint].info.count}
-      />
-    ))}
-  </StatisticsWrapper>
-)
+const Stats = () => {
+  const stats = useRickAndMortyStats()
 
-Numbers.propTypes = {
-  stats: PropTypes.object.isRequired
+  return (
+    <StatisticsWrapper>
+      {Object.keys(stats).map((endpoint, i) => (
+        <Statistics
+          key={i}
+          title={endpoint}
+          count={stats[endpoint].info.count}
+        />
+      ))}
+    </StatisticsWrapper>
+  )
 }
 
-const Sign = ({ author }) => (
-  <SignWrapper>
-    <span >
-      ❮❯ by <a href={author.site}>{author.name}</a>
-    </span>
-    <span>{` `}{new Date().getFullYear()}</span>
-  </SignWrapper>
-)
+const Sign = () => {
+  const { author } = useSiteMeta()
 
-Sign.propTypes = {
-  author: PropTypes.object.isRequired
+  return (
+    <SignWrapper>
+      <span >
+        ❮❯ by <a href={author.site}>{author.name}</a>
+      </span>
+      <span>{` `}{new Date().getFullYear()}</span>
+    </SignWrapper>
+  )
 }
 
 const Footer = () => (
-  <StaticQuery
-    query={query}
-    render={({
-      stats,
-      site: { meta: { author } }
-    }) => (
-      <FoooterWrapper>
-        <Numbers stats={stats}/>
-        <Sign author={author}/>
-      </FoooterWrapper>
-    )}
-  />
+  <FoooterWrapper>
+    <Stats />
+    <Sign />
+  </FoooterWrapper>
 )
-
-const query = graphql`
-  {
-    stats: rickAndMortyAPI {
-      ...statistics
-    }
-    site {
-      meta: siteMetadata {
-        author {
-          name
-          site
-        }
-      }
-    }
-  }
-`
-
-
 
 export default Footer
