@@ -3,9 +3,8 @@ import PropTypes from 'prop-types'
 import { createGlobalStyle, ThemeProvider } from "styled-components"
 
 import SEO from '../utils/seo'
-import Header from './Header'
-import Footer from './Footer'
-
+import Header from './header'
+import Footer from './footer'
 import globalCSS, { theme } from '../styles/global'
 
 const GlobalStyles = createGlobalStyle`

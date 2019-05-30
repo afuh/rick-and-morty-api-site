@@ -4,8 +4,7 @@ import Spinner from 'react-spinkit'
 import { getCharacter } from 'rickmortyapi'
 import styled, { css } from 'styled-components'
 
-import Card from './CharacterCard'
-
+import Card from './characterCard'
 import { flex, rem, media, navHeight } from '../styles/utils'
 
 const HeroWrapper = styled.section`

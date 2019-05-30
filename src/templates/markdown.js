@@ -5,8 +5,8 @@ import styled, { css } from 'styled-components'
 
 import SEO from '../utils/seo'
 import Layout from '../components/layout'
-import EditThisPage from './EditThisPage'
-import Sidebar from './Sidebar'
+import EditThisPage from './editThisPage'
+import Sidebar from './sidebar'
 
 import prismCSS from '../styles/prism'
 import { media, rem } from '../styles/utils'

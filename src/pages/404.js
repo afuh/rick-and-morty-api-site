@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
 
-import ErrorMessage from '../components/Error'
+import ErrorMessage from '../components/error'
 import Layout from '../components/layout'
 
 const NotFoundPage = ({
