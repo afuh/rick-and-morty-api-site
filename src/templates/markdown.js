@@ -64,7 +64,7 @@ const Markdown = ({ data: { md } }) => {
         <Content>
           {slug.includes('documentation') ?
             <Docs>
-              <Sidebar marginTop={20}/>
+              <Sidebar />
               <article dangerouslySetInnerHTML={{ __html: html }} />
             </Docs> :
             <About>

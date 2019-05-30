@@ -17,6 +17,8 @@ const Wrapper = styled.div.attrs({
 `
 
 const Anchor = styled.a.attrs(({ to }) => ({
+  target: "_blank",
+  rel: "nofollow noopener noreferrer",
   className: 'edit-page', // for test
   href: `${config.github.site}/blob/develop/src/pages${to.slice(0, -1)}.md`
 }))`

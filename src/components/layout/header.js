@@ -57,7 +57,10 @@ const Nav = styled.nav`
   `)}
 `
 
-const GHLink = styled.a`
+const GHLink = styled.a.attrs({
+  target: "_blank",
+  rel: "nofollow noopener noreferrer"
+})`
   ${hover(css`
     color: ${({ theme }) => theme.orange};
   `)}
@@ -111,30 +114,26 @@ const Navigation = () => {
   )
 }
 
-const Github = ({ url }) => (
-  <GHLink
-    href={url}
-    title="GitHub"
-  >
-    <GithubIcon style={{ fontSize: 18 }}/>
-  </GHLink>
-)
-
-Github.propTypes = {
-  url: PropTypes.string.isRequired
-}
-
-const Header = () => {
+const Github = () => {
   const { github } = useSiteMeta()
 
   return (
-    <header style={{ height: navHeight }}>
-      <Nav>
-        <Navigation />
-        <Github url={github.api}/>
-      </Nav>
-    </header>
+    <GHLink
+      href={github.api}
+      title="GitHub"
+    >
+      <GithubIcon style={{ fontSize: 18 }}/>
+    </GHLink>
   )
 }
+
+const Header = () => (
+  <header style={{ height: navHeight }}>
+    <Nav>
+      <Navigation />
+      <Github />
+    </Nav>
+  </header>
+)
 
 export default Header

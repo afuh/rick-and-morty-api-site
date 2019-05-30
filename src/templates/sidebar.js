@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React from 'react'
 import styled, { css } from 'styled-components'
-import { Link, StaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 
 import { media, rem } from '../styles/utils'
+import { useSidebar } from '../utils/hooks'
 
-const SidebarWrapper = styled.div`
+const Wrapper = styled.div`
   position: relative;
   min-width: ${rem(210)};
 
@@ -27,20 +27,10 @@ const Aside = styled.aside`
     top: 0;
     max-height: ${hide !== 0 ? `calc(100vh - ${hide}px)` : "100vh"};
   `}
-
-  ${'' /* &::-webkit-scrollbar {
-    -webkit-appearance: none;
-    width: ${rem(4)};
-  }
-
-  &::-webkit-scrollbar-thumb {
-    border-radius: ${rem(4)};
-    background: ${theme.orange}
-  } */}
 `
 
-const Index = styled.div`
-  margin-bottom: ${rem(24)};
+const TOCWrapper = styled.div`
+  margin-bottom: 60px;
 
   ul {
     padding: 0;
@@ -66,92 +56,21 @@ const Index = styled.div`
   }
 `
 
-const ListLink = ({ to, children }) => (
-  <li >
-    <Link to={to}>
-      {children}
-    </Link>
-  </li>
-)
+const Sidebar = () => {
+  const { fixed, bottom, top } = useSidebar()
+  const { md: { TOC } } = useStaticQuery(query)
 
-ListLink.propTypes = {
-  to: PropTypes.string.isRequired,
-  children: PropTypes.string.isRequired
-}
-
-const TableOfContents = () => (
-  <StaticQuery
-    query={query}
-    render={({ md }) => (
-      <Index dangerouslySetInnerHTML={{ __html: md.tableOfContents }} />
-    )}
-  />
-)
-
-class Sidebar extends Component {
-  marginTop
-  state = {
-    fixed: false,
-    sidebar: 0
-  }
-  componentDidMount(){
-    this.header = document.querySelector("header")
-    this.footer = document.querySelector("footer")
-    this.editPage = document.querySelector("[id=edit-wrapper]")
-
-    setTimeout(() => {
-      window.addEventListener('scroll', this.handleScroll)
-      this.handleScroll()
-    }, 500)
-
-  }
-  handleScroll = () => {
-    const viewBottom = window.scrollY + window.innerHeight
-    if (window.scrollY >= this.header.offsetHeight) {
-      this.setState({ fixed: true })
-    } else {
-      this.setState({ fixed: false })
-    }
-
-    if (viewBottom >= this.footer.offsetTop){
-      const { offsetTop } = this.footer
-      const { offsetHeight } = this.editPage
-      const { marginTop } = this.props
-
-      const sidebar = viewBottom - (offsetTop - offsetHeight - marginTop)
-      console.log(sidebar)
-      this.setState({ sidebar })
-    }
-    else {
-      this.setState({ sidebar: 0 })
-    }
-  }
-  componentWillUnmount(){
-    window.removeEventListener('scroll', this.handleScroll)
-  }
-  render(){
-    const { fixed, sidebar } = this.state
-
-    return (
-      <SidebarWrapper>
-        <Aside
-          margin={this.props.marginTop}
-          fixed={fixed}
-          hide={sidebar}
-        >
-          <TableOfContents />
-        </Aside>
-      </SidebarWrapper>
-    )
-  }
-}
-
-Sidebar.propTypes = {
-  marginTop: PropTypes.number.isRequired
-}
-
-Sidebar.defaultProps = {
-  marginTop: 20
+  return (
+    <Wrapper>
+      <Aside
+        margin={top}
+        fixed={fixed}
+        hide={bottom}
+      >
+        <TOCWrapper dangerouslySetInnerHTML={{ __html: TOC }} />
+      </Aside>
+    </Wrapper>
+  )
 }
 
 export default Sidebar
@@ -159,7 +78,7 @@ export default Sidebar
 const query = graphql`
   {
     md: markdownRemark(fileAbsolutePath: {regex: "/documentation/"}) {
-      tableOfContents
+      TOC: tableOfContents
     }
   }
 `
