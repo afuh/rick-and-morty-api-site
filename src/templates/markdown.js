@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { graphql } from "gatsby"
 import styled, { css } from 'styled-components'
 
-import SEO from '../utils/seo'
 import Layout from '../components/layout'
 import EditThisPage from './editThisPage'
 import Sidebar from './sidebar'
@@ -53,14 +52,15 @@ const Markdown = ({ data: { md } }) => {
   const meta = useSiteMeta()
 
   return (
-    <Layout>
+    <Layout
+      seo={{
+        title: `${title} | ${meta.title}`,
+        description: excerpt,
+        pathname: slug,
+        image: cover
+      }}
+    >
       <>
-        <SEO
-          title={`${title} | ${meta.title}`}
-          description={excerpt}
-          pathname={slug}
-          image={cover}
-        />
         <Content>
           {slug.includes('documentation') ?
             <Docs>
