@@ -2,6 +2,7 @@ module.exports = {
   title: 'The Rick and Morty API',
   shortTitle: 'ShlaAPI',
   description: 'Hey, did you ever want to hold a Terry fold?',
+  subDescription: 'I got one right here, grab my terry flap',
   siteUrl: 'https://rickandmortyapi.com',
   image: '/images/site.jpeg',
   favicon: '/images/icon48.png',

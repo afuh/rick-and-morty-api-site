@@ -1,10 +1,10 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 
+import { useSiteMeta } from '../../utils/hooks'
 import { flex, rem, media } from '../../styles/utils'
 
-const headers = css`
+const headings = css`
   margin: 0;
   text-transform: uppercase;
   line-height: 0.75em;
@@ -45,7 +45,7 @@ const SubTitleWrapper = styled.div`
 `
 
 const Title = styled.h1`
-  ${headers}
+  ${headings}
 
   font-size: ${rem(60)};
 
@@ -55,7 +55,7 @@ const Title = styled.h1`
 `
 
 const SubTitle = styled.h2`
-  ${headers}
+  ${headings}
 
   font-size: ${rem(30)};
   color: ${({ theme }) => theme.orange};
@@ -65,6 +65,7 @@ const SubTitle = styled.h2`
     font-size: ${rem(20)};
   `)}
 `
+
 const HiddenSubTitle = styled(SubTitle)`
   position: absolute;
   padding: 0 ${rem(4)};
@@ -79,21 +80,20 @@ const HiddenSubTitle = styled(SubTitle)`
   }
 `
 
-const Hero = ({ title, description }) => (
-  <Wrapper>
-    <Title>{title}</Title>
-    <SubTitleWrapper>
-      <SubTitle>{description}</SubTitle>
-      <HiddenSubTitle>
-        &nbsp; &nbsp; &nbsp; I got one right here, grab my terry flap&nbsp; &nbsp; &nbsp;
-      </HiddenSubTitle>
-    </SubTitleWrapper>
-  </Wrapper>
-)
+const Hero = () => {
+  const { title, description, subDescription } = useSiteMeta()
 
-Hero.propTypes = {
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired
+  return (
+    <Wrapper>
+      <Title>{title}</Title>
+      <SubTitleWrapper>
+        <SubTitle>{description}</SubTitle>
+        <HiddenSubTitle>
+          &nbsp; &nbsp; &nbsp;{subDescription}&nbsp; &nbsp; &nbsp;
+        </HiddenSubTitle>
+      </SubTitleWrapper>
+    </Wrapper>
+  )
 }
 
 export default Hero
