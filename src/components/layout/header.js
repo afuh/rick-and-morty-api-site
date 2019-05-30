@@ -4,8 +4,8 @@ import { Link as GatsbyLink } from 'gatsby'
 import { GoMarkGithub as GithubIcon } from "react-icons/go"
 import styled, { css } from 'styled-components'
 
-import { navHeight, flex, media, hover } from '../styles/utils'
-import { useSiteMeta } from '../utils/hooks'
+import { navHeight, flex, media, hover } from '../../styles/utils'
+import { useSiteMeta } from '../../utils/hooks'
 
 const Link = styled(GatsbyLink)`
   color: ${({ theme }) => theme.black};

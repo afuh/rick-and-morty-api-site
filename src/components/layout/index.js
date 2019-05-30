@@ -1,10 +1,10 @@
 import React from 'react'
 import { createGlobalStyle, ThemeProvider } from "styled-components"
 
-import SEO from '../utils/seo'
+import SEO from '../../utils/seo'
 import Header from './header'
 import Footer from './footer'
-import globalCSS, { theme } from '../styles/global'
+import globalCSS, { theme } from '../../styles/global'
 
 const GlobalStyles = createGlobalStyle`
   ${globalCSS}

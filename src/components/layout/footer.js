@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 
 import styled, { css } from 'styled-components'
 
-import { navHeight, flex, media, hover, rem } from '../styles/utils'
-import { useRickAndMortyStats, useSiteMeta } from '../utils/hooks'
+import { navHeight, flex, media, hover, rem } from '../../styles/utils'
+import { useRickAndMortyStats, useSiteMeta } from '../../utils/hooks'
 
 const StatisticsWrapper = styled.div`
   ${flex}
