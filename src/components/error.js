@@ -1,11 +1,10 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React from 'react'
 import { Link } from 'gatsby'
 import { GoArrowLeft as Back } from "react-icons/go"
-import { getCharacter } from 'rickmortyapi'
 import styled, { css } from 'styled-components'
 
 import { navHeight, flex, media, rem, size } from '../styles/utils'
+import { useRandomChars } from '../utils/hooks'
 
 const Wrapper = styled.div`
   ${flex};
@@ -75,28 +74,6 @@ const IconWrapper = styled.div`
   `)}
 `
 
-const Message = ({ name }) => (
-  <MessageWrapper>
-    <h1>404</h1>
-    <p>Oh Jeez! there is nothing here.</p>
-    <p>But I could show you a cute picture of <strong>{name}</strong>.</p>
-  </MessageWrapper>
-)
-
-Message.propTypes = {
-  name: PropTypes.string.isRequired
-}
-
-const Image = ({ image }) => (
-  <ImageWrapper>
-    {image && <img src={image} alt='🐈'/>}
-  </ImageWrapper>
-)
-
-Image.propTypes = {
-  image: PropTypes.string.isRequired
-}
-
 const BackIcon = () => (
   <IconWrapper>
     <Link to="/">
@@ -105,39 +82,22 @@ const BackIcon = () => (
   </IconWrapper>
 )
 
-class ErrorMessage extends Component {
-  state = {
-    image: '',
-    name: ''
-  }
-  componentDidMount(){
-    this.handleRequest()
-  }
+const ErrorMessage = () => {
+  const { data } = useRandomChars({ total: 1 })
 
-  handleRequest = async () => {
-    const { stats: { characters } } = this.props
-
-    const num = Math.floor(Math.random() * (characters.info.count - 1 + 1) + 1)
-
-    const { image, name } = await getCharacter(num)
-    this.setState({ image, name })
-  }
-
-  render() {
-    const { image, name } = this.state
-
-    return (
-      <Wrapper>
-        <Message name={name}/>
-        <Image image={image} />
-        <BackIcon />
-      </Wrapper>
-    )
-  }
-}
-
-ErrorMessage.propTypes = {
-  stats: PropTypes.object.isRequired
+  return (
+    <Wrapper>
+      <MessageWrapper>
+        <h1>404</h1>
+        <p>Oh Jeez! there is nothing here.</p>
+        <p>But I could show you a cute picture of <strong>{data.name}</strong>.</p>
+      </MessageWrapper>
+      <ImageWrapper>
+        {data.image && <img src={data.image} alt='🐈'/>}
+      </ImageWrapper>
+      <BackIcon />
+    </Wrapper>
+  )
 }
 
 export default ErrorMessage

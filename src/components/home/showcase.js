@@ -1,7 +1,10 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
+import Spinner from 'react-spinkit'
 
+import { useRandomChars } from '../../utils/hooks'
 import { flex, rem, media, navHeight } from '../../styles/utils'
+import Card from './characterCard'
 
 const Wrapper = styled.section`
   ${flex}
@@ -23,12 +26,32 @@ const Inner = styled.div`
   min-height: 40vh;
 `
 
-const Showcase = ({ children }) => (
-  <Wrapper>
-    <Inner>
-      {children}
-    </Inner>
-  </Wrapper>
+const Loading = () => (
+  <Spinner
+    name="triangle-skew-spin"
+    color="rgb(255, 152, 0)"
+  />
 )
+
+const Showcase = () => {
+  const { loading, data } = useRandomChars({ total: 8 })
+
+  return (
+    <Wrapper>
+      <Inner>
+        {
+          loading ?
+            <Loading /> :
+            data.map(char => (
+              <Card
+                key={char.id}
+                char={char}
+              />
+            ))
+        }
+      </Inner>
+    </Wrapper>
+  )
+}
 
 export default Showcase
