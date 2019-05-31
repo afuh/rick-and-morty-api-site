@@ -1,11 +1,7 @@
 import { css } from 'styled-components'
-import {
-  rem as _rem,
-  size as _size
-} from 'polished'
+import { rem as _rem } from 'polished'
 
 export const rem = (...arg) => _rem(...arg)
-export const size = (...arg) => _size(...arg)
 
 export const navHeight = _rem(80)
 

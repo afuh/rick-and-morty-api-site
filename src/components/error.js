@@ -3,7 +3,7 @@ import { Link } from 'gatsby'
 import { GoArrowLeft as Back } from "react-icons/go"
 import styled, { css } from 'styled-components'
 
-import { navHeight, flex, media, rem, size } from '../styles/utils'
+import { navHeight, flex, media, rem } from '../styles'
 import { useRandomChars } from '../utils/hooks'
 
 const Wrapper = styled.div`
@@ -43,13 +43,14 @@ const MessageWrapper = styled.div`
 `
 
 const ImageWrapper = styled.div`
-  ${size("300px", "300px")}
+  width: 300px;
+  height: 300px;
 
   margin: 20px 0;
 
   ${media.xs(css`
-    ${size("auto", "auto")}
-
+    width: auto;
+    height: auto;
     max-height: 300px;
   `)}
 

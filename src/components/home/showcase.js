@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 import Spinner from 'react-spinkit'
 
 import { useRandomChars } from '../../utils/hooks'
-import { flex, rem, media, navHeight } from '../../styles/utils'
+import { flex, rem, media, navHeight } from '../../styles'
 import Card from './characterCard'
 
 const Wrapper = styled.section`

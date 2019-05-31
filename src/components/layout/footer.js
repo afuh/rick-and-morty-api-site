@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import styled, { css } from 'styled-components'
 
-import { navHeight, flex, media, hover, rem } from '../../styles/utils'
+import { navHeight, flex, media, hover, rem } from '../../styles'
 import { useRickAndMortyStats, useSiteMeta } from '../../utils/hooks'
 
 const StatisticsWrapper = styled.div`
@@ -20,7 +20,7 @@ const StatisticsWrapper = styled.div`
   `)}
 `
 
-const FoooterWrapper = styled.footer`
+const Wrapper = styled.footer`
   ${flex}
   flex-direction: column;
   flex-wrap: nowrap;
@@ -95,10 +95,10 @@ const Sign = () => {
 }
 
 const Footer = () => (
-  <FoooterWrapper>
+  <Wrapper>
     <Stats />
     <Sign />
-  </FoooterWrapper>
+  </Wrapper>
 )
 
 export default Footer

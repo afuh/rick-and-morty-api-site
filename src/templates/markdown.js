@@ -7,8 +7,7 @@ import Layout from '../components/layout'
 import EditThisPage from './editThisPage'
 import Sidebar from './sidebar'
 
-import prismCSS from '../styles/prism'
-import { media, rem } from '../styles/utils'
+import { prismCSS, media, rem } from '../styles'
 import { useSiteMeta } from '../utils/hooks'
 
 const About = styled.div`

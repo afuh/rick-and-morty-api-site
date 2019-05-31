@@ -2,7 +2,7 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import { useStaticQuery, graphql } from "gatsby"
 
-import { media, rem } from '../styles/utils'
+import { media, rem } from '../styles'
 import { useSidebar } from '../utils/hooks'
 
 const Wrapper = styled.div`

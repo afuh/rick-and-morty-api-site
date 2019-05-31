@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { GoPencil as EditIcon } from "react-icons/go"
 
 import config from "../../config/siteConfig"
-import { flex, rem } from '../styles/utils'
+import { flex, rem } from '../styles'
 
 const Wrapper = styled.div.attrs({
   id: "edit-wrapper" // to query it in the Sidebar

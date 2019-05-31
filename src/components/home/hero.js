@@ -2,7 +2,7 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 
 import { useSiteMeta } from '../../utils/hooks'
-import { flex, rem, media } from '../../styles/utils'
+import { flex, rem, media } from '../../styles'
 
 const headings = css`
   margin: 0;
