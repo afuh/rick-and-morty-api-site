@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 import Spinner from 'react-spinkit'
 
 import { useRandomChars } from '../../utils/hooks'
-import { flex, rem, media, navHeight } from '../../styles'
+import { flex, rem, media } from '../../styles'
 import Card from './characterCard'
 
 const Wrapper = styled.section`
@@ -11,7 +11,7 @@ const Wrapper = styled.section`
 
   padding: ${rem(30)};
   background: ${({ theme }) => theme.backBlack};
-  min-height: calc(60vh - ${navHeight});
+  min-height: calc(60vh - ${({ theme }) => theme.navHeight}px);
 
   ${media.xs(css`
     padding: ${rem(30)} 0;

@@ -7,7 +7,7 @@ import { useSidebar } from '../utils/hooks'
 
 const Wrapper = styled.div`
   position: relative;
-  min-width: ${rem(210)};
+  min-width: 210px;
 
   ${media.custom(890, css`
     display: none;

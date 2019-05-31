@@ -4,7 +4,7 @@ import { Link as GatsbyLink } from 'gatsby'
 import { GoMarkGithub as GithubIcon } from "react-icons/go"
 import styled, { css } from 'styled-components'
 
-import { navHeight, flex, media, hover } from '../../styles'
+import { flex, media, hover } from '../../styles'
 import { useSiteMeta } from '../../utils/hooks'
 
 const Link = styled(GatsbyLink)`
@@ -128,7 +128,7 @@ const Github = () => {
 }
 
 const Header = () => (
-  <header style={{ height: navHeight }}>
+  <header css={`height: ${({ theme }) => theme.navHeight}px`}>
     <Nav>
       <Navigation />
       <Github />

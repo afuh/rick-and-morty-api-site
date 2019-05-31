@@ -3,14 +3,14 @@ import { Link } from 'gatsby'
 import { GoArrowLeft as Back } from "react-icons/go"
 import styled, { css } from 'styled-components'
 
-import { navHeight, flex, media, rem } from '../styles'
+import { flex, media, rem } from '../styles'
 import { useRandomChars } from '../utils/hooks'
 
 const Wrapper = styled.div`
   ${flex};
   flex-direction: column;
   flex-wrap: nowrap;
-  min-height: calc(100vh - ${navHeight});
+  min-height: calc(100vh - ${({ theme }) => theme.navHeight}px);
 
   ${media.xs(css`
     justify-content: space-around;

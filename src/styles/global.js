@@ -7,7 +7,8 @@ export const theme = {
   gray: '#9E9E9E',
   whitesmoke: "#f5f5f5",
   lightgray: '#d8d8d8',
-  shadow: '0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08)'
+  shadow: '0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08)',
+  navHeight: 80
 }
 
 export const GlobalStyles = createGlobalStyle`

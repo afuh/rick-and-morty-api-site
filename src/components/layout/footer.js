@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import styled, { css } from 'styled-components'
 
-import { navHeight, flex, media, hover, rem } from '../../styles'
+import { flex, media, hover, rem } from '../../styles'
 import { useRickAndMortyStats, useSiteMeta } from '../../utils/hooks'
 
 const StatisticsWrapper = styled.div`
@@ -30,7 +30,7 @@ const Wrapper = styled.footer`
 
   padding: 10px 0;
   width: 100%;
-  min-height: calc(${navHeight} * 2);
+  min-height: calc(${({ theme }) => theme.navHeight}px * 2);
 `
 
 const SignWrapper = styled.div`
