@@ -4,8 +4,9 @@ import { graphql } from "gatsby"
 import styled, { css } from 'styled-components'
 
 import Layout from '../components/layout'
-import EditThisPage from './editThisPage'
-import Sidebar from './sidebar'
+import EditThisPage from '../components/editThisPage'
+import Sidebar from '../components/sidebar/desktop'
+import SidebarMobile from '../components/sidebar/mobile'
 
 import { prismCSS, media, rem } from '../styles'
 import { useSiteMeta } from '../utils/hooks'
@@ -25,9 +26,29 @@ const Docs = styled.div`
 
   ${prismCSS}
 
+  #sidebar {
+    &-mobile {
+      display: none;
+    }
+
+    &-desktop {
+      display: block;
+    }
+  }
+
   ${media.custom(890, css`
     padding: 0 ${rem(20)};
     display: block;
+
+    #sidebar {
+      &-mobile {
+        display: block;
+      }
+
+      &-desktop {
+        display: none;
+      }
+    }
   `)}
 `
 
@@ -43,7 +64,6 @@ const Content = styled.div`
   ${media.custom(890, css`
     padding: 0;
   `)}
-
 `
 
 const Markdown = ({ data: { md } }) => {
@@ -64,6 +84,7 @@ const Markdown = ({ data: { md } }) => {
           {slug.includes('documentation') ?
             <Docs>
               <Sidebar />
+              <SidebarMobile />
               <article dangerouslySetInnerHTML={{ __html: html }} />
             </Docs> :
             <About>

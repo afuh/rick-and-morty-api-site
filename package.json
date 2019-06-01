@@ -58,8 +58,8 @@
   "license": "BSD-3-Clause",
   "scripts": {
     "build": "gatsby build",
-    "dev": "gatsby develop",
-    "serve": "gatsby serve",
+    "dev": "gatsby develop -H 0.0.0.0",
+    "serve": "gatsby serve -H 0.0.0.0",
     "cypress": "cypress run",
     "test": "run-p serve cypress",
     "deploy": "npm run build && node deploy.js",

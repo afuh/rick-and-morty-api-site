@@ -2,16 +2,13 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import { useStaticQuery, graphql } from "gatsby"
 
-import { media, rem } from '../styles'
-import { useSidebar } from '../utils/hooks'
+import { rem } from '../../styles'
+import { useSidebar } from '../../utils/hooks'
 
 const Wrapper = styled.div`
   position: relative;
   min-width: 210px;
 
-  ${media.custom(890, css`
-    display: none;
-  `)}
 
   border-right: 1px solid hsla(0,0%,0%,0.07);
   margin-right: 25px;
@@ -61,7 +58,7 @@ const Sidebar = () => {
   const { md: { TOC } } = useStaticQuery(query)
 
   return (
-    <Wrapper>
+    <Wrapper id='sidebar-desktop'>
       <Aside
         margin={top}
         fixed={fixed}
