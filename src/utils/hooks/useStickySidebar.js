@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-export const useSidebar = () => {
+export const useStickySidebar = () => {
   const [ top ] = useState(20)
   const [bottom, setBottom] = useState(0)
   const [fixed, setFixed] = useState(false)
