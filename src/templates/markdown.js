@@ -1,39 +1,26 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from "gatsby"
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 import Layout from '../components/layout'
 import EditThisPage from '../components/editThisPage'
-import Sidebar from '../components/sidebar/'
+import Docs from '../components/docs'
+import About from '../components/about'
 
-import { prismCSS, media } from '../styles'
 import { useSiteMeta } from '../utils/hooks'
-
-const Docs = styled.div`
-  display: flex;
-  flex-wrap: nowrap;
-
-  ${media.phone(css`
-    display: block;
-  `)}
-
-  ${prismCSS}
-`
 
 const Content = styled.div`
   max-width: 1000px;
   margin: 0 auto;
   padding: 0 20px;
-`
 
-const Article = styled.article`
   font-variant-ligatures: none;
   text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
   text-decoration-skip-ink: auto;
 
-  li {
+  article li {
     list-style-type: initial;
   }
 `
@@ -54,11 +41,8 @@ const Markdown = ({ data: { md } }) => {
       <>
         <Content>
           {slug.includes('documentation') ?
-            <Docs>
-              <Sidebar />
-              <Article dangerouslySetInnerHTML={{ __html: html }} />
-            </Docs> :
-            <Article dangerouslySetInnerHTML={{ __html: html }} />
+            <Docs html={html} /> :
+            <About html={html} />
           }
         </Content>
         <EditThisPage page={slug} />

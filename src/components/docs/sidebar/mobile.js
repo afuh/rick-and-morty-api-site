@@ -2,9 +2,9 @@ import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 
-import Icon from "./icon-svg"
-import { media } from '../../styles'
-import { useMobileSidebar } from '../../utils/hooks'
+import Button from "./button"
+import { media } from '../../../styles'
+import { useMobileSidebar } from '../../../utils/hooks'
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -49,40 +49,16 @@ const Nav = styled.nav`
   transition: transform 0.5s ease;
 `
 
-const Button = styled.button`
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  z-index: 9999;
-  color: #fff;
-  border-radius: 50%;
-  height: 60px;
-  width: 60px;
-  margin: 20px;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 20px;
-  font-size: 20px;
-  user-select: none;
-  cursor: pointer;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  ${({ theme }) => css`
-    background: ${theme.orange};
-    border: 1px solid ${theme.orange};
-  `}
-`
-
 const MobileWrapper = ({ render }) => {
   const navRef = useRef()
   const { isOpen, setIsOpen } = useMobileSidebar(navRef)
 
   return (
     <div id='nav-mobile'>
-      <Button onClick={() => setIsOpen(!isOpen)}>
-        <Icon css={`transform: rotate(${isOpen ? "45deg" : 0})`} />
-      </Button>
+      <Button
+        isOpen={isOpen}
+        onClick={() => setIsOpen(!isOpen)}
+      />
       <Wrapper isOpen={isOpen}>
         <Nav
           ref={navRef}
