@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
 import styled, { css } from 'styled-components'
@@ -24,22 +24,28 @@ const ImgWrapper = styled.div.attrs({
   data: 'card header'
 })`
   position: relative;
-  max-width: 300px;
-  max-height: 300px;
+  width: 300px;
+  height: 300px;
+
+  ${media.phone(css`
+    width: 100%;
+    height: auto;
+  `)}
 
   .card-image {
     width: 100%;
     background: ${({ theme }) => theme.backBlack};
 
+    ${media.phone(css`
+      height: ${p => p.loading ? '60vh' : 'auto'};
+    `)}
+
     img {
       margin: 0;
+      opacity: ${p => p.loading ? 0 : 1};
+      transition: opacity .5s;
     }
   }
-
-  ${media.phone(css`
-    max-width: none;
-    max-height: none;
-  `)}
 `
 
 const InfoWrapper = styled.div.attrs({
@@ -112,19 +118,27 @@ Text.propTypes = {
   last: PropTypes.bool
 }
 
-const CardImg = ({ char }) => (
-  <ImgWrapper>
-    <div className='card-image'>
-      <img src={char.image} alt={char.name}/>
-    </div>
-    <Title>
-      <Name>{char.name}</Name>
-      <Description>
-        {"id: " + char.id + " - created " + moment(char.created).fromNow()}
-      </Description>
-    </Title>
-  </ImgWrapper>
-)
+const CardImg = ({ char }) => {
+  const [loading, setLoading] = useState(true)
+
+  return (
+    <ImgWrapper loading={loading}>
+      <div className='card-image'>
+        <img
+          onLoad={() => setLoading(false)}
+          src={char.image}
+          alt={char.name}
+        />
+      </div>
+      <Title>
+        <Name>{char.name}</Name>
+        <Description>
+          {"id: " + char.id + " - created " + moment(char.created).fromNow()}
+        </Description>
+      </Title>
+    </ImgWrapper>
+  )
+}
 
 CardImg.propTypes = {
   char: PropTypes.object.isRequired
