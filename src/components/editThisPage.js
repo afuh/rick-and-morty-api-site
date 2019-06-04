@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { GoPencil as EditIcon } from "react-icons/go"
-import config from "siteConfig"
 
-import { flex, rem } from 'styles/utils'
+import config from "../../config/siteConfig"
+import { flex, rem } from '../styles'
 
 const Wrapper = styled.div.attrs({
   id: "edit-wrapper" // to query it in the Sidebar
@@ -16,10 +16,12 @@ const Wrapper = styled.div.attrs({
   border-top: 1px solid ${({ theme }) => theme.lightgray};
 `
 
-const Anchor = styled.a.attrs({
+const Anchor = styled.a.attrs(({ to }) => ({
+  target: "_blank",
+  rel: "nofollow noopener noreferrer",
   className: 'edit-page', // for test
-  href: ({ to }) => `${config.github.site}/blob/develop/src/pages${to.slice(0, -1)}.md`
-})`
+  href: `${config.github.site}/blob/develop/src/pages${to.slice(0, -1)}.md`
+}))`
 
   ${flex}
   font-size: ${rem(14)};
