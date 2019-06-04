@@ -12,7 +12,7 @@ const Wrapper = styled.div`
   margin-right: 25px;
 `
 
-const Nav = styled.aside`
+const Nav = styled.nav`
   overflow-y: scroll;
   position: relative;
   margin-top: ${({ margin }) => margin}px;

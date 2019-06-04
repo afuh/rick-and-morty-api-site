@@ -34,7 +34,7 @@ const TOCWrapper = styled.div`
   }
 `
 
-const Wrapper = styled.div`
+const Wrapper = styled.aside`
   #nav-desktop {
     display: block;
   }
