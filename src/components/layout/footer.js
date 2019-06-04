@@ -15,7 +15,7 @@ const StatisticsWrapper = styled.div`
     font-weight: 300;
   }
 
-  ${media.xs(css`
+  ${media.phone(css`
     justify-content: space-around;
   `)}
 `
@@ -31,6 +31,11 @@ const Wrapper = styled.footer`
   padding: 10px 0;
   width: 100%;
   min-height: calc(${({ theme }) => theme.navHeight}px * 2);
+
+  .stats {
+    margin: 4px 8px;
+    text-align: center;
+  }
 `
 
 const SignWrapper = styled.div`
@@ -53,7 +58,7 @@ const SignWrapper = styled.div`
 `
 
 const Statistics = ({ title, count }) => (
-  <div style={{ margin: "4px 8px" }}>
+  <div className='stats'>
     <span>
       {title.toUpperCase()}: {count}
     </span>

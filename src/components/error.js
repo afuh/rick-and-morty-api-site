@@ -12,8 +12,8 @@ const Wrapper = styled.div`
   flex-wrap: nowrap;
   min-height: calc(100vh - ${({ theme }) => theme.navHeight}px);
 
-  ${media.xs(css`
-    justify-content: space-around;
+  ${media.phone(css`
+    padding-top: ${rem(20)};
   `)}
 `
 
@@ -29,10 +29,6 @@ const MessageWrapper = styled.div`
     margin: 0;
     font-size: ${rem(50)};
     font-weight: 200;
-
-    ${media.xs(css`
-      margin-top: ${rem(20)};
-    `)}
   }
 
   p {
@@ -45,26 +41,24 @@ const MessageWrapper = styled.div`
 const ImageWrapper = styled.div`
   width: 300px;
   height: 300px;
-
   margin: 20px 0;
 
-  ${media.xs(css`
-    width: auto;
+  ${media.phone(css`
+    width: 100%;
     height: auto;
-    max-height: 300px;
   `)}
 
   img {
     border-radius: 50%;
 
-    ${media.xs(css`
+    ${media.phone(css`
       border-radius: 0;
     `)}
   }
 `
 
 const IconWrapper = styled.div`
-  ${media.xs(css`
+  ${media.phone(css`
     width: 100%;
 
     a {

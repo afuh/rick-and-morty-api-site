@@ -13,8 +13,8 @@ const Wrapper = styled.section`
   background: ${({ theme }) => theme.backBlack};
   min-height: calc(60vh - ${({ theme }) => theme.navHeight}px);
 
-  ${media.xs(css`
-    padding: ${rem(30)} 0;
+  ${media.phone(css`
+    padding: 0;
   `)}
 `
 

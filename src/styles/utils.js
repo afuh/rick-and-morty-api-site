@@ -4,26 +4,6 @@ import { rem as _rem } from 'polished'
 export const rem = (...arg) => _rem(...arg)
 
 export const media = {
-  lg: inner => css`
-    @media (max-width: ${1200 / 16}em) {
-      ${inner}
-    }
-  `,
-  md: inner => css`
-    @media (max-width: ${992 / 16}em) {
-      ${inner}
-    }
-  `,
-  sm: inner => css`
-    @media (max-width: ${768 / 16}em) {
-      ${inner}
-    }
-  `,
-  xs: inner => css`
-    @media (max-width: ${480 / 16}em) {
-      ${inner}
-    }
-  `,
   custom: (n, inner) => css`
     @media (max-width: ${n / 16}em) {
       ${inner}

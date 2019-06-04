@@ -4,20 +4,16 @@ import styled, { css } from 'styled-components'
 import { useSiteMeta } from '../../utils/hooks'
 import { flex, rem, media } from '../../styles'
 
-const headings = css`
+const headingsStyles = css`
   margin: 0;
   text-transform: uppercase;
-  line-height: 0.75em;
   color: ${({ theme }) => theme.backBlack};
   border: none;
 
-  ${media.sm(css`
+  ${media.phone(css`
     line-height: 1;
-    padding: 0 ${rem(12)};
-  `)}
-
-  ${media.xs(css`
-    margin: ${rem(10)} 0;
+    padding: 0 18px;
+    margin: 0;
   `)}
 `
 
@@ -27,41 +23,41 @@ const Wrapper = styled.section`
   height: 40vh;
   text-align: center;
 
-  ${media.xs(css`
-    flex-wrap: wrap;
+  ${media.phone(css`
+    display: block;
     height: auto;
-    margin-top: ${rem(40)};
+    margin: ${rem(40)} 0;
   `)}
 `
 
 const SubTitleWrapper = styled.div`
-  padding: ${rem(5)} ${rem(4)} 0;
+  padding: 5px 4px 0;
   background: ${({ theme }) => theme.backBlack};
-  transform: skew(-2deg) translateY(-6px);
+  transform: skew(-2deg) translateY(-6px) translateY(-12px);
 
-  ${media.sm(css`
+  ${media.phone(css`
+    transform: none;
     background: #fff;
   `)}
 `
 
 const Title = styled.h1`
-  ${headings}
-
+  ${headingsStyles}
   font-size: ${rem(60)};
 
-  ${media.xs(css`
+  ${media.phone(css`
     font-size: ${rem(40)};
   `)}
 `
 
 const SubTitle = styled.h2`
-  ${headings}
-
+  ${headingsStyles}
   font-size: ${rem(30)};
   color: ${({ theme }) => theme.orange};
   transform: skew(2deg);
 
-  ${media.xs(css`
+  ${media.phone(css`
+    transform: none;
     font-size: ${rem(20)};
   `)}
 `

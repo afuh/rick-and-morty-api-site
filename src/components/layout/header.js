@@ -17,13 +17,12 @@ const Link = styled(GatsbyLink)`
   }
 `
 
-// On Mobile screens the link becomes bigger.
 const List = styled.ul`
   display: flex;
   padding: 0;
   margin: 0;
 
-  ${media.xs(css`
+  ${media.phone(css`
     flex: 3;
     align-self: stretch;
     ${flex({ x: 'space-around' })}
@@ -51,7 +50,7 @@ const Nav = styled.nav`
   min-height: 80px;
   padding: 0 20px;
 
-  ${media.xs(css`
+  ${media.phone(css`
     padding: 0;
     border-bottom: 1px solid ${({ theme }) => theme.lightgray};
   `)}
@@ -65,7 +64,7 @@ const GHLink = styled.a.attrs({
     color: ${({ theme }) => theme.orange};
   `)}
 
-  ${media.xs(css`
+  ${media.phone(css`
     flex: 1;
     align-self: stretch;
     ${flex};
