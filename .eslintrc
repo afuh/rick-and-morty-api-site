@@ -1,5 +1,9 @@
 # https://eslint.org/docs/rules/
 
+settings:
+  react:
+    version: "detect"
+
 env:
   es6: true
   node: true
@@ -17,12 +21,15 @@ parser: babel-eslint
 
 plugins:
   - react
+  - jsx-a11y
+  - react-hooks
 
 extends:
   - eslint:recommended
   - plugin:import/errors
   - plugin:import/warnings
   - plugin:react/recommended
+  - plugin:jsx-a11y/recommended
 
 rules:
   # Stylistic
@@ -86,6 +93,8 @@ rules:
   strict: 0
 
   # React
+  react-hooks/rules-of-hooks: error
+  react-hooks/exhaustive-deps: warn
   react/no-deprecated: 'off'
   react/display-name: 'off'
   react/prop-types:

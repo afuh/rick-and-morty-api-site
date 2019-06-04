@@ -1,8 +1,6 @@
 import { css } from "styled-components"
 import { lighten, darken } from 'polished'
 
-import { theme } from 'styles/global'
-
 const schema = {
   red: "#F44336",
   cyan: '#00BCD4',
@@ -13,7 +11,7 @@ const schema = {
   }
 }
 
-export default css`
+export const prismCSS = css`
   code {
     font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
     line-height: 1.4rem
@@ -21,7 +19,7 @@ export default css`
 
   code[class*="language-"],
   pre[class*="language-"] {
-  	color: ${theme.whitesmoke};
+  	color: ${p => p.theme.whitesmoke};
   	background: none;
   	text-align: left;
   	white-space: pre;
@@ -35,7 +33,7 @@ export default css`
 
   /* Code blocks */
   pre[class*="language-"] {
-    background: ${theme.backBlack};
+    background: ${p => p.theme.backBlack};
   	padding: 1em;
   	margin: .5em 0;
   	overflow: auto;
@@ -93,7 +91,7 @@ export default css`
   .language-css .token.string,
   .style .token.string,
   .token.variable {
-  	color: ${theme.whitesmoke};
+  	color: ${p => p.theme.whitesmoke};
   }
 
   .token.atrule,
