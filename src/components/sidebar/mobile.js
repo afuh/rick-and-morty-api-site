@@ -1,35 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useRef } from 'react'
+import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
-import { useStaticQuery, graphql } from "gatsby"
+
 import Icon from "./icon-svg"
-
-import { rem } from '../../styles'
-
-const TOCWrapper = styled.div`
-  ul {
-    padding: 0;
-    margin: 0;
-    li {
-      margin-bottom: 1rem;
-      ul {
-        margin-bottom: 20px;
-        li {
-          margin: 0 1rem;
-        }
-      }
-    }
-  }
-
-  p {
-    margin: 0.2rem 0 0;
-    font-size: ${rem(20)};
-    font-weight: 700;
-
-    a {
-      border: none;
-    }
-  }
-`
+import { media } from '../../styles'
+import { useMobileSidebar } from '../../utils/hooks'
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -37,12 +12,13 @@ const Wrapper = styled.div`
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   top: 0;
-  right: 0;
   left: 0;
   bottom: 0;
   background: #fff;
   z-index: 999;
   pointer-events: none;
+  border-right: 1px solid rgba(46, 41, 51, 0.08);
+  box-shadow: rgba(46, 41, 51, 0.08) 11px 0px 10px 0px;
 
   transform: translateX(-100%);
   opacity: 0;
@@ -54,12 +30,16 @@ const Wrapper = styled.div`
   `}
 
   transition: all 0.3s ease;
+
+  ${media.phone(css`
+    right: 0;
+    border: none;
+    box-shadow: none;
+  `)}
 `
 
 const Nav = styled.nav`
-  padding: 5%;
-  padding-left: 30px;
-  margin-bottom: 20px;
+  padding: 30px 30px 40px;
   transform: translateX(-100%);
 
   ${({ isOpen }) => isOpen && css`
@@ -74,9 +54,7 @@ const Button = styled.button`
   bottom: 0;
   right: 0;
   z-index: 9999;
-  background: ${({ theme }) => theme.orange};
   color: #fff;
-  border: 1px solid ${({ theme }) => theme.orange};
   border-radius: 50%;
   height: 60px;
   width: 60px;
@@ -89,55 +67,36 @@ const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  ${({ theme }) => css`
+    background: ${theme.orange};
+    border: 1px solid ${theme.orange};
+  `}
 `
 
-const Sidebar = () => {
-  const { md: { TOC } } = useStaticQuery(query)
-  const tocWrapper = useRef()
-  const [isOpen, setIsOpen] = useState(false)
-
-  useEffect(() => {
-    const anchors = tocWrapper.current.querySelectorAll("a")
-    const appRoot = document.querySelector("#___gatsby")
-    appRoot.style.overflow = 'hidden'
-
-    anchors.forEach(anchor => {
-      anchor.addEventListener("click", () => setIsOpen(false))
-    })
-
-    return () => {
-      anchors.forEach(anchor => {
-        anchor.removeEventListener("click", setIsOpen)
-      })
-    }
-  })
+const MobileWrapper = ({ render }) => {
+  const navRef = useRef()
+  const { isOpen, setIsOpen } = useMobileSidebar(navRef)
 
   return (
-    <div id='sidebar-mobile'>
+    <div id='nav-mobile'>
       <Button onClick={() => setIsOpen(!isOpen)}>
-        <Icon
-          css={`transform: rotate(${isOpen ? "45deg" : 0})`}
-        />
+        <Icon css={`transform: rotate(${isOpen ? "45deg" : 0})`} />
       </Button>
       <Wrapper isOpen={isOpen}>
-        <Nav isOpen={isOpen}>
-          <TOCWrapper
-            ref={tocWrapper}
-            dangerouslySetInnerHTML={{ __html: TOC }}
-            id='TOC-wrapper'
-          />
+        <Nav
+          ref={navRef}
+          isOpen={isOpen}
+        >
+          {render}
         </Nav>
       </Wrapper>
     </div>
   )
 }
 
-export default Sidebar
+MobileWrapper.propTypes = {
+  render: PropTypes.element.isRequired
+}
 
-const query = graphql`
-  {
-    md: markdownRemark(fileAbsolutePath: {regex: "/documentation/"}) {
-      TOC: tableOfContents
-    }
-  }
-`
+export default MobileWrapper

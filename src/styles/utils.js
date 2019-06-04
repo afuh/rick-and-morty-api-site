@@ -28,20 +28,18 @@ export const media = {
     @media (max-width: ${n / 16}em) {
       ${inner}
     }
+  `,
+  mobile: inner => css`
+    @media (max-width: ${890 / 16}em) {
+      ${inner}
+    }
+  `,
+  phone: inner => css`
+    @media (max-width: ${650 / 16}em) {
+      ${inner}
+    }
   `
 }
-
-export const mobile = inner => css`
-  @media (max-width: ${1000 / 16}em) {
-    ${inner}
-  }
-`
-
-export const phone = inner => css`
-  @media (max-width: ${650 / 16}em) {
-    ${inner}
-  }
-`
 
 export const flex = opt => css`
   display: flex;

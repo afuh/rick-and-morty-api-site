@@ -5,65 +5,37 @@ import styled, { css } from 'styled-components'
 
 import Layout from '../components/layout'
 import EditThisPage from '../components/editThisPage'
-import Sidebar from '../components/sidebar/desktop'
-import SidebarMobile from '../components/sidebar/mobile'
+import Sidebar from '../components/sidebar/'
 
-import { prismCSS, media, rem } from '../styles'
+import { prismCSS, media } from '../styles'
 import { useSiteMeta } from '../utils/hooks'
-
-const About = styled.div`
-  ${media.custom(890, css`
-    padding: 0 ${rem(20)}
-  `)}
-`
 
 const Docs = styled.div`
   display: flex;
   flex-wrap: nowrap;
 
-  width: 100%;
-  z-index: 1;
+  ${media.phone(css`
+    display: block;
+  `)}
 
   ${prismCSS}
-
-  #sidebar {
-    &-mobile {
-      display: none;
-    }
-
-    &-desktop {
-      display: block;
-    }
-  }
-
-  ${media.custom(890, css`
-    padding: 0 ${rem(20)};
-    display: block;
-
-    #sidebar {
-      &-mobile {
-        display: block;
-      }
-
-      &-desktop {
-        display: none;
-      }
-    }
-  `)}
 `
 
 const Content = styled.div`
+  max-width: 1000px;
   margin: 0 auto;
-  max-width: 1170px;
-  padding-left: ${rem(20)};
+  padding: 0 20px;
+`
 
-  article li {
+const Article = styled.article`
+  font-variant-ligatures: none;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  text-decoration-skip-ink: auto;
+
+  li {
     list-style-type: initial;
   }
-
-  ${media.custom(890, css`
-    padding: 0;
-  `)}
 `
 
 const Markdown = ({ data: { md } }) => {
@@ -84,12 +56,9 @@ const Markdown = ({ data: { md } }) => {
           {slug.includes('documentation') ?
             <Docs>
               <Sidebar />
-              <SidebarMobile />
-              <article dangerouslySetInnerHTML={{ __html: html }} />
+              <Article dangerouslySetInnerHTML={{ __html: html }} />
             </Docs> :
-            <About>
-              <article dangerouslySetInnerHTML={{ __html: html }} />
-            </About>
+            <Article dangerouslySetInnerHTML={{ __html: html }} />
           }
         </Content>
         <EditThisPage page={slug} />

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 export const useStickySidebar = () => {
-  const [ top ] = useState(20)
+  const [ marginTop ] = useState(20)
   const [bottom, setBottom] = useState(0)
   const [fixed, setFixed] = useState(false)
 
@@ -22,7 +22,7 @@ export const useStickySidebar = () => {
       }
 
       if (viewBottom >= (offsetTop - offsetHeight)){
-        const bottom = viewBottom - (offsetTop - offsetHeight - top)
+        const bottom = viewBottom - (offsetTop - offsetHeight - marginTop)
         setBottom(bottom)
       }
       else {
@@ -38,5 +38,5 @@ export const useStickySidebar = () => {
     }
   }, []) // eslint-disable-line
 
-  return { fixed, bottom, top }
+  return { fixed, bottom, marginTop }
 }
