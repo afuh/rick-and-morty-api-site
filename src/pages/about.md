@@ -9,7 +9,7 @@ The Rick and Morty API (or ShlaAPI) is a RESTful and GraphQL API based on the te
 [Check out the documentation to get started](/documentation)
 
 ### Who are you?
-I am [Axel Fuhrmann](https://axelfuhrmann.com/), a guy who recently started to develop things.
+I am [Axel Fuhrmann](https://axelfuhrmann.com/), a guy who likes to develop things and make music.
 
 ### Did you build the API alone?
 No, [Talita](https://talitatraveler.com) helped me a lot. She is in charge of the research and the data entry.
