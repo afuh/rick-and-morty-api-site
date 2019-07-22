@@ -8,7 +8,8 @@ const libraries = [
   { link: 'https://github.com/afuh/rick-and-morty-api-node', author: 'https://github.com/afuh' },
   { link: 'https://github.com/curiousrohan/ramapi', author: 'https://github.com/curiousrohan' },
   { link: 'https://github.com/Carlj28/RickAndMorty.Net.Api', author: 'https://github.com/Carlj28' },
-  { link: 'https://github.com/pitakill/rickandmortyapigowrapper', author: 'https://github.com/pitakill' }
+  { link: 'https://github.com/pitakill/rickandmortyapigowrapper', author: 'https://github.com/pitakill' },
+  { link: 'https://github.com/MikeJohnPage/mortyr', author: 'https://github.com/MikeJohnPage' }
 ]
 
 describe("Documentation page", () => {
