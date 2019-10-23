@@ -1,4 +1,3 @@
-/* global it describe cy before expect*/
 import config from "../../config/siteConfig"
 
 const libraries = [
@@ -29,48 +28,31 @@ describe("Documentation page", () => {
   describe("Sidebar", () => {
     it("Should hide according to the viewport size", () => {
       cy.get('aside').should('be.visible')
-
-      cy.viewport(890, 900)
-      cy.get('aside').should('not.be.visible')
-      cy.wait(500)
       cy.viewport('iphone-5')
       cy.get('aside').should('not.be.visible')
-      cy.wait(500)
+    })
 
+    it("Should become be able to hide/show when the toggle button", () => {
+      cy.viewport('iphone-5')
+      cy.get('#nav-mobile button').should('be.visible')
+      cy.get('#nav-mobile nav').should('not.be.visible')
+      cy.get('#nav-mobile button').click()
+      cy.get('#nav-mobile nav').should('be.visible')
     })
 
     it("Should become a sticky sidebar when scrolling", () => {
-      cy.get('aside').should('have.css', 'position').and('match', /relative/)
+      cy.get('#nav-desktop nav').should('have.css', 'position').and('eq', 'relative')
       cy.scrollTo('center')
-      cy.get('aside').should('have.css', 'position').and('match', /fixed/)
+      cy.get('#nav-desktop nav').should('have.css', 'position').and('eq', 'fixed')
     })
 
     it("Should become a scrolleable sidebar", () => {
       cy.viewport(1200, 600)
       cy.scrollTo('bottom')
-      cy.get('aside').scrollTo('bottom')
-      cy.wait(500)
-      cy.get('aside').scrollTo('top')
+      cy.get('#nav-desktop nav').scrollTo('bottom')
+      cy.get('#nav-desktop nav').scrollTo('top')
     })
 
-  })
-
-  describe('Libraries section', () => {
-    it("Should have a Title and two working links", () => {
-      cy.get('article').within(() => {
-
-        libraries.forEach(library => {
-          cy.get(`a[href='${library.link}']`)
-            .request(library.link)
-            .then(res => expect(res.status).not.to.eq(400))
-
-          cy.get(`a[href='${library.author}']`)
-            .request(library.author)
-            .then(res => expect(res.status).not.to.eq(400))
-
-        })
-      })
-    })
   })
 
   describe('Github edit page button', () => {
@@ -84,24 +66,21 @@ describe("Documentation page", () => {
     })
   })
 
-  describe('Page', () => {
-    it("Should work in differents viewports", () => {
-      cy.scrollTo('top')
-      cy.viewport('ipad-2')
-      cy.wait(400)
-      cy.viewport('ipad-mini')
-      cy.wait(400)
-      cy.viewport('iphone-6+')
-      cy.wait(400)
-      cy.viewport('iphone-6')
-      cy.wait(400)
-      cy.viewport('iphone-5')
-      cy.wait(400)
-      cy.viewport('iphone-4')
-      cy.wait(400)
-      cy.viewport('iphone-3')
-      cy.wait(400)
+  describe('Libraries section, each one should have a title and two working links', () => {
+    libraries.forEach(library => {
+      const name = library.link.split("/").pop()
+      it(name, () => {
+        cy.get('article').within(() => {
+          cy.get(`a[href='${library.link}']`)
+            .request(library.link)
+            .then(res => expect(res.status).not.to.eq(400))
+    
+          cy.get(`a[href='${library.author}']`)
+            .request(library.author)
+            .then(res => expect(res.status).not.to.eq(400))
+  
+        })
+      })
     })
   })
-
 })

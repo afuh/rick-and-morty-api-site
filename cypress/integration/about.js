@@ -1,4 +1,3 @@
-/* global it describe cy before*/
 import config from "../../config/siteConfig"
 
 describe("About page", () => {
@@ -50,25 +49,4 @@ describe("About page", () => {
         .should('have.attr', 'href', config.github.site + '/blob/develop/src/pages/about.md')
     })
   })
-
-  describe('Page', () => {
-    it("Should work in differents viewports", () => {
-      cy.scrollTo('top')
-      cy.viewport('ipad-2')
-      cy.wait(400)
-      cy.viewport('ipad-mini')
-      cy.wait(400)
-      cy.viewport('iphone-6+')
-      cy.wait(400)
-      cy.viewport('iphone-6')
-      cy.wait(400)
-      cy.viewport('iphone-5')
-      cy.wait(400)
-      cy.viewport('iphone-4')
-      cy.wait(400)
-      cy.viewport('iphone-3')
-      cy.wait(400)
-    })
-  })
-
 })

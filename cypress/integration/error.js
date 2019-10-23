@@ -1,5 +1,3 @@
-/* global it describe cy before expect*/
-
 describe("Error page", () => {
   before(() => {
     cy.visit('/asdf', { failOnStatusCode: false })
@@ -24,25 +22,6 @@ describe("Error page", () => {
           expect(width).to.be.lte(300)
         })
       })
-    })
-  })
-
-  describe('Page', () => {
-    it("Should work in differents viewports", () => {
-      cy.viewport('ipad-2')
-      cy.wait(400)
-      cy.viewport('ipad-mini')
-      cy.wait(400)
-      cy.viewport('iphone-6+')
-      cy.wait(400)
-      cy.viewport('iphone-6')
-      cy.wait(400)
-      cy.viewport('iphone-5')
-      cy.wait(400)
-      cy.viewport('iphone-4')
-      cy.wait(400)
-      cy.viewport('iphone-3')
-      cy.wait(400)
     })
   })
 
