@@ -133,7 +133,7 @@ const CardImg = ({ char }) => {
       <Title>
         <Name>{char.name}</Name>
         <Description>
-          {"id: " + char.id + " - created " + moment(char.created).fromNow()}
+          {'id: ' + char.id + ' - created ' + moment(char.created).fromNow()}
         </Description>
       </Title>
     </ImgWrapper>

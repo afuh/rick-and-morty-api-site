@@ -1,8 +1,8 @@
-import { css } from "styled-components"
+import { css } from 'styled-components'
 import { lighten, darken } from 'polished'
 
 const schema = {
-  red: "#F44336",
+  red: '#F44336',
   cyan: '#00BCD4',
   green: '#4CAF50',
   inline: {
