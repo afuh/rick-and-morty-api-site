@@ -1,12 +1,12 @@
-import config from "../../config/siteConfig"
+import config from '../../config/siteConfig'
 
-describe("About page", () => {
+describe('About page', () => {
   before(() => {
     cy.visit('/about')
 
     navigator.serviceWorker.getRegistrations()
       .then(registrations => {
-        for (let registration of registrations) {
+        for (const registration of registrations) {
           registration.unregister()
         }
       })
@@ -15,7 +15,7 @@ describe("About page", () => {
   })
 
   describe('Headers', () => {
-    it("Should be h3 questions", () => {
+    it('Should be h3 questions', () => {
       cy.get('article').within(() => {
         cy.get('h3').contains('What is this?')
         cy.get('h3').contains('Who are you?')
@@ -30,7 +30,7 @@ describe("About page", () => {
   })
 
   describe('Links', () => {
-    it("Should navigate", () => {
+    it('Should navigate', () => {
       cy.get('a').contains('Check out the documentation to get started').click({ force: true })
       cy.url().should('include', '/documentation')
       cy.get('a').contains('About').click({ force: true })
@@ -44,7 +44,7 @@ describe("About page", () => {
   })
 
   describe('Github edit page button', () => {
-    it("Should be a link to edit the page", () => {
+    it('Should be a link to edit the page', () => {
       cy.get('a.edit-page')
         .should('have.attr', 'href', config.github.site + '/blob/develop/src/pages/about.md')
     })

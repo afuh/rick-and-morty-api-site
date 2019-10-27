@@ -1,17 +1,17 @@
-describe("Error page", () => {
+describe('Error page', () => {
   before(() => {
     cy.visit('/asdf', { failOnStatusCode: false })
 
     navigator.serviceWorker.getRegistrations()
       .then(registrations => {
-        for (let registration of registrations) {
+        for (const registration of registrations) {
           registration.unregister()
         }
       })
   })
 
-  describe("404 Message and image", () => {
-    it("Should contains an error message with an image", () => {
+  describe('404 Message and image', () => {
+    it('Should contains an error message with an image', () => {
       cy.get('main').within(() => {
         cy.get('p').contains('Oh Jeez! there is nothing here')
         cy.get('p').contains('But I could show you a cute picture of')
@@ -25,8 +25,8 @@ describe("Error page", () => {
     })
   })
 
-  describe("Go Back button", () => {
-    it("Should navigate to the home page", () => {
+  describe('Go Back button', () => {
+    it('Should navigate to the home page', () => {
       cy.get('main').within(() => {
         cy.get('a').should('have.attr', 'href', '/').click({ force: true })
         cy.url().should('include', '/')

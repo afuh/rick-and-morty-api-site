@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import { GoArrowLeft as Back } from "react-icons/go"
+import { GoArrowLeft as Back } from 'react-icons/go'
 import styled, { css } from 'styled-components'
 
 import { flex, media, rem } from '../styles'
@@ -71,8 +71,8 @@ const IconWrapper = styled.div`
 
 const BackIcon = () => (
   <IconWrapper>
-    <Link to="/">
-      <Back style={{ fontSize: "40px", marginTop: "10px" }} />
+    <Link to='/'>
+      <Back style={{ fontSize: '40px', marginTop: '10px' }} />
     </Link>
   </IconWrapper>
 )

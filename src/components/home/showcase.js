@@ -28,8 +28,8 @@ const Inner = styled.div`
 
 const Loading = () => (
   <Spinner
-    name="triangle-skew-spin"
-    color="rgb(255, 152, 0)"
+    name='triangle-skew-spin'
+    color='rgb(255, 152, 0)'
   />
 )
 

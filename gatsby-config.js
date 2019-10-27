@@ -1,4 +1,4 @@
-require("dotenv").config({
+require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`
 })
 
@@ -12,13 +12,13 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-catch-links',
-    `gatsby-plugin-styled-components`,
+    'gatsby-plugin-styled-components',
     {
-      resolve: "gatsby-source-graphql",
+      resolve: 'gatsby-source-graphql',
       options: {
-        typeName: "rmAPI",
-        fieldName: "rickAndMortyAPI",
-        url: "https://rickandmortyapi.com/graphql"
+        typeName: 'rmAPI',
+        fieldName: 'rickAndMortyAPI',
+        url: 'https://rickandmortyapi.com/graphql'
       }
     },
     {
@@ -27,7 +27,7 @@ module.exports = {
         name: config.title,
         short_name: config.shortTitle,
         description: config.description,
-        start_url: "/",
+        start_url: '/',
         background_color: config.backgroundColor,
         theme_color: config.themeColor,
         display: 'standalone',
@@ -39,21 +39,21 @@ module.exports = {
       options: {
         plugins: [
           'gatsby-remark-external-links',
-          `gatsby-remark-autolink-headers`,
-          `gatsby-remark-prismjs`
+          'gatsby-remark-autolink-headers',
+          'gatsby-remark-prismjs'
         ]
       }
     },
     {
       resolve: 'gatsby-plugin-typography',
       options: {
-        pathToConfigModule: `src/utils/typography.js`
+        pathToConfigModule: 'src/utils/typography.js'
       }
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: `src`,
+        name: 'src',
         path: `${__dirname}/src/`
       }
     },
@@ -65,7 +65,7 @@ module.exports = {
       }
     },
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: 'gatsby-plugin-google-analytics',
       options: {
         trackingId: process.env.GA,
         anonymize: true,

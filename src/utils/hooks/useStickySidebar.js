@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react'
 
 export const useStickySidebar = () => {
-  const [ marginTop ] = useState(20)
+  const [marginTop] = useState(20)
   const [bottom, setBottom] = useState(0)
   const [fixed, setFixed] = useState(false)
 
   useEffect(() => {
-    const header = document.querySelector("header")
-    const footer = document.querySelector("footer")
-    const editPage = document.querySelector("[id=edit-wrapper]")
+    const header = document.querySelector('header')
+    const footer = document.querySelector('footer')
+    const editPage = document.querySelector('[id=edit-wrapper]')
 
     const handleScroll = () => {
       const viewBottom = window.scrollY + window.innerHeight

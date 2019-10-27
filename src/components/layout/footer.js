@@ -94,7 +94,7 @@ const Sign = () => {
       <span >
         ❮❯ by <a href={author.site}>{author.name}</a>
       </span>
-      <span>{` `}{new Date().getFullYear()}</span>
+      <span>{' '}{new Date().getFullYear()}</span>
     </SignWrapper>
   )
 }
