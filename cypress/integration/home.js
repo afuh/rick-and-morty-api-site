@@ -1,13 +1,12 @@
-/* global it describe cy before expect*/
-import config from "../../config/siteConfig"
+import config from '../../config/siteConfig'
 
-describe("Home page", () => {
+describe('Home page', () => {
   before(() => {
     cy.visit('/')
 
     navigator.serviceWorker.getRegistrations()
       .then(registrations => {
-        for (let registration of registrations) {
+        for (const registration of registrations) {
           registration.unregister()
         }
       })
@@ -16,7 +15,7 @@ describe("Home page", () => {
   })
 
   describe('Header', () => {
-    it("Should navigate thorough the site", () => {
+    it('Should navigate thorough the site', () => {
 
       cy.get('nav a[title="GitHub"]').should('have.attr', 'href', config.github.api)
 
@@ -30,12 +29,10 @@ describe("Home page", () => {
       cy.url().should('include', '/')
     })
 
-    it("Should not be a github icon in mobile view", () => {
+    it('Should not be a github icon in mobile view', () => {
       cy.get('header').within(() => {
         cy.viewport('iphone-4')
         cy.get('a[title="GitHub"]').should('not.be.visible')
-        cy.wait(500)
-
       })
     })
   })
@@ -123,25 +120,4 @@ describe("Home page", () => {
       })
     })
   })
-
-  describe('Page', () => {
-    it("Should work in differents viewports", () => {
-      cy.scrollTo('top')
-      cy.viewport('ipad-2')
-      cy.wait(400)
-      cy.viewport('ipad-mini')
-      cy.wait(400)
-      cy.viewport('iphone-6+')
-      cy.wait(400)
-      cy.viewport('iphone-6')
-      cy.wait(400)
-      cy.viewport('iphone-5')
-      cy.wait(400)
-      cy.viewport('iphone-4')
-      cy.wait(400)
-      cy.viewport('iphone-3')
-      cy.wait(400)
-    })
-  })
-
 })

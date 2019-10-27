@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link as GatsbyLink } from 'gatsby'
-import { GoMarkGithub as GithubIcon } from "react-icons/go"
+import { GoMarkGithub as GithubIcon } from 'react-icons/go'
 import styled, { css } from 'styled-components'
 
 import { flex, media, hover } from '../../styles'
@@ -57,8 +57,8 @@ const Nav = styled.nav`
 `
 
 const GHLink = styled.a.attrs({
-  target: "_blank",
-  rel: "nofollow noopener noreferrer"
+  target: '_blank',
+  rel: 'nofollow noopener noreferrer'
 })`
   ${hover(css`
     color: ${({ theme }) => theme.orange};
@@ -119,7 +119,7 @@ const Github = () => {
   return (
     <GHLink
       href={github.api}
-      title="GitHub"
+      title='GitHub'
     >
       <GithubIcon style={{ fontSize: 18 }}/>
     </GHLink>

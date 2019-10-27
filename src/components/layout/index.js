@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { ThemeProvider } from "styled-components"
+import { ThemeProvider } from 'styled-components'
 
 import SEO from '../../utils/seo'
 import Header from './header'

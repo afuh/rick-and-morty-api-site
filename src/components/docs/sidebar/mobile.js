@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 
-import Button from "./button"
+import Button from './button'
 import { media } from '../../../styles'
 import { useMobileSidebar } from '../../../utils/hooks'
 

@@ -20,7 +20,7 @@ const Nav = styled.nav`
   ${({ fixed, hide }) => fixed && css`
     position: fixed;
     top: 0;
-    max-height: ${hide !== 0 ? `calc(100vh - ${hide}px)` : "100vh"};
+    max-height: ${hide !== 0 ? `calc(100vh - ${hide}px)` : '100vh'};
   `}
 `
 

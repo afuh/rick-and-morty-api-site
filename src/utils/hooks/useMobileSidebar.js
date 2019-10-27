@@ -6,18 +6,18 @@ export const useMobileSidebar = navRef => {
   const closeSidebar = () => setIsOpen(false)
 
   useEffect(() => {
-    const anchors = navRef.current.querySelectorAll("a")
+    const anchors = navRef.current.querySelectorAll('a')
 
     anchors.forEach(anchor => {
-      anchor.addEventListener("click", closeSidebar)
+      anchor.addEventListener('click', closeSidebar)
     })
 
     return () => {
       anchors.forEach(anchor => {
-        anchor.removeEventListener("click", closeSidebar)
+        anchor.removeEventListener('click', closeSidebar)
       })
     }
-  }, [ navRef ])
+  }, [navRef])
 
   return { isOpen, setIsOpen }
 }
