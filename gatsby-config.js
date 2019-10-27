@@ -71,6 +71,8 @@ module.exports = {
         anonymize: true,
         respectDNT: true
       }
-    }
+    },
+    'gatsby-plugin-netlify-cache',
+    'gatsby-plugin-netlify'
   ]
 }
