@@ -35,11 +35,19 @@ module.exports = {
       }
     },
     {
-      resolve: 'gatsby-transformer-remark',
+      resolve: 'gatsby-plugin-mdx',
       options: {
-        plugins: [
+        defaultLayouts: {
+          default: require.resolve('./src/components/layout/mdx.js')
+        },
+        gatsbyRemarkPlugins: [
+          {
+            resolve: 'gatsby-remark-autolink-headers',
+            options: {
+              icon: false
+            }
+          },
           'gatsby-remark-external-links',
-          'gatsby-remark-autolink-headers',
           'gatsby-remark-prismjs'
         ]
       }
