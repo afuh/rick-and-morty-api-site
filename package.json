@@ -67,15 +67,15 @@
     "dev": "gatsby develop -H 0.0.0.0",
     "serve": "gatsby serve -H 0.0.0.0",
     "cypress": "cypress run",
-    "test": "run-p serve cypress",
-    "deploy": "npm run build && node deploy.js",
+    "test": "npm run build && run-p serve cypress",
     "lint:css": "stylelint './src/**/*.js'",
     "lint:js": "eslint ./src/. --fix",
     "lint": "run-s lint:js lint:css"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "pre-push": "npm test"
     }
   },
   "lint-staged": {

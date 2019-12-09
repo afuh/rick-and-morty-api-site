@@ -70,15 +70,15 @@ describe('Documentation page', () => {
     libraries.forEach(library => {
       const name = library.link.split('/').pop()
       it(name, () => {
-        cy.get('article').within(() => {
+        cy.get('main').within(() => {
           cy.get(`a[href='${library.link}']`)
             .request(library.link)
             .then(res => expect(res.status).not.to.eq(400))
-    
+
           cy.get(`a[href='${library.author}']`)
             .request(library.author)
             .then(res => expect(res.status).not.to.eq(400))
-  
+
         })
       })
     })
