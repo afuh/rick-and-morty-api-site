@@ -1,7 +1,11 @@
 ---
 title: "Documentation"
+slug: "/documentation"
+description: This documentation will help you get familiar with the resources of the Rick and Morty API and show you how to make different queries.
 cover: '/images/docs.jpeg'
 ---
+
+import Count from "../components/count.js";
 
 ## Introduction
 This documentation will help you get familiar with the resources of the **Rick and Morty API** and show you how to make different queries, so that you can get the most out of it.
@@ -10,7 +14,7 @@ This documentation will help you get familiar with the resources of the **Rick a
 The **Rick and Morty API** is an open API, no authentication is required for use. Nonetheless, to prevent malicious usage of the API there is a limit on the number of requests a given IP address can make. This limit is 10000 requests per day. If you happen to hit the limit you'll receive a `429` status (Too Many Requests) on all your requests during a period of 12 hours.
 
 ### GraphQL
-https://rickandmortyapi.com/graphql/   
+https://rickandmortyapi.com/graphql/
 
 *Sample query*
 ```graphql
@@ -28,7 +32,7 @@ query {
   }
 }
 ```
-Check [here](#filter-characters) to know more about how to filter.   
+Check [here](#filter-characters) to know more about how to filter.
 > *New to GraphQL? check the docs [here](https://graphql.org/learn/)*
 
 ### REST
@@ -129,7 +133,7 @@ https://rickandmortyapi.com/api/character/?page=19
 ```
 
 ## Character
-There is a total of 493 characters sorted by id.
+There is a total of <Count model='characters'/> characters sorted by id.
 
 ### Character schema
 |Key|Type|Description|
@@ -331,7 +335,7 @@ https://rickandmortyapi.com/api/character/?name=rick&status=alive
 ```
 
 ## Location
-There is a total of 76 locations sorted by id.
+There is a total of <Count model='locations'/> locations sorted by id.
 
 ### Location schema
 |Key|Type|Description|
@@ -473,7 +477,7 @@ https://rickandmortyapi.com/api/location/?name=earth
 ```
 
 ## Episode
-There is a total of 31 episodes sorted by id (which is of course the order of the episodes)
+There is a total of <Count model='episodes'/> episodes sorted by id (which is of course the order of the episodes)
 
 ### Episode schema
 |Key|Type|Description|
@@ -584,7 +588,7 @@ Available parameters:
 If you want to know how to use queries, check [here](#filter-characters)
 
 ## Libraries
-Here you will find a list of helper libraries to use the Rick and Morty API with your preferred language.   
+Here you will find a list of helper libraries to use the Rick and Morty API with your preferred language.
 
 ### Elixir
 - [ExShla - The Rick and Morty API Wrapper](https://github.com/l1h3r/ex_shla) by [l1h3r](https://github.com/l1h3r)

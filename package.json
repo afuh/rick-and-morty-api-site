@@ -4,12 +4,15 @@
   "version": "1.0.0",
   "author": "Axel Fuhrmann",
   "dependencies": {
+    "@mdx-js/mdx": "^1.5.1",
+    "@mdx-js/react": "^1.5.1",
     "babel-plugin-styled-components": "^1.10.6",
     "dotenv": "^8.2.0",
     "gatsby": "^2.17.1",
     "gatsby-plugin-catch-links": "^2.1.15",
     "gatsby-plugin-google-analytics": "^2.1.23",
     "gatsby-plugin-manifest": "^2.2.23",
+    "gatsby-plugin-mdx": "^1.0.59",
     "gatsby-plugin-netlify": "^2.1.22",
     "gatsby-plugin-netlify-cache": "^1.2.0",
     "gatsby-plugin-nprogress": "^2.1.12",
@@ -22,7 +25,6 @@
     "gatsby-remark-prismjs": "^3.3.20",
     "gatsby-source-filesystem": "^2.1.33",
     "gatsby-source-graphql": "^2.1.20",
-    "gatsby-transformer-remark": "^2.6.30",
     "moment": "^2.24.0",
     "polished": "^3.4.1",
     "prismjs": "^1.17.1",
@@ -65,15 +67,15 @@
     "dev": "gatsby develop -H 0.0.0.0",
     "serve": "gatsby serve -H 0.0.0.0",
     "cypress": "cypress run",
-    "test": "run-p serve cypress",
-    "deploy": "npm run build && node deploy.js",
+    "test": "npm run build && run-p serve cypress",
     "lint:css": "stylelint './src/**/*.js'",
     "lint:js": "eslint ./src/. --fix",
     "lint": "run-s lint:js lint:css"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "pre-push": "npm test"
     }
   },
   "lint-staged": {

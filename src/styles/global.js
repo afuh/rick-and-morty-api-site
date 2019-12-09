@@ -12,6 +12,14 @@ export const theme = {
 }
 
 export const GlobalStyles = createGlobalStyle`
+  body {
+    background: ${p => p.theme.backBlack};
+  }
+
+  header, main {
+    background: #fff;
+  }
+
   a {
     color: ${p => p.theme.black};
   }

@@ -39,7 +39,7 @@ const Wrapper = styled.div`
 `
 
 const Nav = styled.nav`
-  padding: 30px 30px 40px;
+  padding: 30px 60px 40px 30px;
   transform: translateX(-100%);
 
   ${({ isOpen }) => isOpen && css`
