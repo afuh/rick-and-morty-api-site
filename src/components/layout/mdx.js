@@ -25,7 +25,7 @@ const Content = styled.div`
     display: inline-block;
   }
 
-  ${prismCSS}
+  ${p => p.prism && prismCSS}
 `
 
 const MDXTemplate = ({ children, pageContext: { frontmatter } }) => {
@@ -36,11 +36,13 @@ const MDXTemplate = ({ children, pageContext: { frontmatter } }) => {
     image: frontmatter.cover
   }
 
+  const isDocs = frontmatter.slug.includes('documentation')
+
   return (
     <Layout seo={{ ...seo }}>
       <>
-        <Content>
-          {frontmatter.slug.includes('documentation') ?
+        <Content prism={!!isDocs}>
+          {isDocs ?
             <Docs>{children}</Docs>:
             <div className='about-page'>{children}</div>
           }
