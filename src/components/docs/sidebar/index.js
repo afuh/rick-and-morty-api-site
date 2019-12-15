@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import { useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql, Link as GatsbyLink } from 'gatsby'
 
 import { rem, media } from '../../../styles'
 import Mobile from './mobile'
@@ -13,23 +13,21 @@ const TOCWrapper = styled.div`
     padding: 0;
     margin: 0;
     li {
-      margin-bottom: 1rem;
-      ul {
-        margin-bottom: 20px;
-        li {
-          margin: 0 1rem;
-        }
-      }
+      list-style-type: none;
     }
   }
 
-  p {
-    margin: 0.2rem 0 0;
-    font-size: ${rem(20)};
-    font-weight: 700;
+  .section {
+    margin-bottom: 2rem;
 
-    a {
-      border: none;
+    .title {
+      margin: 0.2rem 0 0;
+      font-size: ${rem(20)};
+      font-weight: 700;
+    }
+
+    .item {
+      margin: 0;
     }
   }
 `
@@ -54,13 +52,32 @@ const Wrapper = styled.aside`
   `)}
 `
 
+const Link = styled(GatsbyLink).attrs(p => ({
+  to: '/documentation/' + p.to
+}))`
+  border-bottom: none;
+`
+
 const TOC = () => {
-  const { md: { TOC } } = useStaticQuery(query)
+  const { mdx: { tableOfContents } } = useStaticQuery(query)
 
   return (
-    <TOCWrapper
-      dangerouslySetInnerHTML={{ __html: TOC }}
-    />
+    <TOCWrapper>
+      <ul>
+        {tableOfContents.items.map(section => (
+          <li key={section.url} className='section'>
+            <Link to={section.url} className='title'>{section.title}</Link>
+            <ul>
+              {section.items.map(item => (
+                <li key={item.url} className='item'>
+                  <Link to={item.url} >{item.title}</Link>
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))}
+      </ul>
+    </TOCWrapper>
   )
 }
 
@@ -75,8 +92,8 @@ export default Sidebar
 
 const query = graphql`
   query DOCS_TOC {
-    md: markdownRemark(fileAbsolutePath: {regex: "/documentation/"}) {
-      TOC: tableOfContents
+    mdx(fileAbsolutePath: {regex: "/documentation/"}) {
+      tableOfContents(maxDepth: 3)
     }
   }
 `

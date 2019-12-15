@@ -7,7 +7,7 @@ import config from '../../config/siteConfig'
 import { flex, rem } from '../styles'
 
 const Wrapper = styled.div.attrs({
-  id: 'edit-wrapper' // to query it in the Sidebar
+  id: 'edit-wrapper'
 })`
   ${flex({ x: 'flex-end' })}
 
@@ -19,8 +19,8 @@ const Wrapper = styled.div.attrs({
 const Anchor = styled.a.attrs(({ to }) => ({
   target: '_blank',
   rel: 'nofollow noopener noreferrer',
-  className: 'edit-page', // for test
-  href: `${config.github.site}/blob/develop/src/pages${to.slice(0, -1)}.md`
+  className: 'edit-page',
+  href: `${config.github.site}/blob/develop/src/pages${to}.mdx`
 }))`
 
   ${flex}

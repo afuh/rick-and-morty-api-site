@@ -14,9 +14,9 @@ describe('About page', () => {
     cy.scrollTo('top')
   })
 
-  describe('Headers', () => {
+  describe('Headings', () => {
     it('Should be h3 questions', () => {
-      cy.get('article').within(() => {
+      cy.get('main').within(() => {
         cy.get('h3').contains('What is this?')
         cy.get('h3').contains('Who are you?')
         cy.get('h3').contains('Did you build the API alone?')
@@ -46,7 +46,7 @@ describe('About page', () => {
   describe('Github edit page button', () => {
     it('Should be a link to edit the page', () => {
       cy.get('a.edit-page')
-        .should('have.attr', 'href', config.github.site + '/blob/develop/src/pages/about.md')
+        .should('have.attr', 'href', config.github.site + '/blob/develop/src/pages/about.mdx')
     })
   })
 })

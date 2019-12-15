@@ -1,10 +1,10 @@
 import { css } from 'styled-components'
-import { lighten, darken } from 'polished'
 
 const schema = {
-  red: '#F44336',
-  cyan: '#00BCD4',
-  green: '#4CAF50',
+  property: '#e06c75ff',
+  numeric: '#d19a66ff',
+  string: '#98c379ff',
+  punctuation: '#abb2bf',
   inline: {
     back: '#eaeced',
     color: '#323232'
@@ -67,12 +67,12 @@ export const prismCSS = css`
   .token.constant,
   .token.symbol,
   .token.deleted {
-    color: ${lighten(0.11, schema.red)};
+    color: ${schema.property};
   }
 
   .token.boolean,
   .token.number {
-  	color: ${darken(0.05, schema.cyan)};
+  	color: ${schema.numeric};
   }
 
   .token.selector,
@@ -81,7 +81,7 @@ export const prismCSS = css`
   .token.char,
   .token.builtin,
   .token.inserted {
-  	color: ${lighten(0.15, schema.green)};
+  	color: ${schema.string};
   }
 
   .token.operator,
@@ -91,7 +91,7 @@ export const prismCSS = css`
   .language-css .token.string,
   .style .token.string,
   .token.variable {
-  	color: ${p => p.theme.whitesmoke};
+  	color: ${schema.punctuation};
   }
 
   .token.atrule,
