@@ -61,7 +61,7 @@ describe('Documentation page', () => {
         .should(
           'have.attr',
           'href',
-          config.github.site + '/blob/develop/src/pages/documentation.md'
+          config.github.site + '/blob/develop/src/pages/documentation.mdx'
         )
     })
   })
