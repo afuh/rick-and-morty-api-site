@@ -1,11 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { ThemeProvider } from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components'
 
 import SEO from '../../utils/seo'
 import Header from './header'
 import Footer from './footer'
 import { GlobalStyles, theme } from '../../styles'
+
+const Main = styled.main`
+  padding-top: 2px;
+`
 
 const Layout = ({ children, seo }) => (
   <>
@@ -14,9 +18,9 @@ const Layout = ({ children, seo }) => (
       <>
         <GlobalStyles />
         <Header />
-        <main>
+        <Main>
           {children}
-        </main>
+        </Main>
         <Footer />
       </>
     </ThemeProvider>

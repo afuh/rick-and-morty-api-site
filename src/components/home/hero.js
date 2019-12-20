@@ -74,6 +74,10 @@ const HiddenSubTitle = styled(SubTitle)`
     background: ${({ theme }) => theme.orange};
     color: ${({ theme }) => theme.backBlack};
   }
+
+  ${media.phone(css`
+    display: none;
+  `)}
 `
 
 const Hero = () => {

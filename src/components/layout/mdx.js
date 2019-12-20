@@ -21,10 +21,6 @@ const Content = styled.div`
     list-style-type: initial;
   }
 
-  .about-page {
-    display: inline-block;
-  }
-
   ${p => p.prism && prismCSS}
 `
 
@@ -44,7 +40,7 @@ const MDXTemplate = ({ children, pageContext: { frontmatter } }) => {
         <Content prism={!!isDocs}>
           {isDocs ?
             <Docs>{children}</Docs>:
-            <div className='about-page'>{children}</div>
+            <div>{children}</div>
           }
         </Content>
         <EditThisPage page={frontmatter.slug} />

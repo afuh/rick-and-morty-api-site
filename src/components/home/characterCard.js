@@ -37,12 +37,12 @@ const ImgWrapper = styled.div.attrs({
     background: ${({ theme }) => theme.backBlack};
 
     ${media.phone(css`
-      height: ${p => p.loading ? '60vh' : 'auto'};
+      height: ${p => p.isLoading ? '60vh' : 'auto'};
     `)}
 
     img {
       margin: 0;
-      opacity: ${p => p.loading ? 0 : 1};
+      opacity: ${p => p.isLoading ? 0 : 1};
       transition: opacity .5s;
     }
   }
@@ -122,7 +122,7 @@ const CardImg = ({ char }) => {
   const [loading, setLoading] = useState(true)
 
   return (
-    <ImgWrapper loading={loading}>
+    <ImgWrapper isLoading={loading}>
       <div className='card-image'>
         <img
           onLoad={() => setLoading(false)}
