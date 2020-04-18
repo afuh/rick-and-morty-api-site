@@ -7,7 +7,7 @@ import Mobile from './mobile'
 import Desktop from './desktop'
 
 const TOCWrapper = styled.div`
-  padding-bottom: 40px;
+  padding-bottom: 120px;
 
   ul {
     padding: 0;
