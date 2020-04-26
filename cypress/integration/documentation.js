@@ -9,7 +9,8 @@ const libraries = [
   { link: 'https://github.com/Carlj28/RickAndMorty.Net.Api', author: 'https://github.com/Carlj28' },
   { link: 'https://github.com/pitakill/rickandmortyapigowrapper', author: 'https://github.com/pitakill' },
   { link: 'https://github.com/MikeJohnPage/mortyr', author: 'https://github.com/MikeJohnPage' },
-  { link: 'https://github.com/adrianoluis/rickandmortyapi-java', author: 'https://github.com/adrianoluis' }
+  { link: 'https://github.com/adrianoluis/rickandmortyapi-java', author: 'https://github.com/adrianoluis' },
+  { link: 'https://github.com/benjaminbruch/rick-morty-swift-api', author: 'https://github.com/benjaminbruch' }
 ]
 
 describe('Documentation page', () => {
