@@ -4,94 +4,50 @@ import styled, { css } from 'styled-components'
 import { useSiteMeta } from '../../utils/hooks'
 import { flex, rem, media } from '../../styles'
 
-const headingsStyles = css`
-  margin: 0;
-  text-transform: uppercase;
-  color: ${({ theme }) => theme.backBlack};
-  border: none;
-
-  ${media.phone(css`
-    line-height: 1;
-    padding: 0 18px;
-    margin: 0;
-  `)}
-`
+import BackroundSVG from '../../assets/svg/rm-hero.svg'
 
 const Wrapper = styled.section`
   ${flex}
   flex-direction: column;
-  height: 40vh;
+  height: calc(50vh - ${({ theme }) => theme.navHeight}px);
   text-align: center;
+  position: relative;
 
-  ${media.phone(css`
-    display: block;
-    height: auto;
-    margin: ${rem(40)} 0;
-  `)}
-`
+  .hero-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
 
-const SubTitleWrapper = styled.div`
-  padding: 5px 4px 0;
-  background: ${({ theme }) => theme.backBlack};
-  transform: skew(-2deg) translateY(-6px) translateY(-12px);
-
-  ${media.phone(css`
-    transform: none;
-    background: #fff;
-  `)}
+    svg {
+      width: 100%;
+      height: 100%;
+      fill: red;
+    }
+  }
 `
 
 const Title = styled.h1`
-  ${headingsStyles}
-  font-size: ${rem(60)};
+  margin: 0;
+  color: ${({ theme }) => theme.backBlack};
+  border: none;
+  font-weight: 900;
+  z-index: 1;
+  font-size: ${rem(80)};
 
-  ${media.phone(css`
-    font-size: ${rem(40)};
-  `)}
-`
-
-const SubTitle = styled.h2`
-  ${headingsStyles}
-  font-size: ${rem(30)};
-  color: ${({ theme }) => theme.orange};
-  transform: skew(2deg);
-
-  ${media.phone(css`
-    transform: none;
-    font-size: ${rem(20)};
-  `)}
-`
-
-const HiddenSubTitle = styled(SubTitle)`
-  position: absolute;
-  padding: 0 ${rem(4)};
-  width: 100%;
-  top: 4px;
-  left: 0;
-  color: transparent;
-
-  &::selection {
-    background: ${({ theme }) => theme.orange};
-    color: ${({ theme }) => theme.backBlack};
-  }
-
-  ${media.phone(css`
-    display: none;
+  ${media.mobile(css`
+    font-size: ${rem(60)};
   `)}
 `
 
 const Hero = () => {
-  const { title, description, subDescription } = useSiteMeta()
+  const { title } = useSiteMeta()
 
   return (
     <Wrapper>
       <Title>{title}</Title>
-      <SubTitleWrapper>
-        <SubTitle>{description}</SubTitle>
-        <HiddenSubTitle>
-          &nbsp; &nbsp; &nbsp;{subDescription}&nbsp; &nbsp; &nbsp;
-        </HiddenSubTitle>
-      </SubTitleWrapper>
+      <div className='hero-image'>
+        <BackroundSVG />
+      </div>
     </Wrapper>
   )
 }
