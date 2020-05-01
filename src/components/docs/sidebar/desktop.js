@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   min-width: 210px;
   height: 100%;
   border-right: 1px solid rgba(46, 41, 51, 0.08);
-  margin-right: 25px;
+  margin-right: ${({ theme }) => theme.spacing._24};
 `
 
 const Nav = styled.nav`

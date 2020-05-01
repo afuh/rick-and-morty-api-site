@@ -3,105 +3,116 @@ import PropTypes from 'prop-types'
 import moment from 'moment'
 import styled, { css } from 'styled-components'
 
-import { flex, rem, media } from '../../styles'
-
 const Wrapper = styled.article`
-  max-width: 300px;
-  border-radius: ${rem(10)};
-  overflow: hidden;
-  margin-bottom: ${rem(10)};
-  box-shadow: ${({ theme }) => theme.shadow};
+  ${({ theme }) => css`
+    max-width: 300px;
+    overflow: hidden;
+    border-radius: ${theme.spacing._8};
+    margin-bottom: ${theme.spacing._12};
+    box-shadow: ${theme.shadow};
 
-  ${media.phone(css`
-    max-width: none;
-    box-shadow: none;
-    border-radius: unset;
-    width: 100%;
-  `)}
+    ${theme.media.phone(css`
+      max-width: none;
+      box-shadow: none;
+      border-radius: unset;
+      width: 100%;
+    `)}
+  `}
 `
 
 const ImgWrapper = styled.div.attrs({
   data: 'card header'
 })`
-  position: relative;
-  width: 300px;
-  height: 300px;
+  ${({ theme, isLoading }) => css`
+    position: relative;
+    width: 300px;
+    height: 300px;
 
-  ${media.phone(css`
-    width: 100%;
-    height: auto;
-  `)}
-
-  .card-image {
-    width: 100%;
-    background: ${({ theme }) => theme.backBlack};
-
-    ${media.phone(css`
-      height: ${p => p.isLoading ? '60vh' : 'auto'};
+    ${theme.media.phone(css`
+      width: 100%;
+      height: auto;
     `)}
 
-    img {
-      margin: 0;
-      opacity: ${p => p.isLoading ? 0 : 1};
-      transition: opacity .5s;
+    .card-image {
+      width: 100%;
+      background: ${theme.backBlack};
+
+      ${theme.media.phone(css`
+        height: ${isLoading ? '60vh' : 'auto'};
+      `)}
+
+      img {
+        margin: 0;
+        opacity: ${isLoading ? 0 : 1};
+        transition: opacity .5s;
+      }
     }
-  }
+
+  `}
 `
 
 const InfoWrapper = styled.div.attrs({
   data: 'card info'
 })`
-  padding: ${rem(20)};
-  height: 100%;
-  color: ${({ theme }) => theme.orange};
-  background: ${({ theme }) => theme.black};
+  ${({ theme }) => css`
+    padding: ${theme.spacing._12} ${theme.spacing._12};
+    height: 100%;
+    color: ${theme.primary};
+    background: ${theme.black};
+  `}
 `
 
 const Title = styled.div`
-  width: 100%;
-  background: ${({ theme }) => theme.backBlack};
-  opacity: 0.8;
-  position: absolute;
-  bottom: 0;
-  padding: ${rem(10)};
+  ${({ theme }) => css`
+    width: 100%;
+    background: ${theme.backBlack};
+    opacity: 0.8;
+    position: absolute;
+    bottom: 0;
+    padding: ${theme.spacing._12};
+  `}
 `
 
 const Name = styled.h2`
-  color: ${({ theme }) => theme.whitesmoke};
-  margin: 0;
-  font-size: ${rem(26)};
-  font-weight: 400;
-  font-stretch: expanded;
+  ${({ theme }) => css`
+    color: ${theme.whitesmoke};
+    margin: 0;
+    font-size: ${theme.spacing._24};
+    font-weight: 400;
+    font-stretch: expanded;
+  `}
 `
 
 const Description = styled.p`
-  color: #bbb;
-  margin: 0;
-  font-size: ${rem(14)};
+  ${({ theme }) => css`
+    color: #bbb;
+    margin: 0;
+    font-size: ${theme.spacing._12};
+  `}
 `
 
 const TextWrapper = styled.div`
-  ${flex({ x: 'space-between' })}
-  flex-wrap: nowrap;
-  padding: ${rem(12)} 0 ${rem(6)};
+  ${({ theme, divider }) => css`
+    ${theme.mixins.flex({ x: 'space-between' })}
+    padding: ${theme.spacing._12} 0 ${theme.spacing._8};
+    flex-wrap: nowrap;
 
-  span {
-    font-size: 0.7rem;
-    font-weight: 400;
-    color: ${({ theme }) => theme.gray}
-  }
+    span {
+      font-size: 0.7rem;
+      font-weight: 400;
+      color: ${theme.gray}
+    }
 
-  p {
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    font-size: 0.9rem;
-    font-weight: 200;
-    text-align: right;
-  }
+    p {
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      font-size: 0.9rem;
+      font-weight: 200;
+      text-align: right;
+    }
 
-  ${({ divider }) => divider && css`
-    border-bottom: 1px solid #444;
+    border-bottom: ${divider && '1px solid #444'};
   `}
 `
 

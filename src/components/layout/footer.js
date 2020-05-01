@@ -1,60 +1,63 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
 import styled, { css } from 'styled-components'
 
-import { flex, media, hover, rem } from '../../styles'
 import { useRickAndMortyStats, useSiteMeta } from '../../utils/hooks'
 
 const StatisticsWrapper = styled.div`
-  ${flex}
-  width: 100%;
+  ${({ theme }) => css`
+    ${theme.mixins.flex}
+    width: 100%;
 
-  span {
-    font-size: 14px;
-    font-weight: 300;
-  }
+    span {
+      font-size: ${theme.spacing._12};
+      font-weight: 300;
+    }
 
-  ${media.phone(css`
-    justify-content: space-around;
-  `)}
+    ${theme.media.phone(css`
+      justify-content: space-around;
+    `)}
+  `}
 `
 
 const Wrapper = styled.footer`
-  ${flex}
-  flex-direction: column;
-  flex-wrap: nowrap;
+  ${({ theme }) => css`
+    ${theme.mixins.flex}
+    flex-direction: column;
+    flex-wrap: nowrap;
 
-  background: ${({ theme }) => theme.backBlack};
-  color: ${({ theme }) => theme.gray};
+    background: ${theme.backBlack};
+    color: ${theme.gray};
+    padding: ${theme.spacing._12} 0;
+    min-height: calc(${theme.navHeight}px * 2);
+    width: 100%;
 
-  padding: 10px 0;
-  width: 100%;
-  min-height: calc(${({ theme }) => theme.navHeight}px * 2);
-
-  .stats {
-    margin: 4px 8px;
-    text-align: center;
-  }
+    .stats {
+      margin: ${theme.spacing._4} ${theme.spacing._8};
+      text-align: center;
+    }
+  `}
 `
 
 const SignWrapper = styled.div`
-  span {
-    font-size: ${rem(13)};
-    font-weight: 200;
+  ${({ theme }) => css`
+    span {
+      font-size: ${theme.spacing._12};
+      font-weight: 200;
 
-    a {
-      font-weight: 400;
-      transition: color .2s;
-      color: ${({ theme }) => theme.whitesmoke};
-      border-bottom: 1px solid ${({ theme }) => theme.orange};
+      a {
+        font-weight: 400;
+        transition: color .2s;
+        color: ${theme.whitesmoke};
+        border-bottom: 1px solid ${theme.primary};
 
-      ${hover(css`
-        color: ${({ theme }) => theme.orange};
-        border-bottom: none;
-      `)}
+        ${theme.mixins.hover(css`
+          color: ${theme.primary};
+          border-bottom: none;
+        `)}
+      }
     }
-  }
+  `}
 `
 
 const Statistics = ({ title, count }) => (

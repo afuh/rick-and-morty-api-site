@@ -1,54 +1,166 @@
-import { createGlobalStyle } from 'styled-components'
-
-export const theme = {
-  orange: '#FF9800',
-  black: '#333',
-  backBlack: '#202329',
-  gray: '#9E9E9E',
-  whitesmoke: '#f5f5f5',
-  lightgray: '#d8d8d8',
-  shadow: '0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08)',
-  navHeight: 80
-}
+import { createGlobalStyle, css } from 'styled-components'
 
 export const GlobalStyles = createGlobalStyle`
-  body {
+  ${({ theme }) => css`
+    body {
+      background: ${theme.backBlack};
+    }
+
+    header, main {
+      background: #fff;
+    }
+
+    a {
+      color: ${theme.black};
+    }
+
+    p a,
+    li a {
+      color: ${theme.black};
+      border-bottom: 1px solid rgb(255, 152, 0);
+      transition: all .1s;
+    }
+
+    a:hover,
+    a:focus {
+      text-decoration: none;
+      color: ${theme.primary};
+    }
+
+    li {
+      list-style-type: none;
+    }
+
+    *::selection {
+      color: ${theme.primary};
+      background: ${theme.backBlack};
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  `}
+`
+
+const schema = {
+  property: '#ff7d87',
+  numeric: '#f08d49',
+  string: '#7ec699',
+  punctuation: '#abb2bf',
+  inline: {
+    back: '#1b1f230d',
+    color: '#476582'
+  }
+}
+
+export const prismCSS = css`
+  code {
+    font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+    line-height: 1.4rem
+  }
+
+  code[class*="language-"],
+  pre[class*="language-"] {
+  	color: ${p => p.theme.whitesmoke};
+  	background: none;
+  	text-align: left;
+  	white-space: pre;
+  	word-spacing: normal;
+  	word-break: normal;
+  	word-wrap: normal;
+  	line-height: 1.5;
+  	tab-size: 4;
+  	hyphens: none;
+  }
+
+  /* Code blocks */
+  pre[class*="language-"] {
     background: ${p => p.theme.backBlack};
+  	padding: 1em;
+  	margin: .5em 0;
+  	overflow: auto;
+  	border-radius: 6px;
   }
 
-  header, main {
-    background: #fff;
+  /* Inline code */
+  p > code[class*="language-"],
+  li > code[class*="language-"] {
+    background: ${schema.inline.back};
+    color: ${schema.inline.color};
+    padding: 0.25rem 0.5rem;
+    border-radius: 3px;
+    white-space: normal;
   }
 
-  a {
-    color: ${p => p.theme.black};
+  .token.comment,
+  .token.prolog,
+  .token.doctype,
+  .token.cdata {
+  	color: slategray;
   }
 
-  p a,
-  li a {
-    color: ${p => p.theme.black};
-    border-bottom: 1px solid rgb(255, 152, 0);
-    transition: all .1s;
+  .namespace {
+  	opacity: .7;
   }
 
-  a:hover,
-  a:focus {
-    text-decoration: none;
-    color: ${p => p.theme.orange};
+  .token.property,
+  .token.tag,
+  .token.constant,
+  .token.symbol,
+  .token.deleted {
+    color: ${schema.property};
   }
 
-  li {
-    list-style-type: none;
+  .token.boolean,
+  .token.number {
+  	color: ${schema.numeric};
   }
 
-  *::selection {
-    color: ${p => p.theme.orange};
-    background: ${p => p.theme.backBlack};
+  .token.selector,
+  .token.attr-name,
+  .token.string,
+  .token.char,
+  .token.builtin,
+  .token.inserted {
+  	color: ${schema.string};
   }
 
-  img {
-    width: 100%;
-    height: auto;
-    display: block;
+  .token.operator,
+  .token.punctuation,
+  .token.entity,
+  .token.url,
+  .language-css .token.string,
+  .style .token.string,
+  .token.variable {
+  	color: ${schema.punctuation};
+  }
+
+  .token.atrule,
+  .token.attr-value,
+  .token.function {
+  	color: #e6db74;
+  }
+
+  .token.keyword {
+  	color: #66d9ef;
+  }
+
+  .token.regex,
+  .token.important {
+  	color: #fd971f;
+  }
+
+  .token.important,
+  .token.bold {
+  	font-weight: bold;
+  }
+  .token.italic {
+  	font-style: italic;
+  }
+
+  .token.entity {
+  	cursor: help;
   }
 `

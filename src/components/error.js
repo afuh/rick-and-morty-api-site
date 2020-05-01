@@ -3,70 +3,77 @@ import { Link } from 'gatsby'
 import { GoArrowLeft as Back } from 'react-icons/go'
 import styled, { css } from 'styled-components'
 
-import { flex, media, rem } from '../styles'
 import { useRandomChars } from '../utils/hooks'
 
 const Wrapper = styled.div`
-  ${flex};
-  flex-direction: column;
-  flex-wrap: nowrap;
-  min-height: calc(100vh - ${({ theme }) => theme.navHeight}px);
+  ${({ theme }) => css`
+    ${theme.mixins.flex};
+    flex-direction: column;
+    flex-wrap: nowrap;
+    min-height: calc(100vh - ${theme.navHeight}px);
 
-  ${media.phone(css`
-    padding-top: ${rem(20)};
-  `)}
+    ${theme.media.phone(css`
+      padding-top: ${theme.spacing._20};
+    `)}
+  `}
 `
 
 const MessageWrapper = styled.div`
-  width: 100%;
+  ${({ theme }) => css`
+    width: 100%;
 
-  h1, p {
-    text-align: center;
-  }
+    h1, p {
+      text-align: center;
+    }
 
-  h1 {
-    border: 0;
-    margin: 0;
-    font-size: ${rem(50)};
-    font-weight: 200;
-  }
+    h1 {
+      border: 0;
+      margin: 0;
+      font-size: ${theme.spacing.rem(60)};
+      font-weight: 200;
+    }
 
-  p {
-    margin-bottom: ${rem(6)};
-    font-size: ${rem(22)};
-    font-weight: 400;
-  }
+    p {
+      margin-bottom: ${theme.spacing._4};
+      font-size: ${theme.spacing._24};
+      font-weight: 400;
+    }
+  `}
 `
 
 const ImageWrapper = styled.div`
-  width: 300px;
-  height: 300px;
-  margin: 20px 0;
+  ${({ theme }) => css`
+    width: 300px;
+    height: 300px;
+    margin: ${theme.spacing._24} 0;
 
-  ${media.phone(css`
-    width: 100%;
-    height: auto;
-  `)}
-
-  img {
-    border-radius: 50%;
-
-    ${media.phone(css`
-      border-radius: 0;
+    ${theme.media.phone(css`
+      width: 100%;
+      height: auto;
     `)}
-  }
+
+    img {
+      border-radius: 50%;
+
+      ${theme.media.phone(css`
+        border-radius: 0;
+      `)}
+    }
+  `}
 `
 
 const IconWrapper = styled.div`
-  ${media.phone(css`
-    width: 100%;
-
-    a {
-      ${flex}
+  ${({ theme }) => css`
+    ${theme.media.phone(css`
       width: 100%;
-      padding: ${rem(20)} 0;
-    }
-  `)}
+
+      a {
+        ${theme.mixins.flex}
+        width: 100%;
+        padding: ${theme.spacing._20} 0;
+      }
+    `)}
+  `}
 `
 
 const BackIcon = () => (

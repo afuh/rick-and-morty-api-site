@@ -4,76 +4,82 @@ import { Link as GatsbyLink } from 'gatsby'
 import { GoMarkGithub as GithubIcon } from 'react-icons/go'
 import styled, { css } from 'styled-components'
 
-import { flex, media, hover } from '../../styles'
 import { useSiteMeta } from '../../utils/hooks'
 
 const Link = styled(GatsbyLink)`
-  color: ${({ theme }) => theme.black};
-  transition: all .2s;
-  border: none;
+  ${({ theme }) => css`
+    color: ${theme.black};
+    transition: all .2s;
+    border: none;
 
-  &.active {
-    color: ${({ theme }) => theme.orange};
-  }
+    &.active {
+      color: ${theme.primary};
+    }
+  `}
 `
 
 const List = styled.ul`
-  display: flex;
-  padding: 0;
-  margin: 0;
+  ${({ theme }) => css`
+    display: flex;
+    padding: 0;
+    margin: 0;
 
-  ${media.phone(css`
-    flex: 3;
-    align-self: stretch;
-    ${flex({ x: 'space-around' })}
-
-    li {
+    ${theme.media.phone(css`
+      flex: 3;
       align-self: stretch;
-      margin: 0;
-      ${flex}
+      ${theme.mixins.flex({ x: 'space-around' })}
 
-      a {
+      li {
         align-self: stretch;
-        width: 100%;
-        ${flex}
-      }
-    }
+        margin: 0;
+        ${theme.mixins.flex}
 
-  `)}
+        a {
+          align-self: stretch;
+          width: 100%;
+          ${theme.mixins.flex}
+        }
+      }
+    `)}
+  `}
 `
 
 const Nav = styled.nav`
-  ${flex({ x: 'space-between', y: 'center' })}
+  ${({ theme }) => css`
+    ${theme.mixins.flex({ x: 'space-between', y: 'center' })}
 
-  margin: 0 auto;
-  max-width: 1200px;
-  min-height: 80px;
-  padding: 0 20px;
+    margin: 0 auto;
+    max-width: 1200px;
+    min-height: ${theme.navHeight}px;
+    padding: 0 ${theme.spacing._20};
 
-  ${media.phone(css`
-    padding: 0;
-    border-bottom: 1px solid ${({ theme }) => theme.lightgray};
-  `)}
+    ${theme.media.phone(css`
+      padding: 0;
+      border-bottom: 1px solid ${theme.lightgray};
+    `)}
+  `}
 `
 
 const GHLink = styled.a.attrs({
   target: '_blank',
   rel: 'nofollow noopener noreferrer'
 })`
-  ${hover(css`
-    color: ${({ theme }) => theme.orange};
-  `)}
+  ${({ theme }) => css`
+    ${theme.mixins.hover(css`
+      color: ${theme.primary};
+    `)}
 
-  ${media.phone(css`
-    flex: 1;
-    align-self: stretch;
-    ${flex};
-    border-left: 1px solid ${({ theme }) => theme.lightgray};
-  `)}
+    ${theme.media.phone(css`
+      flex: 1;
+      align-self: stretch;
+      ${theme.mixins.flex};
+      border-left: 1px solid ${theme.lightgray};
+    `)}
 
-  ${media.custom(340, css`
-    display: none;
-  `)}
+    ${theme.media.custom(340, css`
+      display: none;
+    `)}
+  `}
 `
 
 const ListLink = ({ to, children, name }) => (

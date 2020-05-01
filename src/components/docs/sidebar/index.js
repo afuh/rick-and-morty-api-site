@@ -2,7 +2,6 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import { useStaticQuery, graphql, Link as GatsbyLink } from 'gatsby'
 
-import { rem, media } from '../../../styles'
 import Mobile from './mobile'
 import Desktop from './desktop'
 
@@ -22,7 +21,7 @@ const TOCWrapper = styled.div`
 
     .title {
       margin: 0.2rem 0 0;
-      font-size: ${rem(20)};
+      font-size: ${({ theme }) => theme.spacing._20};
       font-weight: 700;
     }
 
@@ -41,7 +40,7 @@ const Wrapper = styled.aside`
     display: none;
   }
 
-  ${media.mobile(css`
+  ${({ theme }) => theme.media.mobile(css`
     #nav-desktop {
       display: none;
     }

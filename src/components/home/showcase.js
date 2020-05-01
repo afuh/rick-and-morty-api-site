@@ -3,19 +3,20 @@ import styled, { css } from 'styled-components'
 import Spinner from 'react-spinkit'
 
 import { useRandomChars } from '../../utils/hooks'
-import { flex, rem, media } from '../../styles'
 import Card from './characterCard'
 
 const Wrapper = styled.section`
-  ${flex}
+  ${({ theme }) => css`
+    ${theme.mixins.flex}
 
-  padding: ${rem(30)};
-  background: ${({ theme }) => theme.backBlack};
-  min-height: calc(60vh - ${({ theme }) => theme.navHeight}px);
+    padding: ${theme.spacing._32};
+    background: ${theme.backBlack};
+    min-height: calc(60vh - ${theme.navHeight}px);
 
-  ${media.phone(css`
-    padding: 0;
-  `)}
+    ${theme.media.phone(css`
+      padding: 0;
+    `)}
+  `}
 `
 
 const Inner = styled.div`
