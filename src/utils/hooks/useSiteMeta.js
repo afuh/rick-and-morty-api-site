@@ -9,7 +9,6 @@ export const useSiteMeta = () => {
             title
             shortTitle
             description
-            subDescription
             siteUrl
             image
             userTwitter

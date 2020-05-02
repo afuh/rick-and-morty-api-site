@@ -1,8 +1,7 @@
 module.exports = {
   title: 'The Rick and Morty API',
   shortTitle: 'ShlaAPI',
-  description: 'Hey, did you ever want to hold a Terry fold?',
-  subDescription: 'I got one right here, grab my terry flap',
+  description: 'The Rick and Morty API is a REST and GraphQL API based on the television show Rick and Morty',
   siteUrl: 'https://rickandmortyapi.com',
   image: '/images/site.jpeg',
   userTwitter: 'rickandmortyapi',
@@ -17,8 +16,8 @@ module.exports = {
     site: 'https://axelfuhrmann.com/'
   },
   nav: [
-    { title: "Home", path: "/" },
-    { title: "About", path: "/about" },
-    { title: "Documentation", path: "/documentation" }
+    { title: 'Home', path: '/' },
+    { title: 'About', path: '/about' },
+    { title: 'Documentation', path: '/documentation' }
   ]
 }
