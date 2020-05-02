@@ -8,6 +8,38 @@ import styled, { css } from 'styled-components'
 import { useSiteMeta } from '../../utils/hooks'
 import { ExternalLink } from '../shared'
 
+const Header = styled.header`
+  ${({ theme, isFixed }) => css`
+    ${theme.mixins.flex}
+
+    ${isFixed && css`
+      height: ${theme.navHeight}px;
+      border-bottom: 1px solid ${theme.lightgray};
+      background: #fff;
+      position: fixed;
+      width: 100%;
+      background: #fff;
+      z-index: 2;
+    `}
+  `}
+`
+
+const Nav = styled.nav`
+  ${({ theme }) => css`
+    ${theme.mixins.flex({ x: 'space-between', y: 'center' })}
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1200px;
+    min-height: ${theme.navHeight}px;
+    padding: 0 ${theme.spacing._20};
+
+    ${theme.media.phone(css`
+      padding: 0;
+      border-bottom: 1px solid ${theme.lightgray};
+    `)}
+  `}
+`
+
 const Link = styled(GatsbyLink)`
   ${({ theme }) => css`
     color: ${theme.black};
@@ -42,22 +74,6 @@ const List = styled.ul`
           ${theme.mixins.flex}
         }
       }
-    `)}
-  `}
-`
-
-const Nav = styled.nav`
-  ${({ theme }) => css`
-    ${theme.mixins.flex({ x: 'space-between', y: 'center' })}
-    margin: 0 auto;
-    width: 100%;
-    max-width: 1200px;
-    min-height: ${theme.navHeight}px;
-    padding: 0 ${theme.spacing._20};
-
-    ${theme.media.phone(css`
-      padding: 0;
-      border-bottom: 1px solid ${theme.lightgray};
     `)}
   `}
 `
@@ -130,22 +146,6 @@ const Github = () => {
     </GHLink>
   )
 }
-
-const Header = styled.header`
-  ${({ theme, isFixed }) => css`
-    ${theme.mixins.flex}
-
-    ${isFixed && css`
-      height: ${theme.navHeight}px;
-      border-bottom: 1px solid ${theme.lightgray};
-      background: #fff;
-      position: fixed;
-      width: 100%;
-      background: #fff;
-      z-index: 2;
-    `}
-  `}
-`
 
 const MainHeader = () => {
   const { pathname } = useLocation()

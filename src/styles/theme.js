@@ -43,7 +43,7 @@ export default {
   lightgray: 'rgba(46, 41, 51, 0.08)',
   shadow: 'rgba(0, 0, 0, 0.08) 0px 5px 20px;',
   navHeight: 60,
-  sidebarWidth: 240,
+  sidebarWidth: 280,
   contentWidth: 960,
   mixins: {
     flex,

@@ -5,7 +5,7 @@ import { useRickAndMortyStats } from '../utils/hooks'
 
 const Count = ({ model }) => {
   const stats = useRickAndMortyStats()
-  return <span>{stats[model].info.count}</span>
+  return <code className='language-text'>{stats[model].info.count}</code>
 }
 
 Count.propTypes = {
