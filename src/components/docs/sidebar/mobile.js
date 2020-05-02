@@ -17,8 +17,8 @@ const Wrapper = styled.div`
     background: #fff;
     z-index: 999;
     pointer-events: none;
-    border-right: 1px solid rgba(46, 41, 51, 0.08);
-    box-shadow: rgba(46, 41, 51, 0.08) 11px 0px 10px 0px;
+    border-right: 1px solid ${theme.lightgray};
+    box-shadow: ${theme.shadow} 11px 0px 10px 0px;
 
     transform: translateX(-100%);
     opacity: 0;
@@ -40,14 +40,17 @@ const Wrapper = styled.div`
 `
 
 const Nav = styled.nav`
-  padding: 30px 60px 40px 30px;
-  transform: translateX(-100%);
+  ${({ theme, isOpen }) => css`
+    padding: ${theme.navHeight + 24}px ${theme.spacing._24};
+    width: ${theme.sidebarWidth}px;
+    transform: translateX(-100%);
 
-  ${({ isOpen }) => isOpen && css`
-    transform: translateX(0);
-  `}
+    ${isOpen && css`
+      transform: translateX(0);
+    `}
 
-  transition: transform 0.5s ease;
+    transition: transform 0.5s ease;
+  `};
 `
 
 const MobileWrapper = ({ render }) => {

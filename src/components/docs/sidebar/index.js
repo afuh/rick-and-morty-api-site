@@ -6,29 +6,29 @@ import Mobile from './mobile'
 import Desktop from './desktop'
 
 const TOCWrapper = styled.div`
-  padding-bottom: 120px;
-
-  ul {
-    padding: 0;
-    margin: 0;
-    li {
-      list-style-type: none;
-    }
-  }
-
-  .section {
-    margin-bottom: 2rem;
-
-    .title {
-      margin: 0.2rem 0 0;
-      font-size: ${({ theme }) => theme.spacing._20};
-      font-weight: 700;
-    }
-
-    .item {
+  ${({ theme }) => css`
+    ul {
+      padding: 0;
       margin: 0;
+      li {
+        list-style-type: none;
+      }
     }
-  }
+
+    .section {
+      margin-bottom: ${theme.spacing._24};
+
+      .title {
+        font-size: ${theme.spacing._20};
+        margin: 0.2rem 0 0;
+        font-weight: 700;
+      }
+
+      .item {
+        margin: 3px 0;
+      }
+    }
+  `}
 `
 
 const Wrapper = styled.aside`

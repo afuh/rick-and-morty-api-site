@@ -4,6 +4,10 @@ export const GlobalStyles = createGlobalStyle`
   ${({ theme }) => css`
     body {
       background: ${theme.backBlack};
+      font-variant-ligatures: none;
+      text-rendering: optimizelegibility;
+      -webkit-font-smoothing: antialiased;
+      text-decoration-skip-ink: auto;
     }
 
     header, main {
@@ -17,13 +21,14 @@ export const GlobalStyles = createGlobalStyle`
     p a,
     li a {
       color: ${theme.black};
-      border-bottom: 1px solid rgb(255, 152, 0);
+      border-bottom: 2px solid ${theme.primary};
       transition: all .1s;
     }
 
     a:hover,
     a:focus {
       text-decoration: none;
+      border-bottom: none;
       color: ${theme.primary};
     }
 
@@ -79,9 +84,10 @@ export const prismCSS = css`
   pre[class*="language-"] {
     background: ${p => p.theme.backBlack};
   	padding: 1em;
-  	margin: .5em 0;
+  	margin: .5em 0 1em;
   	overflow: auto;
   	border-radius: 6px;
+    box-shadow: ${p => p.theme.shadow};
   }
 
   /* Inline code */

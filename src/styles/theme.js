@@ -40,9 +40,11 @@ export default {
   backBlack: '#202329',
   gray: '#9E9E9E',
   whitesmoke: '#f5f5f5',
-  lightgray: '#d8d8d8',
-  shadow: '0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08)',
-  navHeight: 80,
+  lightgray: 'rgba(46, 41, 51, 0.08)',
+  shadow: 'rgba(0, 0, 0, 0.08) 0px 5px 20px;',
+  navHeight: 60,
+  sidebarWidth: 240,
+  contentWidth: 960,
   mixins: {
     flex,
     hover
