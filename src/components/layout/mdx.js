@@ -6,17 +6,9 @@ import Layout from './'
 import { prismCSS } from '../../styles/global'
 import Docs from '../docs'
 import EditThisPage from './editThisPage'
+import { Article } from '../shared'
 
-const Content = styled.div`
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 ${({ theme }) => theme.spacing._20};
-
-  font-variant-ligatures: none;
-  text-rendering: optimizelegibility;
-  -webkit-font-smoothing: antialiased;
-  text-decoration-skip-ink: auto;
-
+const MarkdownWrapper = styled.div`
   li {
     list-style-type: initial;
   }
@@ -36,15 +28,13 @@ const MDXTemplate = ({ children, pageContext: { frontmatter } }) => {
 
   return (
     <Layout seo={{ ...seo }}>
-      <>
-        <Content prism={!!isDocs}>
-          {isDocs ?
-            <Docs>{children}</Docs>:
-            <div>{children}</div>
-          }
-        </Content>
+      <MarkdownWrapper prism={!!isDocs}>
+        {isDocs ?
+          <Docs>{children}</Docs>:
+          <Article>{children}</Article>
+        }
         <EditThisPage page={frontmatter.slug} />
-      </>
+      </MarkdownWrapper>
     </Layout>
   )
 }

@@ -2,6 +2,7 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 
 import Sidebar from './sidebar'
+import { Article } from '../shared'
 
 const Wrapper = styled.div`
   ${({ theme }) => css`
@@ -24,8 +25,8 @@ const Wrapper = styled.div`
 const Docs = ({ children }) => (
   <Wrapper>
     <Sidebar />
-    <div>
-      {children}
+    <div className='content'>
+      <Article>{children}</Article>
     </div>
   </Wrapper>
 )
