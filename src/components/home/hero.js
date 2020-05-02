@@ -23,6 +23,10 @@ const Wrapper = styled.section`
         fill: red;
       }
     }
+
+    ${theme.media.phone(css`
+      padding: 0 ${theme.spacing._20};
+    `)}
   `}
 `
 
@@ -37,6 +41,10 @@ const Title = styled.h1`
 
     ${theme.media.mobile(css`
       font-size: ${theme.spacing.rem(60)};
+    `)}
+
+    ${theme.media.phone(css`
+      font-size: ${theme.spacing.rem(50)};
     `)}
   `}
 `
