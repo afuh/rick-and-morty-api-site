@@ -11,10 +11,9 @@ const Wrapper = styled.div.attrs({
 })`
   ${({ theme }) => css`
     ${theme.mixins.flex({ x: 'flex-end' })}
-
-    margin: 40px auto 0 ;
-    max-width: 1220px;
     border-top: 1px solid ${theme.lightgray};
+    padding: 0 ${theme.spacing._24};
+    margin-top: ${theme.spacing.rem(64)};
   `}
 `
 

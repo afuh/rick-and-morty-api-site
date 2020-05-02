@@ -21,10 +21,10 @@ const Wrapper = styled.footer`
     ${theme.mixins.flex}
     flex-direction: column;
     flex-wrap: nowrap;
-
+    position: relative;
     background: ${theme.backBlack};
     color: ${theme.gray};
-    padding: ${theme.spacing._12} 0;
+    padding: ${theme.spacing._24} 0;
     min-height: calc(${theme.navHeight}px * 2);
     width: 100%;
 
