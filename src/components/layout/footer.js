@@ -2,17 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 
-import { useRickAndMortyStats, useSiteMeta } from '../../utils/hooks'
+import { useRickAndMortyStats, useSiteMeta, useServerStatus } from '../../utils/hooks'
 
 const StatisticsWrapper = styled.div`
   ${({ theme }) => css`
     ${theme.mixins.flex}
     width: 100%;
-
-    span {
-      font-size: ${theme.spacing._12};
-      font-weight: 300;
-    }
 
     ${theme.media.phone(css`
       justify-content: space-around;
@@ -34,7 +29,11 @@ const Wrapper = styled.footer`
 
     .stats {
       margin: ${theme.spacing._4} ${theme.spacing._8};
+      font-size: ${theme.spacing._12};
+
+      text-transform: uppercase;
       text-align: center;
+      font-weight: 300;
     }
   `}
 `
@@ -43,7 +42,6 @@ const SignWrapper = styled.div`
   ${({ theme }) => css`
     span {
       font-size: ${theme.spacing._12};
-      font-weight: 200;
 
       a {
         font-weight: 400;
@@ -63,7 +61,7 @@ const SignWrapper = styled.div`
 const Statistics = ({ title, count }) => (
   <div className='stats'>
     <span>
-      {title.toUpperCase()}: {count}
+      {title}: {count}
     </span>
   </div>
 )
@@ -89,6 +87,39 @@ const Stats = () => {
   )
 }
 
+const Status = styled.a.attrs({
+  href: 'https://status.rickandmortyapi.com',
+  rel: 'nofollow noopener noreferrer',
+  target: '_blank'
+})`
+  ${({ theme, isFailling, red = '#d63d2e', green = '#55cc44' }) => css`
+    ${theme.mixins.flex}
+    color: ${theme.gray};
+
+    .stats {
+      margin-left: 0;
+    }
+
+    .server-icon {
+      height: ${theme.spacing._12};
+      width: ${theme.spacing._12};
+      border-radius: 50%;
+      background: ${isFailling ? red : green};
+    }
+  `}
+`
+
+const ServerStatus = () => {
+  const { data, loading } = useServerStatus()
+
+  return (
+    <Status isFailling={!loading && data?.last_status !== 200}>
+      <span className='stats'>server status</span>
+      {data?.last_status && <span className='server-icon' />}
+    </Status>
+  )
+}
+
 const Sign = () => {
   const { author } = useSiteMeta()
 
@@ -105,6 +136,7 @@ const Sign = () => {
 const Footer = () => (
   <Wrapper>
     <Stats />
+    <ServerStatus />
     <Sign />
   </Wrapper>
 )
