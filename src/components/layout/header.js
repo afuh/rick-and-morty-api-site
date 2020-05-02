@@ -5,6 +5,7 @@ import { GoMarkGithub as GithubIcon } from 'react-icons/go'
 import styled, { css } from 'styled-components'
 
 import { useSiteMeta } from '../../utils/hooks'
+import { ExternalLink } from '../shared'
 
 const Link = styled(GatsbyLink)`
   ${({ theme }) => css`
@@ -60,10 +61,7 @@ const Nav = styled.nav`
   `}
 `
 
-const GHLink = styled.a.attrs({
-  target: '_blank',
-  rel: 'nofollow noopener noreferrer'
-})`
+const GHLink = styled(ExternalLink)`
   ${({ theme }) => css`
     ${theme.mixins.hover(css`
       color: ${theme.primary};

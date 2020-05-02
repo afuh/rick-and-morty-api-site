@@ -3,7 +3,7 @@ import { Link } from 'gatsby'
 import { GoArrowLeft as Back } from 'react-icons/go'
 import styled, { css } from 'styled-components'
 
-import { useRandomChars } from '../utils/hooks'
+import { useRandomChars } from '../../utils/hooks'
 
 const Wrapper = styled.div`
   ${({ theme }) => css`

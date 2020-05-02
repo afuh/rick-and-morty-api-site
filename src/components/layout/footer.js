@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 
 import { useRickAndMortyStats, useSiteMeta, useServerStatus } from '../../utils/hooks'
+import { ExternalLink } from '../shared'
 
 const StatisticsWrapper = styled.div`
   ${({ theme }) => css`
@@ -87,10 +88,8 @@ const Stats = () => {
   )
 }
 
-const Status = styled.a.attrs({
-  href: 'https://status.rickandmortyapi.com',
-  rel: 'nofollow noopener noreferrer',
-  target: '_blank'
+const Status = styled(ExternalLink).attrs({
+  href: 'https://status.rickandmortyapi.com'
 })`
   ${({ theme, isFailling, red = '#d63d2e', green = '#55cc44' }) => css`
     ${theme.mixins.flex}

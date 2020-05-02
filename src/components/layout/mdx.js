@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import Layout from './'
 import { prismCSS } from '../../styles/global'
 import Docs from '../docs'
-import EditThisPage from '../editThisPage'
+import EditThisPage from './editThisPage'
 
 const Content = styled.div`
   max-width: 1000px;

@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 import { GoPencil as EditIcon } from 'react-icons/go'
 
-import config from '../../config/siteConfig'
+import config from '../../../config/siteConfig'
+import { ExternalLink } from '../shared'
 
 const Wrapper = styled.div.attrs({
   id: 'edit-wrapper'
@@ -17,15 +18,13 @@ const Wrapper = styled.div.attrs({
   `}
 `
 
-const Anchor = styled.a.attrs(({ to }) => ({
-  target: '_blank',
-  rel: 'nofollow noopener noreferrer',
+const Link = styled(ExternalLink).attrs(({ to }) => ({
   className: 'edit-page',
   href: `${config.github.site}/blob/develop/src/pages${to}.mdx`
 }))`
   ${({ theme }) => css`
     ${theme.mixins.flex}
-    font-size: ${theme.spacing._16};
+    font-size: ${theme.spacing._12};
     padding: ${theme.spacing._20} 0;
     font-weight: 200;
 
@@ -36,15 +35,15 @@ const Anchor = styled.a.attrs(({ to }) => ({
 `
 
 const Icon = styled(EditIcon)`
-  font-size: ${({ theme }) => theme.spacing._20};
+  font-size: ${({ theme }) => theme.spacing._16};
 `
 
 const EditThisPage = ({ page }) => (
   <Wrapper>
-    <Anchor to={page}>
+    <Link to={page}>
       <Icon />
       <span>edit this page</span>
-    </Anchor>
+    </Link>
   </Wrapper>
 )
 
