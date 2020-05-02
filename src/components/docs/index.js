@@ -4,12 +4,21 @@ import styled, { css } from 'styled-components'
 import Sidebar from './sidebar'
 
 const Wrapper = styled.div`
-  display: flex;
-  flex-wrap: nowrap;
+  ${({ theme }) => css`
+    padding-top: ${theme.navHeight}px;
 
-  ${({ theme }) => theme.media.phone(css`
-    display: block;
-  `)}
+    ${theme.media.phone(css`
+      display: block;
+    `)}
+
+    .content {
+      padding-left: ${theme.sidebarWidth}px;
+
+      ${theme.media.mobile(css`
+        padding-left: initial;
+      `)}
+    }
+  `}
 `
 
 const Docs = ({ children }) => (

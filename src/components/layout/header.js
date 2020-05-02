@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link as GatsbyLink } from 'gatsby'
+import { useLocation } from '@reach/router'
 import { GoMarkGithub as GithubIcon } from 'react-icons/go'
 import styled, { css } from 'styled-components'
 
@@ -48,8 +49,8 @@ const List = styled.ul`
 const Nav = styled.nav`
   ${({ theme }) => css`
     ${theme.mixins.flex({ x: 'space-between', y: 'center' })}
-
     margin: 0 auto;
+    width: 100%;
     max-width: 1200px;
     min-height: ${theme.navHeight}px;
     padding: 0 ${theme.spacing._20};
@@ -130,13 +131,34 @@ const Github = () => {
   )
 }
 
-const Header = () => (
-  <header css={`height: ${({ theme }) => theme.navHeight}px`}>
-    <Nav>
-      <Navigation />
-      <Github />
-    </Nav>
-  </header>
-)
+const Header = styled.header`
+  ${({ theme, isFixed }) => css`
+    ${theme.mixins.flex}
 
-export default Header
+    ${isFixed && css`
+      height: ${theme.navHeight}px;
+      border-bottom: 1px solid ${theme.lightgray};
+      background: #fff;
+      position: fixed;
+      width: 100%;
+      background: #fff;
+      z-index: 2;
+    `}
+  `}
+`
+
+const MainHeader = () => {
+  const { pathname } = useLocation()
+
+  return (
+    <Header isFixed={pathname.includes('documentation')}>
+      <Nav>
+        <Navigation />
+        <Github />
+      </Nav>
+    </Header>
+  )
+
+}
+
+export default MainHeader
