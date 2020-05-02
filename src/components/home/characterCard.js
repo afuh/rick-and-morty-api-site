@@ -132,13 +132,14 @@ Text.propTypes = {
 const CardImg = ({ char }) => {
   const [loading, setLoading] = useState(true)
   const description = `id: ${char.id} - created ${moment(char.created).fromNow()}`
+  const image = process.env.NODE_ENV === 'development' ? 'https://source.unsplash.com/random/300x300' : char.image
 
   return (
     <ImgWrapper isLoading={loading}>
       <div className='card-image'>
         <img
           onLoad={() => setLoading(false)}
-          src={char.image}
+          src={image}
           alt={char.name}
         />
       </div>
