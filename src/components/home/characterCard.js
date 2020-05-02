@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import moment from 'moment'
+import moment from 'moment/moment.js'
 import styled, { css } from 'styled-components'
 
 const Wrapper = styled.article`
@@ -131,6 +131,7 @@ Text.propTypes = {
 
 const CardImg = ({ char }) => {
   const [loading, setLoading] = useState(true)
+  const description = `id: ${char.id} - created ${moment(char.created).fromNow()}`
 
   return (
     <ImgWrapper isLoading={loading}>
@@ -144,7 +145,7 @@ const CardImg = ({ char }) => {
       <Title>
         <Name>{char.name}</Name>
         <Description>
-          {'id: ' + char.id + ' - created ' + moment(char.created).fromNow()}
+          {description}
         </Description>
       </Title>
     </ImgWrapper>
