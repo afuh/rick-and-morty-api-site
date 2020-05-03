@@ -21,7 +21,7 @@ const Wrapper = styled.article`
 `
 
 const ImgWrapper = styled.div.attrs({
-  data: 'card header'
+  data: 'card header',
 })`
   ${({ theme, isLoading }) => css`
     position: relative;
@@ -44,15 +44,14 @@ const ImgWrapper = styled.div.attrs({
       img {
         margin: 0;
         opacity: ${isLoading ? 0 : 1};
-        transition: opacity .5s;
+        transition: opacity 0.5s;
       }
     }
-
   `}
 `
 
 const InfoWrapper = styled.div.attrs({
-  data: 'card info'
+  data: 'card info',
 })`
   ${({ theme }) => css`
     padding: ${theme.spacing._12} ${theme.spacing._12};
@@ -126,49 +125,43 @@ const Text = ({ title, data, last }) => (
 Text.propTypes = {
   title: PropTypes.string.isRequired,
   data: PropTypes.string.isRequired,
-  last: PropTypes.bool
+  last: PropTypes.bool,
 }
 
 const CardImg = ({ char }) => {
   const [loading, setLoading] = useState(true)
   const description = `id: ${char.id} - created ${moment(char.created).fromNow()}`
-  const image = process.env.NODE_ENV === 'development' ? 'https://source.unsplash.com/random/300x300' : char.image
+  const image = process.env.NODE_ENV === 'development' ? 'https://via.placeholder.com/300' : char.image
 
   return (
     <ImgWrapper isLoading={loading}>
-      <div className='card-image'>
-        <img
-          onLoad={() => setLoading(false)}
-          src={image}
-          alt={char.name}
-        />
+      <div className="card-image">
+        <img onLoad={() => setLoading(false)} src={image} alt={char.name} />
       </div>
       <Title>
         <Name>{char.name}</Name>
-        <Description>
-          {description}
-        </Description>
+        <Description>{description}</Description>
       </Title>
     </ImgWrapper>
   )
 }
 
 CardImg.propTypes = {
-  char: PropTypes.object.isRequired
+  char: PropTypes.object.isRequired,
 }
 
 const CardInfo = ({ char }) => (
   <InfoWrapper>
-    <Text title='Status' data={char.status}/>
-    <Text title='Species' data={!char.type ? char.species : char.species + ', ' + char.type} />
-    <Text title='Gender' data={char.gender} />
-    <Text title='Origin' data={char.origin.name} />
-    <Text title='Last location' data={char.location.name} last/>
+    <Text title="Status" data={char.status} />
+    <Text title="Species" data={!char.type ? char.species : char.species + ', ' + char.type} />
+    <Text title="Gender" data={char.gender} />
+    <Text title="Origin" data={char.origin.name} />
+    <Text title="Last location" data={char.location.name} last />
   </InfoWrapper>
 )
 
 CardInfo.propTypes = {
-  char: PropTypes.object.isRequired
+  char: PropTypes.object.isRequired,
 }
 
 const Card = ({ char }) => (
@@ -179,7 +172,7 @@ const Card = ({ char }) => (
 )
 
 Card.propTypes = {
-  char: PropTypes.object.isRequired
+  char: PropTypes.object.isRequired,
 }
 
 export default Card
