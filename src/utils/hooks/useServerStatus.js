@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-const url = `https://updown.io/api/checks/4jhq?api-key=${process.env.GATSBY_UPDOWN_TOKEN}`
+const url = `https://updown.io/api/checks/${process.env.GATSBY_UPDOWN_ID}?api-key=${process.env.GATSBY_UPDOWN_API}`
 
 export const useServerStatus = () => {
   const [data, setData] = useState()
