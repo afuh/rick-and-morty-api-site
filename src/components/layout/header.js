@@ -23,6 +23,10 @@ const Header = styled.header`
 
     .nav-item {
       transition: all 0.1s;
+
+      &__primary {
+        font-size: 16px;
+      }
     }
   `}
 `
@@ -124,7 +128,13 @@ const PrimaryNav = () => {
     <List>
       {nav.map(({ path, title }) => (
         <li key={path}>
-          <Link to={path} name={path} activeClassName="active" partiallyActive={path.length > 1}>
+          <Link
+            to={path}
+            name={path}
+            activeClassName="active"
+            partiallyActive={path.length > 1}
+            className="nav-item__primary"
+          >
             {title}
           </Link>
         </li>
