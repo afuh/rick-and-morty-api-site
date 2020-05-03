@@ -1,7 +1,10 @@
 {
   "env": {
     "cypress/globals": true
-  }, 
-  "plugins": ["cypress"],
-  "extends": ["afuh", "plugin:cypress/recommended"]
+  },
+  "plugins": ["cypress", "prettier"],
+  "extends": ["afuh", "plugin:cypress/recommended", "plugin:prettier/recommended"],
+  "rules": {
+    "prettier/prettier": "error"
+  }
 }
