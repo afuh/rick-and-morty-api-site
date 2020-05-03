@@ -13,12 +13,12 @@ const Header = styled.header`
     ${theme.mixins.flex}
 
     ${isFixed && css`
-      height: ${theme.navHeight}px;
-      border-bottom: 1px solid ${theme.lightgray};
-      background: #fff;
       position: fixed;
-      width: 100%;
+      border-bottom: 1px solid ${theme.lightgray};
+      top: 1px;
+      height: ${theme.navHeight}px;
       background: #fff;
+      width: 100%;
       z-index: 2;
     `}
   `}

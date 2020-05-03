@@ -2,7 +2,7 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 
 import Sidebar from './sidebar'
-import { Article } from '../shared'
+import { Article as _Article } from '../shared'
 
 const Wrapper = styled.div`
   ${({ theme }) => css`
@@ -18,6 +18,21 @@ const Wrapper = styled.div`
       ${theme.media.mobile(css`
         padding-left: initial;
       `)}
+    }
+  `}
+`
+
+// Compensate the fixed header
+const Article = styled(_Article)`
+  ${({ theme }) => css`
+    h2 {
+      padding-top: ${theme.navHeight + 24}px;
+      margin-top: -${theme.navHeight - 32}px;
+    }
+
+    h3 {
+      padding-top: ${theme.navHeight + 24}px;
+      margin-top: -${theme.navHeight}px;
     }
   `}
 `
