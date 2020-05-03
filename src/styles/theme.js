@@ -37,6 +37,7 @@ const media = {
 export default {
   primary: '#FF9800',
   black: '#333',
+  white: '#fff',
   backBlack: '#202329',
   gray: '#9E9E9E',
   whitesmoke: '#f5f5f5',

@@ -11,7 +11,7 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     header, main {
-      background: #fff;
+      background: ${theme.white};
     }
 
     a {

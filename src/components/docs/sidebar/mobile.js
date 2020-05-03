@@ -14,7 +14,7 @@ const Wrapper = styled.div`
     top: 0;
     left: 0;
     bottom: 0;
-    background: #fff;
+    background: ${theme.white};
     z-index: 999;
     pointer-events: none;
     border-right: 1px solid ${theme.lightgray};

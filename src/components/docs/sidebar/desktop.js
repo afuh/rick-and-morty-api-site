@@ -9,7 +9,7 @@ const Wrapper = styled.div`
     padding: ${theme.spacing._24};
     margin-right: ${theme.spacing._24};
     border-right: 1px solid ${theme.lightgray};
-    background: #fff;
+    background: ${theme.white};
 
     position: fixed;
     top: ${theme.navHeight}px;

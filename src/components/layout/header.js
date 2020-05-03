@@ -17,7 +17,7 @@ const Header = styled.header`
       border-bottom: 1px solid ${theme.lightgray};
       top: 1px;
       height: ${theme.navHeight}px;
-      background: #fff;
+      background: ${theme.white};
       width: 100%;
       z-index: 2;
     `}
