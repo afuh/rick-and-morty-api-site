@@ -1,19 +1,11 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
+import { GoMarkGithub, GoHeart } from 'react-icons/go'
+import { FaTwitter } from 'react-icons/fa'
+import { Link } from 'gatsby'
 
 import { useRickAndMortyStats, useSiteMeta, useServerStatus } from '../../utils/hooks'
 import { ExternalLink, Caption } from '../shared'
-
-const StatisticsWrapper = styled.div`
-  ${({ theme }) => css`
-    ${theme.mixins.flex}
-    width: 100%;
-
-    ${theme.media.phone(css`
-      justify-content: space-around;
-    `)}
-  `}
-`
 
 const Wrapper = styled.footer`
   ${({ theme }) => css`
@@ -26,6 +18,41 @@ const Wrapper = styled.footer`
     padding: ${theme.spacing._24} 0;
     min-height: calc(${theme.navHeight}px * 2);
     width: 100%;
+
+    .margin-top {
+      margin-top: ${theme.spacing._20};
+    }
+
+    ul {
+      ${theme.mixins.flex}
+      margin: 0;
+      padding: 0;
+      width: 100%;
+
+      li {
+        margin: 0;
+
+        & + li {
+          margin-left: ${theme.spacing._24};
+        }
+
+        .footer-icon {
+          vertical-align: middle;
+        }
+
+        span {
+          margin: 0;
+        }
+
+        a {
+          color: ${theme.gray};
+          border-bottom: none;
+          ${theme.mixins.hover(css`
+            color: ${theme.primary};
+          `)};
+        }
+      }
+    }
   `}
 `
 
@@ -53,13 +80,15 @@ const Stats = () => {
   const stats = useRickAndMortyStats()
 
   return (
-    <StatisticsWrapper>
+    <ul>
       {Object.keys(stats).map((endpoint) => (
-        <Caption key={endpoint}>
-          {endpoint}: {stats[endpoint].info.count}
-        </Caption>
+        <li key={endpoint}>
+          <Caption>
+            {endpoint}: {stats[endpoint].info.count}
+          </Caption>
+        </li>
       ))}
-    </StatisticsWrapper>
+    </ul>
   )
 }
 
@@ -98,7 +127,7 @@ const Sign = () => {
   const { author } = useSiteMeta()
 
   return (
-    <SignWrapper>
+    <SignWrapper className="margin-top">
       <span>
         ❮❯ by <a href={author.site}>{author.name}</a>
       </span>
@@ -107,10 +136,39 @@ const Sign = () => {
   )
 }
 
+const Icons = () => {
+  const { github, userTwitter } = useSiteMeta()
+
+  const footerLinks = [
+    { to: github.api, Icon: GoMarkGithub, title: 'GitHub' },
+    { to: `https://twitter.com/${userTwitter}`, Icon: FaTwitter, title: 'Twitter' },
+    { to: '/help-us', Icon: GoHeart, title: 'Help Us' },
+  ]
+
+  return (
+    <ul className="margin-top">
+      {footerLinks.map(({ to, title, Icon }) => (
+        <li key={to}>
+          {to.startsWith('https') ? (
+            <ExternalLink href={to} title={title} aria-label={title}>
+              <Icon className="footer-icon" />
+            </ExternalLink>
+          ) : (
+            <Link to={to} title={title} aria-label={title}>
+              <Icon className="footer-icon" />
+            </Link>
+          )}
+        </li>
+      ))}
+    </ul>
+  )
+}
+
 const Footer = () => (
   <Wrapper>
     <Stats />
     <ServerStatus />
+    <Icons />
     <Sign />
   </Wrapper>
 )
