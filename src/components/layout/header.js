@@ -4,6 +4,7 @@ import { useLocation } from '@reach/router'
 import styled, { css } from 'styled-components'
 import { GoHeart } from 'react-icons/go'
 
+import HomeIcon from '../../assets/svg/icon.svg'
 import { useSiteMeta } from '../../utils/hooks'
 import { Caption as _Caption } from '../shared'
 
@@ -11,7 +12,7 @@ const Header = styled.header`
   ${({ theme, isFixed }) => css`
     ${theme.mixins.flex}
     height: ${theme.navHeight}px;
-    background: ${theme.white};
+    background: ${theme.white}ff;
     border-bottom: 1px solid ${isFixed ? theme.lightgray : 'transparent'};
     position: ${isFixed && 'fixed'};
     z-index: ${isFixed && 2};
@@ -25,7 +26,15 @@ const Header = styled.header`
       transition: all 0.1s;
 
       &__primary {
-        font-size: 16px;
+        font-weight: 700;
+      }
+    }
+
+    .home-icon {
+      ${theme.mixins.flex}
+
+      svg {
+        fill: ${theme.black};
       }
     }
   `}
@@ -53,11 +62,11 @@ const Link = styled(GatsbyLink).attrs({
     border: none;
 
     ${theme.mixins.hover(css`
-      color: ${theme.gray};
+      color: ${theme.primary};
     `)}
 
     &.active {
-      color: ${theme.gray};
+      color: ${theme.primary};
     }
   `}
 `
@@ -70,10 +79,10 @@ const List = styled.ul`
 
     li {
       margin: 0;
+    }
 
-      & + li {
-        margin-left: ${theme.spacing._24};
-      }
+    li:not(:last-child) {
+      margin-right: ${theme.spacing._28};
     }
   `}
 `
@@ -123,6 +132,7 @@ const Caption = styled(_Caption).attrs({
 
 const PrimaryNav = () => {
   const { nav } = useSiteMeta()
+  const supportText = 'help us'
 
   return (
     <List>
@@ -139,23 +149,28 @@ const PrimaryNav = () => {
           </Link>
         </li>
       ))}
-    </List>
-  )
-}
-
-const MainHeader = () => {
-  const { pathname } = useLocation()
-  const supportText = 'help us'
-  return (
-    <Header isFixed={pathname.includes('documentation')}>
-      <Nav>
-        <PrimaryNav />
+      <li>
         <Link to="/help-us">
           <Caption className="desktop">{supportText}</Caption>
           <Caption className="mobile" title={supportText} aria-label={supportText}>
             <GoHeart style={{ fontSize: 16, verticalAlign: 'middle' }} />
           </Caption>
         </Link>
+      </li>
+    </List>
+  )
+}
+
+const MainHeader = () => {
+  const { pathname } = useLocation()
+
+  return (
+    <Header isFixed={pathname.includes('documentation')}>
+      <Nav>
+        <Link to="/" aria-label="home page" className="home-icon">
+          <HomeIcon />
+        </Link>
+        <PrimaryNav />
       </Nav>
     </Header>
   )
