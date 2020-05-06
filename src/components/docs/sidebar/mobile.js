@@ -13,39 +13,34 @@ const Wrapper = styled.div`
     -webkit-overflow-scrolling: touch;
     top: 0;
     left: 0;
+    right: 0;
     bottom: 0;
     background: ${theme.white};
     z-index: 999;
     pointer-events: none;
-    border-right: 1px solid ${theme.lightgray};
-    box-shadow: ${theme.shadow} 11px 0px 10px 0px;
 
     transform: translateX(-100%);
     opacity: 0;
 
-    ${isOpen && css`
+    ${isOpen &&
+    css`
       transform: translateX(0);
       pointer-events: auto;
       opacity: 1;
     `}
 
     transition: all 0.3s ease;
-
-    ${theme.media.phone(css`
-      right: 0;
-      border: none;
-      box-shadow: none;
-    `)}
   `}
 `
 
 const Nav = styled.nav`
   ${({ theme, isOpen }) => css`
-    padding: ${theme.navHeight + 24}px ${theme.spacing._24};
+    padding: ${theme.spacing._24};
     width: ${theme.sidebarWidth}px;
     transform: translateX(-100%);
 
-    ${isOpen && css`
+    ${isOpen &&
+    css`
       transform: translateX(0);
     `}
 
@@ -58,16 +53,10 @@ const MobileWrapper = ({ render }) => {
   const { isOpen, setIsOpen } = useMobileSidebar(navRef)
 
   return (
-    <div id='nav-mobile'>
-      <Button
-        isOpen={isOpen}
-        onClick={() => setIsOpen(!isOpen)}
-      />
+    <div id="nav-mobile">
+      <Button isOpen={isOpen} onClick={() => setIsOpen(!isOpen)} />
       <Wrapper isOpen={isOpen}>
-        <Nav
-          ref={navRef}
-          isOpen={isOpen}
-        >
+        <Nav ref={navRef} isOpen={isOpen}>
           {render}
         </Nav>
       </Wrapper>
@@ -76,7 +65,7 @@ const MobileWrapper = ({ render }) => {
 }
 
 MobileWrapper.propTypes = {
-  render: PropTypes.element.isRequired
+  render: PropTypes.element.isRequired,
 }
 
 export default MobileWrapper

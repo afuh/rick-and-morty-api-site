@@ -7,19 +7,18 @@ import config from '../../../config/siteConfig'
 import { ExternalLink } from '../shared'
 
 const Wrapper = styled.div.attrs({
-  id: 'edit-wrapper'
+  id: 'edit-wrapper',
 })`
   ${({ theme }) => css`
     ${theme.mixins.flex({ x: 'flex-end' })}
     border-top: 1px solid ${theme.lightgray};
     padding: 0 ${theme.spacing._24};
-    margin-top: ${theme.spacing.rem(64)};
   `}
 `
 
 const Link = styled(ExternalLink).attrs(({ to }) => ({
   className: 'edit-page',
-  href: `${config.github.site}/blob/develop/src/pages${to}.mdx`
+  href: `${config.github.site}/blob/develop/src/pages${to}.mdx`,
 }))`
   ${({ theme }) => css`
     ${theme.mixins.flex}
@@ -47,7 +46,7 @@ const EditThisPage = ({ page }) => (
 )
 
 EditThisPage.propTypes = {
-  page: PropTypes.string.isRequired
+  page: PropTypes.string.isRequired,
 }
 
 export default EditThisPage

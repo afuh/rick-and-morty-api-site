@@ -19,8 +19,7 @@ module.exports = {
     site: 'https://status.rickandmortyapi.com',
   },
   nav: [
-    { title: 'Home', path: '/' },
+    { title: 'Docs', path: '/documentation' },
     { title: 'About', path: '/about' },
-    { title: 'Documentation', path: '/documentation' },
   ],
 }
