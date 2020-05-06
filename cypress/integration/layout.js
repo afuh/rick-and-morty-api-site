@@ -8,8 +8,9 @@ context('Layout', () => {
   describe('Header', () => {
     it('Should contains several links', () => {
       cy.get('header').within(() => {
+        cy.findByLabelText('home page').should('have.attr', 'href', '/')
         cy.findByText('About').should('have.attr', 'href', '/about')
-        cy.findByText('Documentation').should('have.attr', 'href', '/documentation')
+        cy.findByText('Docs').should('have.attr', 'href', '/documentation')
         cy.findByText('help us').parent().should('have.attr', 'href', '/help-us')
 
         cy.viewport('iphone-x')

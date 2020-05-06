@@ -57,7 +57,7 @@ describe('Documentation page', () => {
     })
   })
 
-  describe.only('Libraries section, each one should have a title and a working link', () => {
+  describe('Libraries section, each one should have a title and a working link', () => {
     clients.forEach((client) => {
       const name = client.split('/').pop()
 
