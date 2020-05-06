@@ -28,6 +28,10 @@ const TOCWrapper = styled.div`
         margin: 3px 0;
       }
     }
+
+    .section:last-child {
+      margin-bottom: 0;
+    }
   `}
 `
 
@@ -40,36 +44,39 @@ const Wrapper = styled.aside`
     display: none;
   }
 
-  ${({ theme }) => theme.media.mobile(css`
-    #nav-desktop {
-      display: none;
-    }
+  ${({ theme }) =>
+    theme.media.mobile(css`
+      #nav-desktop {
+        display: none;
+      }
 
-    #nav-mobile {
-      display: block;
-    }
-  `)}
+      #nav-mobile {
+        display: block;
+      }
+    `)}
 `
 
-const Link = styled(GatsbyLink).attrs(p => ({
-  to: '/documentation/' + p.to
+const Link = styled(GatsbyLink).attrs((p) => ({
+  to: '/documentation/' + p.to,
 }))`
   border-bottom: none;
 `
 
 const TOC = () => {
-  const { mdx: { tableOfContents } } = useStaticQuery(query)
+  const { mdx } = useStaticQuery(query)
 
   return (
     <TOCWrapper>
       <ul>
-        {tableOfContents.items.map(section => (
-          <li key={section.url} className='section'>
-            <Link to={section.url} className='title'>{section.title}</Link>
+        {mdx.tableOfContents.items.map((section) => (
+          <li key={section.url} className="section">
+            <Link to={section.url} className="title">
+              {section.title}
+            </Link>
             <ul>
-              {section.items.map(item => (
-                <li key={item.url} className='item'>
-                  <Link to={item.url} >{item.title}</Link>
+              {section.items.map((item) => (
+                <li key={item.url} className="item">
+                  <Link to={item.url}>{item.title}</Link>
                 </li>
               ))}
             </ul>
@@ -80,8 +87,8 @@ const TOC = () => {
   )
 }
 
-const Sidebar = () => (
-  <Wrapper>
+const Sidebar = (props) => (
+  <Wrapper {...props}>
     <Mobile render={<TOC />} />
     <Desktop render={<TOC />} />
   </Wrapper>
@@ -91,7 +98,7 @@ export default Sidebar
 
 const query = graphql`
   query DOCS_TOC {
-    mdx(fileAbsolutePath: {regex: "/documentation/"}) {
+    mdx(fileAbsolutePath: { regex: "/documentation/" }) {
       tableOfContents(maxDepth: 3)
     }
   }

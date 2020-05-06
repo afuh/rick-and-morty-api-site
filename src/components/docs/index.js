@@ -6,18 +6,16 @@ import { Article as _Article } from '../shared'
 
 const Wrapper = styled.div`
   ${({ theme }) => css`
-    padding-top: ${theme.navHeight}px;
+    margin-top: ${theme.navHeight - 2}px;
+    display: flex;
 
-    ${theme.media.phone(css`
+    ${theme.media.mobile(css`
       display: block;
     `)}
 
     .content {
-      padding-left: ${theme.sidebarWidth}px;
-
-      ${theme.media.mobile(css`
-        padding-left: initial;
-      `)}
+      overflow: hidden;
+      flex-grow: 1;
     }
   `}
 `
@@ -40,7 +38,7 @@ const Article = styled(_Article)`
 const Docs = ({ children }) => (
   <Wrapper>
     <Sidebar />
-    <div className='content'>
+    <div className="content">
       <Article>{children}</Article>
     </div>
   </Wrapper>

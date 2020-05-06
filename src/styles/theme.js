@@ -3,13 +3,13 @@ import { rem as _rem } from 'polished'
 
 const rem = (...arg) => _rem(...arg)
 
-const flex = opt => css`
+const flex = (opt) => css`
   display: flex;
   justify-content: ${opt.x || 'center'};
   align-items: ${opt.y || 'center'};
 `
 
-const hover = inner => css`
+const hover = (inner) => css`
   &:hover,
   &:focus {
     ${inner}
@@ -22,16 +22,16 @@ const media = {
       ${inner}
     }
   `,
-  mobile: inner => css`
+  mobile: (inner) => css`
     @media (max-width: ${890 / 16}em) {
       ${inner}
     }
   `,
-  phone: inner => css`
+  phone: (inner) => css`
     @media (max-width: ${650 / 16}em) {
       ${inner}
     }
-  `
+  `,
 }
 
 export default {
@@ -44,14 +44,14 @@ export default {
   lightgray: 'rgba(46, 41, 51, 0.08)',
   shadow: 'rgba(0, 0, 0, 0.08) 0px 5px 20px;',
   navHeight: 60,
-  sidebarWidth: 280,
+  sidebarWidth: 260,
   contentWidth: 960,
   mixins: {
     flex,
-    hover
+    hover,
   },
   media: {
-    ...media
+    ...media,
   },
   spacing: {
     rem,
@@ -62,6 +62,6 @@ export default {
     _20: rem(20),
     _24: rem(24),
     _28: rem(28),
-    _32: rem(32)
-  }
+    _32: rem(32),
+  },
 }
