@@ -6,6 +6,7 @@
   "dependencies": {
     "@mdx-js/mdx": "^1.6.1",
     "@mdx-js/react": "^1.6.1",
+    "@stripe/stripe-js": "^1.5.0",
     "babel-plugin-styled-components": "^1.10.7",
     "dotenv": "^8.2.0",
     "gatsby": "^2.21.9",
@@ -41,7 +42,8 @@
     "typography-theme-github": "^0.16.19"
   },
   "devDependencies": {
-    "cypress": "^3.8.3",
+    "@testing-library/cypress": "^6.0.0",
+    "cypress": "^4.5.0",
     "eslint": "^6.8.0",
     "eslint-config-afuh": "0.0.34",
     "eslint-config-prettier": "^6.11.0",
@@ -53,8 +55,8 @@
     "eslint-plugin-react-hooks": "^4.0.0",
     "husky": "^2.7.0",
     "lint-staged": "^8.2.1",
-    "npm-run-all": "^4.1.5",
     "prettier": "^2.0.5",
+    "start-server-and-test": "^1.11.0",
     "stylelint": "^13.3.3",
     "stylelint-config-recommended": "^3.0.0",
     "stylelint-config-styled-components": "^0.1.1",
@@ -70,11 +72,9 @@
     "build": "gatsby build",
     "dev": "gatsby develop -H 0.0.0.0",
     "serve": "gatsby serve -H 0.0.0.0",
-    "cypress": "cypress run",
-    "test": "npm run build && run-p serve cypress",
-    "lint:css": "stylelint './src/**/*.js'",
-    "lint:js": "eslint ./src/. --fix",
-    "lint": "run-s lint:js lint:css"
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "test": "npm run build && start-server-and-test serve :9000 cy:run"
   },
   "husky": {
     "hooks": {

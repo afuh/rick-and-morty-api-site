@@ -93,7 +93,7 @@ const Stats = () => {
 }
 
 const Status = styled(ExternalLink).attrs({
-  href: 'https://status.rickandmortyapi.com',
+  'data-testid': 'server-status',
 })`
   ${({ theme, isFailling, red = '#d63d2e', green = '#55cc44' }) => css`
     ${theme.mixins.flex}
@@ -113,10 +113,11 @@ const Status = styled(ExternalLink).attrs({
 `
 
 const ServerStatus = () => {
+  const { status } = useSiteMeta()
   const { data, loading } = useServerStatus()
 
   return (
-    <Status isFailling={!loading && data?.last_status !== 200}>
+    <Status isFailling={!loading && data?.last_status !== 200} href={status.site}>
       <Caption>server status</Caption>
       {data?.last_status && <span className="server-icon" />}
     </Status>
@@ -150,11 +151,11 @@ const Icons = () => {
       {footerLinks.map(({ to, title, Icon }) => (
         <li key={to}>
           {to.startsWith('https') ? (
-            <ExternalLink href={to} title={title} aria-label={title}>
+            <ExternalLink href={to} title={title} aria-label={title.toLocaleLowerCase()}>
               <Icon className="footer-icon" />
             </ExternalLink>
           ) : (
-            <Link to={to} title={title} aria-label={title}>
+            <Link to={to} title={title} aria-label={title.toLocaleLowerCase()}>
               <Icon className="footer-icon" />
             </Link>
           )}

@@ -20,9 +20,7 @@ const Wrapper = styled.article`
   `}
 `
 
-const ImgWrapper = styled.div.attrs({
-  data: 'card header',
-})`
+const ImgWrapper = styled.div`
   ${({ theme, isLoading }) => css`
     position: relative;
     width: 300px;
@@ -50,9 +48,7 @@ const ImgWrapper = styled.div.attrs({
   `}
 `
 
-const InfoWrapper = styled.div.attrs({
-  data: 'card info',
-})`
+const InfoWrapper = styled.div`
   ${({ theme }) => css`
     padding: ${theme.spacing._12} ${theme.spacing._12};
     height: 100%;

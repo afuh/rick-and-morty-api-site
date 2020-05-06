@@ -9,15 +9,18 @@ module.exports = {
   backgroundColor: '#fff',
   github: {
     site: 'https://github.com/afuh/rick-and-morty-api-site',
-    api: 'https://github.com/afuh/rick-and-morty-api'
+    api: 'https://github.com/afuh/rick-and-morty-api',
   },
   author: {
     name: 'Axel Fuhrmann',
-    site: 'https://axelfuhrmann.com/'
+    site: 'https://axelfuhrmann.com/',
+  },
+  status: {
+    site: 'https://status.rickandmortyapi.com',
   },
   nav: [
     { title: 'Home', path: '/' },
     { title: 'About', path: '/about' },
-    { title: 'Documentation', path: '/documentation' }
-  ]
+    { title: 'Documentation', path: '/documentation' },
+  ],
 }

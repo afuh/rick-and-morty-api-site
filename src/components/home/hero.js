@@ -20,7 +20,6 @@ const Wrapper = styled.section`
       svg {
         width: 100%;
         height: 100%;
-        fill: red;
       }
     }
 
@@ -55,7 +54,7 @@ const Hero = () => {
   return (
     <Wrapper>
       <Title>{title}</Title>
-      <div className='hero-image'>
+      <div className="hero-image">
         <BackroundSVG />
       </div>
     </Wrapper>
