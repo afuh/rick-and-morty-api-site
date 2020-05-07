@@ -2,7 +2,7 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 
 import { useSiteMeta } from '../../utils/hooks'
-import BackroundSVG from '../../assets/svg/rm-hero.svg'
+import BackroundSVG from '../../assets/svg/icon-flat.svg'
 
 const Wrapper = styled.section`
   ${({ theme }) => css`
@@ -20,6 +20,7 @@ const Wrapper = styled.section`
       svg {
         width: 100%;
         height: 100%;
+        fill: ${theme.whitesmoke};
       }
     }
 
