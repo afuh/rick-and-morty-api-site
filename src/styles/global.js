@@ -10,7 +10,8 @@ export const GlobalStyles = createGlobalStyle`
       text-decoration-skip-ink: auto;
     }
 
-    header, main {
+    header,
+    main {
       background: ${theme.white};
     }
 
@@ -22,7 +23,7 @@ export const GlobalStyles = createGlobalStyle`
     li a {
       color: ${theme.black};
       border-bottom: 2px solid ${theme.primary};
-      transition: all .1s;
+      transition: all 0.1s;
     }
 
     a:hover,
@@ -56,43 +57,43 @@ const schema = {
   punctuation: '#abb2bf',
   inline: {
     back: '#1b1f230d',
-    color: '#476582'
-  }
+    color: '#476582',
+  },
 }
 
 export const prismCSS = css`
   code {
-    font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
-    line-height: 1.4rem
+    font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
+    line-height: 1.4rem;
   }
 
-  code[class*="language-"],
-  pre[class*="language-"] {
-  	color: ${p => p.theme.whitesmoke};
-  	background: none;
-  	text-align: left;
-  	white-space: pre;
-  	word-spacing: normal;
-  	word-break: normal;
-  	word-wrap: normal;
-  	line-height: 1.5;
-  	tab-size: 4;
-  	hyphens: none;
+  code[class*='language-'],
+  pre[class*='language-'] {
+    color: ${(p) => p.theme.whitesmoke};
+    background: none;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+    tab-size: 4;
+    hyphens: none;
   }
 
   /* Code blocks */
-  pre[class*="language-"] {
-    background: ${p => p.theme.backBlack};
-  	padding: 1em;
-  	margin: .5em 0 1em;
-  	overflow: auto;
-  	border-radius: 6px;
-    box-shadow: ${p => p.theme.shadow};
+  pre[class*='language-'] {
+    background: ${(p) => p.theme.backBlack};
+    padding: 1em;
+    margin: 0.5em 0 1em;
+    overflow: auto;
+    border-radius: 6px;
+    box-shadow: ${(p) => p.theme.shadows.lg};
   }
 
   /* Inline code */
-  p > code[class*="language-"],
-  li > code[class*="language-"] {
+  p > code[class*='language-'],
+  li > code[class*='language-'] {
     background: ${schema.inline.back};
     color: ${schema.inline.color};
     padding: 0.25rem 0.5rem;
@@ -104,11 +105,11 @@ export const prismCSS = css`
   .token.prolog,
   .token.doctype,
   .token.cdata {
-  	color: slategray;
+    color: slategray;
   }
 
   .namespace {
-  	opacity: .7;
+    opacity: 0.7;
   }
 
   .token.property,
@@ -121,7 +122,7 @@ export const prismCSS = css`
 
   .token.boolean,
   .token.number {
-  	color: ${schema.numeric};
+    color: ${schema.numeric};
   }
 
   .token.selector,
@@ -130,7 +131,7 @@ export const prismCSS = css`
   .token.char,
   .token.builtin,
   .token.inserted {
-  	color: ${schema.string};
+    color: ${schema.string};
   }
 
   .token.operator,
@@ -140,33 +141,33 @@ export const prismCSS = css`
   .language-css .token.string,
   .style .token.string,
   .token.variable {
-  	color: ${schema.punctuation};
+    color: ${schema.punctuation};
   }
 
   .token.atrule,
   .token.attr-value,
   .token.function {
-  	color: #e6db74;
+    color: #e6db74;
   }
 
   .token.keyword {
-  	color: #66d9ef;
+    color: #66d9ef;
   }
 
   .token.regex,
   .token.important {
-  	color: #fd971f;
+    color: #fd971f;
   }
 
   .token.important,
   .token.bold {
-  	font-weight: bold;
+    font-weight: bold;
   }
   .token.italic {
-  	font-style: italic;
+    font-style: italic;
   }
 
   .token.entity {
-  	cursor: help;
+    cursor: help;
   }
 `

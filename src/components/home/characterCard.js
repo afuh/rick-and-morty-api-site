@@ -1,20 +1,23 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import moment from 'moment/moment.js'
 import styled, { css } from 'styled-components'
+
+import { ExternalLink } from '../shared'
 
 const Wrapper = styled.article`
   ${({ theme }) => css`
-    max-width: 300px;
+    width: 600px;
+    height: 220px;
+    display: flex;
     overflow: hidden;
+    background: ${theme.black};
     border-radius: ${theme.spacing._8};
     margin-bottom: ${theme.spacing._12};
-    box-shadow: ${theme.shadow};
+    box-shadow: ${theme.shadows.md};
 
     ${theme.media.phone(css`
-      max-width: none;
-      box-shadow: none;
-      border-radius: unset;
+      flex-direction: column;
+      height: initial;
       width: 100%;
     `)}
   `}
@@ -22,153 +25,149 @@ const Wrapper = styled.article`
 
 const ImgWrapper = styled.div`
   ${({ theme, isLoading }) => css`
-    position: relative;
-    width: 300px;
-    height: 300px;
+    flex: 2;
+    width: 100%;
 
-    ${theme.media.phone(css`
+    img {
       width: 100%;
-      height: auto;
-    `)}
-
-    .card-image {
-      width: 100%;
-      background: ${theme.backBlack};
+      height: 100%;
+      margin: 0;
+      opacity: ${isLoading ? 0 : 1};
+      transition: opacity 0.5s;
+      object-position: center;
+      object-fit: cover;
 
       ${theme.media.phone(css`
-        height: ${isLoading ? '60vh' : 'auto'};
+        height: 300px;
+      `)}
+    }
+  `}
+`
+
+const ContentWrapper = styled.div`
+  ${({ theme, status }) => {
+    const statusColor = {
+      alive: theme.green,
+      dead: theme.red,
+      unknown: theme.gray,
+    }
+
+    return css`
+      flex: 3;
+      position: relative;
+      padding: ${theme.spacing._12};
+      color: ${theme.white};
+      display: flex;
+      flex-direction: column;
+
+      span,
+      h2 {
+        margin: 0;
+        padding: 0;
+      }
+
+      span {
+        font-size: 16px;
+        font-weight: 500;
+      }
+
+      a {
+        color: ${theme.whitesmoke};
+        ${theme.mixins.hover(css`
+          color: ${theme.primary};
+          text-decoration: none;
+        `)}
+      }
+
+      .text-gray {
+        color: ${theme.gray};
+      }
+
+      .section {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        &:first-child {
+          justify-content: flex-start;
+        }
+
+        &:last-child {
+          justify-content: flex-end;
+        }
+      }
+
+      ${theme.media.phone(css`
+        .section + .section {
+          margin-top: ${theme.spacing._20};
+        }
       `)}
 
-      img {
-        margin: 0;
-        opacity: ${isLoading ? 0 : 1};
-        transition: opacity 0.5s;
+      .status {
+        display: flex;
+        align-items: center;
+        text-transform: capitalize;
+
+        &__icon {
+          height: ${theme.spacing._8};
+          width: ${theme.spacing._8};
+          margin-right: ${theme.spacing.rem(6)};
+          background: ${statusColor[status]};
+          border-radius: 50%;
+        }
       }
-    }
-  `}
+    `
+  }}
 `
 
-const InfoWrapper = styled.div`
-  ${({ theme }) => css`
-    padding: ${theme.spacing._12} ${theme.spacing._12};
-    height: 100%;
-    color: ${theme.primary};
-    background: ${theme.black};
-  `}
-`
-
-const Title = styled.div`
-  ${({ theme }) => css`
-    width: 100%;
-    background: ${theme.backBlack};
-    opacity: 0.8;
-    position: absolute;
-    bottom: 0;
-    padding: ${theme.spacing._12};
-  `}
-`
-
-const Name = styled.h2`
-  ${({ theme }) => css`
-    color: ${theme.whitesmoke};
-    margin: 0;
-    font-size: ${theme.spacing._24};
-    font-weight: 400;
-    font-stretch: expanded;
-  `}
-`
-
-const Description = styled.p`
-  ${({ theme }) => css`
-    color: #bbb;
-    margin: 0;
-    font-size: ${theme.spacing._12};
-  `}
-`
-
-const TextWrapper = styled.div`
-  ${({ theme, divider }) => css`
-    ${theme.mixins.flex({ x: 'space-between' })}
-    padding: ${theme.spacing._12} 0 ${theme.spacing._8};
-    flex-wrap: nowrap;
-
-    span {
-      font-size: 0.7rem;
-      font-weight: 400;
-      color: ${theme.gray}
-    }
-
-    p {
-      width: 100%;
-      padding: 0;
-      margin: 0;
-      font-size: 0.9rem;
-      font-weight: 200;
-      text-align: right;
-    }
-
-    border-bottom: ${divider && '1px solid #444'};
-  `}
-`
-
-const Text = ({ title, data, last }) => (
-  <TextWrapper divider={!last}>
-    <span>{title.toUpperCase()}</span>
-    <p>{data}</p>
-  </TextWrapper>
-)
-
-Text.propTypes = {
-  title: PropTypes.string.isRequired,
-  data: PropTypes.string.isRequired,
-  last: PropTypes.bool,
-}
-
-const CardImg = ({ char }) => {
+const Card = ({ image, name, url, status, species, location, episode }) => {
   const [loading, setLoading] = useState(true)
-  const description = `id: ${char.id} - created ${moment(char.created).fromNow()}`
-  const image = process.env.NODE_ENV === 'development' ? 'https://via.placeholder.com/300' : char.image
+  const imageUrl = process.env.NODE_ENV === 'development' ? 'https://via.placeholder.com/300' : image
 
   return (
-    <ImgWrapper isLoading={loading}>
-      <div className="card-image">
-        <img onLoad={() => setLoading(false)} src={image} alt={char.name} />
-      </div>
-      <Title>
-        <Name>{char.name}</Name>
-        <Description>{description}</Description>
-      </Title>
-    </ImgWrapper>
+    <Wrapper>
+      <ImgWrapper isLoading={loading}>
+        <img onLoad={() => setLoading(false)} src={imageUrl} alt={name} />
+      </ImgWrapper>
+      <ContentWrapper status={status.toLowerCase()}>
+        <div className="section">
+          <ExternalLink href={url}>
+            <h2>{name}</h2>
+          </ExternalLink>
+          <span className="status">
+            <span className="status__icon" /> {status} - {species}
+          </span>
+        </div>
+
+        <div className="section">
+          <span className="text-gray">Last known location:</span>
+          <ExternalLink href={location.url}>{location.name}</ExternalLink>
+        </div>
+
+        <div className="section">
+          <span className="text-gray">First seen in:</span>
+          <ExternalLink href={episode.url}>{episode.name}</ExternalLink>
+        </div>
+      </ContentWrapper>
+    </Wrapper>
   )
 }
 
-CardImg.propTypes = {
-  char: PropTypes.object.isRequired,
-}
-
-const CardInfo = ({ char }) => (
-  <InfoWrapper>
-    <Text title="Status" data={char.status} />
-    <Text title="Species" data={!char.type ? char.species : char.species + ', ' + char.type} />
-    <Text title="Gender" data={char.gender} />
-    <Text title="Origin" data={char.origin.name} />
-    <Text title="Last location" data={char.location.name} last />
-  </InfoWrapper>
-)
-
-CardInfo.propTypes = {
-  char: PropTypes.object.isRequired,
-}
-
-const Card = ({ char }) => (
-  <Wrapper>
-    <CardImg char={char} />
-    <CardInfo char={char} />
-  </Wrapper>
-)
-
 Card.propTypes = {
-  char: PropTypes.object.isRequired,
+  image: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  status: PropTypes.string.isRequired,
+  species: PropTypes.string.isRequired,
+  location: PropTypes.shape({
+    name: PropTypes.string,
+    url: PropTypes.string,
+  }).isRequired,
+  episode: PropTypes.shape({
+    name: PropTypes.string,
+    url: PropTypes.string,
+  }).isRequired,
 }
 
 export default Card
