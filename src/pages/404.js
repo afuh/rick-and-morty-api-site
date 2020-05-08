@@ -8,6 +8,7 @@ const H1 = styled.h1`
   ${({ theme }) => css`
     ${theme.mixins.flex};
     background: ${theme.backBlack};
+    min-height: calc(100vh - ${theme.navHeight}px});
     color: ${theme.white};
     font-size: 600px;
     font-weight: 900;
@@ -17,7 +18,6 @@ const H1 = styled.h1`
 
     ${theme.media.mobile(css`
       font-size: 96px;
-      min-height: calc(100vh - ${theme.navHeight}px)};
     `)}
   `}
 `
