@@ -14,6 +14,11 @@ const H1 = styled.h1`
     line-height: 1;
     margin: 0;
     padding: 0;
+
+    ${theme.media.mobile(css`
+      font-size: 96px;
+      min-height: calc(100vh - ${theme.navHeight}px)};
+    `)}
   `}
 `
 
