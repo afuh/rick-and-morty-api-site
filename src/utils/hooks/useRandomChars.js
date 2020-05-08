@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getCharacter } from 'rickmortyapi'
+import { getCharacter, getEpisode } from 'rickmortyapi'
 import { useRickAndMortyStats } from './'
 
 const getRandomNums = ({ max, total }) => {
@@ -12,7 +12,7 @@ const getRandomNums = ({ max, total }) => {
 
   while (arr.length < total) {
     const num = randomNum()
-    if (arr.indexOf(num) > - 1) {
+    if (arr.indexOf(num) > -1) {
       continue
     }
     arr[arr.length] = num
@@ -28,21 +28,44 @@ export const useRandomChars = ({ total }) => {
 
   const random = getRandomNums({
     max: characters.info.count,
-    total
+    total,
   })
 
+  const cache = 'rm-characters'
+
   useEffect(() => {
-    const fetchData = async () => {
-      const data = await getCharacter(random)
-      setData(data)
+    if (sessionStorage.getItem(cache)) {
+      setData(JSON.parse(sessionStorage.getItem(cache)))
+      setLoading(false)
+      return
+    }
+
+    const fetchFromAPI = async () => {
+      const charRes = await getCharacter(random)
+      const epiRes = await Promise.all(
+        charRes.map(async ({ episode }) => {
+          const [id] = episode[0].match(/[0-9]+/)
+          const { name, url } = await getEpisode(Number(id))
+          return { name, url }
+        }),
+      )
+
+      // Only the first episode is needed.
+      const character = charRes.map((char, i) => ({
+        ...char,
+        episode: epiRes[i],
+      }))
+
+      sessionStorage.setItem(cache, JSON.stringify(character))
+      setData(character)
       setLoading(false)
     }
 
-    fetchData()
-  }, []) // eslint-disable-line
+    fetchFromAPI()
+  }, [])
 
   return {
     loading,
-    data
+    data,
   }
 }
