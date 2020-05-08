@@ -10,13 +10,10 @@ context('Error page', () => {
     })
   })
 
-  describe('404 Message and image', () => {
-    it('Should contains an error message with an image and a link to home page', () => {
+  describe('404 text', () => {
+    it('Should contains a huge 404', () => {
       cy.get('main').within(() => {
         cy.findByText('404').should('exist')
-        cy.findByText('Oh Jeez! there is nothing here.').should('exist')
-        cy.get('img').should('exist')
-        cy.get('a').should('have.attr', 'href', '/')
       })
     })
   })

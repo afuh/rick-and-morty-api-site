@@ -1,5 +1,7 @@
 import config from '../../config/siteConfig'
 
+const cards = 6
+
 context('Home page', () => {
   before(() => {
     cy.visit('/')
@@ -24,21 +26,18 @@ context('Home page', () => {
 
     it('Should show 8 cards', () => {
       cy.get('main').within(() => {
-        cy.get('article').should('be.length', 8)
+        cy.get('article').should('be.length', cards)
       })
     })
 
     it('Each card should an image and info about the character', () => {
       cy.get('main article')
-        .should('be.length', 8)
+        .should('be.length', cards)
         .within(() => {
           cy.get('h2').should('exist')
           cy.get('img').should('exist')
-          cy.findByText('STATUS').should('exist')
-          cy.findByText('SPECIES').should('exist')
-          cy.findByText('GENDER').should('exist')
-          cy.findByText('ORIGIN').should('exist')
-          cy.findByText('LAST LOCATION').should('exist')
+          cy.findByText('Last known location:').should('exist')
+          cy.findByText('First seen in:').should('exist')
         })
     })
   })
