@@ -8,30 +8,30 @@ import { Spinner } from '../shared'
 const Wrapper = styled.section`
   ${({ theme }) => css`
     ${theme.mixins.flex}
-    padding: ${theme.spacing._32};
-    background: ${theme.lightgray};
+    padding: ${theme.spacing.rem(72)} 0;
+    background: ${theme.backBlack};
     min-height: calc(50vh - ${theme.navHeight}px);
 
     ${theme.media.phone(css`
-      padding: 0;
+      padding: ${theme.spacing._24};
     `)}
   `}
 `
 
 const Inner = styled.div`
-  display: flex;
-  justify-content: space-around;
-  align-content: center;
-  flex-wrap: wrap;
-  max-width: 1260px;
+  ${({ theme }) => css`
+    ${theme.mixins.flex};
+    flex-wrap: wrap;
+    max-width: 1920px;
+  `}
 `
 
 const Showcase = () => {
-  const { loading, data } = useRandomChars({ total: 8 })
+  const { loading, data } = useRandomChars({ total: 6 })
 
   return (
     <Wrapper>
-      <Inner>{loading ? <Spinner /> : data.map((char) => <Card key={char.id} char={char} />)}</Inner>
+      <Inner>{loading ? <Spinner /> : data.map((char) => <Card key={char.id} {...char} />)}</Inner>
     </Wrapper>
   )
 }

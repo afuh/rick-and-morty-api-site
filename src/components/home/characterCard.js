@@ -10,9 +10,9 @@ const Wrapper = styled.article`
     height: 220px;
     display: flex;
     overflow: hidden;
-    background: ${theme.black};
+    background: #3c3e44;
     border-radius: ${theme.spacing._8};
-    margin-bottom: ${theme.spacing._12};
+    margin: ${theme.spacing._12};
     box-shadow: ${theme.shadows.md};
 
     ${theme.media.phone(css`
@@ -45,7 +45,7 @@ const ImgWrapper = styled.div`
 `
 
 const ContentWrapper = styled.div`
-  ${({ theme, status }) => {
+  ${({ theme, status, isSmallHeading }) => {
     const statusColor = {
       alive: theme.green,
       dead: theme.red,
@@ -55,7 +55,7 @@ const ContentWrapper = styled.div`
     return css`
       flex: 3;
       position: relative;
-      padding: ${theme.spacing._12};
+      padding: ${theme.spacing._12} ${theme.spacing._12};
       color: ${theme.white};
       display: flex;
       flex-direction: column;
@@ -64,6 +64,10 @@ const ContentWrapper = styled.div`
       h2 {
         margin: 0;
         padding: 0;
+      }
+
+      h2 {
+        font-size: ${theme.spacing[isSmallHeading ? '_20' : '_24']};
       }
 
       span {
@@ -117,6 +121,10 @@ const ContentWrapper = styled.div`
           border-radius: 50%;
         }
       }
+
+      ${theme.media.phone(css`
+        pointer-events: none;
+      `)}
     `
   }}
 `
@@ -124,13 +132,14 @@ const ContentWrapper = styled.div`
 const Card = ({ image, name, url, status, species, location, episode }) => {
   const [loading, setLoading] = useState(true)
   const imageUrl = process.env.NODE_ENV === 'development' ? 'https://via.placeholder.com/300' : image
+  const headingMaxLength = 23
 
   return (
     <Wrapper>
       <ImgWrapper isLoading={loading}>
         <img onLoad={() => setLoading(false)} src={imageUrl} alt={name} />
       </ImgWrapper>
-      <ContentWrapper status={status.toLowerCase()}>
+      <ContentWrapper status={status.toLowerCase()} isSmallHeading={name.length > headingMaxLength}>
         <div className="section">
           <ExternalLink href={url}>
             <h2>{name}</h2>

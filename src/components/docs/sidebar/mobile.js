@@ -7,18 +7,17 @@ import { useMobileSidebar } from '../../../utils/hooks'
 
 const Wrapper = styled.div`
   ${({ theme, isOpen }) => css`
-    height: 100vh;
+    height: calc(100vh - ${theme.navHeight}px);
     position: fixed;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
-    top: 0;
+    top: ${theme.navHeight}px;
     left: 0;
     right: 0;
     bottom: 0;
     background: ${theme.white};
     z-index: 999;
     pointer-events: none;
-
     transform: translateX(-100%);
     opacity: 0;
 
@@ -29,7 +28,7 @@ const Wrapper = styled.div`
       opacity: 1;
     `}
 
-    transition: all 0.3s ease;
+    transition: opacity 0.3s ease;
   `}
 `
 
