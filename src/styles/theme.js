@@ -42,10 +42,15 @@ export default {
   gray: '#9E9E9E',
   whitesmoke: '#f5f5f5',
   lightgray: 'rgba(46, 41, 51, 0.08)',
-  shadow: 'rgba(0, 0, 0, 0.08) 0px 5px 20px;',
+  red: '#d63d2e',
+  green: '#55cc44',
   navHeight: 60,
   sidebarWidth: 260,
   contentWidth: 960,
+  shadows: {
+    lg: 'rgba(0, 0, 0, 0.08) 0px 5px 20px;',
+    md: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);',
+  },
   mixins: {
     flex,
     hover,

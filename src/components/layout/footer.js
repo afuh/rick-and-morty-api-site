@@ -95,7 +95,7 @@ const Stats = () => {
 const Status = styled(ExternalLink).attrs({
   'data-testid': 'server-status',
 })`
-  ${({ theme, isFailling, red = '#d63d2e', green = '#55cc44' }) => css`
+  ${({ theme, isFailling }) => css`
     ${theme.mixins.flex}
     color: ${theme.gray};
 
@@ -104,10 +104,10 @@ const Status = styled(ExternalLink).attrs({
     }
 
     .server-icon {
-      height: ${theme.spacing._12};
-      width: ${theme.spacing._12};
+      height: ${theme.spacing._8};
+      width: ${theme.spacing._8};
       border-radius: 50%;
-      background: ${isFailling ? red : green};
+      background: ${isFailling ? theme.red : theme.green};
     }
   `}
 `
