@@ -14,9 +14,9 @@ const Header = styled.header`
     height: ${theme.navHeight}px;
     background: ${theme.white}ff;
     border-bottom: 1px solid ${isFixed ? theme.lightgray : 'transparent'};
-    position: ${isFixed && 'fixed'};
-    z-index: ${isFixed && 2};
+    position: ${isFixed ? 'fixed' : 'relative'};
     width: ${isFixed && '100%'};
+    z-index: 2;
 
     ${theme.media.phone(css`
       border-bottom: none;
