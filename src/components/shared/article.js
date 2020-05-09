@@ -6,6 +6,7 @@ const Article = styled.article`
     max-width: ${theme.contentWidth}px;
     margin: 0 auto;
     margin-bottom: ${theme.navHeight}px;
+    min-height: 50vh;
   `}
 `
 

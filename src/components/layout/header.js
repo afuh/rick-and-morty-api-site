@@ -6,7 +6,7 @@ import { GoHeart } from 'react-icons/go'
 
 import HomeIcon from '../../assets/svg/icon.svg'
 import { useSiteMeta } from '../../utils/hooks'
-import { Caption as _Caption } from '../shared'
+import { Button as _Button } from '../shared'
 
 const Header = styled.header`
   ${({ theme, isFixed }) => css`
@@ -87,35 +87,13 @@ const List = styled.ul`
   `}
 `
 
-const buttonHover = ({ theme }) => css`
-  border: 1px solid transparent;
-  background: ${theme.primary};
-  color: ${theme.white};
-`
-
-const Caption = styled(_Caption).attrs({
+const Button = styled(_Button).attrs({
   className: 'nav-item',
 })`
   ${({ theme }) => css`
-    margin: 0;
-    background: ${theme.primary};
-    border-radius: ${theme.spacing._8};
-    padding: ${theme.spacing._8} ${theme.spacing._16};
-    color: ${theme.white};
-    font-weight: 500;
-
-    border: 1px solid ${theme.primary};
-    background: ${theme.white};
-    color: ${theme.black};
-
-    ${theme.mixins.hover(css`
-      ${buttonHover}
-    `)};
-
     &.mobile {
       display: none;
       padding: ${theme.spacing._4} ${theme.spacing._8};
-      ${buttonHover}
     }
 
     ${theme.media.phone(css`
@@ -151,10 +129,12 @@ const PrimaryNav = () => {
       ))}
       <li>
         <Link to="/help-us">
-          <Caption className="desktop">{supportText}</Caption>
-          <Caption className="mobile" title={supportText} aria-label={supportText}>
+          <Button ghost className="desktop">
+            {supportText}
+          </Button>
+          <Button className="mobile" title={supportText} aria-label={supportText}>
             <GoHeart style={{ fontSize: 16, verticalAlign: 'middle' }} />
-          </Caption>
+          </Button>
         </Link>
       </li>
     </List>

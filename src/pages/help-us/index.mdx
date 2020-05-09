@@ -1,0 +1,23 @@
+---
+title: "Help Us"
+slug: '/help-us'
+description: Support The Rick and Morty API.
+cover: '/images/site.jpeg'
+---
+
+import { Button, ExternalLink } from "../../components/shared";
+
+# Support The Rick and Morty API
+
+**Help to maintain The Rick and Morty API's infrastructure!**
+
+If you are using the API for your app, your online tutorials or your coding challenges, please consider supporting us to help keep the project alive.  Every contribution, however big or small, is super valuable for our future.
+
+Thanks!
+
+<ExternalLink
+  href={process.env.GATSBY_SUPPORT_URL}
+  css={({theme}) => `display: inline-block; margin-top: ${theme.spacing._16};`}
+>
+  <Button strong>Donate</Button>
+</ExternalLink>
