@@ -128,7 +128,7 @@ const Sign = () => {
   const { author } = useSiteMeta()
 
   return (
-    <SignWrapper className="margin-top">
+    <SignWrapper>
       <span>
         ❮❯ by <a href={author.site}>{author.name}</a>
       </span>
