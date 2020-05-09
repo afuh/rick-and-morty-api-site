@@ -10,12 +10,17 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-sitemap',
     'gatsby-plugin-catch-links',
     'gatsby-plugin-styled-components',
     'gatsby-plugin-react-svg',
     'gatsby-plugin-robots-txt',
     'gatsby-plugin-no-sourcemaps',
+    {
+      resolve: 'gatsby-plugin-sitemap',
+      options: {
+        exclude: [`/help-us/thank-you`],
+      },
+    },
     {
       resolve: 'gatsby-source-graphql',
       options: {
