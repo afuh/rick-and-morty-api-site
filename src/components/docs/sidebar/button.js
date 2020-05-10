@@ -28,8 +28,8 @@ const ButtonWrapper = styled.button`
   align-items: center;
 
   ${({ theme }) => css`
-    background: ${theme.orange};
-    border: 1px solid ${theme.orange};
+    background: ${theme.primary};
+    border: 1px solid ${theme.primary};
   `}
 `
 

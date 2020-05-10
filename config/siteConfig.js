@@ -1,8 +1,7 @@
 module.exports = {
   title: 'The Rick and Morty API',
-  shortTitle: 'ShlaAPI',
-  description: 'Hey, did you ever want to hold a Terry fold?',
-  subDescription: 'I got one right here, grab my terry flap',
+  shortTitle: 'The Rick and Morty API',
+  description: 'The Rick and Morty API is a REST and GraphQL API based on the television show Rick and Morty',
   siteUrl: 'https://rickandmortyapi.com',
   image: '/images/site.jpeg',
   userTwitter: 'rickandmortyapi',
@@ -10,15 +9,20 @@ module.exports = {
   backgroundColor: '#fff',
   github: {
     site: 'https://github.com/afuh/rick-and-morty-api-site',
-    api: 'https://github.com/afuh/rick-and-morty-api'
+    api: 'https://github.com/afuh/rick-and-morty-api',
   },
   author: {
     name: 'Axel Fuhrmann',
-    site: 'https://axelfuhrmann.com/'
+    site: 'https://axelfuhrmann.com/',
+  },
+  status: {
+    site: 'https://status.rickandmortyapi.com',
+  },
+  support: {
+    site: 'https://donorbox.org/rickandmortyapi',
   },
   nav: [
-    { title: "Home", path: "/" },
-    { title: "About", path: "/about" },
-    { title: "Documentation", path: "/documentation" }
-  ]
+    { title: 'Docs', path: '/documentation' },
+    { title: 'About', path: '/about' },
+  ],
 }

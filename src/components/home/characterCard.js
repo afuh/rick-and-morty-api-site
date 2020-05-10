@@ -1,172 +1,182 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import moment from 'moment'
 import styled, { css } from 'styled-components'
 
-import { flex, rem, media } from '../../styles'
+import { ExternalLink } from '../shared'
 
 const Wrapper = styled.article`
-  max-width: 300px;
-  border-radius: ${rem(10)};
-  overflow: hidden;
-  margin-bottom: ${rem(10)};
-  box-shadow: ${({ theme }) => theme.shadow};
+  ${({ theme }) => css`
+    width: 600px;
+    height: 220px;
+    display: flex;
+    overflow: hidden;
+    background: #3c3e44;
+    border-radius: ${theme.spacing._8};
+    margin: ${theme.spacing._12};
+    box-shadow: ${theme.shadows.md};
 
-  ${media.phone(css`
-    max-width: none;
-    box-shadow: none;
-    border-radius: unset;
-    width: 100%;
-  `)}
-`
-
-const ImgWrapper = styled.div.attrs({
-  data: 'card header'
-})`
-  position: relative;
-  width: 300px;
-  height: 300px;
-
-  ${media.phone(css`
-    width: 100%;
-    height: auto;
-  `)}
-
-  .card-image {
-    width: 100%;
-    background: ${({ theme }) => theme.backBlack};
-
-    ${media.phone(css`
-      height: ${p => p.isLoading ? '60vh' : 'auto'};
+    ${theme.media.phone(css`
+      flex-direction: column;
+      height: initial;
+      width: 100%;
     `)}
-
-    img {
-      margin: 0;
-      opacity: ${p => p.isLoading ? 0 : 1};
-      transition: opacity .5s;
-    }
-  }
-`
-
-const InfoWrapper = styled.div.attrs({
-  data: 'card info'
-})`
-  padding: ${rem(20)};
-  height: 100%;
-  color: ${({ theme }) => theme.orange};
-  background: ${({ theme }) => theme.black};
-`
-
-const Title = styled.div`
-  width: 100%;
-  background: ${({ theme }) => theme.backBlack};
-  opacity: 0.8;
-  position: absolute;
-  bottom: 0;
-  padding: ${rem(10)};
-`
-
-const Name = styled.h2`
-  color: ${({ theme }) => theme.whitesmoke};
-  margin: 0;
-  font-size: ${rem(26)};
-  font-weight: 400;
-  font-stretch: expanded;
-`
-
-const Description = styled.p`
-  color: #bbb;
-  margin: 0;
-  font-size: ${rem(14)};
-`
-
-const TextWrapper = styled.div`
-  ${flex({ x: 'space-between' })}
-  flex-wrap: nowrap;
-  padding: ${rem(12)} 0 ${rem(6)};
-
-  span {
-    font-size: 0.7rem;
-    font-weight: 400;
-    color: ${({ theme }) => theme.gray}
-  }
-
-  p {
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    font-size: 0.9rem;
-    font-weight: 200;
-    text-align: right;
-  }
-
-  ${({ divider }) => divider && css`
-    border-bottom: 1px solid #444;
   `}
 `
 
-const Text = ({ title, data, last }) => (
-  <TextWrapper divider={!last}>
-    <span>{title.toUpperCase()}</span>
-    <p>{data}</p>
-  </TextWrapper>
-)
+const ImgWrapper = styled.div`
+  ${({ theme, isLoading }) => css`
+    flex: 2;
+    width: 100%;
 
-Text.propTypes = {
-  title: PropTypes.string.isRequired,
-  data: PropTypes.string.isRequired,
-  last: PropTypes.bool
-}
+    img {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      opacity: ${isLoading ? 0 : 1};
+      transition: opacity 0.5s;
+      object-position: center;
+      object-fit: cover;
 
-const CardImg = ({ char }) => {
+      ${theme.media.phone(css`
+        height: 300px;
+      `)}
+    }
+  `}
+`
+
+const ContentWrapper = styled.div`
+  ${({ theme, status, isSmallHeading }) => {
+    const statusColor = {
+      alive: theme.green,
+      dead: theme.red,
+      unknown: theme.gray,
+    }
+
+    return css`
+      flex: 3;
+      position: relative;
+      padding: ${theme.spacing._12} ${theme.spacing._12};
+      color: ${theme.white};
+      display: flex;
+      flex-direction: column;
+
+      span,
+      h2 {
+        margin: 0;
+        padding: 0;
+      }
+
+      h2 {
+        font-size: ${theme.spacing[isSmallHeading ? '_20' : '_24']};
+      }
+
+      span {
+        font-size: 16px;
+        font-weight: 500;
+      }
+
+      a {
+        color: ${theme.whitesmoke};
+        ${theme.mixins.hover(css`
+          color: ${theme.primary};
+          text-decoration: none;
+        `)}
+      }
+
+      .text-gray {
+        color: ${theme.gray};
+      }
+
+      .section {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        &:first-child {
+          justify-content: flex-start;
+        }
+
+        &:last-child {
+          justify-content: flex-end;
+        }
+      }
+
+      ${theme.media.phone(css`
+        .section + .section {
+          margin-top: ${theme.spacing._20};
+        }
+      `)}
+
+      .status {
+        display: flex;
+        align-items: center;
+        text-transform: capitalize;
+
+        &__icon {
+          height: ${theme.spacing._8};
+          width: ${theme.spacing._8};
+          margin-right: ${theme.spacing.rem(6)};
+          background: ${statusColor[status]};
+          border-radius: 50%;
+        }
+      }
+
+      ${theme.media.phone(css`
+        pointer-events: none;
+      `)}
+    `
+  }}
+`
+
+const Card = ({ image, name, url, status, species, location, episode }) => {
   const [loading, setLoading] = useState(true)
+  const imageUrl = process.env.NODE_ENV === 'development' ? 'https://via.placeholder.com/300' : image
+  const headingMaxLength = 23
 
   return (
-    <ImgWrapper isLoading={loading}>
-      <div className='card-image'>
-        <img
-          onLoad={() => setLoading(false)}
-          src={char.image}
-          alt={char.name}
-        />
-      </div>
-      <Title>
-        <Name>{char.name}</Name>
-        <Description>
-          {'id: ' + char.id + ' - created ' + moment(char.created).fromNow()}
-        </Description>
-      </Title>
-    </ImgWrapper>
+    <Wrapper>
+      <ImgWrapper isLoading={loading}>
+        <img onLoad={() => setLoading(false)} src={imageUrl} alt={name} />
+      </ImgWrapper>
+      <ContentWrapper status={status.toLowerCase()} isSmallHeading={name.length > headingMaxLength}>
+        <div className="section">
+          <ExternalLink href={url}>
+            <h2>{name}</h2>
+          </ExternalLink>
+          <span className="status">
+            <span className="status__icon" /> {status} - {species}
+          </span>
+        </div>
+
+        <div className="section">
+          <span className="text-gray">Last known location:</span>
+          <ExternalLink href={location.url}>{location.name}</ExternalLink>
+        </div>
+
+        <div className="section">
+          <span className="text-gray">First seen in:</span>
+          <ExternalLink href={episode.url}>{episode.name}</ExternalLink>
+        </div>
+      </ContentWrapper>
+    </Wrapper>
   )
 }
 
-CardImg.propTypes = {
-  char: PropTypes.object.isRequired
-}
-
-const CardInfo = ({ char }) => (
-  <InfoWrapper>
-    <Text title='Status' data={char.status}/>
-    <Text title='Species' data={!char.type ? char.species : char.species + ', ' + char.type} />
-    <Text title='Gender' data={char.gender} />
-    <Text title='Origin' data={char.origin.name} />
-    <Text title='Last location' data={char.location.name} last/>
-  </InfoWrapper>
-)
-
-CardInfo.propTypes = {
-  char: PropTypes.object.isRequired
-}
-
-const Card = ({ char }) => (
-  <Wrapper>
-    <CardImg char={char} />
-    <CardInfo char={char} />
-  </Wrapper>
-)
-
 Card.propTypes = {
-  char: PropTypes.object.isRequired
+  image: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  status: PropTypes.string.isRequired,
+  species: PropTypes.string.isRequired,
+  location: PropTypes.shape({
+    name: PropTypes.string,
+    url: PropTypes.string,
+  }).isRequired,
+  episode: PropTypes.shape({
+    name: PropTypes.string,
+    url: PropTypes.string,
+  }).isRequired,
 }
 
 export default Card

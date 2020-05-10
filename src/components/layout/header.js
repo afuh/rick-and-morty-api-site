@@ -1,138 +1,159 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { Link as GatsbyLink } from 'gatsby'
-import { GoMarkGithub as GithubIcon } from 'react-icons/go'
+import { useLocation } from '@reach/router'
 import styled, { css } from 'styled-components'
+import { GoHeart } from 'react-icons/go'
 
-import { flex, media, hover } from '../../styles'
+import HomeIcon from '../../assets/svg/icon.svg'
 import { useSiteMeta } from '../../utils/hooks'
+import { Button as _Button } from '../shared'
 
-const Link = styled(GatsbyLink)`
-  color: ${({ theme }) => theme.black};
-  transition: all .2s;
-  border: none;
+const Header = styled.header`
+  ${({ theme, isFixed }) => css`
+    ${theme.mixins.flex}
+    height: ${theme.navHeight}px;
+    background: ${theme.white}ff;
+    border-bottom: 1px solid ${isFixed ? theme.lightgray : 'transparent'};
+    position: ${isFixed ? 'fixed' : 'relative'};
+    width: ${isFixed && '100%'};
+    z-index: 2;
 
-  &.active {
-    color: ${({ theme }) => theme.orange};
-  }
-`
+    ${theme.media.phone(css`
+      border-bottom: none;
+    `)}
 
-const List = styled.ul`
-  display: flex;
-  padding: 0;
-  margin: 0;
+    .nav-item {
+      transition: all 0.1s;
 
-  ${media.phone(css`
-    flex: 3;
-    align-self: stretch;
-    ${flex({ x: 'space-around' })}
-
-    li {
-      align-self: stretch;
-      margin: 0;
-      ${flex}
-
-      a {
-        align-self: stretch;
-        width: 100%;
-        ${flex}
+      &__primary {
+        font-weight: 700;
       }
     }
 
-  `)}
+    .home-icon {
+      ${theme.mixins.flex}
+
+      svg {
+        fill: ${theme.black};
+      }
+    }
+  `}
 `
 
 const Nav = styled.nav`
-  ${flex({ x: 'space-between', y: 'center' })}
+  ${({ theme }) => css`
+    ${theme.mixins.flex({ x: 'space-between', y: 'center' })}
+    margin: 0 auto;
+    width: 100%;
+    min-height: ${theme.navHeight}px;
+    padding: 0 ${theme.spacing._24};
 
-  margin: 0 auto;
-  max-width: 1200px;
-  min-height: 80px;
-  padding: 0 20px;
-
-  ${media.phone(css`
-    padding: 0;
-    border-bottom: 1px solid ${({ theme }) => theme.lightgray};
-  `)}
+    ${theme.media.phone(css`
+      border-bottom: 1px solid ${theme.lightgray};
+    `)}
+  `}
 `
 
-const GHLink = styled.a.attrs({
-  target: '_blank',
-  rel: 'nofollow noopener noreferrer'
+const Link = styled(GatsbyLink).attrs({
+  className: 'nav-item',
 })`
-  ${hover(css`
-    color: ${({ theme }) => theme.orange};
-  `)}
+  ${({ theme }) => css`
+    color: ${theme.black};
+    border: none;
 
-  ${media.phone(css`
-    flex: 1;
-    align-self: stretch;
-    ${flex};
-    border-left: 1px solid ${({ theme }) => theme.lightgray};
-  `)}
+    ${theme.mixins.hover(css`
+      color: ${theme.primary};
+    `)}
 
-  ${media.custom(340, css`
-    display: none;
-  `)}
+    &.active {
+      color: ${theme.primary};
+    }
+  `}
 `
 
-const ListLink = ({ to, children, name }) => (
-  <li style={{ margin: ' 0 1rem 0' }}>
-    <Link
-      to={to}
-      name={name}
-      activeClassName='active'
-      partiallyActive={to.length > 1}
-    >
-      {children}
-    </Link>
-  </li>
-)
+const List = styled.ul`
+  ${({ theme }) => css`
+    ${theme.mixins.flex}
+    padding: 0;
+    margin: 0;
 
-ListLink.propTypes = {
-  to: PropTypes.string.isRequired,
-  children: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired
-}
+    li {
+      margin: 0;
+    }
 
-const Navigation = () => {
+    li:not(:last-child) {
+      margin-right: ${theme.spacing._28};
+    }
+  `}
+`
+
+const Button = styled(_Button).attrs({
+  className: 'nav-item',
+})`
+  ${({ theme }) => css`
+    &.mobile {
+      display: none;
+      padding: ${theme.spacing._4} ${theme.spacing._8};
+    }
+
+    ${theme.media.phone(css`
+      &.desktop {
+        display: none;
+      }
+
+      &.mobile {
+        display: block;
+      }
+    `)}
+  `};
+`
+
+const PrimaryNav = () => {
   const { nav } = useSiteMeta()
+  const supportText = 'help us'
 
   return (
     <List>
-      {nav.map(i => (
-        <ListLink
-          key={i.title}
-          name={i.title}
-          to={i.path}
-        >
-          {i.title}
-        </ListLink>
+      {nav.map(({ path, title }) => (
+        <li key={path}>
+          <Link
+            to={path}
+            name={path}
+            activeClassName="active"
+            partiallyActive={path.length > 1}
+            className="nav-item__primary"
+          >
+            {title}
+          </Link>
+        </li>
       ))}
+      <li>
+        <Link to="/help-us">
+          <Button ghost className="desktop">
+            {supportText}
+          </Button>
+          <Button className="mobile" title={supportText} aria-label={supportText}>
+            <GoHeart style={{ fontSize: 16, verticalAlign: 'middle' }} />
+          </Button>
+        </Link>
+      </li>
     </List>
   )
 }
 
-const Github = () => {
-  const { github } = useSiteMeta()
+const MainHeader = () => {
+  const { pathname } = useLocation()
 
   return (
-    <GHLink
-      href={github.api}
-      title='GitHub'
-    >
-      <GithubIcon style={{ fontSize: 18 }}/>
-    </GHLink>
+    <Header isFixed={pathname.includes('documentation')}>
+      <Nav>
+        <Link to="/" aria-label="home page" className="home-icon">
+          <HomeIcon />
+        </Link>
+        <PrimaryNav />
+      </Nav>
+    </Header>
   )
 }
 
-const Header = () => (
-  <header css={`height: ${({ theme }) => theme.navHeight}px`}>
-    <Nav>
-      <Navigation />
-      <Github />
-    </Nav>
-  </header>
-)
-
-export default Header
+export default MainHeader

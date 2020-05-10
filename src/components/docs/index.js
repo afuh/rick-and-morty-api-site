@@ -2,22 +2,44 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 
 import Sidebar from './sidebar'
-import { media } from '../../styles'
+import { Article as _Article } from '../shared'
 
 const Wrapper = styled.div`
-  display: flex;
-  flex-wrap: nowrap;
+  ${({ theme }) => css`
+    margin-top: ${theme.navHeight - 2}px;
+    display: flex;
 
-  ${media.phone(css`
-    display: block;
-  `)}
+    ${theme.media.mobile(css`
+      display: block;
+    `)}
+
+    .content {
+      overflow: hidden;
+      flex-grow: 1;
+    }
+  `}
+`
+
+// Compensate the fixed header
+const Article = styled(_Article)`
+  ${({ theme }) => css`
+    h2 {
+      padding-top: ${theme.navHeight + 24}px;
+      margin-top: -${theme.navHeight - 32}px;
+    }
+
+    h3 {
+      padding-top: ${theme.navHeight + 24}px;
+      margin-top: -${theme.navHeight}px;
+    }
+  `}
 `
 
 const Docs = ({ children }) => (
   <Wrapper>
     <Sidebar />
-    <div>
-      {children}
+    <div className="content">
+      <Article>{children}</Article>
     </div>
   </Wrapper>
 )

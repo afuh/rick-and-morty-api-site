@@ -2,46 +2,29 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 
-import { useStickySidebar } from '../../../utils/hooks'
-
 const Wrapper = styled.div`
-  position: relative;
-  min-width: 210px;
-  height: 100%;
-  border-right: 1px solid rgba(46, 41, 51, 0.08);
-  margin-right: 25px;
-`
-
-const Nav = styled.nav`
-  overflow-y: scroll;
-  position: relative;
-  margin-top: ${({ margin }) => margin}px;
-
-  ${({ fixed, hide }) => fixed && css`
-    position: fixed;
-    top: 0;
-    max-height: ${hide !== 0 ? `calc(100vh - ${hide}px)` : '100vh'};
+  ${({ theme }) => css`
+    position: sticky;
+    position: -webkit-sticky;
+    top: ${theme.navHeight}px;
+    padding: ${theme.spacing._24};
+    border-right: 1px solid ${theme.lightgray};
+    min-width: ${theme.sidebarWidth}px;
+    height: calc(100vh - ${theme.navHeight}px);
+    overflow-y: auto;
   `}
 `
 
 const DesktopWrapper = ({ render }) => {
-  const { fixed, bottom, marginTop } = useStickySidebar()
-
   return (
-    <Wrapper id='nav-desktop'>
-      <Nav
-        margin={marginTop}
-        fixed={fixed}
-        hide={bottom}
-      >
-        {render}
-      </Nav>
+    <Wrapper id="nav-desktop">
+      <nav>{render}</nav>
     </Wrapper>
   )
 }
 
 DesktopWrapper.propTypes = {
-  render: PropTypes.element.isRequired
+  render: PropTypes.element.isRequired,
 }
 
 export default DesktopWrapper
