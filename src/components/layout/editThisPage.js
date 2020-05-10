@@ -18,7 +18,7 @@ const Wrapper = styled.div.attrs({
 
 const Link = styled(ExternalLink).attrs(({ to }) => ({
   className: 'edit-page',
-  href: `${config.github.site}/blob/develop/src/pages${to}.mdx`,
+  href: `${config.github.site}/blob/develop/src/pages${to}`,
 }))`
   ${({ theme }) => css`
     ${theme.mixins.flex}
@@ -36,9 +36,9 @@ const Icon = styled(EditIcon)`
   font-size: ${({ theme }) => theme.spacing._16};
 `
 
-const EditThisPage = ({ page }) => (
+const EditThisPage = ({ pathToGithub }) => (
   <Wrapper>
-    <Link to={page}>
+    <Link to={pathToGithub}>
       <Icon />
       <span>edit this page</span>
     </Link>
@@ -46,7 +46,7 @@ const EditThisPage = ({ page }) => (
 )
 
 EditThisPage.propTypes = {
-  page: PropTypes.string.isRequired,
+  pathToGithub: PropTypes.string.isRequired,
 }
 
 export default EditThisPage

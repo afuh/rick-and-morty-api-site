@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import SEO from '../../utils/seo'
+import SEO from './seo'
 import Header from './header'
 import Footer from './footer'
 import { GlobalStyles } from '../../styles/global'
@@ -16,15 +16,13 @@ const Layout = ({ children, seo }) => (
     <SEO {...seo} />
     <GlobalStyles />
     <Header />
-    <Main>
-      {children}
-    </Main>
+    <Main>{children}</Main>
     <Footer />
   </>
 )
 
 Layout.propTypes = {
-  seo: PropTypes.object
+  seo: PropTypes.object,
 }
 
 export default Layout

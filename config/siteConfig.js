@@ -1,6 +1,6 @@
 module.exports = {
   title: 'The Rick and Morty API',
-  shortTitle: 'ShlaAPI',
+  shortTitle: 'The Rick and Morty API',
   description: 'The Rick and Morty API is a REST and GraphQL API based on the television show Rick and Morty',
   siteUrl: 'https://rickandmortyapi.com',
   image: '/images/site.jpeg',
