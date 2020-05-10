@@ -7,6 +7,7 @@ cover: /images/site.jpeg
 ---
 
 import { Button, ExternalLink } from "../../components/shared";
+import config from "../../../config/siteConfig"
 
 # Support The Rick and Morty API
 
@@ -19,7 +20,7 @@ We are not getting any money from this and we use our free time to keep the API 
 Thanks!
 
 <ExternalLink
-  href={process.env.GATSBY_SUPPORT_URL}
+  href={config.support.site}
   css={({theme}) => `display: inline-block; margin-top: ${theme.spacing._16};`}
 >
   <Button strong>Donate</Button>

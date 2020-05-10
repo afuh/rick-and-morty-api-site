@@ -18,6 +18,9 @@ module.exports = {
   status: {
     site: 'https://status.rickandmortyapi.com',
   },
+  support: {
+    site: 'https://donorbox.org/rickandmortyapi',
+  },
   nav: [
     { title: 'Docs', path: '/documentation' },
     { title: 'About', path: '/about' },

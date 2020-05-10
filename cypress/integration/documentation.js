@@ -1,7 +1,6 @@
 import config from '../../config/siteConfig'
 
 const clients = [
-  'https://github.com/arthurdenner/rick-and-morty-graphql-api',
   'https://github.com/spielhoelle/rick-and-morty-gem',
   'https://github.com/l1h3r/ex_shla',
   'https://github.com/afuh/rick-and-morty-api-node',
