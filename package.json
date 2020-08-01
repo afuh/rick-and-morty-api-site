@@ -54,6 +54,7 @@
     "eslint-plugin-react-hooks": "^4.0.8",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11",
+    "netlify-plugin-cypress": "^1.4.1",
     "prettier": "^2.0.5",
     "start-server-and-test": "^1.11.2",
     "stylelint": "^13.6.1",
