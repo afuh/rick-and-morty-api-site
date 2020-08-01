@@ -4,8 +4,8 @@ import styled, { css } from 'styled-components'
 
 import { ExternalLink } from '../shared'
 
-const Wrapper = styled.article`
-  ${({ theme }) => css`
+const Wrapper = styled.article(
+  ({ theme }) => css`
     width: 600px;
     height: 220px;
     display: flex;
@@ -20,11 +20,11 @@ const Wrapper = styled.article`
       height: initial;
       width: 100%;
     `)}
-  `}
-`
+  `,
+)
 
-const ImgWrapper = styled.div`
-  ${({ theme, isLoading }) => css`
+const ImgWrapper = styled.div(
+  ({ theme, isLoading }) => css`
     flex: 2;
     width: 100%;
 
@@ -41,8 +41,8 @@ const ImgWrapper = styled.div`
         height: 300px;
       `)}
     }
-  `}
-`
+  `,
+)
 
 const ContentWrapper = styled.div`
   ${({ theme, status, isSmallHeading }) => {

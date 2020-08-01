@@ -4,8 +4,8 @@ import styled, { css } from 'styled-components'
 
 import Layout from '../components/layout'
 
-const H1 = styled.h1`
-  ${({ theme }) => css`
+const H1 = styled.h1(
+  ({ theme }) => css`
     ${theme.mixins.flex};
     background: ${theme.backBlack};
     min-height: calc(100vh - ${theme.navHeight}px});
@@ -19,8 +19,8 @@ const H1 = styled.h1`
     ${theme.media.mobile(css`
       font-size: 96px;
     `)}
-  `}
-`
+  `,
+)
 
 const NotFoundPage = () => {
   return (

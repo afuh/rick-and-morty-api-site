@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-export const useMobileSidebar = navRef => {
+export const useMobileSidebar = (navRef) => {
   const [isOpen, setIsOpen] = useState(false)
 
   const closeSidebar = () => setIsOpen(false)
@@ -8,12 +8,12 @@ export const useMobileSidebar = navRef => {
   useEffect(() => {
     const anchors = navRef.current.querySelectorAll('a')
 
-    anchors.forEach(anchor => {
+    anchors.forEach((anchor) => {
       anchor.addEventListener('click', closeSidebar)
     })
 
     return () => {
-      anchors.forEach(anchor => {
+      anchors.forEach((anchor) => {
         anchor.removeEventListener('click', closeSidebar)
       })
     }

@@ -3,7 +3,7 @@
     "cypress/globals": true
   },
   "plugins": ["cypress", "prettier"],
-  "extends": ["afuh", "plugin:cypress/recommended", "plugin:prettier/recommended"],
+  "extends": ["afuh/react", "plugin:cypress/recommended", "plugin:prettier/recommended"],
   "rules": {
     "prettier/prettier": "error"
   }

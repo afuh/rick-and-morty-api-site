@@ -5,8 +5,8 @@ import { useStaticQuery, graphql, Link as GatsbyLink } from 'gatsby'
 import Mobile from './mobile'
 import Desktop from './desktop'
 
-const TOCWrapper = styled.div`
-  ${({ theme }) => css`
+const TOCWrapper = styled.div(
+  ({ theme }) => css`
     ul {
       padding: 0;
       margin: 0;
@@ -32,20 +32,20 @@ const TOCWrapper = styled.div`
     .section:last-child {
       margin-bottom: 0;
     }
-  `}
-`
+  `,
+)
 
-const Wrapper = styled.aside`
-  #nav-desktop {
-    display: block;
-  }
+const Wrapper = styled.aside(
+  ({ theme }) => css`
+    #nav-desktop {
+      display: block;
+    }
 
-  #nav-mobile {
-    display: none;
-  }
+    #nav-mobile {
+      display: none;
+    }
 
-  ${({ theme }) =>
-    theme.media.mobile(css`
+    ${theme.media.mobile(css`
       #nav-desktop {
         display: none;
       }
@@ -54,7 +54,8 @@ const Wrapper = styled.aside`
         display: block;
       }
     `)}
-`
+  `,
+)
 
 const Link = styled(GatsbyLink).attrs((p) => ({
   to: '/documentation/' + p.to,

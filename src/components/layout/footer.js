@@ -7,8 +7,28 @@ import { Link } from 'gatsby'
 import { useRickAndMortyStats, useSiteMeta, useServerStatus } from '../../utils/hooks'
 import { ExternalLink, Caption } from '../shared'
 
-const Wrapper = styled.footer`
-  ${({ theme }) => css`
+const SignWrapper = styled.div(
+  ({ theme }) => css`
+    span {
+      font-size: ${theme.spacing._12};
+
+      a {
+        font-weight: 400;
+        transition: color 0.2s;
+        color: ${theme.whitesmoke};
+        border-bottom: 1px solid ${theme.primary};
+
+        ${theme.mixins.hover(css`
+          color: ${theme.primary};
+          border-bottom: none;
+        `)}
+      }
+    }
+  `,
+)
+
+const Wrapper = styled.footer(
+  ({ theme }) => css`
     ${theme.mixins.flex}
     flex-direction: column;
     flex-wrap: nowrap;
@@ -53,28 +73,8 @@ const Wrapper = styled.footer`
         }
       }
     }
-  `}
-`
-
-const SignWrapper = styled.div`
-  ${({ theme }) => css`
-    span {
-      font-size: ${theme.spacing._12};
-
-      a {
-        font-weight: 400;
-        transition: color 0.2s;
-        color: ${theme.whitesmoke};
-        border-bottom: 1px solid ${theme.primary};
-
-        ${theme.mixins.hover(css`
-          color: ${theme.primary};
-          border-bottom: none;
-        `)}
-      }
-    }
-  `}
-`
+  `,
+)
 
 const Stats = () => {
   const stats = useRickAndMortyStats()
