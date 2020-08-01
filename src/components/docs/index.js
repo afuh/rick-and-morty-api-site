@@ -1,11 +1,11 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 
-import Sidebar from './sidebar'
 import { Article as _Article } from '../shared'
+import Sidebar from './sidebar'
 
-const Wrapper = styled.div`
-  ${({ theme }) => css`
+const Wrapper = styled.div(
+  ({ theme }) => css`
     margin-top: ${theme.navHeight - 2}px;
     display: flex;
 
@@ -17,12 +17,12 @@ const Wrapper = styled.div`
       overflow: hidden;
       flex-grow: 1;
     }
-  `}
-`
+  `,
+)
 
 // Compensate the fixed header
-const Article = styled(_Article)`
-  ${({ theme }) => css`
+const Article = styled(_Article)(
+  ({ theme }) => css`
     h2 {
       padding-top: ${theme.navHeight + 24}px;
       margin-top: -${theme.navHeight - 32}px;
@@ -34,8 +34,8 @@ const Article = styled(_Article)`
       margin-top: -${theme.navHeight}px;
       position: inherit !important;
     }
-  `}
-`
+  `,
+)
 
 const Docs = ({ children }) => (
   <Wrapper>

@@ -2,10 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
+import { GlobalStyles } from '../../styles/global'
 import SEO from './seo'
 import Header from './header'
 import Footer from './footer'
-import { GlobalStyles } from '../../styles/global'
 
 const Main = styled.main`
   padding-top: 2px;

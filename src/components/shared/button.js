@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components'
-import { Caption as _Caption } from './'
 import { lighten } from 'polished'
+import { Caption as _Caption } from './'
 
-const Button = styled(_Caption)`
-  ${({ theme, ghost, strong }) => css`
+const Button = styled(_Caption)(
+  ({ theme, ghost, strong }) => css`
     margin: 0;
     background: ${theme.primary};
     border-radius: ${theme.spacing._8};
@@ -35,8 +35,8 @@ const Button = styled(_Caption)`
     `}
 
     transition: all 0.1s;
-  `};
-`
+  `,
+)
 
 export default Button
 

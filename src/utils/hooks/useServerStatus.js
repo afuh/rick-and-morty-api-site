@@ -9,13 +9,11 @@ export const useServerStatus = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(url).then(r => r.json())
+        const res = await fetch(url).then((r) => r.json())
         setData(res)
-      }
-      catch (e) {
+      } catch (e) {
         console.log(e)
-      }
-      finally {
+      } finally {
         setLoading(false)
       }
     }
@@ -25,6 +23,6 @@ export const useServerStatus = () => {
 
   return {
     data,
-    loading
+    loading,
   }
 }
