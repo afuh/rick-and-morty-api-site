@@ -2,11 +2,11 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 
 import { useRandomChars } from '../../utils/hooks'
-import Card from './characterCard'
 import { Spinner } from '../shared'
+import Card from './characterCard'
 
-const Wrapper = styled.section`
-  ${({ theme }) => css`
+const Wrapper = styled.section(
+  ({ theme }) => css`
     ${theme.mixins.flex}
     padding: ${theme.spacing.rem(72)} 0;
     background: ${theme.backBlack};
@@ -15,16 +15,16 @@ const Wrapper = styled.section`
     ${theme.media.phone(css`
       padding: ${theme.spacing._24};
     `)}
-  `}
-`
+  `,
+)
 
-const Inner = styled.div`
-  ${({ theme }) => css`
+const Inner = styled.div(
+  ({ theme }) => css`
     ${theme.mixins.flex};
     flex-wrap: wrap;
     max-width: 1920px;
-  `}
-`
+  `,
+)
 
 const Showcase = () => {
   const { loading, data } = useRandomChars({ total: 6 })

@@ -2,8 +2,8 @@ import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 
-import Button from './button'
 import { useMobileSidebar } from '../../../utils/hooks'
+import Button from './button'
 
 const Wrapper = styled.div`
   ${({ theme, isOpen }) => css`

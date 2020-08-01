@@ -1,7 +1,7 @@
 import { createGlobalStyle, css } from 'styled-components'
 
-export const GlobalStyles = createGlobalStyle`
-  ${({ theme }) => css`
+export const GlobalStyles = createGlobalStyle(
+  ({ theme }) => css`
     body {
       background: ${theme.backBlack};
       font-variant-ligatures: none;
@@ -47,8 +47,8 @@ export const GlobalStyles = createGlobalStyle`
       height: auto;
       display: block;
     }
-  `}
-`
+  `,
+)
 
 const schema = {
   property: '#ff7d87',

@@ -28,8 +28,8 @@ const fadeIn = keyframes`
   }
 `
 
-const Rotate = styled.div`
-  ${({ theme, color, size, fadeInTime }) => css`
+const Rotate = styled.div(
+  ({ theme, color, size, fadeInTime }) => css`
     animation: ${fadeIn} ${fadeInTime}s, ${rotate} 2s linear infinite;
     width: ${size};
     height: ${size};
@@ -39,8 +39,8 @@ const Rotate = styled.div`
       height: 100%;
       fill: ${theme[color] || theme.black};
     }
-  `}
-`
+  `,
+)
 
 const Spinner = ({ ...props }) => {
   return (
@@ -53,7 +53,7 @@ const Spinner = ({ ...props }) => {
 export default Spinner
 
 Spinner.prototypes = {
-  color: PropTypes.oneOf(['dark', 'ligth']),
+  color: PropTypes.oneOf(['dark', 'light']),
   size: PropTypes.string,
   fadeIn: PropTypes.number,
 }

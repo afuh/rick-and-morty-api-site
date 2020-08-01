@@ -22,7 +22,7 @@ export const useRickAndMortyStats = () => {
           }
         }
       }
-    `
+    `,
   )
 
   return stats

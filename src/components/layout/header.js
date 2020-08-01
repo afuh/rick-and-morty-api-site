@@ -8,8 +8,8 @@ import HomeIcon from '../../assets/svg/icon.svg'
 import { useSiteMeta } from '../../utils/hooks'
 import { Button as _Button } from '../shared'
 
-const Header = styled.header`
-  ${({ theme, isFixed }) => css`
+const Header = styled.header(
+  ({ theme, isFixed }) => css`
     ${theme.mixins.flex}
     height: ${theme.navHeight}px;
     background: ${theme.white}ff;
@@ -37,11 +37,11 @@ const Header = styled.header`
         fill: ${theme.black};
       }
     }
-  `}
-`
+  `,
+)
 
-const Nav = styled.nav`
-  ${({ theme }) => css`
+const Nav = styled.nav(
+  ({ theme }) => css`
     ${theme.mixins.flex({ x: 'space-between', y: 'center' })}
     margin: 0 auto;
     width: 100%;
@@ -51,13 +51,11 @@ const Nav = styled.nav`
     ${theme.media.phone(css`
       border-bottom: 1px solid ${theme.lightgray};
     `)}
-  `}
-`
+  `,
+)
 
-const Link = styled(GatsbyLink).attrs({
-  className: 'nav-item',
-})`
-  ${({ theme }) => css`
+const Link = styled(GatsbyLink)(
+  ({ theme }) => css`
     color: ${theme.black};
     border: none;
 
@@ -68,11 +66,11 @@ const Link = styled(GatsbyLink).attrs({
     &.active {
       color: ${theme.primary};
     }
-  `}
-`
+  `,
+)
 
-const List = styled.ul`
-  ${({ theme }) => css`
+const List = styled.ul(
+  ({ theme }) => css`
     ${theme.mixins.flex}
     padding: 0;
     margin: 0;
@@ -84,13 +82,11 @@ const List = styled.ul`
     li:not(:last-child) {
       margin-right: ${theme.spacing._28};
     }
-  `}
-`
+  `,
+)
 
-const Button = styled(_Button).attrs({
-  className: 'nav-item',
-})`
-  ${({ theme }) => css`
+const Button = styled(_Button)(
+  ({ theme }) => css`
     &.mobile {
       display: none;
       padding: ${theme.spacing._4} ${theme.spacing._8};
@@ -105,8 +101,8 @@ const Button = styled(_Button).attrs({
         display: block;
       }
     `)}
-  `};
-`
+  `,
+)
 
 const PrimaryNav = () => {
   const { nav } = useSiteMeta()
@@ -128,11 +124,11 @@ const PrimaryNav = () => {
         </li>
       ))}
       <li>
-        <Link to="/help-us">
-          <Button ghost className="desktop">
+        <Link to="/help-us" className="nav-item">
+          <Button ghost className="desktop nav-item">
             {supportText}
           </Button>
-          <Button className="mobile" title={supportText} aria-label={supportText}>
+          <Button className="mobile nav-item" title={supportText} aria-label={supportText}>
             <GoHeart style={{ fontSize: 16, verticalAlign: 'middle' }} />
           </Button>
         </Link>
