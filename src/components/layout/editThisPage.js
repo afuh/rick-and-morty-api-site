@@ -20,7 +20,6 @@ const Link = styled(ExternalLink)(
 
     font-size: ${theme.spacing._12};
     padding: ${theme.spacing._20} 0;
-    font-weight: 200;
 
     span {
       margin-left: 0.5rem;

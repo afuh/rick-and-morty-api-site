@@ -37,7 +37,7 @@ const Title = styled.h1(
     border: none;
     font-weight: 900;
     z-index: 1;
-    font-size: ${theme.spacing.rem(80)};
+    font-size: ${theme.spacing.rem(90)};
 
     ${theme.media.mobile(css`
       font-size: ${theme.spacing.rem(60)};

@@ -1,5 +1,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
+import { lighten } from 'polished'
 
 import { useRandomChars } from '../../utils/hooks'
 import { Spinner } from '../shared'
@@ -9,7 +10,7 @@ const Wrapper = styled.section(
   ({ theme }) => css`
     ${theme.mixins.flex}
     padding: ${theme.spacing.rem(72)} 0;
-    background: ${theme.backBlack};
+    background: ${lighten(0.02, theme.backBlack)};
     min-height: calc(50vh - ${theme.navHeight}px);
 
     ${theme.media.phone(css`
