@@ -7,7 +7,7 @@ const Caption = styled.span(
 
     text-transform: uppercase;
     text-align: center;
-    font-weight: 300;
+    font-weight: bold;
   `,
 )
 
