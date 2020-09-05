@@ -36,7 +36,7 @@ const Wrapper = styled.footer(
     position: relative;
     background: ${theme.backBlack};
     color: ${theme.gray};
-    padding: ${theme.spacing._24} 0;
+    padding: ${theme.spacing.rem(72)} 0;
     min-height: calc(${theme.navHeight}px * 2);
     width: 100%;
 
@@ -84,7 +84,7 @@ const Stats = () => {
     <ul>
       {Object.keys(stats).map((endpoint) => (
         <li key={endpoint}>
-          <Link to={`/documentation#${endpoint.slice(0, -1)}`} title={endpoint}>
+          <Link to={`/api/${endpoint.slice(0, -1)}`} title={endpoint}>
             <Caption>
               {endpoint}: {stats[endpoint].info.count}
             </Caption>
