@@ -6,6 +6,7 @@ import { Link } from 'gatsby'
 
 import { useRickAndMortyStats, useSiteMeta, useServerStatus } from '../../utils/hooks'
 import { ExternalLink, Caption } from '../shared'
+import NetlifyLogo from '../../assets/svg/netlify-dark.svg'
 
 const SignWrapper = styled.div(
   ({ theme }) => css`
@@ -13,7 +14,7 @@ const SignWrapper = styled.div(
       font-size: ${theme.spacing._12};
 
       a {
-        font-weight: 400;
+        font-weight: bold;
         transition: color 0.2s;
         color: ${theme.whitesmoke};
         border-bottom: 1px solid ${theme.primary};
@@ -39,7 +40,7 @@ const Wrapper = styled.footer(
     min-height: calc(${theme.navHeight}px * 2);
     width: 100%;
 
-    .margin-top {
+    .mt {
       margin-top: ${theme.spacing._20};
     }
 
@@ -83,9 +84,11 @@ const Stats = () => {
     <ul>
       {Object.keys(stats).map((endpoint) => (
         <li key={endpoint}>
-          <Caption>
-            {endpoint}: {stats[endpoint].info.count}
-          </Caption>
+          <Link to={`/documentation#${endpoint.slice(0, -1)}`} title={endpoint}>
+            <Caption>
+              {endpoint}: {stats[endpoint].info.count}
+            </Caption>
+          </Link>
         </li>
       ))}
     </ul>
@@ -95,7 +98,7 @@ const Stats = () => {
 const Status = styled(ExternalLink).attrs({
   'data-testid': 'server-status',
 })`
-  ${({ theme, isFailling }) => css`
+  ${({ theme, isFailing }) => css`
     ${theme.mixins.flex}
     color: ${theme.gray};
 
@@ -107,7 +110,7 @@ const Status = styled(ExternalLink).attrs({
       height: ${theme.spacing._8};
       width: ${theme.spacing._8};
       border-radius: 50%;
-      background: ${isFailling ? theme.red : theme.green};
+      background: ${isFailing ? theme.red : theme.green};
     }
   `}
 `
@@ -117,7 +120,7 @@ const ServerStatus = () => {
   const { data, loading } = useServerStatus()
 
   return (
-    <Status isFailling={!loading && data?.last_status !== 200} href={status.site}>
+    <Status isFailing={!loading && data?.last_status !== 200} href={status.site}>
       <Caption>server status</Caption>
       {data?.last_status && <span className="server-icon" />}
     </Status>
@@ -128,7 +131,7 @@ const Sign = () => {
   const { author } = useSiteMeta()
 
   return (
-    <SignWrapper>
+    <SignWrapper className="mt">
       <span>
         ❮❯ by <a href={author.site}>{author.name}</a>
       </span>
@@ -147,7 +150,7 @@ const Icons = () => {
   ]
 
   return (
-    <ul className="margin-top">
+    <ul className="mt">
       {footerLinks.map(({ to, title, Icon }) => (
         <li key={to}>
           {to.startsWith('https') ? (
@@ -165,11 +168,18 @@ const Icons = () => {
   )
 }
 
+const Netlify = () => (
+  <ExternalLink href="https://www.netlify.com" className="mt">
+    <NetlifyLogo />
+  </ExternalLink>
+)
+
 const Footer = () => (
   <Wrapper>
     <Stats />
     <ServerStatus />
     <Icons />
+    <Netlify />
     <Sign />
   </Wrapper>
 )

@@ -2,7 +2,7 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 
 import { useSiteMeta } from '../../utils/hooks'
-import BackroundSVG from '../../assets/svg/icon-flat.svg'
+import BackgroundSVG from '../../assets/svg/icon-flat.svg'
 
 const Wrapper = styled.section(
   ({ theme }) => css`
@@ -56,7 +56,7 @@ const Hero = () => {
     <Wrapper>
       <Title>{title}</Title>
       <div className="hero-image">
-        <BackroundSVG />
+        <BackgroundSVG />
       </div>
     </Wrapper>
   )
