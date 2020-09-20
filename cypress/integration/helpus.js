@@ -16,10 +16,10 @@ context('Help Us page', () => {
     it('Should have a title and a working donate button', () => {
       cy.get('main').within(() => {
         cy.findByText('Support The Rick and Morty API').should('exist')
-        cy.findByText('Donate')
+        cy.findByAltText('Buy Me A Coffee')
           .parent()
-          .should('have.attr', 'href', config.support.site)
-          .request(config.support.site)
+          .should('have.attr', 'href', config.support.coffee)
+          .request(config.support.coffee)
           .then((res) => expect(res.status).to.eq(200))
       })
     })
