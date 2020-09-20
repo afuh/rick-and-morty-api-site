@@ -6,7 +6,7 @@ description: Support The Rick and Morty API.
 cover: /images/help-us.jpeg
 ---
 
-import { Button, ExternalLink } from "../../components/shared";
+import { ExternalLink } from "../../components/shared";
 import config from "../../../config/siteConfig"
 
 # Support The Rick and Morty API
@@ -20,8 +20,12 @@ We are not getting any money from this and we use our free time to keep the API 
 Thanks!
 
 <ExternalLink
-  href={config.support.site}
-  css={({theme}) => `display: inline-block; margin-top: ${theme.spacing._16};`}
+  href={config.support.coffee}
+  css={({theme}) => `
+    display: inline-block;
+    margin-top: ${theme.spacing._16};
+    width: 200px;
+  `}
 >
-  <Button strong>Donate</Button>
+  <img src="https://cdn.buymeacoffee.com/buttons/v2/default-orange.png" alt="Buy Me A Coffee" />
 </ExternalLink>

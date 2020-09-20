@@ -20,6 +20,7 @@ module.exports = {
   },
   support: {
     site: 'https://donorbox.org/rickandmortyapi',
+    coffee: 'https://buymeacoffee.com/axelfuh',
   },
   nav: [
     { title: 'Docs', path: '/documentation' },
