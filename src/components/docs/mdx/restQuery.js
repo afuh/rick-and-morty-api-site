@@ -12,6 +12,7 @@ const Wrapper = styled.div`
   .request {
     font-weight: 500;
     color: var(--string);
+    user-select: none;
   }
 `
 
@@ -24,7 +25,8 @@ const RestQuery = ({ endpoint }) => {
       <pre className="language-shell">
         <code className="language-shell">
           <span className="endpoint">
-            <span className="request">GET</span> {basePath}
+            <span className="request">GET </span>
+            {basePath}
           </span>
           {endpoint}
         </code>
