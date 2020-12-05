@@ -23,16 +23,10 @@ const Wrapper = styled.div(
 // Compensate the fixed header
 const Article = styled(_Article)(
   ({ theme }) => css`
-    h2 {
-      padding-top: ${theme.navHeight + 24}px;
-      margin-top: -${theme.navHeight - 32}px;
-      position: inherit !important;
-    }
-
+    h2,
     h3 {
       padding-top: ${theme.navHeight + 24}px;
-      margin-top: -${theme.navHeight}px;
-      position: inherit !important;
+      margin-top: -${theme.navHeight - 32}px;
     }
   `,
 )

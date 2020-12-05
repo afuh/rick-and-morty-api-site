@@ -6,15 +6,14 @@ description: This documentation will help you get familiar with the resources of
 cover: /images/docs.jpeg
 ---
 
-import { Count } from "../components/shared";
+import { Count, RestQuery } from "../components/docs/mdx";
 
 ## Introduction
 This documentation will help you get familiar with the resources of the **Rick and Morty API** and show you how to make different queries, so that you can get the most out of it.
 
 ### GraphQL
-https://rickandmortyapi.com/graphql/
+https://rickandmortyapi.com/graphql
 
-*Sample query*
 ```graphql
 query {
   characters(page: 2, filter: { name: "rick" }) {
@@ -25,24 +24,25 @@ query {
       name
     }
   }
-  character(id: 1) {
+  location(id: 1) {
+    id
+  }
+  episodesByIds(ids: [1, 2]) {
     id
   }
 }
+
 ```
-Check [here](#filter-characters) to know more about how to filter.
 > *New to GraphQL? check the docs [here](https://graphql.org/learn/)*
 
 ### REST
-**Base url:** https://rickandmortyapi.com/api/
+**Base url:** https://rickandmortyapi.com/api
 
 The base url contains information about all available API's resources.
 All requests are `GET` requests and go over `https`. All responses will return data in `json`.
 
-*Sample request*
-```
-https://rickandmortyapi.com/api/
-```
+<RestQuery />
+
 ```json
 {
   "characters": "https://rickandmortyapi.com/api/character",
@@ -69,15 +69,13 @@ Each resource contains an `info` object with information about the response.
 |prev|string (url)|Link to the previous page (if it exists)
 
 
-*Sample request*
-```
-https://rickandmortyapi.com/api/character/
-```
+<RestQuery endpoint="/character"/>
+
 ```json
 {
   "info": {
-    "count": 591,
-    "pages": 20,
+    "count": 671,
+    "pages": 34,
     "next": "https://rickandmortyapi.com/api/character/?page=2",
     "prev": null
   },
@@ -86,19 +84,16 @@ https://rickandmortyapi.com/api/character/
   ]
 }
 ```
+
 You can access different pages with the `page` parameter. If you don't specify any page, the first page will be shown. For example, in order to access page 2, add `?page=2` to the end of the URL.
 
-*Sample request*
-
-```
-https://rickandmortyapi.com/api/character/?page=19
-```
+<RestQuery endpoint="/character/?page=19"/>
 
 ```json
 {
   "info": {
-    "count": 591,
-    "pages": 20,
+    "count": 671,
+    "pages": 34,
     "next": "https://rickandmortyapi.com/api/character/?page=20",
     "prev": "https://rickandmortyapi.com/api/character/?page=18"
   },
@@ -151,14 +146,14 @@ There is a total of <Count model='characters'/> characters sorted by id.
 
 ### Get all characters
 You can access the list of characters by using the `/character` endpoint.
-```
-https://rickandmortyapi.com/api/character/
-```
+
+<RestQuery endpoint="/character"/>
+
 ```json
 {
   "info": {
-    "count": 591,
-    "pages": 20,
+    "count": 671,
+    "pages": 34,
     "next": "https://rickandmortyapi.com/api/character/?page=2",
     "prev": null
   },
@@ -193,9 +188,9 @@ https://rickandmortyapi.com/api/character/
 ```
 ### Get a single character
 You can get a single character by adding the `id` as a parameter: `/character/2`
-```
-https://rickandmortyapi.com/api/character/2
-```
+
+<RestQuery endpoint="/character/2"/>
+
 ```json
 {
   "id": 2,
@@ -225,9 +220,9 @@ https://rickandmortyapi.com/api/character/2
 
 ### Get multiple characters
 You can get multiple characters by adding an array of `ids` as parameter: `/character/[1,2,3]` or `/character/1,2,3`
-```
-https://rickandmortyapi.com/api/character/1,183
-```
+
+<RestQuery endpoint="/character/1,183"/>
+
 ```json
 [
   {
@@ -290,14 +285,12 @@ Available parameters:
 - `type`: filter by the given type.
 - `gender`: filter by the given gender (`female`, `male`, `genderless` or `unknown`).
 
-*Sample request*
-```
-https://rickandmortyapi.com/api/character/?name=rick&status=alive
-```
+<RestQuery endpoint="/character/?name=rick&status=alive"/>
+
 ```json
 
   "info": {
-    "count": 24,
+    "count": 26,
     "pages": 2,
     "next": "https://rickandmortyapi.com/api/character/?page=2&name=rick&status=alive",
     "prev": null
@@ -348,14 +341,13 @@ There is a total of <Count model='locations'/> locations sorted by id.
 
 ### Get all locations
 You can access the list of locations by using the `/location` endpoint.
-```
-https://rickandmortyapi.com/api/location/
-```
-```json
 
+<RestQuery endpoint="/location"/>
+
+```json
   "info": {
-    "count": 94,
-    "pages": 5,
+    "count": 108,
+    "pages": 6,
     "next": "https://rickandmortyapi.com/api/location?page=2",
     "prev": null
   },
@@ -378,11 +370,32 @@ https://rickandmortyapi.com/api/location/
 }
 ```
 
+### Get a single location
+You can get a single location by adding the `id` as a parameter: `/location/3`
+
+<RestQuery endpoint="/location/3"/>
+
+```json
+{
+  "id": 3,
+  "name": "Citadel of Ricks",
+  "type": "Space station",
+  "dimension": "unknown",
+  "residents": [
+    "https://rickandmortyapi.com/api/character/8",
+    "https://rickandmortyapi.com/api/character/14",
+    // ...
+  ],
+  "url": "https://rickandmortyapi.com/api/location/3",
+  "created": "2017-11-10T13:08:13.191Z"
+}
+```
+
 ### Get multiple locations
 You can get multiple locations by adding an array of `ids` as parameter: `/location/[1,2,3]` or `/location/1,2,3`
-```
-https://rickandmortyapi.com/api/location/3,21
-```
+
+<RestQuery endpoint="/location/3,21"/>
+
 ```json
 [
   {
@@ -414,27 +427,6 @@ https://rickandmortyapi.com/api/location/3,21
 
 ```
 
-### Get a single location
-You can get a single location by adding the `id` as a parameter: `/location/3`
-```
-https://rickandmortyapi.com/api/location/3
-```
-```json
-{
-  "id": 3,
-  "name": "Citadel of Ricks",
-  "type": "Space station",
-  "dimension": "unknown",
-  "residents": [
-    "https://rickandmortyapi.com/api/character/8",
-    "https://rickandmortyapi.com/api/character/14",
-    // ...
-  ],
-  "url": "https://rickandmortyapi.com/api/location/3",
-  "created": "2017-11-10T13:08:13.191Z"
-}
-```
-
 ### Filter locations
 Available parameters:
 - `name`: filter by the given name.
@@ -442,37 +434,6 @@ Available parameters:
 - `dimension`: filter by the given dimension.
 
 If you want to know how to use queries, check [here](#filter-characters)
-
-*Sample request*
-```
-https://rickandmortyapi.com/api/location/?name=earth
-```
-```json
-
-  "info": {
-    "count": 27,
-    "pages": 2,
-    "next": "https://rickandmortyapi.com/api/location/?page=2&name=earth",
-    "prev": null
-  },
-  "results": [
-    {
-      "id": 1,
-      "name": "Earth",
-      "type": "Planet",
-      "dimension": "Dimension C-137",
-      "residents": [
-        "https://rickandmortyapi.com/api/character/1",
-        "https://rickandmortyapi.com/api/character/2",
-        // ...
-      ],
-      "url": "https://rickandmortyapi.com/api/location/1",
-      "created": "2017-11-10T12:42:04.162Z"
-    },
-    // ...
-  ]
-}
-```
 
 ## Episode
 There is a total of <Count model='episodes'/> episodes sorted by id (which is of course the order of the episodes)
@@ -491,14 +452,13 @@ There is a total of <Count model='episodes'/> episodes sorted by id (which is of
 ### Get all episodes
 You can access the list of episodes by using the `/episode` endpoint.
 
-```
-https://rickandmortyapi.com/api/episode/
-```
+<RestQuery endpoint="/location/episode"/>
+
 ```json
 {
   "info": {
-    "count": 36,
-    "pages": 2,
+    "count": 41,
+    "pages": 3,
     "next": "https://rickandmortyapi.com/api/episode?page=2",
     "prev": null
   },
@@ -523,9 +483,9 @@ https://rickandmortyapi.com/api/episode/
 
 ### Get a single episode
 You can get a single episode by adding the `id` as a parameter: `/episode/28`
-```
-https://rickandmortyapi.com/api/episode/28
-```
+
+<RestQuery endpoint="/location/episode/28"/>
+
 ```json
 {
   "id": 28,
@@ -544,9 +504,9 @@ https://rickandmortyapi.com/api/episode/28
 
 ### Get multiple episodes
 You can get multiple episodes by adding an array of `ids` as parameter: `/episode/[1,2,3]` or `/episode/1,2,3`
-```
-https://rickandmortyapi.com/api/episode/10,28
-```
+
+<RestQuery endpoint="/location/episode/10,28"/>
+
 ```json
 [
   {
