@@ -5,6 +5,9 @@ require('dotenv').config({
 const config = require('./config/siteConfig')
 
 module.exports = {
+  flags: {
+    FAST_REFRESH: true,
+  },
   siteMetadata: {
     ...config,
   },
