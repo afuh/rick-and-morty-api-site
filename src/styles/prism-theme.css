@@ -1,0 +1,130 @@
+@import url(https://cdn.jsdelivr.net/gh/tonsky/FiraCode@1.206/distr/fira_code.css);
+
+:root {
+  --property: #ff79c6;
+  --numeric: #f08d49;
+  --string: #4cff8f;
+  --keyword: #66d9ef;
+  --punctuation: #abb2bf;
+  --background: #202329;
+  --radius: 6px;
+  --inline-background: #1b1f230d;
+  --inline-color: #476582;
+}
+
+
+code[class*='language-'],
+pre[class*='language-'] {
+  font-family: 'Fira Code', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  line-height: 1.4rem;
+  color: #fff;
+  background: none;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  tab-size: 4;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*='language-'] {
+  background: var(--background);
+  padding: 2em;
+  margin: 0.5em 0 1em;
+  overflow: auto;
+  border-radius: var(--radius);
+}
+
+pre.language-shell {
+  border-radius: var(--radius) var(--radius) 0 0;
+  margin-bottom: 0;
+}
+
+pre.language-json {
+  border-radius: 0 0 var(--radius) var(--radius);
+  margin-top: 1px;
+}
+
+/* Inline code */
+p > code[class*='language-'],
+li > code[class*='language-'] {
+  background: var(--inline-background);
+  color: var(--inline-color);
+  font-weight: 500;
+  padding: 0.25rem 0.5rem;
+  border-radius: 3px;
+  white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: slategray;
+}
+
+.namespace {
+  opacity: 0.7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: var(--property);
+}
+
+.token.boolean,
+.token.number {
+  color: var(--numeric);
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: var(--string);
+}
+
+.token.operator,
+.token.punctuation,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+  color: var(--punctuation);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function {
+  color: #e6db74;
+}
+
+.token.keyword {
+  color: var(--keyword);
+}
+
+.token.regex,
+.token.important {
+  color: #fd971f;
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}

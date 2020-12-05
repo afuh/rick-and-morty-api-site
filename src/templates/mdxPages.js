@@ -3,17 +3,16 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import Layout from '../components/layout'
-import { prismCSS } from '../styles/global'
 import Docs from '../components/docs'
 import EditThisPage from '../components/layout/editThisPage'
 import { Article } from '../components/shared'
+
+import '../styles/prism-theme.css'
 
 const MarkdownWrapper = styled.div`
   li {
     list-style-type: initial;
   }
-
-  ${(p) => p.addPrism && prismCSS}
 `
 
 const MDXTemplate = ({ children, pageContext: { frontmatter } }) => {
