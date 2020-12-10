@@ -273,7 +273,41 @@ You can get multiple characters by adding an array of `ids` as parameter: `/char
   }
 ]
 ```
+### Get a random character
+
+You can get a single random character: `/character/random`
+
+<RestQuery endpoint="/character/random"/>
+
+```json
+{
+  "id": 2,
+  "name": "Morty Smith",
+  "status": "Alive",
+  "species": "Human",
+  "type": "",
+  "gender": "Male",
+  "origin": {
+    "name": "Earth",
+    "url": "https://rickandmortyapi.com/api/location/1"
+  },
+  "location": {
+    "name": "Earth",
+    "url": "https://rickandmortyapi.com/api/location/20"
+  },
+  "image": "https://rickandmortyapi.com/api/character/avatar/2.jpeg",
+  "episode": [
+    "https://rickandmortyapi.com/api/episode/1",
+    "https://rickandmortyapi.com/api/episode/2",
+    // ...
+  ],
+  "url": "https://rickandmortyapi.com/api/character/2",
+  "created": "2017-11-04T18:50:21.651Z"
+}
+```
+
 ### Filter characters
+
 You can also include filters in the URL by including additional query parameters. To start filtering add a `?` followed by the query `<query>=<value>`. If you want to chain several queries in the same call, use `&` followed by the query.
 
 For example, If you want to check how many alive Ricks exist, just add `?name=rick&status=alive` to the URL.
@@ -427,7 +461,30 @@ You can get multiple locations by adding an array of `ids` as parameter: `/locat
 
 ```
 
+### Get a random location
+
+You can get a single randomlocation: `/location/random`
+
+<RestQuery endpoint="/location/random"/>
+
+```json
+{
+  "id": 3,
+  "name": "Citadel of Ricks",
+  "type": "Space station",
+  "dimension": "unknown",
+  "residents": [
+    "https://rickandmortyapi.com/api/character/8",
+    "https://rickandmortyapi.com/api/character/14",
+    // ...
+  ],
+  "url": "https://rickandmortyapi.com/api/location/3",
+  "created": "2017-11-10T13:08:13.191Z"
+}
+```
+
 ### Filter locations
+
 Available parameters:
 - `name`: filter by the given name.
 - `type`: filter by the given type.
@@ -538,7 +595,30 @@ You can get multiple episodes by adding an array of `ids` as parameter: `/episod
 ]
 ```
 
+### Get a random episode
+
+You can get a single random episode: `/episode/random`
+
+<RestQuery endpoint="/episode/random"/>
+
+```json
+{
+  "id": 28,
+  "name": "The Ricklantis Mixup",
+  "air_date": "September 10, 2017",
+  "episode": "S03E07",
+  "characters": [
+    "https://rickandmortyapi.com/api/character/1",
+    "https://rickandmortyapi.com/api/character/2",
+    // ...
+  ],
+  "url": "https://rickandmortyapi.com/api/episode/28",
+  "created": "2017-11-10T12:56:36.618Z"
+}
+```
+
 ### Filter episodes
+
 Available parameters:
 - `name`: filter by the given name.
 - `episode`: filter by the given episode code.
