@@ -10,6 +10,7 @@ const clients = [
   'https://github.com/MikeJohnPage/mortyr',
   'https://github.com/adrianoluis/rickandmortyapi-java',
   'https://github.com/benjaminbruch/rick-morty-swift-api',
+  'https://github.com/dshomoye/rick-and-morty',
 ]
 
 describe('Documentation page', () => {
