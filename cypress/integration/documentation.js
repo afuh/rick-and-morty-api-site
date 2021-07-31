@@ -12,6 +12,7 @@ const clients = [
   'https://github.com/benjaminbruch/rick-morty-swift-api',
   'https://github.com/dshomoye/rick-and-morty',
   'https://github.com/bigdummyhead/rick.net',
+  'https://github.com/loopDelicious/rick-and-morty-postman',
 ]
 
 describe('Documentation page', () => {
