@@ -1,9 +1,8 @@
 import config from '../../config/siteConfig'
 
-const clients = [
+const externalLinks = [
   'https://github.com/spielhoelle/rick-and-morty-gem',
   'https://github.com/l1h3r/ex_shla',
-  'https://github.com/afuh/rick-and-morty-api-node',
   'https://github.com/curiousrohan/ramapi',
   'https://github.com/Carlj28/RickAndMorty.Net.Api',
   'https://github.com/pitakill/rickandmortyapigowrapper',
@@ -14,6 +13,8 @@ const clients = [
   'https://github.com/bigdummyhead/rick.net',
   'https://github.com/loopDelicious/rick-and-morty-postman',
   'https://github.com/Yash-Garg/RickandMorty-Dart-Wrapper',
+  'https://github.com/afuh/rick-and-morty-api-node',
+  'https://javascript.rickandmortyapi.com',
 ]
 
 describe('Documentation page', () => {
@@ -60,14 +61,14 @@ describe('Documentation page', () => {
     })
   })
 
-  describe('Libraries section, each one should have a title and a working link', () => {
-    clients.forEach((client) => {
-      const name = client.split('/').pop()
+  describe('External links. ', () => {
+    externalLinks.forEach((item) => {
+      const name = item.split('/').pop()
 
       it(name, () => {
         cy.get('main').within(() => {
-          cy.get(`a[href='${client}']`)
-            .request(client)
+          cy.get(`a[href='${item}']`)
+            .request(item)
             .then((res) => expect(res.status).to.eq(200))
         })
       })
