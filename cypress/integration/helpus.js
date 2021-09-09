@@ -27,18 +27,14 @@ context('Help Us page', () => {
 
   describe('Github edit page button', () => {
     it('Should be a link to edit the page', () => {
-      cy.get('a.edit-page').should(
-        'have.attr',
-        'href',
-        config.github.site + '/blob/develop/src/pages/help-us/index.mdx',
-      )
+      cy.get('a.edit-page').should('have.attr', 'href', config.github.site + '/blob/master/src/pages/help-us/index.mdx')
 
       cy.visit('/help-us/thank-you')
 
       cy.get('a.edit-page').should(
         'have.attr',
         'href',
-        config.github.site + '/blob/develop/src/pages/help-us/thank-you.mdx',
+        config.github.site + '/blob/master/src/pages/help-us/thank-you.mdx',
       )
     })
   })
