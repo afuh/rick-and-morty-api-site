@@ -33,7 +33,7 @@ const Icon = styled(EditIcon)`
 
 const EditThisPage = ({ pathToGithub }) => {
   const { github } = useSiteMeta()
-  const url = `${github.site}/blob/develop/src/pages${pathToGithub}`
+  const url = `${github.site}/blob/master/src/pages${pathToGithub}`
 
   return (
     <Wrapper id="edit-wrapper">

@@ -39,7 +39,7 @@ context('About page', () => {
 
   describe('Github edit page button', () => {
     it('Should be a link to edit the page', () => {
-      cy.get('a.edit-page').should('have.attr', 'href', config.github.site + '/blob/develop/src/pages/about.mdx')
+      cy.get('a.edit-page').should('have.attr', 'href', config.github.site + '/blob/master/src/pages/about.mdx')
     })
   })
 })
