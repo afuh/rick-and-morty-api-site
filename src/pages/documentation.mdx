@@ -76,6 +76,7 @@ Each resource contains an `info` object with information about the response.
   "info": {
     "count": 826,
     "pages": 42,
+    "limit": 20,
     "next": "https://rickandmortyapi.com/api/character/?page=2",
     "prev": null
   },
@@ -94,6 +95,7 @@ You can access different pages with the `page` parameter. If you don't specify a
   "info": {
     "count": 826,
     "pages": 42,
+    "limit": 20,
     "next": "https://rickandmortyapi.com/api/character/?page=20",
     "prev": "https://rickandmortyapi.com/api/character/?page=18"
   },
@@ -124,6 +126,8 @@ You can access different pages with the `page` parameter. If you don't specify a
   ]
 }
 ```
+
+Additionally, you can use the `limit` parameter to limit the amount of items returned per page.
 
 ### JavaScript client
 The Rick and Morty API JavaScript client is a [fully typed](https://javascript.rickandmortyapi.com/modules/interfaces.html) client that gives you access to the API and its features. 
@@ -161,6 +165,7 @@ You can access the list of characters by using the `/character` endpoint.
   "info": {
     "count": 826,
     "pages": 42,
+    "limit": 20,
     "next": "https://rickandmortyapi.com/api/character/?page=2",
     "prev": null
   },
@@ -299,6 +304,7 @@ Available parameters:
   "info": {
     "count": 29,
     "pages": 2,
+    "limit": 20,
     "next": "https://rickandmortyapi.com/api/character/?page=2&name=rick&status=alive",
     "prev": null
   },
@@ -355,6 +361,7 @@ You can access the list of locations by using the `/location` endpoint.
   "info": {
     "count": 126,
     "pages": 7,
+    "limit": 20,
     "next": "https://rickandmortyapi.com/api/location?page=2",
     "prev": null
   },
@@ -466,6 +473,7 @@ You can access the list of episodes by using the `/episode` endpoint.
   "info": {
     "count": 51,
     "pages": 3,
+    "limit": 20,
     "next": "https://rickandmortyapi.com/api/episode?page=2",
     "prev": null
   },
