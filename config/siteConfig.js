@@ -19,8 +19,7 @@ module.exports = {
     site: 'https://status.rickandmortyapi.com',
   },
   support: {
-    site: 'https://donorbox.org/rickandmortyapi',
-    coffee: 'https://buymeacoffee.com/axelfuh',
+    coffee: 'https://ko-fi.com/axelfuh',
   },
   nav: [
     { title: 'Docs', path: '/documentation' },
