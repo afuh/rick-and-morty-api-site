@@ -451,7 +451,7 @@ There is a total of <Count model='episodes'/> episodes sorted by id (which is of
 |id|int|The id of the episode.
 |name|string|The name of the episode.
 |air_date|string|The air date of the episode.
-|episode|string|The code of the episode.
+|code|string|The code of the episode.
 |characters|array (urls)|List of characters who have been seen in the episode.
 |url|string (url)|Link to the episode's own endpoint.
 |created|string|Time at which the episode was created in the database.
@@ -474,7 +474,7 @@ You can access the list of episodes by using the `/episode` endpoint.
       "id": 1,
       "name": "Pilot",
       "air_date": "December 2, 2013",
-      "episode": "S01E01",
+      "code": "S01E01",
       "characters": [
         "https://rickandmortyapi.com/api/character/1",
         "https://rickandmortyapi.com/api/character/2",
@@ -498,7 +498,7 @@ You can get a single episode by adding the `id` as a parameter: `/episode/28`
   "id": 28,
   "name": "The Ricklantis Mixup",
   "air_date": "September 10, 2017",
-  "episode": "S03E07",
+  "code": "S03E07",
   "characters": [
     "https://rickandmortyapi.com/api/character/1",
     "https://rickandmortyapi.com/api/character/2",
@@ -520,7 +520,7 @@ You can get multiple episodes by adding an array of `ids` as parameter: `/episod
     "id": 10,
     "name": "Close Rick-counters of the Rick Kind",
     "air_date": "April 7, 2014",
-    "episode": "S01E10",
+    "code": "S01E10",
     "characters": [
       "https://rickandmortyapi.com/api/character/1",
       "https://rickandmortyapi.com/api/character/2",
@@ -533,7 +533,7 @@ You can get multiple episodes by adding an array of `ids` as parameter: `/episod
     "id": 28,
     "name": "The Ricklantis Mixup",
     "air_date": "September 10, 2017",
-    "episode": "S03E07",
+    "code": "S03E07",
     "characters": [
       "https://rickandmortyapi.com/api/character/1",
       "https://rickandmortyapi.com/api/character/2",
@@ -548,7 +548,7 @@ You can get multiple episodes by adding an array of `ids` as parameter: `/episod
 ### Filter episodes
 Available parameters:
 - `name`: filter by the given name.
-- `episode`: filter by the given episode code.
+- `code`: filter by the given episode code.
 
 If you want to know how to use queries, check [here](#filter-characters).    
 
