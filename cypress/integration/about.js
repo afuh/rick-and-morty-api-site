@@ -32,7 +32,7 @@ context('About page', () => {
         cy.findByText('Axel Fuhrmann').should('have.attr', 'href', config.author.site)
         cy.findByText('Talita').should('have.attr', 'href', 'https://talitatraveler.com')
         cy.findByText('GitHub').should('have.attr', 'href', config.github.api)
-        cy.findByText('help us to keep the project alive').should('have.attr', 'href', '/help-us')
+        cy.findByText('help us to keep the project alive').should('have.attr', 'href', '/support-us')
       })
     })
   })

@@ -69,6 +69,7 @@
   "license": "BSD-3-Clause",
   "scripts": {
     "build": "gatsby build",
+    "clean": "gatsby clean",
     "dev": "gatsby develop -H 0.0.0.0",
     "serve": "gatsby serve -H 0.0.0.0",
     "cy:open": "cypress open",

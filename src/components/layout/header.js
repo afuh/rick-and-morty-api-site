@@ -106,7 +106,7 @@ const Button = styled(_Button)(
 
 const PrimaryNav = () => {
   const { nav } = useSiteMeta()
-  const supportText = 'help us'
+  const supportText = 'support us'
 
   return (
     <List>
@@ -124,7 +124,7 @@ const PrimaryNav = () => {
         </li>
       ))}
       <li>
-        <Link to="/help-us" className="nav-item">
+        <Link to="/support-us" className="nav-item">
           <Button ghost className="desktop nav-item">
             {supportText}
           </Button>

@@ -18,12 +18,7 @@ module.exports = {
     'gatsby-plugin-react-svg',
     'gatsby-plugin-robots-txt',
     'gatsby-plugin-no-sourcemaps',
-    {
-      resolve: 'gatsby-plugin-sitemap',
-      options: {
-        exclude: [`/help-us/thank-you`],
-      },
-    },
+    'gatsby-plugin-sitemap',
     {
       resolve: 'gatsby-source-graphql',
       options: {

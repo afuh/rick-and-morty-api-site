@@ -146,7 +146,7 @@ const Icons = () => {
   const footerLinks = [
     { to: github.api, Icon: GoMarkGithub, title: 'GitHub' },
     { to: `https://twitter.com/${userTwitter}`, Icon: FaTwitter, title: 'Twitter' },
-    { to: '/help-us', Icon: GoHeart, title: 'Help Us' },
+    { to: '/support-us', Icon: GoHeart, title: 'Support Us' },
   ]
 
   return (

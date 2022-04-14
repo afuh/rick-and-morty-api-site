@@ -16,4 +16,10 @@ exports.createPages = ({ actions }) => {
     toPath: `${process.env.API_URL}/graphql`,
     statusCode: 200,
   })
+
+  createRedirect({
+    fromPath: '/help-us',
+    toPath: '/support-us',
+    statusCode: 301,
+  })
 }

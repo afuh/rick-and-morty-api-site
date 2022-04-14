@@ -13,13 +13,14 @@ module.exports = {
   },
   author: {
     name: 'Axel Fuhrmann',
-    site: 'https://axelfuhrmann.com/',
+    site: 'https://github.com/afuh',
   },
   status: {
     site: 'https://status.rickandmortyapi.com',
   },
   support: {
-    coffee: 'https://ko-fi.com/axelfuh',
+    kofi: 'https://ko-fi.com/axelfuh',
+    buyMeACoffee: 'https://buymeacoffee.com/axelfuh',
   },
   nav: [
     { title: 'Docs', path: '/documentation' },
