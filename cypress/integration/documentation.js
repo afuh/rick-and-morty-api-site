@@ -15,6 +15,7 @@ const externalLinks = [
   'https://github.com/Yash-Garg/RickandMorty-Dart-Wrapper',
   'https://github.com/afuh/rick-and-morty-api-node',
   'https://javascript.rickandmortyapi.com',
+  'https://github.com/nickbeen/rick-and-morty-api-php',
 ]
 
 describe('Documentation page', () => {
