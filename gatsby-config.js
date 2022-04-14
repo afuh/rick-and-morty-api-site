@@ -16,9 +16,14 @@ module.exports = {
     'gatsby-plugin-catch-links',
     'gatsby-plugin-styled-components',
     'gatsby-plugin-react-svg',
-    'gatsby-plugin-robots-txt',
     'gatsby-plugin-no-sourcemaps',
     'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        sitemap: `${config.siteUrl}/sitemap.xml`,
+      },
+    },
     {
       resolve: 'gatsby-source-graphql',
       options: {
