@@ -1,7 +1,8 @@
 import { css } from 'styled-components'
-import { rem as _rem } from 'polished'
 
-const rem = (...arg) => _rem(...arg)
+const BASE = 16
+
+const rem = (num) => `${num / BASE}rem`
 
 const flex = (opt) => css`
   display: flex;

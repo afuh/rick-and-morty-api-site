@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components'
-import { lighten } from 'polished'
 import { Caption as _Caption } from './'
 
 const Button = styled(_Caption)(
@@ -12,7 +11,7 @@ const Button = styled(_Caption)(
     font-weight: 700;
 
     ${theme.mixins.hover(css`
-      background: ${lighten(0.1, theme.primary)};
+      background: ${theme.primary};
     `)};
 
     ${strong &&

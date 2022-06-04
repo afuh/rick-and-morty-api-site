@@ -1,15 +1,15 @@
 ---
-title: Support Us
+title: Support The Rick and Morty API
 slug: /support-us
 github: /support-us.mdx
-description: Support The Rick and Morty API.
+description: Help to maintain The Rick and Morty API's infrastructure!.
 cover: /images/support-us.jpeg
 ---
 
 import { ExternalLink, Article } from "../components/shared";
 import config from "../../config/siteConfig"
 
-# Support The Rick and Morty API
+<h1>{props.pageContext.frontmatter.title}</h1>
 
 **Help to maintain The Rick and Morty API's infrastructure!**
 
@@ -24,7 +24,7 @@ Thanks!
     <img src="https://cdn.ko-fi.com/cdn/kofi3.png?v=3" alt="Buy Me A Coffee - Ko-fi" />
   </ExternalLink>
 
-  <ExternalLink href={config.support.buyMeACoffee} style={{ maxWidth : 200}}>
+  <ExternalLink href={config.support.buyMeACoffee} style={{ maxWidth : 200 }}>
     <img src="https://cdn.buymeacoffee.com/buttons/v2/default-orange.png" alt="Buy Me A Coffee" />
   </ExternalLink>
 </div>

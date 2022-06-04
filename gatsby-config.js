@@ -5,9 +5,6 @@ require('dotenv').config({
 const config = require('./config/siteConfig')
 
 module.exports = {
-  flags: {
-    FAST_REFRESH: true,
-  },
   siteMetadata: {
     ...config,
   },
@@ -18,12 +15,7 @@ module.exports = {
     'gatsby-plugin-react-svg',
     'gatsby-plugin-no-sourcemaps',
     'gatsby-plugin-sitemap',
-    {
-      resolve: 'gatsby-plugin-robots-txt',
-      options: {
-        sitemap: `${config.siteUrl}/sitemap.xml`,
-      },
-    },
+    'gatsby-plugin-robots-txt',
     {
       resolve: 'gatsby-source-graphql',
       options: {
@@ -43,6 +35,12 @@ module.exports = {
         theme_color: config.themeColor,
         display: 'standalone',
         icon: 'src/assets/rm512.png',
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/src/pages`,
       },
     },
     {
@@ -69,29 +67,6 @@ module.exports = {
         pathToConfigModule: 'src/utils/typography.js',
       },
     },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'src',
-        path: `${__dirname}/src/`,
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-nprogress',
-      options: {
-        color: config.themeColor,
-        showSpinner: false,
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-google-analytics',
-      options: {
-        trackingId: process.env.GA,
-        anonymize: true,
-        respectDNT: true,
-      },
-    },
-    'gatsby-plugin-netlify-cache',
     'gatsby-plugin-netlify',
   ],
 }
