@@ -46,6 +46,7 @@ const Wrapper = styled.footer(
 
     ul {
       ${theme.mixins.flex}
+      flex-wrap: wrap;
       margin: 0;
       padding: 0;
       width: 100%;
