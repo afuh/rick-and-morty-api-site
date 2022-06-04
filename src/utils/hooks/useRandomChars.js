@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react'
-import { getCharacter, getEpisode } from 'rickmortyapi'
+
+import { useSiteMeta } from './useSiteMeta'
 import { useRickAndMortyStats } from './'
+
+const CACHE_KEY = 'rm-characters'
 
 const getRandomNums = ({ max, total }) => {
   const arr = []
@@ -21,51 +24,83 @@ const getRandomNums = ({ max, total }) => {
   return arr
 }
 
-export const useRandomChars = ({ total }) => {
-  const [data, setData] = useState([])
+const graphqlQuery = (ids) => ({
+  query: `
+    query randomCharacters($ids: [ID!]!) {
+      charactersByIds(ids: $ids) {
+        id
+        name
+        status
+        species
+        image
+        episode {
+          name
+          id
+        }
+        location {
+          name
+          id
+        }
+      }
+    }
+  `,
+  variables: { ids },
+})
+
+export const useRandomCharacters = ({ total }) => {
+  const { siteUrl } = useSiteMeta()
+  const {
+    characters: { info },
+  } = useRickAndMortyStats()
+
+  const [randomCharacters, setRandomCharacters] = useState([])
   const [loading, setLoading] = useState(true)
-  const { characters } = useRickAndMortyStats()
 
-  const random = getRandomNums({
-    max: characters.info.count,
-    total,
-  })
+  const fetchFromAPI = async () => {
+    const res = await fetch(`${siteUrl}/graphql`, {
+      method: 'POST',
+      body: JSON.stringify(graphqlQuery(getRandomNums({ max: info.count, total }))),
+      headers: {
+        'content-type': 'application/json',
+      },
+    }).catch(() => {
+      setLoading(false)
+    })
 
-  const cache = 'rm-characters'
+    if (res && res.ok) {
+      const { data } = await res.json()
+
+      const characters = data.charactersByIds.map((item) => ({
+        ...item,
+        url: `${siteUrl}/api/character/${item.id}`,
+        episode: {
+          name: item.episode[0].name,
+          url: `${siteUrl}/api/episode/${item.episode[0].id}`,
+        },
+        location: {
+          name: item.location.name,
+          url: `${siteUrl}/api/location/${item.location.id}`,
+        },
+      }))
+
+      setRandomCharacters(characters)
+      sessionStorage.setItem(CACHE_KEY, JSON.stringify(characters))
+    }
+  }
 
   useEffect(() => {
-    if (sessionStorage.getItem(cache)) {
-      setData(JSON.parse(sessionStorage.getItem(cache)))
+    if (sessionStorage.getItem(CACHE_KEY)) {
+      setRandomCharacters(JSON.parse(sessionStorage.getItem(CACHE_KEY)))
       setLoading(false)
       return
     }
 
-    const fetchFromAPI = async () => {
-      const charRes = await getCharacter(random)
-      const epiRes = await Promise.all(
-        charRes.map(async ({ episode }) => {
-          const [id] = episode[0].match(/[0-9]+/)
-          const { name, url } = await getEpisode(Number(id))
-          return { name, url }
-        }),
-      )
-
-      // Only the first episode is needed.
-      const character = charRes.map((char, i) => ({
-        ...char,
-        episode: epiRes[i],
-      }))
-
-      sessionStorage.setItem(cache, JSON.stringify(character))
-      setData(character)
-      setLoading(false)
-    }
-
     fetchFromAPI()
+    setLoading(false)
   }, [])
 
   return {
     loading,
-    data,
+    data: randomCharacters,
   }
 }

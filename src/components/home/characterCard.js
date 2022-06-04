@@ -131,13 +131,12 @@ const ContentWrapper = styled.div`
 
 const Card = ({ image, name, url, status, species, location, episode }) => {
   const [loading, setLoading] = useState(true)
-  const imageUrl = process.env.NODE_ENV === 'development' ? 'https://via.placeholder.com/300' : image
   const headingMaxLength = 23
 
   return (
     <Wrapper>
       <ImgWrapper isLoading={loading}>
-        <img onLoad={() => setLoading(false)} src={imageUrl} alt={name} />
+        <img onLoad={() => setLoading(false)} src={image} alt={name} />
       </ImgWrapper>
       <ContentWrapper status={status.toLowerCase()} isSmallHeading={name.length > headingMaxLength}>
         <div className="section">

@@ -1,8 +1,7 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import { lighten } from 'polished'
 
-import { useRandomChars } from '../../utils/hooks'
+import { useRandomCharacters } from '../../utils/hooks'
 import { Spinner } from '../shared'
 import Card from './characterCard'
 
@@ -10,7 +9,7 @@ const Wrapper = styled.section(
   ({ theme }) => css`
     ${theme.mixins.flex}
     padding: ${theme.spacing.rem(72)} 0;
-    background: ${lighten(0.02, theme.backBlack)};
+    background: ${theme.backBlack};
     min-height: calc(50vh - ${theme.navHeight}px);
 
     ${theme.media.phone(css`
@@ -28,7 +27,7 @@ const Inner = styled.div(
 )
 
 const Showcase = () => {
-  const { loading, data } = useRandomChars({ total: 6 })
+  const { loading, data } = useRandomCharacters({ total: 6 })
 
   return (
     <Wrapper>
