@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "author": "Axel Fuhrmann",
   "engines": {
-    "node": ">=14"
+    "node": ">=16"
   },
   "dependencies": {
     "@mdx-js/mdx": "^1.6.22",

@@ -9,7 +9,7 @@ const Wrapper = styled.section(
   ({ theme }) => css`
     ${theme.mixins.flex}
     padding: ${theme.spacing.rem(72)} 0;
-    background: ${theme.backBlack};
+    background: #272b33;
     min-height: calc(50vh - ${theme.navHeight}px);
 
     ${theme.media.phone(css`

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const ExternalLink = styled.a.attrs({
-  rel: 'nofollow noopener noreferrer',
+  rel: 'noopener noreferrer',
   target: '_blank',
 })``
 
