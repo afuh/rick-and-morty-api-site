@@ -6,7 +6,8 @@ import { Link } from 'gatsby'
 
 import { useRickAndMortyStats, useSiteMeta, useServerStatus } from '../../utils/hooks'
 import { ExternalLink, Caption } from '../shared'
-import NetlifyLogo from '../../assets/svg/netlify-dark.svg'
+import Netlify from '../../assets/svg/netlify-light.svg'
+import Stellate from '../../assets/svg/stellate-light.svg'
 
 const SignWrapper = styled.div(
   ({ theme }) => css`
@@ -128,7 +129,7 @@ const ServerStatus = () => {
   )
 }
 
-const Sign = () => {
+const Copyright = () => {
   const { author } = useSiteMeta()
 
   return (
@@ -169,19 +170,30 @@ const Icons = () => {
   )
 }
 
-const Netlify = () => (
-  <ExternalLink href="https://www.netlify.com" className="mt">
-    <NetlifyLogo />
-  </ExternalLink>
-)
+const Logos = () => {
+  const data = [
+    { to: 'https://www.netlify.com', Svg: Netlify, props: { style: { marginRight: 32 }, ariaLabel: 'Netlify' } },
+    { to: 'https://stellate.co/?ref=powered-by', Svg: Stellate, props: { ariaLabel: 'Stellate' } },
+  ]
+
+  return (
+    <div className="mt">
+      {data.map(({ to, Svg, props }) => (
+        <ExternalLink key={to} href={to} {...props}>
+          <Svg />
+        </ExternalLink>
+      ))}
+    </div>
+  )
+}
 
 const Footer = () => (
   <Wrapper>
     <Stats />
     <ServerStatus />
+    <Logos />
     <Icons />
-    <Netlify />
-    <Sign />
+    <Copyright />
   </Wrapper>
 )
 
