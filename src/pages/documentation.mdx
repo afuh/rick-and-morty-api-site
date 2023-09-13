@@ -6,7 +6,7 @@ description: This documentation will help you get familiar with the resources of
 cover: /images/docs.jpeg
 ---
 
-import { Count, RestQuery } from "../components/docs/mdx";
+import { Count, RestQuery, GraphiQL } from "../components/docs/mdx";
 
 <h1>{props.pageContext.frontmatter.title}</h1>
 
@@ -16,25 +16,8 @@ This documentation will help you get familiar with the resources of the **Rick a
 ### GraphQL
 https://rickandmortyapi.com/graphql
 
-```graphql
-query {
-  characters(page: 2, filter: { name: "rick" }) {
-    info {
-      count
-    }
-    results {
-      name
-    }
-  }
-  location(id: 1) {
-    id
-  }
-  episodesByIds(ids: [1, 2]) {
-    id
-  }
-}
+<GraphiQL />
 
-```
 > *New to GraphQL? check the docs [here](https://graphql.org/learn/)*
 
 ### REST
