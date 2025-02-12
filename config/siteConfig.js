@@ -18,6 +18,9 @@ module.exports = {
   status: {
     site: 'https://status.rickandmortyapi.com',
   },
+  gender: {
+    site: 'https://status.rickandmortyapi.com',
+  },
   support: {
     kofi: 'https://ko-fi.com/axelfuh',
     buyMeACoffee: 'https://buymeacoffee.com/axelfuh',

@@ -40,6 +40,7 @@
   },
   "devDependencies": {
     "@testing-library/cypress": "^7.0.2",
+    "babel-eslint": "^10.1.0",
     "cypress": "^4.12.1",
     "eslint": "^7.15.0",
     "eslint-config-afuh": "^0.2.0",

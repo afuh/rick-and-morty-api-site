@@ -129,7 +129,7 @@ const ContentWrapper = styled.div`
   }}
 `
 
-const Card = ({ image, name, url, status, species, location, episode }) => {
+const Card = ({ image, name, url, status, species, location, episode, gender }) => {
   const [loading, setLoading] = useState(true)
   const headingMaxLength = 23
 
@@ -144,7 +144,7 @@ const Card = ({ image, name, url, status, species, location, episode }) => {
             <h2>{name}</h2>
           </ExternalLink>
           <span className="status">
-            <span className="status__icon" /> {status} - {species}
+            <span className="status__icon" /> {status} - {species} - {gender}
           </span>
         </div>
 
@@ -176,6 +176,7 @@ Card.propTypes = {
     name: PropTypes.string,
     url: PropTypes.string,
   }).isRequired,
+  gender: PropTypes.string.isRequired,
 }
 
 export default Card

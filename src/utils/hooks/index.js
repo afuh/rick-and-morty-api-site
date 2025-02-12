@@ -1,5 +1,4 @@
 export { useSiteMeta } from './useSiteMeta'
 export { useRickAndMortyStats } from './useRickAndMortyStats'
-export { useRandomCharacters } from './useRandomChars'
 export { useMobileSidebar } from './useMobileSidebar'
 export { useServerStatus } from './useServerStatus'
