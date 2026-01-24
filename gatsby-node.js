@@ -8,18 +8,12 @@ exports.createPages = ({ actions }) => {
   createRedirect({
     fromPath: '/api/*',
     toPath: `${process.env.REST_API_URL}/:splat`,
-    statusCode: 200,
+    statusCode: 308,
   })
 
   createRedirect({
     fromPath: '/graphql',
     toPath: `${process.env.GRAPHQL_API_URL}`,
-    statusCode: 200,
-  })
-
-  createRedirect({
-    fromPath: '/help-us',
-    toPath: '/support-us',
-    statusCode: 301,
+    statusCode: 308,
   })
 }
