@@ -21,7 +21,7 @@ module.exports = {
       options: {
         typeName: 'rmAPI',
         fieldName: 'rickAndMortyAPI',
-        url: 'https://rickandmortyapi.com/graphql',
+        url: process.env.GRAPHQL_API_URL,
       },
     },
     {
