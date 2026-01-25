@@ -5,7 +5,7 @@ import { Link } from 'gatsby'
 
 import { useRickAndMortyStats, useSiteMeta, useServerStatus } from '../../utils/hooks'
 import { ExternalLink, Caption } from '../shared'
-import Netlify from '../../assets/svg/netlify-light.svg'
+import Netlify from '../../assets/svg/netlify-badge-dark.svg'
 import Stellate from '../../assets/svg/stellate-light.svg'
 
 const SignWrapper = styled.div(
@@ -170,7 +170,11 @@ const Icons = () => {
 
 const Logos = () => {
   const data = [
-    { to: 'https://www.netlify.com', Svg: Netlify, props: { style: { marginRight: 32 }, ariaLabel: 'Netlify' } },
+    {
+      to: 'https://www.netlify.com',
+      Svg: Netlify,
+      props: { style: { marginRight: 32 }, ariaLabel: 'Netlify', alt: 'Deploys by Netlify' },
+    },
     { to: 'https://stellate.co/?ref=powered-by', Svg: Stellate, props: { ariaLabel: 'Stellate' } },
   ]
 
