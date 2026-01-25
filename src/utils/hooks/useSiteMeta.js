@@ -11,7 +11,6 @@ export const useSiteMeta = () => {
             description
             siteUrl
             image
-            userTwitter
             nav {
               title
               path
