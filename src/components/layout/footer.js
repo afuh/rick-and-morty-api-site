@@ -1,12 +1,11 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 import { GoMarkGithub, GoHeart } from 'react-icons/go'
-import { FaTwitter } from 'react-icons/fa'
 import { Link } from 'gatsby'
 
 import { useRickAndMortyStats, useSiteMeta, useServerStatus } from '../../utils/hooks'
 import { ExternalLink, Caption } from '../shared'
-import Netlify from '../../assets/svg/netlify-light.svg'
+import Netlify from '../../assets/svg/netlify-badge-dark.svg'
 import Stellate from '../../assets/svg/stellate-light.svg'
 
 const SignWrapper = styled.div(
@@ -143,11 +142,10 @@ const Copyright = () => {
 }
 
 const Icons = () => {
-  const { github, userTwitter } = useSiteMeta()
+  const { github } = useSiteMeta()
 
   const footerLinks = [
     { to: github.api, Icon: GoMarkGithub, title: 'GitHub' },
-    { to: `https://twitter.com/${userTwitter}`, Icon: FaTwitter, title: 'Twitter' },
     { to: '/support-us', Icon: GoHeart, title: 'Support Us' },
   ]
 
@@ -172,7 +170,11 @@ const Icons = () => {
 
 const Logos = () => {
   const data = [
-    { to: 'https://www.netlify.com', Svg: Netlify, props: { style: { marginRight: 32 }, ariaLabel: 'Netlify' } },
+    {
+      to: 'https://www.netlify.com',
+      Svg: Netlify,
+      props: { style: { marginRight: 32 }, ariaLabel: 'Netlify', alt: 'Deploys by Netlify' },
+    },
     { to: 'https://stellate.co/?ref=powered-by', Svg: Stellate, props: { ariaLabel: 'Stellate' } },
   ]
 

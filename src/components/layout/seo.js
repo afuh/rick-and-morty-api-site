@@ -5,13 +5,7 @@ import PropTypes from 'prop-types'
 import { useSiteMeta } from '../../utils/hooks'
 
 const SEO = ({ title, description, image, pathname }) => {
-  const {
-    title: defaultTitle,
-    description: defaultDescription,
-    image: defaultImage,
-    siteUrl,
-    userTwitter,
-  } = useSiteMeta()
+  const { title: defaultTitle, description: defaultDescription, image: defaultImage, siteUrl } = useSiteMeta()
 
   const seo = {
     title: title || defaultTitle,
@@ -36,8 +30,6 @@ const SEO = ({ title, description, image, pathname }) => {
       <meta property="og:image:width" content="1280" />
       <meta property="og:image:height" content="720" />
 
-      <meta name="twitter:creator" content={userTwitter} />
-      <meta name="twitter:site" content={userTwitter} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={seo.title} />
       <meta name="twitter:url" content={seo.url} />

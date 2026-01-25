@@ -4,7 +4,6 @@ module.exports = {
   description: 'The Rick and Morty API is a REST and GraphQL API based on the television show Rick and Morty',
   siteUrl: 'https://rickandmortyapi.com',
   image: '/images/site.jpeg',
-  userTwitter: 'rickandmortyapi',
   themeColor: '#FF9800',
   backgroundColor: '#fff',
   github: {

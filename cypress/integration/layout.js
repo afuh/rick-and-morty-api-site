@@ -22,7 +22,6 @@ context('Layout', () => {
   describe('Footer', () => {
     it('Should contains statistic info, server status and several links ', () => {
       const statistic = ['characters', 'locations', 'episodes']
-      const twitterUrl = 'https://twitter.com/' + config.userTwitter
 
       cy.get('footer').within(() => {
         statistic.forEach((collection) => {
@@ -30,7 +29,6 @@ context('Layout', () => {
         })
 
         cy.findByTitle('GitHub').should('have.attr', 'href', config.github.api)
-        cy.findByTitle('Twitter').should('have.attr', 'href', twitterUrl)
         cy.findByText(config.author.name).should('have.attr', 'href', config.author.site)
         cy.findByTestId('server-status').should('have.attr', 'href', config.status.site)
         cy.findByTitle('Support Us').should('have.attr', 'href', '/support-us')
