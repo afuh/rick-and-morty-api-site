@@ -11,10 +11,6 @@ export const useSiteMeta = () => {
             description
             siteUrl
             image
-            nav {
-              title
-              path
-            }
             github {
               site
               api
