@@ -1,10 +1,18 @@
-require('dotenv').config({
+import { fileURLToPath } from 'url'
+import { dirname } from 'path'
+import dotenv from 'dotenv'
+
+dotenv.config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
-const config = require('./config/siteConfig')
+import remarkGfm from 'remark-gfm'
+import config from './config/siteConfig.mjs'
 
-module.exports = {
+const __dirname = dirname(fileURLToPath(import.meta.url))
+
+export default {
+  trailingSlash: 'never',
   siteMetadata: {
     ...config,
   },
@@ -13,7 +21,6 @@ module.exports = {
     'gatsby-plugin-catch-links',
     'gatsby-plugin-styled-components',
     'gatsby-plugin-react-svg',
-    'gatsby-plugin-no-sourcemaps',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-robots-txt',
     {
@@ -46,8 +53,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
-        defaultLayouts: {
-          default: require.resolve('./src/templates/mdxPages.js'),
+        mdxOptions: {
+          remarkPlugins: [remarkGfm],
         },
         gatsbyRemarkPlugins: [
           {

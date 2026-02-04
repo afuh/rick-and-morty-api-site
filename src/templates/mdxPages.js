@@ -15,7 +15,7 @@ const MarkdownWrapper = styled.div`
   }
 `
 
-const MDXTemplate = ({ children: _children, pageContext: { frontmatter } }) => {
+const MDXTemplate = ({ children, pageContext: { frontmatter } }) => {
   const seo = {
     title: frontmatter.title,
     description: frontmatter.description,
@@ -24,11 +24,6 @@ const MDXTemplate = ({ children: _children, pageContext: { frontmatter } }) => {
   }
 
   const isDocs = frontmatter.slug.includes('documentation')
-
-  //TODO: Frontmatter is being passed as children, which causes it to end up being rendered.
-  // This started to happen from Gatsby v4 onwards.
-  // eslint-disable-next-line no-unused-vars
-  const [_removedFrontmatter, ...children] = _children
 
   return (
     <Layout seo={{ ...seo }}>

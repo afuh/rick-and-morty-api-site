@@ -49,7 +49,7 @@ pre.language-json {
 }
 
 /* Inline code */
-p > code[class*='language-'],
+span > code[class*='language-'],
 li > code[class*='language-'] {
   background: var(--inline-background);
   color: var(--inline-color);

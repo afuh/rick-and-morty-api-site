@@ -1,12 +1,17 @@
 import React from 'react'
 import { Link as GatsbyLink } from 'gatsby'
+// eslint-disable-next-line import/no-unresolved
 import { useLocation } from '@reach/router'
 import styled, { css } from 'styled-components'
-import { GoHeart } from 'react-icons/go'
+import { FaHeart } from 'react-icons/fa'
 
 import HomeIcon from '../../assets/svg/icon.svg'
-import { useSiteMeta } from '../../utils/hooks'
 import { Button as _Button } from '../shared'
+
+const navigation = [
+  { title: 'Docs', path: '/documentation' },
+  { title: 'About', path: '/about' },
+]
 
 const Header = styled.header(
   ({ theme, isFixed }) => css`
@@ -105,12 +110,11 @@ const Button = styled(_Button)(
 )
 
 const PrimaryNav = () => {
-  const { nav } = useSiteMeta()
   const supportText = 'support us'
 
   return (
     <List>
-      {nav.map(({ path, title }) => (
+      {navigation.map(({ path, title }) => (
         <li key={path}>
           <Link
             to={path}
@@ -129,7 +133,7 @@ const PrimaryNav = () => {
             {supportText}
           </Button>
           <Button className="mobile nav-item" title={supportText} aria-label={supportText}>
-            <GoHeart style={{ fontSize: 16, verticalAlign: 'middle' }} />
+            <FaHeart style={{ fontSize: 16, verticalAlign: 'middle' }} />
           </Button>
         </Link>
       </li>

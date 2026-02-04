@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import { GoMarkGithub, GoHeart } from 'react-icons/go'
+import { FaGithub, FaHeart } from 'react-icons/fa'
 import { Link } from 'gatsby'
 
 import { useRickAndMortyStats, useSiteMeta, useServerStatus } from '../../utils/hooks'
@@ -152,8 +152,8 @@ const Icons = () => {
   const { github } = useSiteMeta()
 
   const footerLinks = [
-    { to: github.api, Icon: GoMarkGithub, title: 'GitHub' },
-    { to: '/support-us', Icon: GoHeart, title: 'Support Us' },
+    { to: github.api, Icon: FaGithub, title: 'GitHub' },
+    { to: '/support-us', Icon: FaHeart, title: 'Support Us' },
   ]
 
   return (

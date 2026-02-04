@@ -99,7 +99,7 @@ export default Sidebar
 
 const query = graphql`
   query DOCS_TOC {
-    mdx(fileAbsolutePath: { regex: "/documentation/" }) {
+    mdx(internal: { contentFilePath: { regex: "/documentation/" } }) {
       tableOfContents(maxDepth: 3)
     }
   }
