@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
-import { GoPencil as EditIcon } from 'react-icons/go'
+import { FaEdit } from 'react-icons/fa'
 
 import { ExternalLink } from '../shared'
 import { useSiteMeta } from '../../utils/hooks'
@@ -27,7 +27,7 @@ const Link = styled(ExternalLink)(
   `,
 )
 
-const Icon = styled(EditIcon)`
+const Icon = styled(FaEdit)`
   font-size: ${({ theme }) => theme.spacing._16};
 `
 
