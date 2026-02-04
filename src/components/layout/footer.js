@@ -7,6 +7,7 @@ import { useRickAndMortyStats, useSiteMeta, useServerStatus } from '../../utils/
 import { ExternalLink, Caption } from '../shared'
 import Netlify from '../../assets/svg/netlify-badge-dark.svg'
 import Stellate from '../../assets/svg/stellate-light.svg'
+import DigitalOcean from '../../assets/svg/DO_Powered_by_Badge_blue.svg'
 
 const SignWrapper = styled.div(
   ({ theme }) => css`
@@ -42,6 +43,12 @@ const Wrapper = styled.footer(
 
     .mt {
       margin-top: ${theme.spacing._20};
+    }
+
+    .logos {
+      ${theme.mixins.flex}
+      width: 100%;
+      gap: 24px;
     }
 
     ul {
@@ -173,13 +180,22 @@ const Logos = () => {
     {
       to: 'https://www.netlify.com',
       Svg: Netlify,
-      props: { style: { marginRight: 32 }, ariaLabel: 'Netlify', alt: 'Deploys by Netlify' },
+      props: { ariaLabel: 'Netlify', alt: 'Deploys by Netlify' },
     },
-    { to: 'https://stellate.co/?ref=powered-by', Svg: Stellate, props: { ariaLabel: 'Stellate' } },
+    {
+      to: 'https://stellate.co/?ref=powered-by',
+      Svg: Stellate,
+      props: { ariaLabel: 'Stellate', alt: 'Powered by Stellate, the GraphQL API Management platform' },
+    },
+    {
+      to: 'https://m.do.co/c/2736d3ffe622',
+      Svg: DigitalOcean,
+      props: { style: { width: '180px' }, ariaLabel: 'DigitalOcean', alt: 'DigitalOcean Referral Badge' },
+    },
   ]
 
   return (
-    <div className="mt">
+    <div className="mt logos">
       {data.map(({ to, Svg, props }) => (
         <ExternalLink key={to} href={to} {...props}>
           <Svg />
